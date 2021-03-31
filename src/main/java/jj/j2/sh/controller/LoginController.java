@@ -78,13 +78,18 @@ public class LoginController {
 	    //4.파싱 닉네임 세션으로 저장
 	    session.setAttribute("sessionId",nickname); //세션 생성
 	   
-	    // 사용자 정보 출력해도 안나온다. json형태 이므로 바꿔줘야함
+	    // 사용자 정보 출력해도 안나온다. 제이슨데이터 이므로 바꿔줘야함
 	    model.addAttribute("result", apiResult);
 		
 		return "naverSuccess";
 	}
 
-	
+	@RequestMapping("/logOut")
+	String logout(String id, HttpSession session) {
+		session.invalidate();
+		
+		return ""; // 뒤로 보내기
+	}
 
 
 }
