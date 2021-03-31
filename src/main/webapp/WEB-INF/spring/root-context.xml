@@ -7,8 +7,8 @@
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:XE"></property>
-		<property name="username" value=""></property> <!-- 수정 -->
-		<property name="password" value=""></property>
+		<property name="username" value="catchme"></property> <!-- 수정 -->
+		<property name="password" value="1234"></property>
 	</bean>
 	
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
