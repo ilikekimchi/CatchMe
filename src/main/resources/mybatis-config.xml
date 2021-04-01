@@ -6,11 +6,11 @@
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
 	
-	<typeAliases>
-		<typeAlias type="kr.ac.kopo.model.Todo" alias="Todo"/>
+	<!-- <typeAliases>
+		<typeAlias type="kr.ac.kopo.model.CatchMe" alias="CatchMe"/>
 	</typeAliases>
 	
 	<mappers>
-		<mapper resource="mybatis/todo.xml"/>
-	</mappers>
+		<mapper resource="mybatis/catchme.xml"/>
+	</mappers> -->
 </configuration>
