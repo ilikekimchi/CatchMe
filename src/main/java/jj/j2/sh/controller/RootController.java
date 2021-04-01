@@ -26,7 +26,6 @@ public class RootController {
 		return "home";
 		
 	}
-	
 	// @ResponseBody를 하면 뷰리졸버가 jsp를 찾지않고, 후처리를 하지않고 그대로 클라이언트에게 보내주는 지시를 함
 			@ResponseBody
 			// id가 null 이면 OK, 아니면 FAIL => 중복검사를 했을때 아이디가 없으면 OK, 있으면 FAIL
