@@ -106,7 +106,9 @@
 		<div class="social">
 			<div class="google"></div>
 			<div class="kakao"></div>
-			<div class="naver"><a href="${url}"></a></div>
+			<a href="login">
+				<div class="naver"></div>
+			</a>
 		</div>
 	</div>
 </body>
