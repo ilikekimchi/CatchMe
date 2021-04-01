@@ -103,12 +103,13 @@
 				<a href="#">아이디/비밀번호 찾기</a>
 			</div>
 		</div>
+		
+
 		<div class="social">
-			<div class="google"></div>
-			<div class="kakao"></div>
-			<a href="login">
-				<div class="naver"></div>
-			</a>
+			<a><div class="google"></div></a><!-- 구글 추가 -->
+			<a><div class="kakao"></div></a><!-- 카카오 추가 -->
+			<a href="naverLogin"><div class="naver"></div></a>
+			
 		</div>
 	</div>
 </body>

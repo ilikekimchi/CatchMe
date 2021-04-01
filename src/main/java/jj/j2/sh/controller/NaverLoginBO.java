@@ -19,7 +19,7 @@ public class NaverLoginBO {
 	// 시크릿 키
 	private final static String CLIENT_SECRET = "GkyuPjmS7a";
 	//콜백 url 인증의 결과를 전달받을
-    private final static String REDIRECT_URI = "http://localhost:8090/naverSuccess";
+    private final static String REDIRECT_URI = "http://localhost:8090/naverSuccess"; // 수정 해야함
     // 애플리케이션이 생성한 상태 토큰
     private final static String SESSION_STATE = "oauth_state";
     // 프로필 조회 API URL
