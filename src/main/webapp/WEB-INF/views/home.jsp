@@ -108,20 +108,10 @@
 			</div>
 		</div>
 		
-
 		<div class="social">
-<<<<<<< HEAD
-			<div class="google"></div>
-			<div class="kakao"></div>
-			<a href="${url}">
-				<div class="naver"></div>
-			</a>
-=======
 			<a><div class="google"></div></a><!-- 구글 추가 -->
 			<a><div class="kakao"></div></a><!-- 카카오 추가 -->
 			<a href="naverLogin"><div class="naver"></div></a>
-			
->>>>>>> 66e2035af79e97ea970d72ab472857bfae60a230
 		</div>
 	</div>
 </body>
