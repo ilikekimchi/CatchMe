@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,22 +92,27 @@
 	<div class="login-modal">
 		<div class="login-info">
 			<h4>LOGIN</h4>
+		<!-- sessionScope => 세션(session -> customer가 저장되어있음)에  저장되어있는(Scope)를  불러옴 -->
+		<form method="post" action="/login2">
 			<div class="id">
-				<input type="text" placeholder="아이디" id="id">
+				<input name="customerId" type="text" placeholder="아이디" id="id" required="required">
 			</div>
 			<div class="pwd">
-				<input type="password" placeholder="비밀번호" id="pwd">
+				<input name="customerPw" type="password" placeholder="비밀번호" id="pwd" required="required">
 			</div>
-			<button class="login-ch">로그인</button>
+			<button class="login-ch" onclick="submit()">로그인</button>
+		</form>
 			<div class="signup-form">
-				<a href="#">회원가입</a>
+				<a href="signup">회원가입</a>
 				<a href="#">아이디/비밀번호 찾기</a>
 			</div>
 		</div>
 		<div class="social">
 			<div class="google"></div>
 			<div class="kakao"></div>
-			<div class="naver"><a href="${url}"></a></div>
+			<a href="${url}">
+				<div class="naver"></div>
+			</a>
 		</div>
 	</div>
 </body>

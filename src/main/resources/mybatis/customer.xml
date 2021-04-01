@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="customer">
+	<select id="list" resultType="Customer">
+		SELECT * FROM customer 
+		WHERE customer_id=#{customerId}
+	</select>
+	
+	<!-- 회원가입 -->
+	<insert id="add">
+		INSERT INTO customer
+		(customer_id, customer_pw, customer_name, customer_nnm)
+		
+		VALUES (#{customerId}, #{customerPw}, #{customerName}, #{customerNnm})		
+		
+		<!-- Role(채팅)은 나중에.. -->
+		
+	</insert>
+	
+	<select id="item" resultType="Customer">
+		SELECT * FROM customer
+		WHERE customer_id=#{customerId}
+	</select>
+	
+	<update id="update">
+		UPDATE customer
+		SET customer_name=#{customerName}, customer_nnm=#{customerNnm}
+	
+		WHERE customer_id=#{customerId}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM customer
+		WHERE customer_id=#{customerId}
+	</delete>
+	
+	<!-- 사용자가 입력한 패스워드 랑 암호화된 값과 같다면 같은 패스워드 를 얻어옴. -->
+	<select id="login" resultType="Customer">
+		SELECT * FROM customer
+		WHERE customer_id=#{customerId} AND customer_pw=#{customerPw}
+	</select>
+</mapper>

@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
+<!--UnderscoreCase(오라클)의 문자열을 CamelCase(자바)로 바꿔주는 역할을 하는 설정값이다 -->
 <configuration>
 	<settings>
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
 	
-	<!-- <typeAliases>
-		<typeAlias type="kr.ac.kopo.model.CatchMe" alias="CatchMe"/>
+	<typeAliases>
+		<typeAlias type="jj.j2.sh.model.Customer" alias="Customer" />
+		<typeAlias type="jj.j2.sh.model.Profile" alias="Profile" />
 	</typeAliases>
 	
 	<mappers>
-		<mapper resource="mybatis/catchme.xml"/>
-	</mappers> -->
+		<mapper resource="mybatis/customer.xml" />
+		<mapper resource="mybatis/profile.xml" />
+	</mappers>
 </configuration>
