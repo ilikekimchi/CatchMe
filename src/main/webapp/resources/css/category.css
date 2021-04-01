@@ -1,0 +1,132 @@
+@charset "UTF-8";
+
+.category {
+	position: relative;
+	top: 370px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.item {
+	
+}
+
+.icon {
+	margin: 25px auto;
+	cursor: pointer;
+	position: relative;
+}
+
+.icon1 {
+	background-image: url("/image/icon/IT.png");
+	background-repeat: no-repeat;
+	width: 45px;
+	height: 39px;
+}
+
+.plain:hover>.icon1 {
+	background-image: url("/image/icon/IT-hover.png");
+	top: -15px;
+}
+
+.icon2 {
+	background-image: url("/image/icon/music.png");
+	background-repeat: no-repeat;
+	width: 26px;
+	height: 39px;
+}
+
+.plain:hover>.icon2 {
+	background-image: url("/image/icon/music-hover.png");
+	top: -15px;
+}
+
+.icon3 {
+	background-image: url("/image/icon/professional.png");
+	background-repeat: no-repeat;
+	width: 42px;
+	height: 39px;
+}
+
+.plain:hover>.icon3 {
+	background-image: url("/image/icon/professional-hover.png");
+	top: -15px;
+}
+
+.icon4 {
+	background-image: url("/image/icon/service.png");
+	background-repeat: no-repeat;
+	width: 51px;
+	height: 39px;
+}
+
+.plain:hover>.icon4 {
+	background-image: url("/image/icon/service-hover.png");
+	top: -15px;
+}
+
+.icon5 {
+	background-image: url("/image/icon/marketing.png");
+	background-repeat: no-repeat;
+	width: 49px;
+	height: 39px;
+}
+
+.plain:hover>.icon5 {
+	background-image: url("/image/icon/marketing-hover.png");
+	top: -15px;
+}
+
+.icon6 {
+	background-image: url("/image/icon/lesson.png");
+	background-repeat: no-repeat;
+	width: 49px;
+	height: 39px;
+}
+
+.plain:hover>.icon6 {
+	background-image: url("/image/icon/lesson-hover.png");
+	top: -15px;
+}
+
+.icon7 {
+	background-image: url("/image/icon/write.png");
+	background-repeat: no-repeat;
+	width: 49px;
+	height: 39px;
+}
+
+.plain:hover>.icon7 {
+	background-image: url("/image/icon/write-hover.png");
+	top: -15px;
+}
+
+.icon8 {
+	background-image: url("/image/icon/transration.png");
+	background-repeat: no-repeat;
+	width: 49px;
+	height: 39px;
+}
+
+.plain:hover>.icon8 {
+	background-image: url("/image/icon/transration-hover.png");
+	top: -15px;
+}
+
+.icon9 {
+	background-image: url("/image/icon/design.png");
+	background-repeat: no-repeat;
+	width: 49px;
+	height: 39px;
+}
+
+.plain:hover>.icon9 {
+	background-image: url("/image/icon/design-hover.png");
+	top: -15px;
+}
+
+.plain {
+	text-decoration: none;
+	color: black;
+}
