@@ -7,23 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript">		
-	function fileCheck(obj) {
-		pathPoint = obj.value.lastIndexOf(".");
-		filePoint = obj.value.substring(pathPoint+1, obj.length);
-		fileType = filePoint.toLowerCase();
-		if(fileType == "jpg" || fileType == "gif" || fileType == "png" || 
-				fileType == "jpeg" || fileType == "bmp" || fileType == "svg"){	
-		} else {
-			alert("이미지 파일만 선택 가능합니다.");
-
-			//input 파일 초기화
-			document.getElementById("file").value = null;
-                
-                return false;
-			}
-		}
-</script>
+<script src="/js/file.js" type="text/javascript"></script>
 <style>
 .avatar {
     max-width: 150px;
@@ -73,6 +57,10 @@
 				<tr>
 					<th><label>이름:</label></th>
 					<td colspan="1">${item.customerName}</td>
+				</tr>
+				<tr>
+					<th><label>성별:</label></th>
+					<td colspan="1"><input name="profileAcademic" type="text" value="${item.profileGender}"></td>
 				</tr>
 				<tr>
 					<th><label>생년월일:</label></th>
@@ -158,7 +146,7 @@
 				</tr>
 				<tr>
 					<th><label>현재상태:</label></th>
-					<td colspan="1"><input name="profileState" type="text" value="${item.profileState}"></td>
+					<td colspan="1"><input name="profileState" type="number" value="${item.profileState}"></td>
 				</tr>
 				<tr>
 					<th><label>연락가능시간:</label></th>

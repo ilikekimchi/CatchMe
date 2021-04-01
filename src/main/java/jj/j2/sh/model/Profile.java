@@ -26,11 +26,12 @@ public class Profile {
 	private String profileAbilityDate; //자격증 취득월
 	private String profileSkill; //기술능력
 	private String profileWriting; //한줄소개
-	private String profileState; //상태(당장이직, 이직 고려)
+	private int profileState; //상태(당장이직, 이직 고려)
 	private Date profileDoob; //생년월일
 	private Date profileDate; //최종수정일
 	private String profileTime; //연락가능 시간
 	private int profileScore; //평가점수
+	private String profileGender; //성별
 	
 	private String customerName;
 	private String customerNnm;
@@ -202,17 +203,23 @@ public class Profile {
 	public void setProfileWriting(String profileWriting) {
 		this.profileWriting = profileWriting;
 	}
-	public String getProfileState() {
-		return profileState;
-	}
-	public void setProfileState(String profileState) {
-		this.profileState = profileState;
-	}
 	public Date getProfileDate() {
 		return profileDate;
 	}
 	public void setProfileDate(Date profileDate) {
 		this.profileDate = profileDate;
+	}
+	public int getProfileState() {
+		return profileState;
+	}
+	public void setProfileState(int profileState) {
+		this.profileState = profileState;
+	}
+	public String getProfileGender() {
+		return profileGender;
+	}
+	public void setProfileGender(String profileGender) {
+		this.profileGender = profileGender;
 	}
 	
 	

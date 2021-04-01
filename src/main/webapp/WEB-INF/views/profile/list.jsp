@@ -36,6 +36,7 @@
 							<th>닉네임</th> 
 							<th>프로필 사진</th> 
 							<th>이름</th> 
+							<th>성별</th> 
 							<th>생년월일</th>
 							<th>분야</th>
 							<th>희망근무지</th>
@@ -65,7 +66,7 @@
 					<tbody>
 					<c:if test="${list.size() < 1}">
 						<tr>
-							<td colspan="28">등록 된 프로필이 없습니다.</td>
+							<td colspan="29">등록 된 프로필이 없습니다.</td>
 						</tr>
 						<tr>
 							<td colspan="2"><a href="add">프로필 등록</a></td>
@@ -77,6 +78,7 @@
 							<td>${item.customerNnm}</td>
 							<td><img src="/CatchMeUpload/${item.profileImg}" class="avatar"></td>
 							<td>${item.customerName}</td>
+							<td>${item.profileGender}</td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${item.profileDoob}" /></td>
 							<td>${item.profileCategory}</td> 
 							<td>${item.profileArea}</td>		

@@ -39,6 +39,7 @@
 		<result column="profile_date" property="profileDate" />
 		<result column="profile_time" property="profileTime" />
 		<result column="profile_score" property="profileScore" />
+		<result column="profile_gender" property="profileGender" />
 
 		<result column="customer_name" property="customerName" />
 		<result column="customer_nnm" property="customerNnm" />
@@ -63,14 +64,15 @@
 				profile_academic_start_date, profile_academic_end_date, profile_academic_major,
 				profile_academic_state, profile_career_name, profile_career_start_date,
 				profile_career_end_date, profile_career_position, profile_career_work, 
-				profile_ability_agency, profile_ability_date)
+				profile_ability_agency, profile_ability_date, profile_gender)
 
 			VALUES (#{customerId}, #{profileCategory}, #{profileArea},#{profileAcademic}, #{profileCareer}, 
 				#{profileAbility}, #{profileSkill}, #{profileWriting}, #{profileState}, #{profileDoob}, 
 				SYSDATE, #{profileTime}, #{profileScore}, #{profileAcademicType}, 
 				#{profileAcademicStartDate}, #{profileAcademicEndDate}, #{profileAcademicMajor}, 
 				#{profileAcademicState}, #{profileCareerName}, #{profileCareerStartDate}, #{profileCareerEndDate}, 
-				#{profileCareerPosition}, #{profileCareerWork}, #{profileAbilityAgency}, #{profileAbilityDate})
+				#{profileCareerPosition}, #{profileCareerWork}, #{profileAbilityAgency}, #{profileAbilityDate},
+				#{profileGender})
 		</if>
 		<if test="profileImg != null">
 			INSERT INTO profile
@@ -80,14 +82,14 @@
 				profile_academic_start_date, profile_academic_end_date, profile_academic_major,
 				profile_academic_state, profile_career_name, profile_career_start_date,
 				profile_career_end_date, profile_career_position, profile_career_work, 
-				profile_ability_agency, profile_ability_date)
+				profile_ability_agency, profile_ability_date, profile_gender)
 				
 			VALUES (#{customerId}, #{profileImg}, #{profileCategory}, #{profileArea},#{profileAcademic}, #{profileCareer}, 
 				#{profileAbility}, #{profileSkill}, #{profileWriting}, #{profileState}, #{profileDoob}, 
 				SYSDATE, #{profileTime}, #{profileScore}, #{profileAcademicType}, #{profileAcademicStartDate}, 
 				#{profileAcademicEndDate}, #{profileAcademicMajor}, #{profileAcademicState}, #{profileCareerName}, 
 				#{profileCareerStartDate}, #{profileCareerEndDate}, #{profileCareerPosition}, #{profileCareerWork}, 
-				#{profileAbilityAgency}, #{profileAbilityDate})
+				#{profileAbilityAgency}, #{profileAbilityDate}, #{profileGender})
 		</if>
 	</insert>
 	
@@ -102,7 +104,8 @@
 		profile_academic_state=#{profileAcademicState}, profile_career_name=#{profileCareerName}, 
 		profile_career_start_date=#{profileCareerStartDate}, profile_career_end_date=#{profileCareerEndDate}, 
 		profile_career_position=#{profileCareerPosition}, profile_career_work=#{profileCareerWork}, 
-		profile_ability_agency=#{profileAbilityAgency}, profile_ability_date=#{profileAbilityDate}
+		profile_ability_agency=#{profileAbilityAgency}, profile_ability_date=#{profileAbilityDate},
+		profile_gender=#{profileGender}
 		
 		<!--profileImg가 null이 아닐때만 바꿈 -->
 		<if test="profileImg != null">

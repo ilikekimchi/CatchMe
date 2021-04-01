@@ -6,23 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript">		
-	function fileCheck(obj) {
-		pathPoint = obj.value.lastIndexOf(".");
-		filePoint = obj.value.substring(pathPoint+1, obj.length);
-		fileType = filePoint.toLowerCase();
-		if(fileType == "jpg" || fileType == "gif" || fileType == "png" || 
-				fileType == "jpeg" || fileType == "bmp" || fileType == "svg"){	
-		} else {
-			alert("이미지 파일만 선택 가능합니다.");
-
-			//input 파일 초기화
-			document.getElementById("file").value = null;
-                
-                return false;
-			}
-		}
-</script>
+<script srtc="/js/file.js" type="text/javascript"></script>
 </head>
 <body>
 	<div>
@@ -52,6 +36,10 @@
 				<div>
 					<label>이름:</label>
 					${sessionScope.customer.customerName}
+				</div>
+				<div>
+					<label>성별:</label>
+					<input name="profileGender" type="text">
 				</div>
 				<div>
 					<label>생년월일:</label>
@@ -135,7 +123,7 @@
 				</div>
 				<div>
 					<label>현재상태:</label>
-					<input name="profileState" type="text">
+					<input name="profileState" type="number">
 				</div>
 				<div>
 					<label>연락가능시간:</label>
