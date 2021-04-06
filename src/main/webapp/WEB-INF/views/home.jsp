@@ -13,6 +13,7 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="/js/login-modal.js" type="text/javascript"></script>
+<script src="/js/search.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -37,7 +38,9 @@
 					<input type="text" placeholder="카테고리를 입력해주세요.">
 					<span class="search-icon"></span>
 				</div>
-				<div></div>
+				<div class="region">
+					<span class="search-close"></span>
+				</div>
 			</div>
 			<div class="category">
 				<div class="item">
@@ -104,7 +107,11 @@
 		<c:if test="${ sessionScope.sessionId == null}">
 		<div class="login-info">
 		<!-- sessionScope => 세션(session -> customer가 저장되어있음)에  저장되어있는(Scope)를  불러옴 -->
-		<form method="post" action="/login2">
+		<ul class="member">
+			<li class="customer click">개인회원</li>
+			<li class="company out">기업회원</li>
+		</ul>
+		<form method="post" action="/login2">	
 			<div class="id">
 				<input name="customerId" type="text" placeholder="아이디" id="id" required="required">
 			</div>
@@ -134,6 +141,7 @@
 			<h2 style="text-align: center" id="name"></h2>
 			<h4 style="text-align: center" id="email"></h4>
 		</c:if>
+		<span id="pointer"></span>
 	</div>
 </body>
 </html>

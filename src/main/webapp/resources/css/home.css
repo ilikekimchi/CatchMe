@@ -80,7 +80,7 @@ button {
 	border-radius: 20px;
 	cursor: pointer;
 	width: 38px;
-	right: 50px;
+	right: 84px;
 }
 
 .login-icon {
@@ -130,12 +130,26 @@ button {
 	left: 620px;
 }
 
+.search-close {
+	
+	position: absolute;
+	top: 17px;
+	left: 625px;
+	
+	background-image: url("/image/search-close.png");
+	
+	width: 18px;
+	height: 12px;
+	
+	cursor: pointer;
+}
+
 .login-modal {
 	position: absolute;
-	top: 65px;
-	right: 45px;
+	top: 71px;
+	right: 61px;
 	width: 289px;
-	height: 300px;
+	height: 356px;
 	background: white;
 	box-shadow: 0px 1px 4px 0px black;
 	border-radius: 10px;
@@ -144,8 +158,8 @@ button {
 
 .social {
 	position: absolute;
-	top: 227px;
-	left: 25px;
+	top: 284px;
+	left: 19px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -197,7 +211,7 @@ button {
 
 .login-info {
 	position: relative;
-	top: 10px;
+	top: 9px;
 	
 	width: 250px;
 	margin: 0 auto;
@@ -260,8 +274,8 @@ button {
 	position: relative;
     display: flex;
     width: 210px;
-    margin: 0 auto;
     top: 29px;
+    left: 29px;
 }
 
 .signup-form > a {
@@ -288,7 +302,7 @@ button {
 .remember {
 	position: absolute;
 	top: 1px;
-	margin-left: 10px;
+	margin-left: 8px;
 	font-size: 13px;
 	font-weight: bold;
 }
@@ -298,4 +312,73 @@ button {
 	top: 11px;
 	left: 30px;
 	color: #757575;
+	
+	cursor: pointer;
+}
+
+.region {
+	position: absolute;
+    width: 670px;
+    height: 300px;
+    background-color: #f1f1f1;
+    display: none;
+    z-index: 1;
+    border: 2px solid #4876ef;
+    border-radius: 24px;
+}
+
+.member {
+	
+	list-style: none;
+	
+    display: flex;
+    padding: 0;
+    justify-content: space-between;	
+	
+}
+
+.member > li {
+	cursor: pointer;
+	box-sizing: border-box;
+	
+	font-size: 14px;
+}
+
+.customer {
+	padding: 10px 33.5px 5px;
+	
+}
+
+.company {
+	padding: 10px 34.5px 9px;
+	
+}
+
+.click {
+	
+	color: #0070af;
+	
+	border-radius: 8px 8px 0px 0px;
+	border: 1px solid #0070af;
+	border-bottom: none;
+}
+
+.out {
+	
+	color: #2d2d2d;
+	
+	border-bottom: 1px solid #0070af;
+	
+}
+
+#pointer {
+	position: absolute;
+	
+	top: -12px;
+	right: 30px;
+	
+	background-image: url("/image/pointer.png");
+	width: 23px;
+	height: 13px;
+	
 }
