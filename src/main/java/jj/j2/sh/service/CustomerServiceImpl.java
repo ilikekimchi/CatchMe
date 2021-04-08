@@ -45,7 +45,6 @@ public class CustomerServiceImpl implements CustomerService {
 		if(customer != null) {
 			
 			item.setCustomerPw(null);
-			item.setCustomerName(customer.getCustomerName() );
 			item.setCustomerNnm(customer.getCustomerNnm() );
 			item.setCustomerRole(customer.getCustomerRole());
 			
@@ -54,6 +53,5 @@ public class CustomerServiceImpl implements CustomerService {
 		
 		return false;
 	}
-
 	
 }

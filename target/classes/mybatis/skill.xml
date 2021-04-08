@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--  namespace 와 id는 Dao에서 쓰임 -->
+<!-- resultType을 쓰는 이유는 mybatis 에서 쓰기 좋게 바꿔주려고 Skill 라는 객체를 씀(mybatis에서 Profile라는 객체를 
+	만들어줌 => 데이터베이스에서 얻은 값들을 찾아서 item에 주기위해 -->
+	<mapper namespace="skill" >			
+	<!-- 이직자 기술 보기 -->
+	<select id="list" resultType="Skill">
+	SELECT * FROM skill 
+	WHERE profile_seq=#{profileSeq} OR customer_id=#{customerId}
+	</select>
+	
+	<!-- #{}은 필드명, mybatis-config 에서 세팅해주면 이것을 자동으로 고쳐줌(자바표기법:낙타 표기법) -->
+	<insert id="add">
+	INSERT INTO skill
+	(profile_seq, customer_id, skill_content)
+	
+	VALUES (#{profileSeq}, #{customerId}, #{skillContent})
+	</insert>  
+	
+	<!-- 이직자 기술 수정 -->
+	<update id="update">
+		UPDATE skill 
+		SET skill_content=#{skillContent}
+		
+		WHERE profile_seq=#{profileSeq} OR customer_id=#{customerId}
+	</update>
+	
+	<!-- 이직자 기술 삭제 -->
+	<delete id="delete">
+		DELETE FROM skill
+		WHERE profile_seq=#{profileSeq} OR customer_id=#{customerId}
+	</delete>
+			
+</mapper>
+

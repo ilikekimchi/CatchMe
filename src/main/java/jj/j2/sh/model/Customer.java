@@ -1,12 +1,16 @@
 package jj.j2.sh.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Customer {
-	private String customerId; //회원 아이디*기본키
-	private String customerPw; //회원 비밀번호
-	private String customerName; //회원 이름
-	private String customerNnm; //회원 닉네임
-	private String customerRole; //찜당한기업목록(수락/거절)
+	private String customerId; //이직자 회원 아이디*기본키
+	private String customerPw; //이직자 회원 비밀번호
+	private String customerNnm; //이직자 회원 닉네임
+	private String customerRole; //찜당한기업목록(스크랩)
+	private String customerResume; //이력서파일 업로드
 	
+	
+	MultipartFile uploadFile;
 	
 	
 	public String getCustomerId() {
@@ -21,12 +25,6 @@ public class Customer {
 	public void setCustomerPw(String customerPw) {
 		this.customerPw = customerPw;
 	}
-	public String getCustomerName() {
-		return customerName;
-	}
-	public void setCustomerName(String customerName) {
-		this.customerName = customerName;
-	}
 	public String getCustomerNnm() {
 		return customerNnm;
 	}
@@ -39,6 +37,17 @@ public class Customer {
 	public void setCustomerRole(String customerRole) {
 		this.customerRole = customerRole;
 	}
-
+	public String getCustomerResume() {
+		return customerResume;
+	}
+	public void setCustomerResume(String customerResume) {
+		this.customerResume = customerResume;
+	}
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
 	
 }

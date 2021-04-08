@@ -26,6 +26,19 @@
 
 </head>
 <body>
+
+	<!-- url 모음(준혁) -->
+		<div>
+			<ul>
+				<li><a href="customer/list">내정보</a></li>
+				<li><a href="company/list">내정보(기업)</a></li>
+				<li><a href="profile/listAll">명함 모두 보기</a></li>
+				<li><a href="/">코인(결제관리)충전</a></li>
+				<li><a href="/">고객센터</a></li>
+			</ul>
+		</div>
+	<!-- url 모음(준혁) -->
+	
 	<div class="container">
 		<div class="main">
 			<h1 class="catchme">
@@ -111,6 +124,8 @@
 			<li class="customer click">개인회원</li>
 			<li class="company out">기업회원</li>
 		</ul>
+		
+		<!-- 이직자 로그인 -->
 		<form method="post" action="/login2">	
 			<div class="id">
 				<input name="customerId" type="text" placeholder="아이디" id="id" required="required">
@@ -120,6 +135,28 @@
 			</div>
 			<button class="login-ch" onclick="submit()">로그인</button>
 		</form>
+		<!-- 이직자 로그인 -->
+		
+		
+		<!-- 기업 로그인 -->
+		 <form method="post" name="loginForm0">
+		 <div>
+			<label>아이디:</label>
+			<input name="companyId" type="text" placeholder="아이디를 입력해 주세요">
+		</div>
+		<div>
+			<label>비밀번호:</label>
+			<input name="companyPw" type="password" placeholder="비밀번호를 입력해 주세요">
+		</div>
+		</form>
+		</div>
+		<!-- 폼태그 안에 있는 버튼은 따로 지정을 안해도 무조건 submit이 된다, form태그 바깥에 버튼을 두면 엔터키가 안먹힘 -->
+		<div>
+			<button onclick="submit()">로그인</button>
+		</div>
+		<!-- 기업 로그인 -->
+	
+	
 			<div class="info-remember">
 				<input type="checkbox">
 				<span class="remember">계정 기억하기</span>
@@ -142,6 +179,6 @@
 			<h4 style="text-align: center" id="email"></h4>
 		</c:if>
 		<span id="pointer"></span>
-	</div>
+	</div>	
 </body>
 </html>

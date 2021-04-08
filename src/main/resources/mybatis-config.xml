@@ -10,10 +10,14 @@
 	<typeAliases>
 		<typeAlias type="jj.j2.sh.model.Customer" alias="Customer" />
 		<typeAlias type="jj.j2.sh.model.Profile" alias="Profile" />
+		<typeAlias type="jj.j2.sh.model.Skill" alias="Skill" />
+		<typeAlias type="jj.j2.sh.model.Company" alias="Company" />
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="mybatis/customer.xml" />
 		<mapper resource="mybatis/profile.xml" />
+		<mapper resource="mybatis/skill.xml" />
+		<mapper resource="mybatis/company.xml" />
 	</mappers>
 </configuration>

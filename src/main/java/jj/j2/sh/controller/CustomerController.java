@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jj.j2.sh.model.Customer;
 import jj.j2.sh.service.CustomerService;
 
-
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
 	final String path = "customer/";
+	final String uploadPath = "//d:/CatchMeUpload/";
 	
 	@Autowired
 	CustomerService service;
@@ -32,7 +32,7 @@ public class CustomerController {
 		List<Customer> list = service.list(customer.getCustomerId());
 		
 		model.addAttribute("list", list);
-		
+	
 		return path + "list";
 		
 	}
@@ -46,7 +46,7 @@ public class CustomerController {
 	String add(Customer item) {
 		service.add(item);
 		
-		return "redirect:list";
+		return "redirect:list";	
 	}
 	
 	@GetMapping("/{customerId}/update")
@@ -59,11 +59,12 @@ public class CustomerController {
 	}
 	
 	@PostMapping("/{customerId}/update")
-	String update(@PathVariable String customerId, Customer item, HttpSession session) {		
-		item.setCustomerId(customerId);	
+	String update(@PathVariable String customerId, Customer item, HttpSession session) {
+		
+		item.setCustomerId(customerId);
 		
 		service.update(item);
-		
+				
 		session.setAttribute("customer", item);
 		
 		return "redirect:../list";
@@ -75,5 +76,5 @@ public class CustomerController {
 		
 		return "redirect:../list";
 	}
+	
 }
-

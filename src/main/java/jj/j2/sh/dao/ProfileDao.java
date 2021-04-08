@@ -14,6 +14,12 @@ public interface ProfileDao {
 
 	void update(Profile item);
 
-	void delete(String customerId);
+	void delete(int profileSeq);
+
+	List<Profile> listAll();
+
+	void profileCheck(Profile item);
+
+	Profile item(int profileSeq);
 	
 }
