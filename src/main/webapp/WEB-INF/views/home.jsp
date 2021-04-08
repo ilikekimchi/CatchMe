@@ -13,6 +13,16 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="/js/login-modal.js" type="text/javascript"></script>
+<script src="/js/search.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		var name = ${result}.response.name;
+		var email = ${result}.response.email;
+		$("#name").html("환영합니다. "+name+"님");
+		$("#email").html(email);
+	  });
+</script>
 
 </head>
 <body>
@@ -24,8 +34,12 @@
 			</h1>
 			<div class="search-box">
 				<div class="search-area">
-					<span class="search-icon"></span> <input type="text"
-						placeholder="카테고리를 입력해주세요.">
+					<span class="region-search">근무지역</span>
+					<input type="text" placeholder="카테고리를 입력해주세요.">
+					<span class="search-icon"></span>
+				</div>
+				<div class="region">
+					<span class="search-close"></span>
 				</div>
 			</div>
 			<div class="category">
@@ -90,10 +104,14 @@
 		<span class="login-icon"></span>
 	</div>
 	<div class="login-modal">
+		<c:if test="${ sessionScope.sessionId == null}">
 		<div class="login-info">
-			<h4>LOGIN</h4>
 		<!-- sessionScope => 세션(session -> customer가 저장되어있음)에  저장되어있는(Scope)를  불러옴 -->
-		<form method="post" action="/login2">
+		<ul class="member">
+			<li class="customer click">개인회원</li>
+			<li class="company out">기업회원</li>
+		</ul>
+		<form method="post" action="/login2">	
 			<div class="id">
 				<input name="customerId" type="text" placeholder="아이디" id="id" required="required">
 			</div>
@@ -102,9 +120,13 @@
 			</div>
 			<button class="login-ch" onclick="submit()">로그인</button>
 		</form>
+			<div class="info-remember">
+				<input type="checkbox">
+				<span class="remember">계정 기억하기</span>
+			</div>
 			<div class="signup-form">
 				<a href="signup">회원가입</a>
-				<a href="#">아이디/비밀번호 찾기</a>
+				<a href="#" style="border-left: 1px solid #bfbfbf;">아이디 찾기</a>
 			</div>
 		</div>
 		
@@ -113,6 +135,13 @@
 			<a><div class="kakao"></div></a><!-- 카카오 추가 -->
 			<a href="naverLogin"><div class="naver"></div></a>
 		</div>
+		</c:if>
+		<c:if test="${sessionScope.sessionId != null }">
+			<div>세션 있음</div>
+			<h2 style="text-align: center" id="name"></h2>
+			<h4 style="text-align: center" id="email"></h4>
+		</c:if>
+		<span id="pointer"></span>
 	</div>
 </body>
 </html>
