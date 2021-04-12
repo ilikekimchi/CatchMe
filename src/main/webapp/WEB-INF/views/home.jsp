@@ -35,10 +35,16 @@
 			<div class="search-box">
 				<div class="search-area">
 					<span class="region-search">근무지역</span>
+					<span class="line1"></span>
+					<span class="job-search">직무·직종</span>
+					<span class="line2"></span>
 					<input type="text" placeholder="카테고리를 입력해주세요.">
 					<span class="search-icon"></span>
 				</div>
 				<div class="region">
+					<span class="search-close"></span>
+				</div>
+				<div class="job">
 					<span class="search-close"></span>
 				</div>
 			</div>
@@ -111,7 +117,7 @@
 			<li class="customer click">개인회원</li>
 			<li class="company out">기업회원</li>
 		</ul>
-		<form method="post" action="/login2">	
+		<form method="post" action="/login2" class="customer-form">	
 			<div class="id">
 				<input name="customerId" type="text" placeholder="아이디" id="id" required="required">
 			</div>
