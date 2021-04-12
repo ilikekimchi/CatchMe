@@ -2,34 +2,36 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="customer">
+<!-- 내정보(이직자)보기 -->
 	<select id="list" resultType="Customer">
 		SELECT * FROM customer 
 		WHERE customer_id=#{customerId}
 	</select>
 	
-	<!-- 회원가입 -->
+	<!-- 이직자 회원가입 -->
 	<insert id="add">
 		INSERT INTO customer
-		(customer_id, customer_pw, customer_name, customer_nnm)
+		(customer_id, customer_pw, customer_nnm)
 		
-		VALUES (#{customerId}, #{customerPw}, #{customerName}, #{customerNnm})		
-		
-		<!-- Role(채팅)은 나중에.. -->
-		
+		VALUES (#{customerId}, #{customerPw}, #{customerNnm})		
+		<!-- Role(찜하기_스크랩)은 나중에.. -->
 	</insert>
+	
 	
 	<select id="item" resultType="Customer">
 		SELECT * FROM customer
 		WHERE customer_id=#{customerId}
 	</select>
-	
+		
+	<!-- 이직자 회원정보 변경 -->
 	<update id="update">
 		UPDATE customer
-		SET customer_name=#{customerName}, customer_nnm=#{customerNnm}
-	
+		SET customer_nnm=#{customerNnm}
+		
 		WHERE customer_id=#{customerId}
 	</update>
 	
+	<!-- 이직자 회원탈퇴 -->
 	<delete id="delete">
 		DELETE FROM customer
 		WHERE customer_id=#{customerId}

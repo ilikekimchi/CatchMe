@@ -232,6 +232,17 @@ button {
 	margin: 0 auto;
 }
 
+.login-info .customer-form {
+	top: 30px;
+    position: relative;
+}
+
+.login-info .company-form {
+	top: 30px;
+    position: relative;
+    display: none;
+}
+
 .login-info .id > input {
 	width: 90%;
 	padding: 7px 12px 7px;
@@ -266,6 +277,8 @@ button {
 }
 
 .login-ch {
+	position: relative;
+	
 	font-family: "BMJUA";
 	
 	width: 250px;
@@ -288,11 +301,14 @@ button {
 }
 
 .signup-form {
-	position: absolute;
+	justify-content: space-around;
+	
+	position: relative;
     display: flex;
     width: 210px;
-    top: 230px;
-    left: 29px;
+    top: 72px;
+    
+    margin: 0 auto;
 }
 
 .signup-form > a {
@@ -304,8 +320,9 @@ button {
 }
 
 .info-remember {	
-	position: absolute;
-	top: 190px;
+	position: relative;
+	top: 50px;
+	left: 19.5px;
 	float: left;
 	width: 131px;
 }

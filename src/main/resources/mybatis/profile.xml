@@ -8,120 +8,86 @@
 	
 	<!--  Map, join -->
 	 <resultMap type="Profile" id="ProfileMap"> 
-		<id column="customer_id" property="customerId" />
+		<id column="profile_seq" property="profileSeq" />
 		<result column="customer_id" property="customerId" />
-		<result column="profile_img" property="profileImg" />
+		<result column="profile_gender" property="profileGender" />
+		<result column="profile_birthday" property="profileBirthday" />		
 		<result column="profile_category" property="profileCategory" />
 		<result column="profile_area" property="profileArea" />
-		
-		<result column="profile_academic" property="profileAcademic" />
-		<result column="profile_academic_type" property="profileAcademicType" />
-		<result column="profile_academic_start_date" property="profileAcademicStartDate" />
-		<result column="profile_academic_end_date" property="profileAcademicEndDate" />
-		<result column="profile_academic_major" property="profileAcademicMajor" />
-		<result column="profile_academic_state" property="profileAcademicState" />
-		
-		<result column="profile_career" property="profileCareer" />
-		<result column="profile_career_name" property="profileCareerName" />
-		<result column="profile_career_start_date" property="profileCareerStartDate" />
-		<result column="profile_career_end_date" property="profileCareerEndDate" />
-		<result column="profile_career_position" property="profileCareerPosition" />
-		<result column="profile_career_work" property="profileCareerWork" />
-		
-		<result column="profile_ability" property="profileAbility" />
-		<result column="profile_ability_agency" property="profileAbilityAgency" />
-		<result column="profile_ability_date" property="profileAbilityDate" />
-		
-		<result column="profile_skill" property="profileSkill" />
-		<result column="profile_writing" property="profileWriting" />
+		<result column="profile_money" property="profileMoney" />
 		<result column="profile_state" property="profileState" />
-		<result column="profile_doob" property="profileDoob" />
-		<result column="profile_date" property="profileDate" />
 		<result column="profile_time" property="profileTime" />
-		<result column="profile_score" property="profileScore" />
-
-		<result column="customer_name" property="customerName" />
-		<result column="customer_nnm" property="customerNnm" />
-	</resultMap>
+		<result column="profile_writing" property="profileWriting" />		
+		<result column="profile_date" property="profileDate" />
+		<result column="profile_check" property="profileCheck" />
 		
-	<!-- 프로필 보기 -->
-	<select id="list" resultType="Profile" resultMap="ProfileMap">
-		SELECT profile.*, customer.customer_name, customer.customer_nnm
+		<result column="customer_nnm" property="customerNnm" />
+		<result column="skill_content" property="skillContent" />
+		
+	</resultMap>
+	
+	<!-- 이직자 명함 모두 보기 -->
+	<select id="listAll" resultType="Profile" resultMap="ProfileMap">
+		SELECT profile.*, customer.customer_nnm, skill.skill_content
 		FROM profile 
 		JOIN customer ON profile.customer_id=customer.customer_id
+		JOIN skill ON profile.profile_seq=skill.profile_seq
+		ORDER BY profile.profile_seq DESC
+	</select>
+		
+	<!-- 자신 명함 보기 -->
+	<select id="list" resultType="Profile" resultMap="ProfileMap">
+		SELECT profile.*, customer.customer_nnm, skill.skill_content
+		FROM profile 
+		JOIN customer ON profile.customer_id=customer.customer_id
+		JOIN skill ON profile.profile_seq=skill.profile_seq
 		WHERE profile.customer_id=#{customerId}
 	</select>
 	
 	<!-- #{}은 필드명, mybatis-config 에서 세팅해주면 이것을 자동으로 고쳐줌(자바표기법:낙타 표기법) -->
-	<!-- profile_img에 null이 들어가는것을 방지하기 위해 if문을 씀 -->
 	<insert id="add">
-		<if test="profileImg == null">
 			INSERT INTO profile
-			(customer_id, profile_category, profile_area, profile_academic, profile_career, 
-				profile_ability, profile_skill, profile_writing, profile_state, profile_doob, 
-				profile_date, profile_time, profile_score, profile_academic_type,
-				profile_academic_start_date, profile_academic_end_date, profile_academic_major,
-				profile_academic_state, profile_career_name, profile_career_start_date,
-				profile_career_end_date, profile_career_position, profile_career_work, 
-				profile_ability_agency, profile_ability_date)
+			(profile_seq, customer_id, profile_gender, profile_birthday, profile_category, 
+			profile_area, profile_money, profile_state, profile_time, profile_writing, 
+			profile_date)
 
-			VALUES (#{customerId}, #{profileCategory}, #{profileArea},#{profileAcademic}, #{profileCareer}, 
-				#{profileAbility}, #{profileSkill}, #{profileWriting}, #{profileState}, #{profileDoob}, 
-				SYSDATE, #{profileTime}, #{profileScore}, #{profileAcademicType}, 
-				#{profileAcademicStartDate}, #{profileAcademicEndDate}, #{profileAcademicMajor}, 
-				#{profileAcademicState}, #{profileCareerName}, #{profileCareerStartDate}, #{profileCareerEndDate}, 
-				#{profileCareerPosition}, #{profileCareerWork}, #{profileAbilityAgency}, #{profileAbilityDate})
-		</if>
-		<if test="profileImg != null">
-			INSERT INTO profile
-			(customer_id, profile_img, profile_category, profile_area, profile_academic, profile_career, 
-				profile_ability, profile_skill, profile_writing, profile_state, profile_doob,  
-				profile_date, profile_time, profile_score, profile_academic_type,
-				profile_academic_start_date, profile_academic_end_date, profile_academic_major,
-				profile_academic_state, profile_career_name, profile_career_start_date,
-				profile_career_end_date, profile_career_position, profile_career_work, 
-				profile_ability_agency, profile_ability_date)
-				
-			VALUES (#{customerId}, #{profileImg}, #{profileCategory}, #{profileArea},#{profileAcademic}, #{profileCareer}, 
-				#{profileAbility}, #{profileSkill}, #{profileWriting}, #{profileState}, #{profileDoob}, 
-				SYSDATE, #{profileTime}, #{profileScore}, #{profileAcademicType}, #{profileAcademicStartDate}, 
-				#{profileAcademicEndDate}, #{profileAcademicMajor}, #{profileAcademicState}, #{profileCareerName}, 
-				#{profileCareerStartDate}, #{profileCareerEndDate}, #{profileCareerPosition}, #{profileCareerWork}, 
-				#{profileAbilityAgency}, #{profileAbilityDate})
-		</if>
+			VALUES (profile_seq.NEXTVAL, #{customerId}, #{profileGender}, #{profileBirthday}, #{profileCategory}, 
+			#{profileArea}, #{profileMoney}, #{profileState}, #{profileTime}, #{profileWriting},
+				SYSDATE)
+		<selectKey resultType="Integer" keyProperty="profileSeq" order="AFTER">
+			SELECT profile_seq.CURRVAL FROM dual
+		</selectKey>
 	</insert>
 	
+	<!-- 이직자 명함 수정 -->
 	<update id="update">
 		UPDATE profile 
-		SET profile_category=#{profileCategory}, profile_area=#{profileArea}, profile_academic=#{profileAcademic},
-		profile_career=#{profileCareer}, profile_ability=#{profileAbility}, profile_skill=#{profileSkill},
-		profile_writing=#{profileWriting}, profile_state=#{profileState}, profile_doob=#{profileDoob}, 
-		profile_date=SYSDATE, profile_time=#{profileTime}, profile_score=#{profileScore},
-		profile_academic_type=#{profileAcademicType}, profile_academic_start_date=#{profileAcademicStartDate}, 
-		profile_academic_end_date=#{profileAcademicEndDate}, profile_academic_major=#{profileAcademicMajor},
-		profile_academic_state=#{profileAcademicState}, profile_career_name=#{profileCareerName}, 
-		profile_career_start_date=#{profileCareerStartDate}, profile_career_end_date=#{profileCareerEndDate}, 
-		profile_career_position=#{profileCareerPosition}, profile_career_work=#{profileCareerWork}, 
-		profile_ability_agency=#{profileAbilityAgency}, profile_ability_date=#{profileAbilityDate}
-		
-		<!--profileImg가 null이 아닐때만 바꿈 -->
-		<if test="profileImg != null">
-			, profile_img=#{profileImg}
-		</if>
-		
+		SET profile_gender= #{profileGender}, profile_birthday=#{profileBirthday}, profile_category=#{profileCategory},
+		profile_area=#{profileArea}, profile_money=#{profileMoney}, profile_state=#{profileState}, profile_time=#{profileTime},
+		profile_writing=#{profileWriting}, profile_date=SYSDATE
+				
 		WHERE customer_id=#{customerId}
 	</update>
 	
+	<!-- 이력서 검증여부 -->
+	<update id="profileCheck">
+		UPDATE profile
+		SET profile_check=#{profileCheck}
+		WHERE profile_seq=#{profileSeq}
+	</update>
+	
+	<!-- 이직자 명함 삭제 -->
 	<delete id="delete">
 		DELETE FROM profile
-		WHERE customer_id=#{customerId}
+		WHERE profile_seq=#{profileSeq} OR customer_id=#{customerId}
 	</delete>
 		
-	<!-- 프로필 각각의 값(데이터베이스에서 얻은 값들을 찾아서 item에 주기위해) -->
+	<!-- 이직자 명함 각각의 값(데이터베이스에서 얻은 값들을 찾아서 item에 주기위해) -->
 	  <select id="item" resultMap="ProfileMap">
-		SELECT profile.*, customer.customer_name, customer.customer_nnm
+		SELECT profile.*, customer.customer_nnm, skill.skill_content
 		FROM profile 
 		JOIN customer ON profile.customer_id=customer.customer_id
+		JOIN skill ON profile.profile_seq=skill.profile_seq
 		WHERE profile.customer_id=#{customerId}
 	</select>
 	

@@ -33,6 +33,9 @@ $(function() {
 			$('.company').addClass('out');
 			$('.company').removeClass('click');
 			
+			$('.customer-form').css('display', 'block');
+			$('.company-form').css('display', 'none');
+			
 		})
 		
 		$('.company').click(function() {
@@ -43,6 +46,8 @@ $(function() {
 			$('.customer').addClass('out');
 			$('.customer').removeClass('click');
 			
+			$('.customer-form').css('display', 'none');
+			$('.company-form').css('display', 'block');
 		})
 
 	})

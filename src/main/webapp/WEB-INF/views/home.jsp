@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title></title>
 
-<link href="/css/home.css" rel="stylesheet"/>
-<link href="/css/category.css" rel="stylesheet"/>
+<link href="/css/home.css" rel="stylesheet" />
+<link href="/css/category.css" rel="stylesheet" />
 
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -34,12 +34,10 @@
 			</h1>
 			<div class="search-box">
 				<div class="search-area">
-					<span class="region-search">근무지역</span>
-					<span class="line1"></span>
-					<span class="job-search">직무·직종</span>
-					<span class="line2"></span>
-					<input type="text" placeholder="카테고리를 입력해주세요.">
-					<span class="search-icon"></span>
+					<span class="region-search">근무지역</span> <span class="line1"></span>
+					<span class="job-search">직무·직종</span> <span class="line2"></span> <input
+						type="text" placeholder="카테고리를 입력해주세요."> <span
+						class="search-icon"></span>
 				</div>
 				<div class="region">
 					<span class="search-close"></span>
@@ -111,36 +109,57 @@
 	</div>
 	<div class="login-modal">
 		<c:if test="${ sessionScope.sessionId == null}">
-		<div class="login-info">
-		<!-- sessionScope => 세션(session -> customer가 저장되어있음)에  저장되어있는(Scope)를  불러옴 -->
-		<ul class="member">
-			<li class="customer click">개인회원</li>
-			<li class="company out">기업회원</li>
-		</ul>
-		<form method="post" action="/login2" class="customer-form">	
-			<div class="id">
-				<input name="customerId" type="text" placeholder="아이디" id="id" required="required">
+			<div class="login-info">
+				<!-- sessionScope => 세션(session -> customer가 저장되어있음)에  저장되어있는(Scope)를  불러옴 -->
+				<ul class="member">
+					<li class="customer click">개인회원</li>
+					<li class="company out">기업회원</li>
+				</ul>
+				<!-- 이직자 로그인 -->
+				<form method="post" name="loginForm" action="/login2" class="customer-form">
+					<div class="id">
+						<input name="customerId" type="text" placeholder="아이디" id="id"
+							required="required">
+					</div>
+					<div class="pwd">
+						<input name="customerPw" type="password" placeholder="비밀번호"
+							id="pwd" required="required">
+					</div>
+					<button class="login-ch" onclick="submit()">로그인</button>
+				</form>
+				<!-- 이직자 로그인 -->
+
+
+				<!-- 기업 로그인 -->
+				<form method="post" name="loginForm0" action="/login0" class="company-form">
+					<div class="id">
+						<input name="companyId" type="text" placeholder="아이디"
+							required="required">
+					</div>
+					<div class="pwd">
+						<input name="companyPw" type="password" placeholder="비밀번호"
+							required="required">
+					</div>
+					<button class="login-ch" onclick="submit()">로그인</button>
+				</form>
+				<!-- 폼태그 안에 있는 버튼은 따로 지정을 안해도 무조건 submit이 된다, form태그 바깥에 버튼을 두면 엔터키가 안먹힘 -->
 			</div>
-			<div class="pwd">
-				<input name="customerPw" type="password" placeholder="비밀번호" id="pwd" required="required">
-			</div>
-			<button class="login-ch" onclick="submit()">로그인</button>
-		</form>
+			<!-- 기업 로그인 -->
 			<div class="info-remember">
-				<input type="checkbox">
-				<span class="remember">계정 기억하기</span>
+				<input type="checkbox"> <span class="remember">계정
+					기억하기</span>
 			</div>
 			<div class="signup-form">
-				<a href="signup">회원가입</a>
-				<a href="#" style="border-left: 1px solid #bfbfbf;">아이디 찾기</a>
+				<a href="signup">회원가입</a> <a href="#"
+					style="border-left: 1px solid #bfbfbf;">아이디 찾기</a>
 			</div>
-		</div>
-		
-		<div class="social">
-			<a><div class="google"></div></a><!-- 구글 추가 -->
-			<a><div class="kakao"></div></a><!-- 카카오 추가 -->
-			<a href="naverLogin"><div class="naver"></div></a>
-		</div>
+			<div class="social">
+				<a><div class="google"></div></a>
+				<!-- 구글 추가 -->
+				<a><div class="kakao"></div></a>
+				<!-- 카카오 추가 -->
+				<a href="naverLogin"><div class="naver"></div></a>
+			</div>
 		</c:if>
 		<c:if test="${sessionScope.sessionId != null }">
 			<div>세션 있음</div>
