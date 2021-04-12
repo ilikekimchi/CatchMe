@@ -35,11 +35,11 @@ public class RootController {
 			@ResponseBody
 			// id가 null 이면 OK, 아니면 FAIL => 중복검사를 했을때 아이디가 없으면 OK, 있으면 FAIL
 			@GetMapping("/confirmId")
-			String confirmId(String customerId) {
+			String confirmId(String customerId, String companyId) {
 				if(service.item(customerId) == null) {
 					return "OK";
 				}
-					
+				
 					return "FAIL";
 			}
 			
