@@ -214,16 +214,6 @@ button {
 	display: block;
 }
 
-.profile {
-	background-image: url("/image/warning.png");
-	width: 65px;
-	height: 65px;
-	
-	position: absolute;
-    top: 30px;
-    left: 120px;
-}
-
 .login-info {
 	position: relative;
 	top: 9px;
@@ -453,4 +443,113 @@ button {
     border: 1px solid #bfbfbf;
     top: 13px;
     left: 360px;
+}
+.in {
+	position: absolute;
+    width: 230px;
+    height: 45px;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 45px;
+    border: 1px solid #4876ef;
+    border-radius: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    color: #4c4c4c;
+    text-decoration: none;
+    
+}
+
+.mypage {
+    top: 173px;
+}
+
+.mypage:hover {
+	background-color: #4876ef;
+	color: white;
+}
+
+.career {
+    top: 228px;
+}
+
+.career:hover {
+	background-color: #4876ef;
+	color: white;
+}
+
+.logout {
+    top: 283px;
+}
+
+.logout:hover {
+	background-color: #4876ef;
+	color: white;
+}
+
+.mypage-icon {
+	position: absolute;
+    width: 20px;
+    height: 22px;
+    top: 11px;
+    left: 28px;
+	
+	background-image: url("/image/icon/mypage.png");
+}
+
+.career-icon {
+	position: absolute;
+    width: 32px;
+    height: 22px;
+    top: 11px;
+    left: 24px;
+	
+	background-image: url("/image/icon/career.png");
+}
+
+.logout-icon {
+	position: absolute;
+    width: 20px;
+    height: 22px;
+    top: 11px;
+    left: 28px;
+	
+	background-image: url("/image/icon/logout.png");
+}
+
+#name {
+	position: absolute;
+    right: 16px;
+    top: 11px;
+    font-size: 16px;
+    font-weight: 200;
+}
+
+#email {
+	position: absolute;
+    font-weight: 100;
+    color: #7c7c7c;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 147px;
+}
+
+.frame {
+	    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50px;
+    top: 39px;
+}
+
+.profile {
+	background-image: url("/image/warning.png");
+	
+	width: 100px;
+    height: 100px;
+    background-color: #4c4c4c;
 }
