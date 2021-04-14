@@ -1,15 +1,27 @@
 $(function() {
 		
-		let id;
-		let pwd;
 		
-		 $("#id, #pwd").on("propertychange change keyup paste input", function() {
+		 $(".customer-id, .customer-pwd").on("propertychange change keyup paste input", function() {
             
-			if($('#id').val() != '' && $('#pwd').val() != '') {
+			if($('.customer-id').val() != '' && $('.customer-pwd').val() != '') {
 				$('.login-ch').addClass('ready');
+				$('.login-ch').attr('disabled', false);
 			} else {
 				
 				$('.login-ch').removeClass('ready');
+				$('.login-ch').attr('disabled', true);
+			}
+            
+          });
+           $(".company-id, .company-pwd").on("propertychange change keyup paste input", function() {
+            
+			if($('.company-id').val() != '' && $('.company-pwd').val() != '') {
+				$('.login-ch').addClass('ready');
+				$('.login-ch').attr('disabled', false);
+			} else {
+				
+				$('.login-ch').removeClass('ready');
+				$('.login-ch').attr('disabled', true);
 			}
             
           });

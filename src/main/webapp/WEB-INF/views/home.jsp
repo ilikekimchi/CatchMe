@@ -35,7 +35,7 @@
 			<div class="search-box">
 				<div class="search-area">
 					<span class="region-search">근무지역</span> <span class="line1"></span>
-					<span class="job-search">직무·직종</span> <span class="line2"></span> <input
+					<span class="job-search">직무 · 직종</span> <span class="line2"></span> <input
 						type="text" placeholder="카테고리를 입력해주세요."> <span
 						class="search-icon"></span>
 				</div>
@@ -108,7 +108,7 @@
 		<span class="login-icon"></span>
 	</div>
 	<div class="login-modal">
-		<c:if test="${ sessionScope.sessionId == null}">
+		<c:if test="${sessionScope.sessionId == null && sessionScope.customer == null && sessionScope.company == null}">
 			<div class="login-info">
 				<!-- sessionScope => 세션(session -> customer가 저장되어있음)에  저장되어있는(Scope)를  불러옴 -->
 				<ul class="member">
@@ -118,14 +118,14 @@
 				<!-- 이직자 로그인 -->
 				<form method="post" name="loginForm" action="/login2" class="customer-form">
 					<div class="id">
-						<input name="customerId" type="text" placeholder="아이디" id="id"
+						<input name="customerId" type="text" placeholder="아이디" class="customer-id"
 							required="required">
 					</div>
 					<div class="pwd">
 						<input name="customerPw" type="password" placeholder="비밀번호"
-							id="pwd" required="required">
+							class="customer-pwd" required="required">
 					</div>
-					<button class="login-ch" onclick="submit()">로그인</button>
+					<button disabled="true" class="login-ch" onclick="submit()">로그인</button>
 				</form>
 				<!-- 이직자 로그인 -->
 
@@ -133,14 +133,14 @@
 				<!-- 기업 로그인 -->
 				<form method="post" name="loginForm0" action="/login0" class="company-form">
 					<div class="id">
-						<input name="companyId" type="text" placeholder="아이디"
+						<input name="companyId" type="text" placeholder="아이디" class="company-id"
 							required="required">
 					</div>
 					<div class="pwd">
-						<input name="companyPw" type="password" placeholder="비밀번호"
+						<input name="companyPw" type="password" placeholder="비밀번호" class="company-pwd"
 							required="required">
 					</div>
-					<button class="login-ch" onclick="submit()">로그인</button>
+					<button disabled="true" class="login-ch" onclick="submit()">로그인</button>
 				</form>
 				<!-- 폼태그 안에 있는 버튼은 따로 지정을 안해도 무조건 submit이 된다, form태그 바깥에 버튼을 두면 엔터키가 안먹힘 -->
 			</div>
@@ -161,12 +161,30 @@
 				<a href="naverLogin"><div class="naver"></div></a>
 			</div>
 		</c:if>
-		<c:if test="${sessionScope.sessionId != null }">
-			<div>세션 있음</div>
-			<h2 style="text-align: center" id="name"></h2>
-			<h4 style="text-align: center" id="email"></h4>
+		<c:if test="${sessionScope.sessionId != null || sessionScope.customer != null || sessionScope.company != null}">
+			<h2 style="text-align: center" id="name">${sessionScope.customer.customerNnm}</h2>
+			<h4 style="text-align: center" id="email">${sessionScope.customer.customerId}</h4>
+			<div class="frame">
+				<div class="profile"></div>
+			</div>
+			<a href="/mypage" class="mypage in">
+				<span class="mypage-icon"></span>
+				<div>마이페이지</div>
+			</a>
+			<a href="" class="career in">
+				<span class="career-icon"></span>
+				<div>내 이력서</div>
+			</a>
+			<a href="logout" class="logout in">
+				<span class="logout-icon"></span>
+				<div>로그아웃</div>
+			</a>
 		</c:if>
 		<span id="pointer"></span>
 	</div>
+	<footer style="background: #ebe7e7">
+		<div></div>
+		<div></div>
+	</footer>
 </body>
 </html>
