@@ -15,7 +15,7 @@ html {
 	font-family: 'BMJUA';
 }
 
-.container {
+.first {
 	position: absolute;
 	width: 1000px;
 	
@@ -29,6 +29,8 @@ html {
 	width: 500px;
 	height: 600px;
 	border: 3px solid #4c4c4c;
+	
+	cursor: pointer;
 }
 .company-hover {
 	background-color: rgba(0, 0, 0);
@@ -78,6 +80,8 @@ html {
 	height: 600px;
 	border: 3px solid #4c4c4c;
 	left: 528px;
+	
+	cursor: pointer;
 }
 
 .company-icon {
@@ -104,4 +108,65 @@ html {
 	height: 260px;
 	
 	z-index: -1;
+}
+
+.home {
+	position: absolute;
+	top: 750px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 150px;
+    height: 46px;
+    text-decoration: none;
+    
+    border: 1px solid #4c4c4c;
+    border-radius: 50px;
+}
+
+.home-tx {
+	position: absolute;
+    left: 29%;
+    top: 10px;
+    
+    font-size: 25px;
+    color: #4c4c4c;
+    
+    letter-spacing: 4px;
+}
+
+/* --------------------------------------------------------------------------------------------- */
+
+.second {
+	position: absolute;
+	width: 1000px;
+	
+	top: 100px;
+	left: 49%;
+	transform: translateX(-50%);
+}
+
+.company-form {
+	background-color: white;
+	
+	position: absolute;
+	width: 500px;
+	height: 600px;
+	border: 3px solid #4c4c4c;
+	
+	display: none;
+	opacity: 0;
+}
+
+.customer-form {
+	background-color: white;
+	
+	position: absolute;
+	width: 500px;
+	height: 600px;
+	border: 3px solid #4c4c4c;
+	left: 528px;
+	
+	display: none;
+	opacity: 0;
 }

@@ -49,12 +49,12 @@ public class RootController {
 					return "FAIL";
 			}
 			
-			@GetMapping("/signup1")
+			@GetMapping("/signup-ct")
 			String signup1() {
-				return "signup";
+				return "signup-ct";
 			}
 			
-			@PostMapping("/signup1")
+			@PostMapping("/signup-ct")
 			String signup1(Customer item) {
 				service.add(item);
 				
@@ -109,12 +109,12 @@ public class RootController {
 					return "FAIL";
 			}
 			
-			@GetMapping("/signup0")
+			@GetMapping("/signup-cp")
 			String signup0() {
-				return "signup0";
+				return "signup-cp";
 			}
 			
-			@PostMapping("/signup0")
+			@PostMapping("/signup-cp")
 			String signup0(Company item) {
 				CompanySevice.add(item);
 				
