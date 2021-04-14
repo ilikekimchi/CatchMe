@@ -162,7 +162,7 @@
 			</div>
 		</c:if>
 		<c:if test="${sessionScope.sessionId != null || sessionScope.customer != null || sessionScope.company != null}">
-			<h2 style="text-align: center" id="name">${sessionScope.customer.customerNnm}</h2>
+			<h2 style="text-align: center" id="name">${sessionScope.customer.customerNnm} 님</h2>
 			<h4 style="text-align: center" id="email">${sessionScope.customer.customerId}</h4>
 			<div class="frame">
 				<div class="profile"></div>
