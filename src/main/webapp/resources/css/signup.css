@@ -1,0 +1,107 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'BMJUA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+	margin: 0;
+}
+
+html {
+	font-family: 'BMJUA';
+}
+
+.container {
+	position: absolute;
+	width: 1000px;
+	
+	top: 100px;
+	left: 49%;
+	transform: translateX(-50%);
+}
+
+.signup-company {
+	position: absolute;
+	width: 500px;
+	height: 600px;
+	border: 3px solid #4c4c4c;
+}
+.company-hover {
+	background-color: rgba(0, 0, 0);
+	height: 600px;
+	
+	opacity: 0;
+	
+	transition: 0.3s;
+}
+
+.company-hover > span {
+	position: absolute;
+	top: 450px;
+	left: 52%;
+	transform: translateX(-50%);
+	
+	letter-spacing: 10px;
+	font-size: 45px;
+	
+	color: white;
+}
+
+.customer-hover {
+	background-color: rgba(0, 0, 0);
+	height: 600px;
+	
+	opacity: 0;
+	
+	transition: 0.3s;
+}
+
+.customer-hover > span {
+	position: absolute;
+	top: 450px;
+	left: 52%;
+	transform: translateX(-50%);
+	
+	letter-spacing: 10px;
+	font-size: 45px;
+	
+	color: white;
+}
+
+.signup-customer {
+	position: absolute;
+	width: 500px;
+	height: 600px;
+	border: 3px solid #4c4c4c;
+	left: 528px;
+}
+
+.company-icon {
+	position: absolute;
+	top: 25%;
+	left: 50%;
+	transform: translateX(-50%);
+	
+	background-image: url("/image/signup/company.png");
+	width: 246px;
+	height: 260px;
+	
+	z-index: -1;
+}
+
+.customer-icon {
+	position: absolute;
+	top: 25%;
+	left: 50%;
+	transform: translateX(-50%);
+	
+	background-image: url("/image/signup/customer.png");
+	width: 220px;
+	height: 260px;
+	
+	z-index: -1;
+}

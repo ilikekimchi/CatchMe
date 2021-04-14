@@ -35,8 +35,23 @@ public class ProfileDaoImpl implements ProfileDao {
 	}
 
 	@Override
-	public void delete(String customerId) {
-		sql.delete("profile.delete", customerId);
+	public void delete(int profileSeq) {
+		sql.delete("profile.delete", profileSeq);
+	}
+
+	@Override
+	public List<Profile> listAll() {
+		return sql.selectList("profile.listAll");
+	}
+
+	@Override
+	public Profile item(int profileSeq) {
+		return sql.selectOne("profile.item", profileSeq);
+	}
+
+	@Override
+	public void profileCheck(Profile item) {
+		sql.update("profile.profileCheck", item);
 	}
 	
 }
