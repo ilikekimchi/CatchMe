@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>이력서</title>
+</head>
+
+<body>
+    <div>
+        <div>
+            <!-- 본인 이미지 넣는곳 -->
+            <img src="" alt="">
+
+            <h3>인적사항</h3>
+            <div>
+                <label for="">이름</label>
+                <input type="text" name="name">
+            </div>
+            <div>
+                <label for="">생년월일</label>
+                <input type="birth" placeholder="20201231">
+            </div>
+            <div>
+                <label for="">성별</label>
+                <label><input type="radio" name="sex" value="m">남</label>
+                <label><input type="radio" name="sex" value="f">여</label>
+            </div>
+            <div>
+                <label for="">주소</label>
+                <!-- 누르면 주소 api -->
+                <input type="address"><br>
+                <!-- 상세주소는 직접 입력 -->
+                <input type="detail_adress" placeholder="상세주소">
+            </div>
+        </div>
+
+        <div>
+            <h3>최종학력</h3>
+            <div>
+                <label for="">학교명</label>
+                <input type="text" name="school_name">
+            </div>
+            <div>
+                <label for="">학과 및 전공</label>
+                <input type="text" name="">
+            </div>
+            <div>
+                <label for="">구분</label>
+                <select>
+                    <option value="졸업">졸업</option>
+                    <option value="재학중">재학중</option>
+                    <option value="휴학중">휴학중</option>
+                    <option value="졸업예정">졸업예정</option>
+                    <option value="중퇴">중퇴</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div>
+            <h3>경력사항</h3>
+            <div>
+                <label for="company_name">회사명</label>
+                <input type="text" name="company_name">
+            </div>   
+            <div>
+                <label for="">재직기간</label>
+                    <!-- 달력(년/월 까지만 표시) --> ~ <!-- 달력(년/월 까지만 표시) -->
+            </div>
+            <div>
+                <label for="">직급/직책</label>
+                <input type="text">
+            </div>
+            <div>
+                <label for="">연봉</label>
+                <!-- 숫자만 사용가능하도록 검증 추가,  -->
+                <input type="text">
+            </div>
+            <div>
+                <label for="">담당업무</label>
+                <input type="text">
+            </div>
+
+            <!-- 경력추가버튼(누르면 위에 항목들 하나 더생김) -->
+            
+        </div>
+
+        <div>
+            <h3>포트폴리오</h3>
+            <div>
+                <label for="">파일추가</label>
+                <!-- 파일추가 -->
+            </div>   
+        </div>
+
+        <div>
+            <h3>자격/면허</h3>
+            <div>
+                <input type="text">
+            </div>   
+        </div>
+
+        <div>
+            <h3>기술/능력</h3>
+            <div>
+                <!-- 치고 엔터치면 밑에 추가됨 -->
+                <input type="text">
+                <!-- li 태그로 하나하나씩 추가 -->
+            </div>   
+        </div>
+        
+
+    </div>
+</body>
+
+</html>
