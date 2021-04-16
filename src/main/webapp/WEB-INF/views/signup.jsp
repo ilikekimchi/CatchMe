@@ -169,18 +169,18 @@
 		</div>
 	</div>
 	<div class="first">
-		<div class="signup-company">
+		<a href="/signup/signup-cp" class="signup-company">
 			<div class="company-hover">
 				<span>기업회원</span>
 			</div>
 			<span class="company-icon"></span>
-		</div>
-		<div href="/signup-ct" class="signup-customer">
+		</a>
+		<a href="/signup/signup-ct" class="signup-customer">
 			<div class="customer-hover">
 				<span>개인회원</span>
 			</div>
 			<span class="customer-icon"></span>
-		</div>
+		</a>
 	</div>
 	<a href="/" class="home">
 		<div class="home-tx">홈으로</div>
