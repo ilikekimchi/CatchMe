@@ -1,124 +1,189 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<script>
-	// 1 == '1' => value(값)이 같으면 true, |  1 === '1' => type과 value 가 같아야 하므로 false
-	// confirmId 에서 사용한 코드들 = 에이젝, 즉 에이젝을 사용함
-	function confirmId(){
-		// 에이젝을 사용하기 위한 객체생성
-		const form = document.signupForm;
+<title></title>
+<link href="/css/signup.css" rel="stylesheet" />
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="/js/jquery.transform2d.js"></script>
+<script src="/js/signup0.js" type="text/javascript"></script>
+<script src="/js/signup.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+	$(function() {
+		$('.signup-company').mouseenter(function() {
+			$('.company-hover').css('opacity', '0.5');
+		})
+
+		$('.company-hover').mouseleave(function() {
+			$('.company-hover').css('opacity', '0');
+		})
+
+		$('.signup-customer').mouseenter(function() {
+			$('.customer-hover').css('opacity', '0.5');
+		})
+
+		$('.customer-hover').mouseleave(function() {
+			$('.customer-hover').css('opacity', '0');
+		})
+
+		$('.signup-company').click(function() {
+			$('.company-form').css('display', 'block');
+			$('.first').css('display', 'none');
+
+			$('.company-form').animate({
+				opacity : '1',
+				left : '210px',
+				width : '600px',
+				height : '750px',
+				top : '-30px'
+			}, 500);
+
+		})
+
+		$('.signup-customer').click(function() {
+			$('.customer-form').css('display', 'block');
+			$('.first').css('display', 'none');
+
+			$('.customer-form').animate({
+				opacity : '1',
+				left : '210px',
+				width : '600px',
+				height : '750px',
+				top : '-30px'
+			}, 500);
+
+		})
 		
-		const xhr = new XMLHttpRequest();
-		
-		// AJAX(페이지 전체가 아니라 필요한 부분만을 갱신할 수 있도록 서버에 요청하는것) 비동기적 **
-		// 비동기방식(true),에이젝의 제대로된 성능을 내려면 비동기 방식 채용
-		xhr.open("GET", "confirmId?customerId=" + form.customerId.value, true);  
-		
-		xhr.onreadystatechange = function() {
-			// DONE(처리가 됨)인 상태가 된다면..
-			if(xhr.readyState == XMLHttpRequest.DONE) {
-				
-				// AJAX 요청이 정상적으로 처리되었는지 아닌지만을 검사하기 위해 응답 코드가 200 인지 확인
-				// 200(성공): 서버가 요청을 제대로 처리했다는 뜻이다. 
-				if(xhr.status == 200) {
-					if(xhr.responseText == 'OK') { 
-						alert("사용할수 있는 아이디 입니다");
-						form.id_confirm.value = form.customerId.value;
-						
-					} else {
-						alert('다른 사용자가 이미 사용하고 있는 아이디 입니다');
-					}
-				}
-			}	
-		};
-		
-		xhr.send();
-		
-	}
-	
-	// 벨리데이션(검증)하는 코드들
-	function submit() {
-		const form = document.signupForm;
-		
-		if(form.customerId.value != form.id_confirm.value) {
-			alert('아이디 중복확인을 하세요');
-			return;
-		}
-		
-		if(form.customerId.value == "") {
-			alert('아이디를 입력 해 주세요');
-			form.customerId.focus();
-			return;
-		}
-		
-		if(form.customerPw.value == "") {
-			alert('비밀번호를 입력 해 주세요');
-			form.customerPw.focus();
-			return;
-		}
-		if(form.passwd_confirm.value == "") {
-			alert('비밀번호 재확인을 입력 해 주세요');
-			form.passwd_confirm.focus();
-			return;
-		}
-		
-		if(form.customerPw.value != form.passwd_confirm.value) {
-			alert('비밀번호가 일치하지 않습니다');
-			form.passwd_confirm.value = "";
-			form.passwd_confirm.focus();
-			return;
-		}
-		if(form.customerName.value == "") {
-			alert('이름을 입력 해 주세요');
-			form.customerName.focus();
-			return;
-		}
-		if(form.customerNnm.value == "") {
-			alert('닉네임을 입력 해 주세요');
-			form.customerNnm.focus();
-			return;
-		}
-		form.submit();
-	}
+		$('.back').click(function() {
+			$('.first').css('display', 'block');
+
+
+			$('.customer-form').animate({
+				opacity : '0',
+				left : '528px',
+				width : '500px',
+				height : '600px',
+				top : '0'
+			}, 500);
+			
+			$('.company-form').animate({
+				display: 'none',
+				opacity : '0',
+				left : '0',
+				width : '500px',
+				height : '600px',
+				top : '0'
+			}, 500);
+		})
+	})
 </script>
-<!-- <script src="/js/asdpofjafd.js" type="text/javascript"/> -->
 </head>
 <body>
-<!-- <button>을 쓰면 내 의도와 상관없이 submit 되어버림,고로 form태그 바깥으로 놔야함 -->
-	<div>
-		<div><h3>회원가입</h3></div>
-		<div>
-			<form name="signupForm" method="post">
-				<input name="id_confirm" type="hidden" value="" >
-				<div>
-					<label>아이디:</label>
-					<input name="customerId" type="text"> <a href="javascript:confirmId()">중복검사</a>
-				</div>
-				<div>
-					<label>비밀번호:</label>
-					<input name="customerPw" type="password">
-				</div>
-				<div>
-					<label>비밀번호 재확인:</label>
-					<input name="passwd_confirm" type="password" >
-				</div>
-				<div>
-					<label>이름:</label>
-					<input name="customerName" type="text" >
-				</div>
-				<div>
-					<label>닉네임:</label>
-					<input name="customerNnm" type="text" >
-				</div>
-			</form>
-			<!-- form태그 바깥에 버튼을 두면 엔터키가 안먹힘 -->
+	<div class="second">
+		<div class="company-form">
 			<div>
-				<button onclick="submit()">회원가입</button>
+				<h3>기업회원가입</h3>
+			</div>
+			<div>
+				<form name="signupForm0" method="post">
+					<input name="id_confirm0" type="hidden" value="">
+					<div>
+						<label>아이디:</label> <input name="companyId" type="text"> <a
+							href="javascript:confirmId0()">중복검사</a>
+					</div>
+					<div>
+						<label>비밀번호:</label> <input name="companyPw" type="password">
+					</div>
+					<div>
+						<label>비밀번호 재확인:</label> <input name="passwd_confirm0"
+							type="password">
+					</div>
+					<div>
+						<label>기업명:</label> <input name="companyName" type="text">
+					</div>
+					<div>
+						<label>대표자명:</label> <input name="companyRa" type="text">
+					</div>
+					<div>
+						<label>연락처:</label> <input name="companyTel" type="text">
+					</div>
+					<div>
+						<label>연매출:</label> <input name="companyMoney" type="number">원
+					</div>
+					<div>
+						<label>규모(사원 수):</label> <input name="companyScale" type="number">명
+					</div>
+					<div>
+						<label>위치(주소):</label> <input name="companyLocation" type="text">
+					</div>
+					<div>
+						<label>홈페이지 주소(url):</label> <input name="companyHomePage"
+							type="text">
+					</div>
+					<div>
+						<label>한줄소개:</label> <input name="companyWriting" type="text">
+					</div>
+				</form>
+				<!-- form태그 바깥에 버튼을 두면 엔터키가 안먹힘 -->
+				<div>
+					<button onclick="submit()">기업회원가입</button>
+				</div>
+			</div>
+			<div class="back">뒤로가기</div>
+		</div>
+		<div class="customer-form">
+			<div>
+				<h3>회원가입</h3>
+			</div>
+			<div>
+				<form name="signupForm" method="post">
+					<input name="id_confirm" type="hidden" value="">
+					<div>
+						<label>아이디:</label> <input name="customerId" type="text">
+						<a href="javascript:confirmId()">중복검사</a>
+					</div>
+					<div>
+						<label>비밀번호:</label> <input name="customerPw" type="password">
+					</div>
+					<div>
+						<label>비밀번호 재확인:</label> <input name="passwd_confirm"
+							type="password">
+					</div>
+					<div>
+						<label>이름:</label> <input name="customerName" type="text">
+					</div>
+					<div>
+						<label>닉네임:</label> <input name="customerNnm" type="text">
+					</div>
+				</form>
+				<!-- form태그 바깥에 버튼을 두면 엔터키가 안먹힘 -->
+				<div>
+					<button onclick="submit()">회원가입</button>
+				</div>
+				<div class="back">뒤로가기</div>
 			</div>
 		</div>
 	</div>
+	<div class="first">
+		<div class="signup-company">
+			<div class="company-hover">
+				<span>기업회원</span>
+			</div>
+			<span class="company-icon"></span>
+		</div>
+		<div href="/signup-ct" class="signup-customer">
+			<div class="customer-hover">
+				<span>개인회원</span>
+			</div>
+			<span class="customer-icon"></span>
+		</div>
+	</div>
+	<a href="/" class="home">
+		<div class="home-tx">홈으로</div>
+	</a>
 </body>
 </html>

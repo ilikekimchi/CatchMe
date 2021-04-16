@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="company">
+
+	<!-- (기업)마이페이지 -->
+	<select id="list" resultType="Company">
+		SELECT * FROM company 
+		WHERE company_id=#{companyId}
+	</select>
+	
+	<!-- (기업)회원가입 -->
+	<insert id="add">
+		INSERT INTO company
+		(company_id, company_pw, company_name, company_ra, 
+		company_money, company_scale, company_location, company_tel,
+		company_writing, company_home_page)
+		
+		VALUES (#{companyId}, #{companyPw}, #{companyName}, #{companyRa},
+		#{companyMoney}, #{companyScale}, #{companyLocation}, #{companyTel},
+		#{companyWriting}, #{companyHomePage})		
+		
+		<!-- Role(찜하기_스크랩)은 나중에.. -->
+		<!-- Pay(코인)은 나중에.. -->
+		
+	</insert>
+	
+	<!-- 기업에 관한 각각의 정보들 -->
+	<select id="item" resultType="Company">
+		SELECT * FROM company
+		WHERE company_id=#{companyId}
+	</select>
+	
+	<!-- 기업 수정 -->
+	<update id="update">
+		UPDATE company
+		SET company_name=#{companyName}, company_ra=#{companyRa}, 
+		company_money=#{companyMoney}, company_scale=#{companyScale}, 
+		company_location=#{companyLocation}, company_tel=#{companyTel}, 
+		company_writing=#{companyWriting}, company_home_page=#{companyHomePage}
+	
+		WHERE company_id=#{companyId}
+	</update>
+	
+	<!-- 기업 탈퇴 -->	
+	<delete id="delete">
+		DELETE FROM company
+		WHERE company_id=#{companyId}
+	</delete>
+	
+	<!-- 사용자(기업)가 입력한 패스워드 랑 암호화된 값과 같다면 같은 패스워드 를 얻어옴. -->
+	<select id="login" resultType="Company">
+		SELECT * FROM company
+		WHERE company_id=#{companyId} AND company_pw=#{companyPw}
+	</select>
+</mapper>

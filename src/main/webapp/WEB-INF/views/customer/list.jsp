@@ -16,7 +16,6 @@
 						<tr>
 							<th>아이디</th>
 							<th>패스워드</th>
-							<th>이름</th>
 							<th>닉네임</th>
 							<th>찜당한 기업</th>
 							<th>관리</th>
@@ -25,14 +24,13 @@
 					<tbody>
 					<c:if test="${list.size() < 1}">
 						<tr>
-							<td colspan="6">등록 된 사용자가 없습니다</td>
+							<td colspan="7">등록 된 사용자가 없습니다</td>
 						</tr>
 					</c:if>
 					<c:forEach var="item" items="${list}">
 						<tr>
 							<td>${item.customerId}</td>
 							<td>${item.customerPw}</td>
-							<td>${item.customerName}</td>
 							<td>${item.customerNnm}</td>
 							<td>${item.customerRole}</td>
 							<td><a href="${item.customerId}/delete">회원탈퇴</a> 

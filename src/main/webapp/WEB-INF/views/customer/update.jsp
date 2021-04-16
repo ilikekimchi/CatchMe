@@ -11,18 +11,12 @@
 		<div>
 			<form method="post">
 				<div>
-				<div>
 					<label>아이디:</label>
 					${item.customerId}
-				</div>
-				<div>
-					<label>이름:</label>
-					<input name="customerName" type="text" value="${item.customerName}">
-				</div>
+				</div>	
 				<div>
 					<label>닉네임:</label>
 					<input name="customerNnm" type="text"  value="${item.customerNnm}">
-				</div>
 				</div>
 				<div>
 					<input type="submit" value="변경">
@@ -30,7 +24,7 @@
 			</form>
 		</div>
 		<div>
-			<a href="../list">고객 목록</a>
+			<a href="../list">내정보</a>
 		</div>
 	</div>
 </body>
