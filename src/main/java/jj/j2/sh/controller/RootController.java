@@ -125,6 +125,16 @@ public class RootController {
 			String login0() {
 				return "login0";
 			}
+
+			@RequestMapping("/mypage") 
+			String mypage() {
+				return "mypage/mypage";
+			}
+			
+			@RequestMapping("/userinfo") 
+			String userinfo() {
+				return "mypage/userinfo";
+			}
 			
 			@PostMapping("/login0")
 			String login0(Company item, HttpSession session, Model model,

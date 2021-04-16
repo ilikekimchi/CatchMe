@@ -167,7 +167,7 @@
 			<div class="frame">
 				<div class="profile"></div>
 			</div>
-			<a href="/mypage" class="mypage in">
+			<a href="../mypage" class="mypage in">
 				<span class="mypage-icon"></span>
 				<div>마이페이지</div>
 			</a>
