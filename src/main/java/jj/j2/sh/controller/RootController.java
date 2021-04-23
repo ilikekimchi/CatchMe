@@ -37,29 +37,6 @@ public class RootController {
 		
 		return "/signup";
 	}
-	// @ResponseBody를 하면 뷰리졸버가 jsp를 찾지않고, 후처리를 하지않고 그대로 클라이언트에게 보내주는 지시를 함
-			@ResponseBody
-			// id가 null 이면 OK, 아니면 FAIL => 중복검사를 했을때 아이디가 없으면 OK, 있으면 FAIL
-			@GetMapping("/confirmId")
-			String confirmId(String customerId, String companyId) {
-				if(service.item(customerId) == null) {
-					return "OK";
-				}
-				
-					return "FAIL";
-			}
-			
-			@GetMapping("/signup-ct")
-			String signup1() {
-				return "signup-ct";
-			}
-			
-			@PostMapping("/signup-ct")
-			String signup1(Customer item) {
-				service.add(item);
-				
-				return "redirect:.";
-			}
 			
 			@GetMapping("/login2")
 			String login() {
@@ -92,31 +69,6 @@ public class RootController {
 			String logout(HttpSession session) {
 				//세션을 무효화(invalidate) 함
 				session.invalidate();
-				
-				return "redirect:.";
-			}
-			
-			//기업회원 관련----------------------------
-			// @ResponseBody를 하면 뷰리졸버가 jsp를 찾지않고, 후처리를 하지않고 그대로 클라이언트에게 보내주는 지시를 함
-			@ResponseBody
-			// id가 null 이면 OK, 아니면 FAIL => 중복검사를 했을때 아이디가 없으면 OK, 있으면 FAIL
-			@GetMapping("/confirmId0")
-			String confirmId0(String companyId) {
-				if(CompanySevice.item(companyId) == null) {
-					return "OK";
-				}
-					
-					return "FAIL";
-			}
-			
-			@GetMapping("/signup-cp")
-			String signup0() {
-				return "signup-cp";
-			}
-			
-			@PostMapping("/signup-cp")
-			String signup0(Company item) {
-				CompanySevice.add(item);
 				
 				return "redirect:.";
 			}

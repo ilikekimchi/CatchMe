@@ -8,6 +8,11 @@
 <link href="/css/signup.css" rel="stylesheet" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vuex"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
 <script src="/js/jquery.transform2d.js"></script>
 <script src="/js/signup0.js" type="text/javascript"></script>
 <script src="/js/signup.js" type="text/javascript"></script>
@@ -30,7 +35,7 @@
 			$('.customer-hover').css('opacity', '0');
 		})
 
-		$('.signup-company').click(function() {
+		/* $('.signup-company').click(function() {
 			$('.company-form').css('display', 'block');
 			$('.first').css('display', 'none');
 
@@ -56,9 +61,9 @@
 				top : '-30px'
 			}, 500);
 
-		})
+		}) */
 		
-		$('.back').click(function() {
+		/* $('.back').click(function() {
 			$('.first').css('display', 'block');
 
 
@@ -78,108 +83,38 @@
 				height : '600px',
 				top : '0'
 			}, 500);
-		})
+		}) */
 	})
 </script>
 </head>
 <body>
-	<div class="second">
-		<div class="company-form">
-			<div>
-				<h3>기업회원가입</h3>
-			</div>
-			<div>
-				<form name="signupForm0" method="post">
-					<input name="id_confirm0" type="hidden" value="">
-					<div>
-						<label>아이디:</label> <input name="companyId" type="text"> <a
-							href="javascript:confirmId0()">중복검사</a>
-					</div>
-					<div>
-						<label>비밀번호:</label> <input name="companyPw" type="password">
-					</div>
-					<div>
-						<label>비밀번호 재확인:</label> <input name="passwd_confirm0"
-							type="password">
-					</div>
-					<div>
-						<label>기업명:</label> <input name="companyName" type="text">
-					</div>
-					<div>
-						<label>대표자명:</label> <input name="companyRa" type="text">
-					</div>
-					<div>
-						<label>연락처:</label> <input name="companyTel" type="text">
-					</div>
-					<div>
-						<label>연매출:</label> <input name="companyMoney" type="number">원
-					</div>
-					<div>
-						<label>규모(사원 수):</label> <input name="companyScale" type="number">명
-					</div>
-					<div>
-						<label>위치(주소):</label> <input name="companyLocation" type="text">
-					</div>
-					<div>
-						<label>홈페이지 주소(url):</label> <input name="companyHomePage"
-							type="text">
-					</div>
-					<div>
-						<label>한줄소개:</label> <input name="companyWriting" type="text">
-					</div>
-				</form>
-				<!-- form태그 바깥에 버튼을 두면 엔터키가 안먹힘 -->
-				<div>
-					<button onclick="submit()">기업회원가입</button>
-				</div>
-			</div>
-			<div class="back">뒤로가기</div>
-		</div>
-		<div class="customer-form">
-			<div>
-				<h3>회원가입</h3>
-			</div>
-			<div>
-				<form name="signupForm" method="post">
-					<input name="id_confirm" type="hidden" value="">
-					<div>
-						<label>아이디:</label> <input name="customerId" type="text">
-						<a href="javascript:confirmId()">중복검사</a>
-					</div>
-					<div>
-						<label>비밀번호:</label> <input name="customerPw" type="password">
-					</div>
-					<div>
-						<label>비밀번호 재확인:</label> <input name="passwd_confirm"
-							type="password">
-					</div>
-					<div>
-						<label>이름:</label> <input name="customerName" type="text">
-					</div>
-					<div>
-						<label>닉네임:</label> <input name="customerNnm" type="text">
-					</div>
-				</form>
-				<!-- form태그 바깥에 버튼을 두면 엔터키가 안먹힘 -->
-				<div>
-					<button onclick="submit()">회원가입</button>
-				</div>
-				<div class="back">뒤로가기</div>
-			</div>
-		</div>
-	</div>
 	<div class="first">
-		<div class="signup-company">
-			<div class="company-hover">
-				<span>기업회원</span>
-			</div>
-			<span class="company-icon"></span>
+		<h3 class="signup">회원가입</h3>
+		<div class="seq">
+			<span class="step1">가입정보</span>
+			<span class="step1-img"></span>
+			<span class="next-1"></span>
+			<span class="step2">로그인정보</span>
+			<span class="step2-img"></span>
+			<span class="next-2"></span>
+			<span class="step3">프로필작성</span>
+			<span class="step3-img"></span>
 		</div>
-		<div href="/signup-ct" class="signup-customer">
-			<div class="customer-hover">
-				<span>개인회원</span>
+		<div>
+			<div class="signup-info">
+				<a href="/company-sp" class="signup-company">
+					<div class="company-hover">
+						<span>기업회원</span>
+					</div>
+					<span class="company-icon"></span>
+				</a>
+				<a href="/customer-sp" class="signup-customer">
+					<div class="customer-hover">
+						<span>개인회원</span>
+					</div>
+					<span class="customer-icon"></span>
+				</a>
 			</div>
-			<span class="customer-icon"></span>
 		</div>
 	</div>
 	<a href="/" class="home">
