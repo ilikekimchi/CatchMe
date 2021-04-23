@@ -41,7 +41,7 @@ html {
 .first {
 	position: absolute;
 	width: 1100px;
-	height: 715px;
+	height: 665px;
 	
 	top: 226px;
 	left: 50%;
@@ -161,7 +161,7 @@ html {
 
 .home {
 	position: absolute;
-	top: 860px;
+	top: 820px;
     left: 50%;
     transform: translateX(-50%);
     
