@@ -121,6 +121,9 @@
 html {
  font-family: 'BMJUA';
 }
+body {
+	position: absolute;
+}
 
 /* 노말라이즈 */
 body, ul, li, h1 {
@@ -616,7 +619,9 @@ body {
 }
 
 .myhome {
-
+	
+	transform: translateX(32%);
+	
   height:100%;
 }
 

@@ -62,7 +62,7 @@
 			}, 500);
 
 		}) */
-		
+
 		/* $('.back').click(function() {
 			$('.first').css('display', 'block');
 
@@ -91,34 +91,32 @@
 	<div class="first">
 		<h3 class="signup">회원가입</h3>
 		<div class="seq">
-			<span class="step1">가입정보</span>
-			<span class="step1-img"></span>
-			<span class="next-1"></span>
-			<span class="step2">로그인정보</span>
-			<span class="step2-img"></span>
-			<span class="next-2"></span>
-			<span class="step3">프로필작성</span>
-			<span class="step3-img"></span>
+			<div id="sign-info">
+				<span>가입정보</span>
+			</div>
+			<div id="login-info">
+				<span>로그인정보</span>
+			</div>
+			<div id="profile">
+				<span>프로필</span>
+			</div>
 		</div>
 		<div>
 			<div class="signup-info">
 				<a href="/company-sp" class="signup-company">
 					<div class="company-hover">
 						<span>기업회원</span>
-					</div>
-					<span class="company-icon"></span>
-				</a>
-				<a href="/customer-sp" class="signup-customer">
+					</div> <span class="company-icon"></span>
+				</a> <a href="/customer-sp" class="signup-customer">
 					<div class="customer-hover">
 						<span>개인회원</span>
-					</div>
-					<span class="customer-icon"></span>
+					</div> <span class="customer-icon"></span>
 				</a>
 			</div>
 		</div>
 	</div>
-	<a href="/" class="home">
+	<!-- <a href="/" class="home">
 		<div class="home-tx">홈으로</div>
-	</a>
+	</a> -->
 </body>
 </html>

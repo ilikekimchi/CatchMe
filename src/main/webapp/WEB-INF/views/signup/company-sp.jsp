@@ -5,64 +5,69 @@
 <head>
 <meta charset="UTF-8">
 <script src="/js/signup0.js" type="text/javascript"></script>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
 <body>
 <!-- <button>을 쓰면 내 의도와 상관없이 submit 되어버림,고로 form태그 바깥으로 놔야함 -->
-	<div>
-		<div><h3>기업회원가입</h3></div>
-		<div>
-			<form name="signupForm0" method="post">
-				<input name="id_confirm0" type="hidden" value="" >
-				<div>
-					<label>아이디:</label>
-					<input name="companyId" type="text"> <a href="javascript:confirmId0()">중복검사</a>
-				</div>
-				<div>
-					<label>비밀번호:</label>
-					<input name="companyPw" type="password">
-				</div>
-				<div>
-					<label>비밀번호 재확인:</label>
-					<input name="passwd_confirm0" type="password" >
-				</div>
-				<div>
-					<label>기업명:</label>
-					<input name="companyName" type="text" >
-				</div>
-				<div>
-					<label>대표자명:</label>
-					<input name="companyRa" type="text" >
-				</div>
-				<div>
-					<label>연락처:</label>
-					<input name="companyTel" type="text" >
-				</div>
-				<div>
-					<label>연매출:</label>
-					<input name="companyMoney" type="number" >원
-				</div>
-				<div>
-					<label>규모(사원 수):</label>
-					<input name="companyScale" type="number" >명
-				</div>
-				<div>
-					<label>위치(주소):</label>
-					<input name="companyLocation" type="text" >
-				</div>
-				<div>
-					<label>홈페이지 주소(url):</label>
-					<input name="companyHomePage" type="text" >
-				</div>
-				<div>
-					<label>한줄소개:</label>
-					<input name="companyWriting" type="text" >
-				</div>
-			</form>
-			<!-- form태그 바깥에 버튼을 두면 엔터키가 안먹힘 -->
-			<div>
-				<button onclick="submit()">기업회원가입</button>
-			</div>
-		</div>
-	</div>
+	<div class="company-form">
+         <div>
+            <h3>기업회원가입</h3>
+         </div>
+         <div>
+            <form name="signupForm0" method="post">
+               <div>
+                  <input type="text" name="companyId" id="companyId" onblur="confirmId0()" placeholder="이메일">
+                  <input name="id_confirm0" type="hidden" value="">
+                  <span id="pid-msg"> </span>
+               </div>
+               <div>
+                  <input type="password" name="companyPw" id="companyPw" placeholder="암호">
+                  <span id="ppwd1-msg"> </span>
+               </div>
+               <div>
+                  <input type="password" name="passwd_confirm0" id="passwd_confirm0" placeholder="암호 재확인">
+                  <span id="ppwd2-msg"> </span>
+               </div>
+               <div>
+                  <input type="text" name="companyName" placeholder="기업명">
+                  <span id=""> </span>
+               </div>
+               <div>
+                  <input type="text" name="companyRa" placeholder="대표자명">
+                  <span id=""> </span>
+               </div>
+               <div>
+                  <input type="text" name="companyTel" placeholder="연락처">
+                  <span id=""> </span>
+               </div>
+               <div>
+                  <input type="number" name="companyMoney" placeholder="연매출">원
+                  <span id=""> </span>
+               </div>
+               <div>
+                  <input type="number" name="companyScale">명
+                  <span id=""> </span>
+               </div>
+               <div>
+                  <input type="text" name="companyLocation" placeholder="주소">
+                  <span id=""> </span>
+               </div>
+               <div>
+                  <input type="text" name="companyHomePage" placeholder="홈페이지">
+                  <span id=""> </span>
+               </div>
+               <div>
+                  <input type="text" name="companyWriting" placeholder="한줄소개">
+                  <span id=""> </span>
+               </div>
+            </form>
+            <!-- form태그 바깥에 버튼을 두면 엔터키가 안먹힘 -->
+            <div>
+               <button onclick="submit()">기업회원가입</button>
+            </div>
+         </div>
+         <div class="back">뒤로가기</div>
+      </div>
 </body>
 </html>
