@@ -14,11 +14,11 @@
 		INSERT INTO company
 		(company_id, company_pw, company_name, company_ra, 
 		company_money, company_scale, company_location, company_tel,
-		company_writing, company_home_page)
+		company_writing, company_home_page, company_img)
 		
 		VALUES (#{companyId}, #{companyPw}, #{companyName}, #{companyRa},
 		#{companyMoney}, #{companyScale}, #{companyLocation}, #{companyTel},
-		#{companyWriting}, #{companyHomePage})		
+		#{companyWriting}, #{companyHomePage}, #{companyImg})		
 		
 		<!-- Role(찜하기_스크랩)은 나중에.. -->
 		<!-- Pay(코인)은 나중에.. -->

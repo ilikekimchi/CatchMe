@@ -4,32 +4,32 @@
 <!--  namespace 와 id는 Dao에서 쓰임 -->
 <!-- resultType을 쓰는 이유는 mybatis 에서 쓰기 좋게 바꿔주려고 Skill 라는 객체를 씀(mybatis에서 Profile라는 객체를 
 	만들어줌 => 데이터베이스에서 얻은 값들을 찾아서 item에 주기위해 -->
-	<mapper namespace="skill" >			
-	<!-- 이직자 기술 보기 -->
-	<select id="list" resultType="Skill">
-	SELECT * FROM skill 
-	WHERE profile_seq=#{profileSeq} 
+	<mapper namespace="area" >			
+	<!-- 이직자 희망지역 보기 -->
+	<select id="list" resultType="Area">
+	SELECT * FROM area 
+	WHERE profile_seq=#{profileSeq}
 	</select>
 	
 	<!-- #{}은 필드명, mybatis-config 에서 세팅해주면 이것을 자동으로 고쳐줌(자바표기법:낙타 표기법) -->
 	<insert id="add">
-	INSERT INTO skill
-	(profile_seq, skill_content)
+	INSERT INTO area
+	(profile_seq, area1, area2)
 	
-	VALUES (#{profileSeq}, #{skillContent})
+	VALUES (#profileSeq}, #{area1}, #{area2})
 	</insert>  
 	
-	<!-- 이직자 기술 수정 -->
+	<!-- 이직자 희망지역 수정 -->
 	<update id="update">
-		UPDATE skill 
-		SET skill_content=#{skillContent}
+		UPDATE area 
+		SET area1=#{area1}, area2=#{area2}
 		
 		WHERE profile_seq=#{profileSeq}
 	</update>
 	
-	<!-- 이직자 기술 삭제 -->
+	<!-- 이직자 희망지역 삭제 -->
 	<delete id="delete">
-		DELETE FROM skill
+		DELETE FROM area
 		WHERE profile_seq=#{profileSeq}
 	</delete>
 			
