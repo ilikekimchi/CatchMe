@@ -474,6 +474,10 @@ button {
 .my-notice {
 	font-size: 16px;
     font-weight: 200;
+    
+    color: black;
+    text-decoration: none;
+    
 }
 
 .notice-nm {
@@ -583,3 +587,22 @@ button {
     height: 100px;
     background-color: #4c4c4c;
 }
+
+.new {
+	position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 23px;
+    left: 24px;
+}
+
+.new > span {
+	color: white;
+    font-size: 13px;
+}
+

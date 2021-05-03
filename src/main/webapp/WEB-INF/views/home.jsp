@@ -107,6 +107,11 @@
 	</div>
 	<div class="login">
 		<span class="login-icon"></span>
+		<c:if test="${sessionScope.sessionId != null || sessionScope.customer != null || sessionScope.company != null}">
+			<div class="new">
+			<span>N</span>
+			</div>
+		</c:if>
 	</div>
 	<div class="login-modal">
 		<c:if test="${sessionScope.sessionId == null && sessionScope.customer == null && sessionScope.company == null}">
@@ -166,7 +171,7 @@
 			<h2 style="text-align: center" id="name">${sessionScope.customer.customerNnm} 님</h2>
 			<h4 style="text-align: center" id="email">${sessionScope.customer.customerId}</h4>
 			<div class="notice">
-				<a class="my-notice">나의 알림</a>
+				<a href="/mypage" class="my-notice">나의 알림</a>
 				<div class="notice-nm">
 					<span>1</span>
 				</div>
@@ -174,7 +179,7 @@
 			<div class="frame">
 				<div class="profile"></div>
 			</div>
-			<a href="../mypage" class="mypage in">
+			<a href="/mypage" class="mypage in">
 				<span class="mypage-icon"></span>
 				<div>마이페이지</div>
 			</a>
