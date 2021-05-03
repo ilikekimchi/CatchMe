@@ -1,0 +1,318 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'BMJUA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+	position: absolute;
+	
+	width: 100%;
+	min-width: 1100px;
+	
+	margin: 0;
+	
+	background-color: #eee;
+}
+
+html {
+	font-family: 'BMJUA';
+}
+.signup {
+	position: relative;
+    top: -226px;
+    font-size: 27px;
+    color: #4876ef;
+    font-weight: 100;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #d7d7d9;
+}
+
+.signup-info {
+	position: absolute;
+	left: 3%;
+	top: -13px;
+}
+
+
+.first {
+	position: absolute;
+	width: 1100px;
+	height: 665px;
+	
+	top: 226px;
+	left: 50%;
+	transform: translateX(-50%);
+	
+	background-color: white;
+	
+	border: 1px solid #a0a9b3;
+}
+
+.signup-company {
+	position: absolute;
+	width: 500px;
+	height: 500px;
+	border: 3px solid #4c4c4c;
+	
+	top: 66px;
+	
+	z-index: -1;
+	
+	border-radius: 26px;
+	
+	cursor: pointer;
+	
+	background-color: white;
+}
+.company-hover {
+	background-color: rgba(0, 0, 0);
+	height: 500px;
+	
+	border-radius: 23px;
+	
+	opacity: 0;
+	
+	transition: 0.3s;
+}
+
+.company-hover > span {
+	position: absolute;
+	top: 23px;
+	left: 52%;
+	transform: translateX(-50%);
+	
+	letter-spacing: 10px;
+	font-size: 45px;
+	
+	color: white;
+}
+
+.signup-customer {
+	position: absolute;
+	width: 500px;
+	height: 500px;
+	border: 3px solid #4c4c4c;
+	left: 530px;
+	
+	top: 66px;
+	
+	z-index: -1;
+	
+	border-radius: 26px;
+	
+	cursor: pointer;
+	
+	background-color: white;
+}
+
+
+.customer-hover {
+	background-color: rgba(0, 0, 0);
+	height: 500px;
+	
+	border-radius: 23px;
+	
+	opacity: 0;
+	
+	transition: 0.3s;
+}
+
+.customer-hover > span {
+	position: absolute;
+	top: 23px;
+	left: 52%;
+	transform: translateX(-50%);
+	
+	letter-spacing: 10px;
+	font-size: 45px;
+	
+	color: white;
+}
+
+.company-icon {
+	position: absolute;
+	top: 25%;
+	left: 50%;
+	transform: translateX(-50%);
+	
+	background-image: url("/image/signup/company.png");
+	width: 246px;
+	height: 260px;
+	
+	z-index: -1;
+}
+
+.customer-icon {
+	position: absolute;
+	top: 25%;
+	left: 50%;
+	transform: translateX(-50%);
+	
+	background-image: url("/image/signup/customer.png");
+	width: 220px;
+	height: 260px;
+	
+	z-index: -1;
+}
+
+.home {
+	position: absolute;
+	top: 820px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 150px;
+    height: 46px;
+    text-decoration: none;
+    
+    border: 1px solid #4c4c4c;
+    border-radius: 50px;
+    
+    background-color: white;
+}
+
+.home-tx {
+	position: absolute;
+    left: 29%;
+    top: 10px;
+    
+    font-size: 25px;
+    color: #4c4c4c;
+    
+    letter-spacing: 4px;
+}
+
+.seq {
+	position: absolute;
+    width: 1100px;
+    height: 100px;
+    background-image: url("/image/signup/signup-seq.png");
+    top: -132px;
+    
+    border-radius: 50px;
+    
+    border: 1px solid #a0a9b3;
+}
+
+.step1 {
+	position: absolute;
+    top: 48px;
+    font-size: 25px;
+    left: 150px;
+    color: #4876ef;
+}
+
+.step1-img {
+	position: absolute;
+	
+	background-image: url("/image/signup/signup-info-hv.png");
+	
+	width: 60px;
+	height: 60px;
+	
+	top: 17px;
+    left: 75px;
+}
+
+.step2 {
+	position: absolute;
+    top: 48px;
+    font-size: 25px;
+    left: 504px;
+    color: #a0a9b3;
+}
+
+.step2-img {
+	position: absolute;
+	
+	background-image: url("/image/signup/login-info.png");
+	
+	width: 60px;
+	height: 60px;
+	
+	top: 17px;
+    left: 430px;
+}
+
+.step3 {
+	position: absolute;
+    top: 48px;
+    font-size: 25px;
+    left: 875px;
+    color: #a0a9b3;
+}
+
+.step3-img {
+	position: absolute;
+	
+	background-image: url("/image/signup/profile-info.png");
+	
+	width: 60px;
+	height: 60px;
+	
+	top: 17px;
+    left: 800px;
+}
+
+.next-1 {
+	position: absolute;
+	
+	background-image: url("/image/signup/arrow-hv.png");
+	
+	width: 30px;
+	height: 30px;
+	
+	top: 35px;
+    left: 354px;
+}
+
+.next-2 {
+	position: absolute;
+	
+	background-image: url("/image/signup/arrow.png");
+	
+	width: 30px;
+	height: 30px;
+	
+	top: 35px;
+    left: 721px;
+}
+/* --------------------------------------------------------------------------------------------- */
+
+.second {
+	position: absolute;
+	width: 1000px;
+	
+	top: 100px;
+	left: 49%;
+	transform: translateX(-50%);
+}
+
+.company-form {
+	background-color: white;
+	
+	position: absolute;
+	width: 500px;
+	height: 600px;
+	border: 3px solid #4c4c4c;
+	
+	display: none;
+	opacity: 0;
+}
+
+.customer-form {
+	background-color: white;
+	
+	position: absolute;
+	width: 500px;
+	height: 600px;
+	border: 3px solid #4c4c4c;
+	left: 528px;
+	
+	display: none;
+	opacity: 0;
+}

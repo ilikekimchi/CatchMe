@@ -13,7 +13,6 @@
 		xhr.onreadystatechange = function() {
 			// DONE(처리가 됨)인 상태가 된다면..
 			if(xhr.readyState == XMLHttpRequest.DONE) {
-				
 				// AJAX 요청이 정상적으로 처리되었는지 아닌지만을 검사하기 위해 응답 코드가 200 인지 확인
 				// 200(성공): 서버가 요청을 제대로 처리했다는 뜻이다. 
 				if(xhr.status == 200) {
@@ -64,15 +63,38 @@
 			form.passwd_confirm.focus();
 			return;
 		}
-		if(form.customerName.value == "") {
-			alert('이름을 입력 해 주세요');
-			form.customerName.focus();
-			return;
-		}
 		if(form.customerNnm.value == "") {
 			alert('닉네임을 입력 해 주세요');
 			form.customerNnm.focus();
 			return;
 		}
+		if(form.customerGender.value == "") {
+			alert('성별을 선택 해 주세요');
+			form.customerGender.focus();
+			return;
+		}
+		/* 3단계. 프로필 작성 ============================
+		if(form.customerName.value == "") {
+			alert('이름을 입력 해 주세요');
+			form.customerName.focus();
+			return;
+		}
+		if(form.customerPhone.value == "") {
+			alert('전화번호를 입력 해 주세요');
+			form.customerPhone.focus();
+			return;
+		}
+		if(form.customerAddress.value == "") {
+			alert('주소를 입력 해 주세요');
+			form.customerAddress.focus();
+			return;
+		}
+		if(form.customerBirthday.value == "") {
+			alert('생년월일을 선택 해 주세요');
+			form.customerBirthday.focus();
+			return;
+		}
+		*/
+		console.log(form.customerBirthday.value)
 		form.submit();
 	}

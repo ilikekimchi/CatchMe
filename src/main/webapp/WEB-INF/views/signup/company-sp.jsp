@@ -13,6 +13,7 @@
 		<div>
 			<form name="signupForm0" method="post">
 				<input name="id_confirm0" type="hidden" value="" >
+				<input name="companyImg" type="hidden" value="기업" >
 				<div>
 					<label>아이디:</label>
 					<input name="companyId" type="text"> <a href="javascript:confirmId0()">중복검사</a>
@@ -62,6 +63,9 @@
 			<div>
 				<button onclick="submit()">기업회원가입</button>
 			</div>
+		</div>
+		<div>
+			<a href="/signup">회원가입 취소</a>
 		</div>
 	</div>
 </body>

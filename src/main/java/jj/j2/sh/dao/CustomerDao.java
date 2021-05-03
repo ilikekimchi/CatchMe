@@ -17,5 +17,9 @@ public interface CustomerDao {
 	void delete(String customerId);
 
 	Customer login(Customer item);
+
+	List<Customer> listAll();
+
+	List<Customer> listAdmin();
 	
 }

@@ -17,9 +17,9 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 		Customer customer = (Customer) session.getAttribute("admin");
 		
 		if(customer == null)
-			response.sendRedirect("/login2");
+			response.sendRedirect("/login");
 		else if(!"admin".equals(customer.getCustomerId())) //관리자(admin)가 아니면(!) login으로 되돌아감
-			response.sendRedirect("/login2");
+			response.sendRedirect("/login");
 		else
 			return true;
 		

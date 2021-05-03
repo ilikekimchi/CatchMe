@@ -10,16 +10,15 @@ public interface ProfileDao {
 
 	void add(Profile item);
 
-	Profile item(String customerId);
+	Profile item(int profileSeq);
 
 	void update(Profile item);
 
-	void delete(int profileSeq);
+	void delete(String customerId);
 
 	List<Profile> listAll();
 
 	void profileCheck(Profile item);
 
-	Profile item(int profileSeq);
 	
 }
