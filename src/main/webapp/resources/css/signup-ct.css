@@ -16,6 +16,17 @@ html, body {
 	padding: 0;
 }
 
+button {
+	background: inherit;
+	border: none;
+	box-shadow: none;
+	border-radius: 0;
+	padding: 0;
+	overflow: visible;
+	cursor: pointer;
+	outline: none;
+}
+
 input {
 	font-family: "BMJUA";
 
@@ -33,28 +44,126 @@ input {
     padding-left: 17px;
     
     position: absolute;
+    
+    background-color: rgba(0,0,0,0);
 }
 
 label {
 	position: absolute;
+	
+	left: 18px;
+    top: 17px;
 	
 	letter-spacing: 5px;
 	font-size: 14px;
 	
 	color: #4c4c4c;
 	
+	z-index: -1;
+	
 	transition: 0.3s;
 }
 
-span {
+.placeholder {
+	position: absolute;
+    opacity: 0;
+    color: #4c4c4c;
+    top: 4px;
+    left: 15px;
+    letter-spacing: 5px;
+    font-size: 12px;
+	
 	transition: 0.3s;
+}
+
+.container {
+	position: absolute;
+    width: 1000px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-info {
+	position: absolute;
+	
+	color: #4c4c4c;
+	
+	margin: 0;
+	
+	top: 120px;
+    font-size: 30px;
+    font-weight: 100;
+}
+
+.seq {
+	display: flex;
+    top: 88px;
+    position: relative;
+    margin: 0 auto;
+    justify-content: space-around;
+    width: 851px;
+}
+
+#sign-info {
+	border: 3px solid #4c4c4c;
+    background-color: white;
+    width: 140px;
+    height: 40px;
+    border-radius: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -70px;
+    left: 200px;
+}
+
+#sign-info > span {
+	color: #4c4c4c;
+}
+
+#login-info {
+	border: 3px solid #4876ef;
+    background-color: white;
+    width: 140px;
+    height: 40px;
+    border-radius: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -70px;
+    left: 200px;
+    
+    color: #4876ef;
+}
+
+#login-info > span {
+	
+}
+
+#profile {
+	border: 3px solid #4c4c4c;
+    background-color: white;
+    width: 140px;
+    height: 40px;
+    border-radius: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -70px;
+    left: 200px;
+}
+
+#sprofile > span {
+	color: #4c4c4c;
 }
 
 .signup-container {
 	position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 20%;
+    left: 36%;
+    top: 200px;
 }
 
 .email-form {
@@ -78,10 +187,12 @@ span {
     font-size: 12px;
 }
 
-#id-msg {
+.msg {
 	position: absolute;
 	top: 55px;
 	left: 14px;
+	
+	width: 350px;
 }
 
 .pw-form {
@@ -96,4 +207,193 @@ span {
     width: 255px;
     height: 39px;
     top: 160px;
+}
+
+.customerNnm-form {
+	position: absolute;
+    width: 255px;
+    height: 39px;
+    top: 240px;
+}
+
+.customerBirthday-form {
+	position: absolute;
+    width: 255px;
+    height: 39px;
+    top: 340px;
+}
+
+.customerBirthday-form > input {
+	border: none;
+}
+
+.customerBirthday-form > input:focus {
+	outline:none;
+}
+
+.customerBirthday-form > label {
+	left: 0;
+	top: -15px;
+}
+
+.customerGender-form {
+	position: absolute;
+    width: 255px;
+    height: 39px;
+    top: 440px;
+}
+
+.customerGender-form > label {
+	top: -25px;
+	left: 0;
+}
+
+.customerGender-form > .male {
+	left: 73px;
+	top: 10px;
+	
+	font-size: 20px;
+	
+	z-index: 0;
+}
+
+.customerGender-form > .male > input {
+	position: absolute;
+	width: 25px;
+	
+	top: -7px;
+	left: 20px;
+}
+
+.customerGender-form > .female {
+	left: 172px;
+	top: 10px;
+	
+	font-size: 20px;
+	
+	z-index: 0;
+}
+
+.customerGender-form > .female > input {
+	position: absolute;
+	width: 25px;
+	
+	top: -7px;
+	left: 20px;
+}
+
+.signup-btn {
+	position: absolute;
+
+	width: 200px;
+    top: 530px;
+    position: absolute;
+    font-size: 24px;
+    font-family: "BMJUA";
+    left: 50px;
+    
+    padding-top: 6px;
+    padding-bottom: 6px;
+    
+    border: 1px solid;
+    border-radius: 20px;
+	
+}
+
+.next {
+	position: absolute;
+    width: 200px;
+    top: 530px;
+    position: absolute;
+    font-size: 24px;
+    font-family: "BMJUA";
+    left: 50px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border: 1px solid;
+    border-radius: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.back {
+	width: 200px;
+    position: absolute;
+    font-size: 24px;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border: 1px solid;
+    border-radius: 20px;
+    top: 600px;
+    left: 50px;
+}
+
+.name-form {
+	position: absolute;
+    width: 255px;
+    height: 39px;
+}
+
+.name-ph {
+	left: 18px;
+	top: 17px;
+}
+
+.name-ph-t {
+	position: absolute;
+    opacity: 0;
+    color: #4c4c4c;
+    top: 4px;
+    left: 15px;
+    letter-spacing: 5px;
+    font-size: 12px;
+}
+
+.phone-form {
+	position: absolute;
+    width: 255px;
+    height: 39px;
+    
+    top: 80px;
+}
+
+.phone-ph {
+	left: 18px;
+	top: 17px;
+}
+
+.phone-ph-t {
+	position: absolute;
+    opacity: 0;
+    color: #4c4c4c;
+    top: 4px;
+    left: 15px;
+    letter-spacing: 5px;
+    font-size: 12px;
+}
+
+.address-form {
+	position: absolute;
+    width: 255px;
+    height: 39px;
+    
+    top: 160px;
+}
+
+.address-ph {
+	left: 18px;
+	top: 17px;
+}
+
+.address-ph-t {
+	position: absolute;
+    opacity: 0;
+    color: #4c4c4c;
+    top: 4px;
+    left: 15px;
+    letter-spacing: 5px;
+    font-size: 12px;
 }

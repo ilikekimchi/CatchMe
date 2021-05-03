@@ -103,11 +103,14 @@
 		</div>
 		<div>
 			<div class="signup-info">
-				<a href="/company-sp" class="signup-company">
+				<a href="/signup/company-sp" class="signup-company">
 					<div class="company-hover">
 						<span>기업회원</span>
+
 					</div> <span class="company-icon"></span>
-				</a> <a href="/customer-sp" class="signup-customer">
+				</a>
+				<a href="/signup/customer-sp" class="signup-customer">
+
 					<div class="customer-hover">
 						<span>개인회원</span>
 					</div> <span class="customer-icon"></span>

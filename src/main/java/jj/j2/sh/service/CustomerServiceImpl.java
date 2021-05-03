@@ -13,7 +13,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired
 	CustomerDao dao;
-	
+		
 	@Override
 	public List<Customer> list(String customerId) {
 		return dao.list(customerId);
@@ -28,12 +28,12 @@ public class CustomerServiceImpl implements CustomerService {
 	public Customer item(String customerId) {
 		return dao.item(customerId);
 	}
-
+	
 	@Override
 	public void update(Customer item) {
 		dao.update(item);
 	}
-
+	
 	@Override
 	public void delete(String customerId) {
 		dao.delete(customerId);
@@ -45,6 +45,11 @@ public class CustomerServiceImpl implements CustomerService {
 		if(customer != null) {
 			
 			item.setCustomerPw(null);
+			item.setCustomerPhone(customer.getCustomerPhone() );
+			item.setCustomerName(customer.getCustomerName() );
+			item.setCustomerAddress(customer.getCustomerAddress() );
+			item.setCustomerBirthday(customer.getCustomerBirthday() );
+			item.setCustomerGender(customer.getCustomerGender() );
 			item.setCustomerNnm(customer.getCustomerNnm() );
 			item.setCustomerRole(customer.getCustomerRole());
 			
@@ -53,5 +58,15 @@ public class CustomerServiceImpl implements CustomerService {
 		
 		return false;
 	}
-	
+
+	@Override
+	public List<Customer> listAll() {
+		return dao.listAll();
+	}
+
+	@Override
+	public List<Customer> listAdmin() {
+		return dao.listAdmin();
+	}
+
 }

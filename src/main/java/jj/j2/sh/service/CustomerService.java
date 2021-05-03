@@ -16,8 +16,10 @@ public interface CustomerService {
 
 	void delete(String customerId);
 
+	List<Customer> listAll();
+
+	List<Customer> listAdmin();
+
 	boolean login(Customer item);
-
-
 	
 }

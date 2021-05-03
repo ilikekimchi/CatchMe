@@ -28,7 +28,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	public Customer item(String customerId) {
 		return sql.selectOne("customer.item", customerId);
 	}
-
+	
 	@Override
 	public void update(Customer item) {
 		sql.update("customer.update", item);
@@ -42,6 +42,16 @@ public class CustomerDaoImpl implements CustomerDao {
 	@Override
 	public Customer login(Customer item) {
 		return sql.selectOne("customer.login", item);
+	}
+
+	@Override
+	public List<Customer> listAll() {
+		return sql.selectList("customer.listAll");
+	}
+
+	@Override
+	public List<Customer> listAdmin() {
+		return sql.selectList("customer.listAdmin");
 	}
 
 }
