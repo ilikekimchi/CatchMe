@@ -119,21 +119,23 @@ public class ProfileController {
 		
 	//이력서 변경 및 등록
 	@GetMapping("/{profileSeq}/update")
-	String update(@PathVariable int profileSeq, Model model, String skillContent, String area1,
-			String area2, String careerCompany, String careerDate, String careerWork, 
-			String careerCategory, String certificateName, Date certificateDate, String certificateWriting) {
+	String update(@PathVariable int profileSeq, Model model) {
 		Profile item = service.item(profileSeq);
-		
+				
 		model.addAttribute("item", item);
 		
 		return path + "update";
 	}
 	
 	@PostMapping("/{profileSeq}/update")
-	String update(@PathVariable int profileSeq, Profile item, Skill skill, Area area,
-			Career career, Certificate certificate, 
+	String update(@PathVariable int profileSeq, Profile item, @RequestParam String skillContent, @RequestParam String area1,
+			@RequestParam String area2, @RequestParam String careerCompany, 
+			@RequestParam String careerDate, @RequestParam String careerWork, 
+			@RequestParam String careerCategory, @RequestParam String certificateName,
+			@RequestParam Date certificateDate, @RequestParam String certificateWriting,
+			Skill skill, Area area, Career career, Certificate certificate,
 			HttpSession session) {
-	
+			
 		MultipartFile file = item.getUploadFile(); //MultipartFile을 item으로 읽어옴
 		
 		try {
@@ -153,9 +155,10 @@ public class ProfileController {
 			
 		item.setProfileSeq(profileSeq);
 		
-		service.update(career, certificate, skill, area, item);
+		service.update(skill, area, career, certificate, item,
+				skillContent, area1, area2, careerCompany, careerDate, careerWork, 
+				careerCategory, certificateName, certificateDate, certificateWriting);
 				
-		session.setAttribute("customer", item);
 		
 		} catch (IllegalStateException e) {
 			e.printStackTrace();

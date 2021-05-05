@@ -30,11 +30,13 @@
 		<!-- customer이직자 관련 -->
 		
 		<!-- area지역 관련 -->
+		<result column="area_seq" property="areaSeq" />
 		<result column="area1" property="area1" />
 		<result column="area2" property="area2" />
 		<!-- area지역 관련 -->
 		
 		<!-- career경력사항 관련 -->
+		<result column="career_seq" property="careerSeq" />
 		<result column="career_company" property="careerCompany" />
 		<result column="career_date" property="careerDate" />
 		<result column="career_work" property="careerWork" />
@@ -42,6 +44,7 @@
 		<!-- career경력사항 관련 -->
 		
 		<!-- certificate자격면허 관련 -->
+		<result column="certificate_seq" property="certificateSeq" />
 		<result column="certificate_name" property="certificateName" />
 		<result column="certificate_date" property="certificateDate" />
 		<result column="certificate_writing" property="certificateWriting" />
@@ -49,6 +52,7 @@
 
 		
 		<!-- skill기술능력 관련 -->
+		<result column="skill_seq" property="skillSeq" />
 		<result column="skill_content" property="skillContent" />
 		<!-- skill기술능력 관련 -->
 	<!-- 외래키 -->
@@ -91,7 +95,7 @@
 		
 	<!-- 이력서 등록 -->
 	<insert id="add">
-
+	
 	<if test="profileImg == null">
 		INSERT INTO profile
 		(profile_seq, customer_id, profile_money,  profile_state, 
@@ -116,13 +120,13 @@
 		 #{profileSchool}, #{profileSchoolSkill}, #{profileSchoolState}, #{profileArmy}, 
 		 #{profileArmyWriting}, #{profileWriting}, #{profileTime}, 
 		 #{profileCheck}, SYSDATE, #{profileImg})			
-		</if>
-		
-		<!--  profileSeq를 item 으로 읽어 와서 Profile객체에 설정하는 방법을 사용하는 것 -->
-		<selectKey keyColumn="profileSeq" keyProperty="profileSeq" order="AFTER" resultType="Integer">
-			SELECT profile_seq.nextval FROM DUAL
-		</selectKey>
-		
+		</if>		
+	
+	<!--  profileSeq를 item 으로 읽어 와서 Profile객체에 설정하는 방법을 사용하는 것 -->
+	<selectKey keyColumn="profileSeq" keyProperty="profileSeq" order="AFTER" resultType="integer">
+		SELECT profile_seq.CURRVAL FROM DUAL
+	</selectKey>
+	
 		<!-- Role(찜하기_스크랩)은 나중에.. -->
 	</insert>
 	

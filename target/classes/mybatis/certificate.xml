@@ -14,9 +14,14 @@
 	<!-- #{}은 필드명, mybatis-config 에서 세팅해주면 이것을 자동으로 고쳐줌(자바표기법:낙타 표기법) -->
 	<insert id="add">
 	INSERT INTO certificate
-	(profile_seq, certificate_name, certificate_date, certificate_writing)
+	(certificate_seq, profile_seq, certificate_name, certificate_date, certificate_writing)
 	
-	VALUES (#{profileSeq}, #{certificateName}, #{certificateDate}, #{certificateWriting})
+	VALUES (certificate_seq.nextval, #{profileSeq}, #{certificateName}, #{certificateDate}, #{certificateWriting})
+	
+	<!--  profileSeq를 item 으로 읽어 와서 Profile객체에 설정하는 방법을 사용하는 것 -->
+	<selectKey keyColumn="certificateSeq" keyProperty="certificateSeq" order="AFTER" resultType="integer">
+		SELECT certificate_seq.CURRVAL FROM DUAL
+	</selectKey>
 	</insert>  
 	
 	<!-- 이직자 자격/면허 수정 -->
@@ -25,13 +30,13 @@
 		SET certificate_name=#{certificateName}, certificate_date=#{certificateDate}, 
 		certificate_writing=#{certificateWriting}
 		
-		WHERE profile_seq=#{profileSeq}
+		WHERE certificate_seq=#{certificateSeq}
 	</update>
 	
 	<!-- 이직자 자격/면허 삭제 -->
 	<delete id="delete">
 		DELETE FROM certificate
-		WHERE profile_seq=#{profileSeq}
+		WHERE certificate_seq=#{certificateSeq}
 	</delete>
 			
 </mapper>

@@ -4,24 +4,36 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- hikariCp를 이용하기위해 설정함(hikariCp는 기존과 달리 따로 설정해주어야댐) -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:XE"></property>
-		<property name="username" value="catchme"></property> <!-- 수정 -->
+		<property name="username" value="catchme"></property>
 		<property name="password" value="1234"></property>
 	</bean>
 	
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
-		<constructor-arg ref="hikariConfig"></constructor-arg>
-	</bean>
+    	<constructor-arg ref="hikariConfig"></constructor-arg>
+	</bean>	
 	
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
 	</bean>
 	
+	<!-- index="0" ref="sqlSession" ==> 첫번째 파라매터(index=0)에 sqlSession을 넣음 -->
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSession"></constructor-arg>
 	</bean>
-		
+	
+		<!-- @Transactional 을 쓰기위해 설정 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!-- maximum file size in bytes 50MB -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+			<property name="maxUploadSize" value="52428800"></property>	
+	</bean>
+	
 </beans>

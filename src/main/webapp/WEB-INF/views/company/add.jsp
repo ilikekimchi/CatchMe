@@ -7,9 +7,10 @@
 </head>
 <body>
 	<div>
-		<div><h3>기업 등록</h3></div>
+		<div><h3>기업 등록(관리자 전용)</h3></div>
 		<div>
 			<form method="post">
+			<input name="companyImg" type="hidden" value="기업" >
 				<div>
 					<label>아이디:</label>
 					<input name="companyId" type="text">

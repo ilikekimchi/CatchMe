@@ -11,6 +11,7 @@
 		<div>
 			<form method="post">
 				<div>
+				<input name="companyImg" type="hidden" value="기업" >
 				<div>
 					<label>아이디:</label>
 					${item.companyId}

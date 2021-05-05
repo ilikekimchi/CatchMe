@@ -33,6 +33,7 @@ public class Profile {
 	private String skillContent; //기술/능력*join
 
 	//Controller에서 쓰일 customer 정보들 
+	private String customerNnm; //이직자 닉네임
 	private String customerName; //이직자 회원 이름
 	private String customerGender; //성별 구분
 	private String customerPhone; //이직자 전화번호
@@ -42,6 +43,15 @@ public class Profile {
 	MultipartFile uploadFile;
 
 	
+	
+	public String getCustomerNnm() {
+		return customerNnm;
+	}
+
+	public void setCustomerNnm(String customerNnm) {
+		this.customerNnm = customerNnm;
+	}
+
 	public String getCustomerName() {
 		return customerName;
 	}

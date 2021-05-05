@@ -95,37 +95,44 @@ public class ProfileServiceImpl implements ProfileService {
 	public Profile item(int profileSeq) {
 		return dao.item(profileSeq);
 	}
+	
 	@Override
-	public void update(Career career, Certificate certificate, Skill skill, Area area, Profile item) {
+	@Transactional
+	public void update(Skill skill, Area area, Career career, Certificate certificate, Profile item,
+			String skillContent, String area1, String area2, String careerCompany, String careerDate, String careerWork,
+			String careerCategory, String certificateName, Date certificateDate, String certificateWriting) { 
 		dao.update(item);
 		
-		//기술 수정		
+		//기술 수정
 		skill.setProfileSeq(item.getProfileSeq());
-		skill.setSkillContent(item.getSkillContent());
-		
+		skill.setSkillContent(skillContent);
+
 		daoSkill.update(skill);
 		
-		//지역 수정		
+		//지역 수정
 		area.setProfileSeq(item.getProfileSeq());
-		area.setArea1(item.getArea1());
-		area.setArea2(item.getArea2());
+		area.setArea1(area1);
+		area.setArea2(area2);
 		
 		daoArea.update(area);
 		
 		//경력 수정		
 		career.setProfileSeq(item.getProfileSeq());
-		career.setCareerCompany(item.getCareerCompany());
-		career.setCareerDate(item.getCareerDate());
-		career.setCareerWork(item.getCareerWork());
-		career.setCareerCategory(item.getCareerCategory());
+		career.setCareerSeq(career.getCareerSeq());
+		career.setCareerCompany(careerCompany);
+		career.setCareerDate(careerDate);
+		career.setCareerWork(careerWork);
+		career.setCareerCategory(careerCategory);
 		
 		daoCareer.update(career);
 		
 		//자격/면허 수정
+		
 		certificate.setProfileSeq(item.getProfileSeq());
-		certificate.setCertificateName(item.getCertificateName());
-		certificate.setCertificateDate(item.getCertificateDate());
-		certificate.setCertificateWriting(item.getCertificateWriting());
+		certificate.setCertificateSeq(certificate.getCertificateSeq());;
+		certificate.setCertificateName(certificateName);
+		certificate.setCertificateDate(certificateDate);
+		certificate.setCertificateWriting(certificateWriting);
 		
 		daoCertificate.update(certificate);
 	}
@@ -144,6 +151,5 @@ public class ProfileServiceImpl implements ProfileService {
 	public void profileCheck(Profile item) {
 		dao.profileCheck(item);
 	}
-
 
 }

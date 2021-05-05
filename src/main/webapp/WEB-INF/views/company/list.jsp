@@ -14,6 +14,7 @@
 				<table border="1">
 					<thead>
 						<tr>
+							<th>아이콘</th>
 							<th>아이디</th>
 							<th>패스워드</th>
 							<th>기업명</th>
@@ -31,11 +32,12 @@
 					<tbody>
 					<c:if test="${list.size() < 1}">
 						<tr>
-							<td colspan="12">등록 된 기업이 없습니다</td>
+							<td colspan="13">등록 된 기업이 없습니다</td>
 						</tr>
 					</c:if>
 					<c:forEach var="item" items="${list}">
 						<tr>
+							<td>${item.companyImg}</td>
 							<td>${item.companyId}</td>
 							<td>${item.companyPw}</td>
 							<td>${item.companyName}</td>

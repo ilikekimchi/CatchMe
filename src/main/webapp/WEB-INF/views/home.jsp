@@ -171,7 +171,7 @@
 				<span class="mypage-icon"></span>
 				<div>마이페이지</div>
 			</a>
-			<a href="" class="career in">
+			<a href="/profile/list" class="career in">
 				<span class="career-icon"></span>
 				<div>내 이력서</div>
 			</a>
