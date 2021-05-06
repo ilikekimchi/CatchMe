@@ -98,42 +98,19 @@ public class ProfileServiceImpl implements ProfileService {
 	
 	@Override
 	@Transactional
-	public void update(Skill skill, Area area, Career career, Certificate certificate, Profile item,
-			String skillContent, String area1, String area2, String careerCompany, String careerDate, String careerWork,
-			String careerCategory, String certificateName, Date certificateDate, String certificateWriting) { 
+	public void update(Skill skill, Area area, Career career, Certificate certificate, Profile item) {
 		dao.update(item);
 		
 		//기술 수정
-		skill.setProfileSeq(item.getProfileSeq());
-		skill.setSkillContent(skillContent);
-
 		daoSkill.update(skill);
 		
-		//지역 수정
-		area.setProfileSeq(item.getProfileSeq());
-		area.setArea1(area1);
-		area.setArea2(area2);
-		
+		//지역 수정		
 		daoArea.update(area);
 		
-		//경력 수정		
-		career.setProfileSeq(item.getProfileSeq());
-		career.setCareerSeq(career.getCareerSeq());
-		career.setCareerCompany(careerCompany);
-		career.setCareerDate(careerDate);
-		career.setCareerWork(careerWork);
-		career.setCareerCategory(careerCategory);
-		
+		//경력 수정
 		daoCareer.update(career);
 		
 		//자격/면허 수정
-		
-		certificate.setProfileSeq(item.getProfileSeq());
-		certificate.setCertificateSeq(certificate.getCertificateSeq());;
-		certificate.setCertificateName(certificateName);
-		certificate.setCertificateDate(certificateDate);
-		certificate.setCertificateWriting(certificateWriting);
-		
 		daoCertificate.update(certificate);
 	}
 

@@ -7,7 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class Resume {
 	private int resumeSeq; //포트폴리오 코드(기본키)(자동증가)
-	private int profileSeq; //이력서 번호(외래키)
+	private String customerId; //이직자 아이디(외래키)
 	private String resumeFile; //포트폴리오 파일
 	private Date resumeDate; //최종수정일
 	
@@ -16,11 +16,11 @@ public class Resume {
 	String filename;
 
 	
-	public int getProfileSeq() {
-		return profileSeq;
+	public String getCustomerId() {
+		return customerId;
 	}
-	public void setProfileSeq(int profileSeq) {
-		this.profileSeq = profileSeq;
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
 	}
 	public int getResumeSeq() {
 		return resumeSeq;
@@ -52,6 +52,5 @@ public class Resume {
 	public void setResumeDate(Date resumeDate) {
 		this.resumeDate = resumeDate;
 	}
-	
 	
 }

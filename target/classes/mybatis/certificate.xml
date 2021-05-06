@@ -30,7 +30,7 @@
 		SET certificate_name=#{certificateName}, certificate_date=#{certificateDate}, 
 		certificate_writing=#{certificateWriting}
 		
-		WHERE certificate_seq=#{certificateSeq}
+		WHERE profile_seq=#{profileSeq}
 	</update>
 	
 	<!-- 이직자 자격/면허 삭제 -->

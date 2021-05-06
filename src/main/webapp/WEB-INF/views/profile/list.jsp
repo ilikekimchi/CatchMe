@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="/css/profile-img.css" rel="stylesheet" />
 </head>
 <body>
 	<div>
@@ -83,7 +84,7 @@
 						<!-- 기본정보 -->
 							<td>${item.customerId}</td>
 							<td>${item.profileSeq}</td>
-							<td>${item.profileImg}</td>
+							<td><img src="/CatchMeUpload/${item.profileImg}" class="profile-img" alt="프로필이미지"></td>
 							<td>${item.customerGender}</td>
 							<td>${item.customerName}</td>
 							<td>${item.customerPhone}</td>

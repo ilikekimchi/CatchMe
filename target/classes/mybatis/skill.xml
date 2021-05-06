@@ -14,7 +14,7 @@
 	<!-- #{}은 필드명, mybatis-config 에서 세팅해주면 이것을 자동으로 고쳐줌(자바표기법:낙타 표기법) -->
 	<insert id="add">
 	INSERT INTO skill
-	(skill_seq,profile_seq, skill_content)
+	(skill_seq, profile_seq, skill_content)
 	
 	VALUES (skill_seq.nextval, #{profileSeq}, #{skillContent})
 	
@@ -29,7 +29,7 @@
 		UPDATE skill 
 		SET skill_content=#{skillContent}
 		
-		WHERE skill_seq=#{skillSeq}
+		WHERE profile_seq=#{profileSeq}
 	</update>
 	
 	<!-- 이직자 기술 삭제 -->

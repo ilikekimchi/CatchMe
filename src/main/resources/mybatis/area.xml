@@ -29,7 +29,7 @@
 		UPDATE area 
 		SET area1=#{area1}, area2=#{area2}
 		
-		WHERE area_seq=#{areaSeq}
+		WHERE profile_seq=#{profileSeq}
 	</update>
 	
 	<!-- 이직자 희망지역 삭제 -->

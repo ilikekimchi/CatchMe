@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import jj.j2.sh.dao.ResumeDao;
 import jj.j2.sh.model.Resume;
@@ -21,9 +20,8 @@ public class ResumeServiceImpl implements ResumeService {
 	}
 
 	@Override
-	@Transactional
-	public void add(int profileSeq, Resume item) {
-		item.setProfileSeq(profileSeq);
+	public void add(String customerId, Resume item) {
+		item.setCustomerId(customerId);
 		
 		dao.add(item);
 	}

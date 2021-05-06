@@ -24,7 +24,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import jj.j2.sh.model.Customer;
-import jj.j2.sh.model.Profile;
 import jj.j2.sh.model.Resume;
 import jj.j2.sh.service.ResumeService;
 
@@ -72,7 +71,7 @@ public class ResumeController {
 		//add.jsp에있는 name == uploadFile을 가져옴
 		@PostMapping("/add")
 		String add(Resume item, HttpSession session, MultipartHttpServletRequest multi) {
-			Profile profile = (Profile) session.getAttribute("customer");
+			Customer customer = (Customer) session.getAttribute("customer");
 			List<MultipartFile> fileList = multi.getFiles("file");
 			
 				try {
@@ -93,7 +92,7 @@ public class ResumeController {
 					}
 					}
 					
-					service.add(profile.getProfileSeq(), item); //add를 호출하여 item 저장
+					service.add(customer.getCustomerId(), item); //add를 호출하여 item 저장
 					
 				} catch (IllegalStateException e) {
 					
@@ -128,11 +127,11 @@ public class ResumeController {
 					{
 					//파일 올린수 만큼 반복
 					for(int i = 0; i < fileList.size(); i++) {
-					String random = UUID.randomUUID().toString(); //파일 중복명 처리
+					//String random = UUID.randomUUID().toString(); //파일 중복명 처리
 					
 					String filename = fileList.get(i).getOriginalFilename(); //원래파일명
 					
-					String saveFileName = random + "_" + filename; //저장되는 파일 이름
+					String saveFileName = filename + "_" + (i); //저장되는 파일 이름
 					
 					fileList.get(i).transferTo(new File(uploadPath + saveFileName) ); //파일 저장
 											

@@ -35,6 +35,8 @@
                 	<label>성별:</label>
                 	${item.customerGender}
             	</div>
+            	
+            <!-- 학력 -->
             	<div>
             		<h3>학력</h3>
             	</div>
@@ -50,6 +52,9 @@
                 	<label>학력구분:</label>
                 	<input name=profileSchoolState type="text"  value="${item.profileSchoolState}">
             	</div>
+            <!-- 학력 -->	
+            
+            <!-- 병역사항 -->
             	<div>
             		<h3>병역사항:</h3>
             	</div>
@@ -61,25 +66,31 @@
                 	<label>면제사유:</label>
                 	<input name=profileArmyWriting type="text"  value="${item.profileArmyWriting}">
             	</div>
+            <!-- 병역사항 -->	
+            
+            <!-- 경력사항 -->
             	<div>
             		<h3>경력사항</h3>
             	</div>
             	<div>
                 	<label>회사명:</label>
-                	<input name=careerCompany type="text"  value="${item.careerCompany}">
+                	<input name=careerCompany type="text" value="${item.careerCompany}">
             	</div>
             	<div>
                 	<label>담당업무:</label>
-                	<input name=careerWork type="text"  value="${item.careerWork}">
+                	<input name=careerWork type="text" value="${item.careerWork}">
             	</div>
             	<div>
                 	<label>직급/직책 분류:</label>
-                	<input name=careerCategory type="text"  value="${item.careerCategory}">
+                	<input name=careerCategory type="text" value="${item.careerCategory}">
             	</div>
             	<div>
                 	<label>경력:</label>
-                	<input name=careerDate type="text"  value="${item.careerDate}">
+                	<input name=careerDate type="text" value="${item.careerDate}">
             	</div>
+            <!-- 경력사항 -->
+            
+            <!-- 자격/면허 -->
             	<div>
             		<h3>자격/면허</h3>
             	</div>
@@ -97,6 +108,9 @@
                 	<label>발행처:</label>
                 	<input name=certificateWriting type="text"  value="${item.certificateWriting}">
             	</div>
+            <!-- 자격/면허 -->
+            
+            <!-- 기술능력 -->
             	<div>
             		<h3>기술능력</h3>
             	</div>
@@ -104,6 +118,9 @@
                 	<label>내용:</label>
                 	<input name=skillContent type="text"  value="${item.skillContent}">
             	</div>
+            <!-- 기술능력 -->
+            
+            <!-- 희망사항 -->	
             	<div>
             		<h3>희망사항</h3>
             	</div>
@@ -123,6 +140,9 @@
                 	<label>상태:</label>
                 	<input name=profileState  type="number" value="${item.profileState}">
             	</div>
+            <!-- 희망사항 -->
+            
+            <!-- 기타사항 -->
             	<div>
             		<h3>기타사항</h3>
             	</div>
@@ -138,6 +158,8 @@
             		<label>현재 최종 수정일:
             		<fmt:formatDate pattern="yyyy-MM-dd" value="${item.profileDate}"/></label>
             	</div>
+            <!-- 기타사항 -->	
+            
 				<div>
 					<input type="submit" value="등록">
 				</div>

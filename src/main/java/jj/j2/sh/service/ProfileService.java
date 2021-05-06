@@ -21,15 +21,15 @@ public interface ProfileService {
 
 	Profile item(int profileSeq);
 
-	void update(Skill skill, Area area, Career career, Certificate certificate, Profile item, String skillContent,
-			String area1, String area2, String careerCompany, String careerDate, String careerWork,
-			String careerCategory, String certificateName, Date certificateDate, String certificateWriting);
+	void update(Skill skill, Area area, Career career, Certificate certificate, Profile item);
 	
 	void delete(String customerId);
 
 	List<Profile> listAll();
 
 	void profileCheck(Profile item);
+
+	
 
 	
 

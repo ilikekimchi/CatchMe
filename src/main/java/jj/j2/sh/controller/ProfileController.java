@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -127,13 +128,11 @@ public class ProfileController {
 		return path + "update";
 	}
 	
+	/*spring MVC 에서는 model을 만들어주면 굳이 @RequestParam를 이용해서 값을 세팅해줄 필요가 없음,
+	 spring MVC가 model에서 알아서 getter, setter를 해서 값을 찾아줌*/
 	@PostMapping("/{profileSeq}/update")
-	String update(@PathVariable int profileSeq, Profile item, @RequestParam String skillContent, @RequestParam String area1,
-			@RequestParam String area2, @RequestParam String careerCompany, 
-			@RequestParam String careerDate, @RequestParam String careerWork, 
-			@RequestParam String careerCategory, @RequestParam String certificateName,
-			@RequestParam Date certificateDate, @RequestParam String certificateWriting,
-			Skill skill, Area area, Career career, Certificate certificate,
+	String update(@PathVariable int profileSeq, Profile item, 
+			@ModelAttribute Skill skill, Area area, Career career, Certificate certificate,
 			HttpSession session) {
 			
 		MultipartFile file = item.getUploadFile(); //MultipartFile을 item으로 읽어옴
@@ -155,9 +154,7 @@ public class ProfileController {
 			
 		item.setProfileSeq(profileSeq);
 		
-		service.update(skill, area, career, certificate, item,
-				skillContent, area1, area2, careerCompany, careerDate, careerWork, 
-				careerCategory, certificateName, certificateDate, certificateWriting);
+		service.update(skill, area, career, certificate, item);
 				
 		
 		} catch (IllegalStateException e) {
