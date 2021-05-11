@@ -35,12 +35,20 @@
 					<input name="companyRa" type="text" >
 				</div>
 				<div>
-					<label>연락처:</label>
-					<input name="companyTel" type="text" >
+					<label>설립일:</label>
+					<input name="companyDate" type="date" >
 				</div>
 				<div>
-					<label>연매출:</label>
-					<input name="companyMoney" type="number" >원
+					<label>기업형태:</label>
+					<input name="companyCategory" type="text" >
+				</div>
+				<div>
+					<label>업종:</label>
+					<input name="companyJob" type="text" >
+				</div>
+				<div>
+					<label>인사담당자 연락처:</label>
+					<input name="companyTel" type="text" >
 				</div>
 				<div>
 					<label>규모(사원 수):</label>
@@ -55,8 +63,8 @@
 					<input name="companyHomePage" type="text" >
 				</div>
 				<div>
-					<label>한줄소개:</label>
-					<input name="companyWriting" type="text" >
+					<label>기업개요 및 비전소개:</label>
+					<textarea name="companyWriting" cols="40" rows="8"></textarea>
 				</div>
 			</form>
 			<!-- form태그 바깥에 버튼을 두면 엔터키가 안먹힘 -->

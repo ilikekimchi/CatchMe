@@ -74,14 +74,24 @@
 			form.companyRa.focus();
 			return;
 		}
-		if(form.companyTel.value == "") {
-			alert('연락처를 입력 해 주세요');
-			form.companyTel.focus();
+		if(form.companyDate.value == "") {
+			alert('설립일을 입력 해 주세요');
+			form.companyDate.focus();
 			return;
 		}
-		if(form.companyMoney.value == "") {
-			alert('연매출을 입력 해 주세요');
-			form.companyMoney.focus();
+		if(form.companyCategory.value == "") {
+			alert('기업형태를 선택 해 주세요');
+			form.companyCategory.focus();
+			return;
+		}
+		if(form.companyJob.value == "") {
+			alert('업종을 선택 해 주세요');
+			form.companyJob.focus();
+			return;
+		}
+		if(form.companyTel.value == "") {
+			alert('인사담당자 연락처를 입력 해 주세요');
+			form.companyTel.focus();
 			return;
 		}
 		if(form.companyScale.value == "") {
@@ -95,7 +105,7 @@
 			return;
 		}
 		if(form.companyWriting.value == "") {
-			alert('한줄소개를 입력 해 주세요');
+			alert('기업개요 및 비전소개를 입력 해 주세요');
 			form.companyWriting.focus();
 			return;
 		}

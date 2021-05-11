@@ -89,7 +89,7 @@
 							<td>${item.customerName}</td>
 							<td>${item.customerPhone}</td>
 							<td>${item.customerAddress}</td>
-							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${item.customerBirthday}" />
+							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${item.customerBirthday}" /></td>
 						<!-- 기본정보 -->
 						
 						<!-- 학력 -->
@@ -112,7 +112,7 @@
 						
 						<!-- 자격/면허 -->
 							<td>${item.certificateName}</td>
-							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${item.certificateDate}" />
+							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${item.certificateDate}" /></td>
 							<td>${item.certificateWriting}</td>
 						<!-- 자격/면허 -->
 						
@@ -134,7 +134,7 @@
 						<!-- 기타 -->	
 						
 						<!-- 최종 수정일 -->
-						<td><fmt:formatDate pattern="yyyy-MM-dd" value="${item.profileDate}" />
+						<td><fmt:formatDate pattern="yyyy-MM-dd" value="${item.profileDate}" /></td>
 						<!-- 최종 수정일 -->
 						
 						<!-- 관리 -->
