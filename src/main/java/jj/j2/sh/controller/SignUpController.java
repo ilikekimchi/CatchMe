@@ -63,7 +63,7 @@ public class SignUpController {
 	String customerSp(Customer item, HttpSession session) {
 		service.add(item);
 		
-		return "redirect:.";
+		return "redirect:/";
 		
 	}
 	

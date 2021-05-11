@@ -11,7 +11,15 @@ html {
 	font-family: "BMJUA";
 }
 
+body {
+	width: 100%;
+	height: 100%;
+	
+	background-color: #eee;
+}
+
 html, body {
+	
 	margin: 0;
 	padding: 0;
 }
@@ -48,6 +56,11 @@ input {
     background-color: rgba(0,0,0,0);
 }
 
+input:focus {
+	border: 2px solid #4876ef;	
+	outline: none;
+}
+
 label {
 	position: absolute;
 	
@@ -67,7 +80,7 @@ label {
 .placeholder {
 	position: absolute;
     opacity: 0;
-    color: #4c4c4c;
+    color: #4876ef;
     top: 4px;
     left: 15px;
     letter-spacing: 5px;
@@ -79,11 +92,16 @@ label {
 .container {
 	position: absolute;
     width: 1000px;
+    height: 800px;
+    top: 7%;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     justify-content: center;
     align-items: center;
+    
+    background-color: white;
+    box-shadow: 1px 2px 2px 2px #a6a1a1;
 }
 
 .login-info {
@@ -156,14 +174,14 @@ label {
     left: 200px;
 }
 
-#sprofile > span {
+#profile > span {
 	color: #4c4c4c;
 }
 
 .signup-container {
 	position: absolute;
     left: 36%;
-    top: 200px;
+    top: 183px;
 }
 
 .email-form {
@@ -180,7 +198,7 @@ label {
 .email-ph-t {
 	position: absolute;
     opacity: 0;
-    color: #4c4c4c;
+    color: #4876ef;
     top: 4px;
     left: 15px;
     letter-spacing: 5px;
@@ -190,9 +208,13 @@ label {
 .msg {
 	position: absolute;
 	top: 55px;
-	left: 14px;
+	left: 6px;
+	
+	font-size: 14px;
 	
 	width: 350px;
+	
+	color:	#a4a3a3;
 }
 
 .pw-form {
@@ -285,19 +307,23 @@ label {
 .signup-btn {
 	position: absolute;
 
-	width: 200px;
+	width: 300px;
     top: 530px;
     position: absolute;
     font-size: 24px;
     font-family: "BMJUA";
-    left: 50px;
     
-    padding-top: 6px;
-    padding-bottom: 6px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     
     border: 1px solid;
-    border-radius: 20px;
+    border-radius: 25px;
 	
+}
+
+.signup-btn:hover {
+	background-color: #4876ef;
+    color: white;
 }
 
 .next {
@@ -396,4 +422,33 @@ label {
     left: 15px;
     letter-spacing: 5px;
     font-size: 12px;
+}
+
+.logo {
+	position: absolute;
+    top: -164px;
+    
+    width: 232px;
+    height: 74px;
+    
+    background-image: url("/image/logo-su.png");
+}
+
+.logo>a {
+	text-decoration: none;
+	-webkit-tap-highlight-color: transparent;
+	font-size: 62px;
+}
+
+.logo > a > span {
+	color: transparent;
+}
+
+#member {
+	position: absolute;
+    width: 90px;
+    top: -83px;
+    left: 192px;
+    font-weight: 100;
+    font-size: 23px;
 }

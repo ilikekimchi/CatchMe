@@ -96,7 +96,7 @@
 
 		<div class="title">
 
-			<p>열정! 열정! 열정! ${sessionScope.customer.customerId}님</p>
+			<p>열정! 열정! 열정! ${sessionScope.customer.customerNnm}님</p>
 
 		</div>
 

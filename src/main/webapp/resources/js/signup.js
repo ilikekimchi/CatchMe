@@ -5,7 +5,7 @@
 		const form = document.signupForm;
 
       if(form.customerId.value == ""){
-         $('#id-msg').html("필수 입력 사항입니다.");
+         $('#id-msg').css('color', 'red');
          return false;
       }
 
@@ -13,7 +13,8 @@
 
       if(!chk.test(form.customerId.value)){
          $('#id-msg').html("올바르지 않은 형식입니다.");
-         $('#customerId').css('border', '1px solid red');
+         $('#id-msg').css('color', 'red');
+         /*$('#customerId').css('border', '1px solid red');*/
          return false;
       }
 		
@@ -31,13 +32,14 @@
 				if(xhr.status == 200) {
 					if(xhr.responseText == 'OK') { 
 						$("#id-msg").html("");
-                  		$('#customerId').css('border', '1px solid green');
+                  		/*$('#customerId').css('border', '1px solid green');*/
 					
 						form.id_confirm.value = form.customerId.value;
 						
 					} else {
 						$("#id-msg").html("사용할 수 없는 이메일입니다.");
-                  		$('#customerId').css('border', '1px solid red');
+						$('#id-msg').css('color', 'red');
+                  		/*$('#customerId').css('border', '1px solid red');*/
 					}
 				}
 			}	
@@ -52,16 +54,17 @@
       var chk = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/;
       
       if(form.customerPw.value == ""){
-         $('#pwd1-msg').html("필수 입력 사항입니다.");
+         /*$('#pwd1-msg').html("필수 입력 사항입니다.");*/
+         $('.msg').css('color', 'red');
          return false;
       }
 
       if(!chk.test(form.customerPw.value)){
-         $("#pwd1-msg").html("8~20내 문자, 숫자, 특수문자를 혼합하여 사용하세요.");
-         $('#pwd1').css('border', '1px solid red');
+         /*$("#pwd1-msg").html("8~20내 문자, 숫자, 특수문자를 혼합하여 사용하세요.");*/
+        $('#pwd1-msg').css('color', 'red');
       }else{
          $("#pwd1-msg").html("");
-         $('#pwd1').css('border', '1px solid green');
+         /*$('#pwd1').css('border', '1px solid green');*/
       }   
    }
 
@@ -69,12 +72,13 @@
       const form = document.signupForm;
 
       if(form.passwd_confirm.value == ""){
-         $('#pwd2-msg').html("필수 입력 사항입니다.");
-         return false;
+		$('#pwd2-msg').css('color', 'red');      	
+        $('#pwd2-msg').html("필수 입력 사항입니다.");
+        return false;
       }
 
       if(form.customerPw.value != form.passwd_confirm.value){
-         $('#pwd2').css('border', '1px solid red');
+         $('#pwd2-msg').css('color', 'red');
          $("#pwd2-msg").html("암호가 불일치 합니다.");
 
       }else{
@@ -127,7 +131,7 @@
 			return;
 		}
 		/* 3단계. 프로필 작성 ============================ */
-		if(form.customerName.value == "") {
+		/*if(form.customerName.value == "") {
 			alert('이름을 입력 해 주세요');
 			form.customerName.focus();
 			return;
@@ -141,7 +145,7 @@
 			alert('주소를 입력 해 주세요');
 			form.customerAddress.focus();
 			return;
-		}
+		}*/
 		if(form.customerBirthday.value == "") {
 			alert('생년월일을 선택 해 주세요');
 			form.customerBirthday.focus();

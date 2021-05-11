@@ -4,6 +4,9 @@ $(function() {
 		
 		$('.email-ph').css('opacity', '0');
 		$('.email-ph-t').css('opacity', '1');
+		
+		$('#id-msg').html("이메일형식의 아이디만 사용 가능");
+		$('#id-msg').css('color', '#a4a3a3');
 	})	
 	
 	$('#customerId').blur(function() {
@@ -18,6 +21,9 @@ $(function() {
 		
 		$('.pwd-ph').css('opacity', '0');
 		$('.pwd-ph-t').css('opacity', '1');
+		
+		$('#pwd1-msg').html("8~16자리 영문 대소문자, 숫자, 특수문자 중 3가지 이상 조합");
+		$('#pwd1-msg').css('color', '#a4a3a3');
 	})
 	
 	

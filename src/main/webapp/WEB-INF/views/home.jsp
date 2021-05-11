@@ -167,7 +167,7 @@
 				<a href="naverLogin"><div class="naver"></div></a>
 			</div>
 		</c:if>
-		<c:if test="${sessionScope.sessionId != null || sessionScope.customer != null || sessionScope.company != null}">
+		<c:if test="${sessionScope.sessionId != null || sessionScope.customer != null}">
 			<h2 style="text-align: center" id="name">${sessionScope.customer.customerNnm} 님</h2>
 			<h4 style="text-align: center" id="email">${sessionScope.customer.customerId}</h4>
 			<div class="notice">
