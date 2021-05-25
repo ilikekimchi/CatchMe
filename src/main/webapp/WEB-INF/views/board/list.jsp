@@ -13,6 +13,28 @@
 		<div>
 			<div><h3>전체 명함</h3></div>
 			<div>
+			<form method="get" action="">
+			<div class="search">
+				<span>
+					<select name="search">
+						<option value="0">선택</option>
+						<option value="1" ${pager.search == 1 ? 'selected' : ''}>닉네임</option>
+						<option value="2" ${pager.search == 2 ? 'selected' : ''}>지역</option>
+						<option value="3" ${pager.search == 3 ? 'selected' : ''}>직종/직급</option>
+						<option value="4" ${pager.search == 4 ? 'selected' : ''}>기술/능력</option>
+						<option value="5" ${pager.search == 5 ? 'selected' : ''}>경력</option>
+					</select>
+				</span>
+				<span>
+					<input type="text" name="keyword" placeholder="검색어를 입력해 주세요" value="${pager.keyword}">
+				</span>
+				<span>
+					<input type="submit" value="검색" class="button">
+				</span>
+				</div>
+			</form>
+		</div>		
+			<div>
 				<table border="1">
 					<thead>
 						<tr>
@@ -139,6 +161,25 @@
 					</tbody>
 				</table>
 			</div>
+			<div>
+			<!-- 페이지네이션 -->	
+			<div>
+				<ul>
+					<li><a href="?page=1&${pager.query}">
+					<img src="/resources/img/page_pprev.png"></a></li>
+					<li><a href="?page=${pager.prev}&${pager.query}">
+					<img src="/resources/img/page_prev.png"></a></li>
+				<c:forEach var="page" items="${pager.list}">
+					<li id="pager-list" class="${page == pager.page ? 'active' : ''}"><a href="?page=${page}">${page}</a></li>
+				</c:forEach>
+					<li><a href="?page=${pager.next}&${pager.query}">
+					<img src="/resources/img/page_next.png"></a></li>
+					<li><a href="?page=${pager.last}&${pager.query}">
+					<img src="/resources/img/page_nnext.png"></a></li>
+				</ul>
+			</div>
+			<!-- 페이지네이션 -->
+		</div>
 			<div>
 				<a href="/">메인으로</a>
 			</div>		

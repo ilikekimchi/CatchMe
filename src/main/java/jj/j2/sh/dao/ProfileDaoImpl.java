@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import jj.j2.sh.model.Profile;
+import jj.j2.sh.util.Pager;
 
 @Repository
 public class ProfileDaoImpl implements ProfileDao {
@@ -40,10 +41,16 @@ public class ProfileDaoImpl implements ProfileDao {
 	}
 
 	@Override
-	public List<Profile> listAll() {
-		return sql.selectList("profile.listAll");
+	public List<Profile> listAll(Pager pager) {
+		return sql.selectList("profile.listAll", pager);
 	}
 
+	@Override
+	public int total(Pager pager) {
+		return sql.selectOne("profile.total", pager);
+	}
+
+	
 	@Override
 	public void profileCheck(Profile item) {
 		sql.update("profile.profileCheck", item);

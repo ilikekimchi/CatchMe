@@ -22,6 +22,7 @@
 		
 	<!-- 외래키 -->
 		<!-- customer이직자 관련 -->
+		<result column="customer_nnm" property="customerNnm" />
 		<result column="customer_name" property="customerName" />
 		<result column="customer_phone" property="customerPhone" />
 		<result column="customer_address" property="customerAddress" />
@@ -57,6 +58,50 @@
 		<!-- skill기술능력 관련 -->
 	<!-- 외래키 -->
 	</resultMap>
+	
+	<!-- 검색 -->
+	<sql id="search">
+		SELECT profile.*, customer.customer_name, customer.customer_nnm, customer.customer_phone, 
+		customer.customer_address, customer.customer_birthday, customer.customer_gender,
+		area.area1, area.area2,
+		career.career_company, career.career_date, career.career_work, career.career_category,
+		certificate.certificate_name, certificate.certificate_date, certificate.certificate_writing,
+		skill.skill_content 
+		FROM profile 
+		JOIN customer ON profile.customer_id=customer.customer_id
+		JOIN skill ON profile.profile_seq=skill.profile_seq
+		JOIN area ON profile.profile_seq=area.profile_seq		 
+		JOIN career ON profile.profile_seq=career.profile_seq		 
+		JOIN certificate ON profile.profile_seq=certificate.profile_seq
+		ORDER BY profile.profile_seq DESC
+		<where>
+			<if test="search == 1 and keyword != null">
+				customer.customer_nnm LIKE CONCAT('%', CONCAT(#{keyword},'%'))
+			</if>
+			
+			<if test="search == 2 and keyword != null">
+				area.area1 LIKE CONCAT('%', CONCAT(#{keyword},'%'))
+			</if>
+			
+			<if test="search == 3 and keyword != null">
+				career.careercareer_category LIKE CONCAT('%', CONCAT(#{keyword},'%'))
+			</if>
+			
+			<if test="search == 4 and keyword != null">
+				skill.skill_content LIKE CONCAT('%', CONCAT(#{keyword},'%'))
+			</if>
+			
+			<if test="search == 5 and keyword != null">
+				career.career_date LIKE CONCAT('%', CONCAT(#{keyword},'%'))
+			</if>
+		</where>
+	</sql>
+	
+	<select id="total" resultType="Integer">
+		SELECT COUNT(*) FROM
+		(<include refid="search"></include>) sub
+	</select>
+	<!-- 검색 -->
 		
 	<!-- 이력서(이직자 자신)보기 -->
 	<select id="list" resultType="Profile" resultMap="ProfileMap">
@@ -77,13 +122,13 @@
 	
 	<!-- 이직자 명함 및 프로필 모두 보기 -->
 	<select id="listAll" resultType="Profile" resultMap="ProfileMap">
-		SELECT profile.*, customer.customer_name, customer.customer_phone, 
+		SELECT profile.*, customer.customer_name, customer.customer_nnm, customer.customer_phone, 
 		customer.customer_address, customer.customer_birthday, customer.customer_gender,
 		area.area1, area.area2,
 		career.career_company, career.career_date, career.career_work, career.career_category,
 		certificate.certificate_name, certificate.certificate_date, certificate.certificate_writing,
 		skill.skill_content
-		FROM profile
+		FROM(<include refid="search"></include>) sub
 		JOIN customer ON profile.customer_id=customer.customer_id
 		JOIN skill ON profile.profile_seq=skill.profile_seq
 		JOIN area ON profile.profile_seq=area.profile_seq		 
@@ -132,7 +177,7 @@
 	
 	<!-- 이력서 각각의 값(데이터베이스에서 얻은 값들을 찾아서 item에 주기위해) -->
 	<select id="item" resultType="Profile" resultMap="ProfileMap"> 
-		SELECT profile.*, customer.customer_name, customer.customer_phone, 
+		SELECT profile.*, customer.customer_name, customer.customer_nnm, customer.customer_phone, 
 		customer.customer_address, customer.customer_birthday, customer.customer_gender,
 		area.area1, area.area2,
 		career.career_company, career.career_date, career.career_work, career.career_category,

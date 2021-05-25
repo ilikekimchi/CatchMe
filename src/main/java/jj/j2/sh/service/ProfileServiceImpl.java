@@ -17,6 +17,7 @@ import jj.j2.sh.model.Career;
 import jj.j2.sh.model.Certificate;
 import jj.j2.sh.model.Profile;
 import jj.j2.sh.model.Skill;
+import jj.j2.sh.util.Pager;
 
 @Service
 public class ProfileServiceImpl implements ProfileService {
@@ -120,8 +121,12 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 
 	@Override
-	public List<Profile> listAll() {
-		return dao.listAll();
+	public List<Profile> listAll(Pager pager) {
+		int total = dao.total(pager);
+		
+		pager.setTotal(total);
+		
+		return dao.listAll(pager);
 	}
 
 	@Override

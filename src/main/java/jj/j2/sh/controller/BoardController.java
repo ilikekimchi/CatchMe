@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jj.j2.sh.model.Profile;
 import jj.j2.sh.service.ProfileService;
+import jj.j2.sh.util.Pager;
 
 @Controller
 @RequestMapping("/board")
@@ -42,9 +43,9 @@ public class BoardController {
     //명함 리스트 모두 보기
  	//Model에 list를 담아두면 jsp페이지에 전달할 수 있다.
  	@GetMapping("/list")
- 	String listAll(Model model) {
+ 	String listAll(Model model, Pager pager) {
  		
- 		List<Profile> listAll = service.listAll();
+ 		List<Profile> listAll = service.listAll(pager);
  		
  		model.addAttribute("listAll", listAll);
  		
