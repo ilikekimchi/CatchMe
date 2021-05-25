@@ -11,7 +11,7 @@
 <body>
 	<div>
 		<div>
-			<div><h3>이력서(myPage)</h3></div>
+			<div><h3>전체 명함</h3></div>
 			<div>
 				<table border="1">
 					<thead>
@@ -133,7 +133,7 @@
 						
 						<td><fmt:formatDate pattern="yyyy-MM-dd" value="${item.profileDate}" /></td>
 							
-							<td><a href="${item.profileSeq}/update">이력서 변경</a></td>
+							<td><a href="${item.profileSeq}/profileCheck">검증(관리자전용)</a></td>
 						</tr>
 					</c:forEach>
 					</tbody>

@@ -183,36 +183,5 @@ public class ProfileController {
 		
 	}
 	
-	//명함 리스트 모두 보기
-	//Model에 list를 담아두면 jsp페이지에 전달할 수 있다.
-	@GetMapping("/list-all")
-	String listAll(Model model) {
-		
-		List<Profile> listAll = service.listAll();
-		
-		model.addAttribute("listAll", listAll);
-		
-		return path + "list-all";
-		
-	}
-	
-	//이력서 검증 여부
-	@GetMapping("/{profileSeq}/customerCheck")
-	String profileCheck(@PathVariable int profileSeq, Model model) {
-		Profile item = service.item(profileSeq);
-		
-		model.addAttribute("item", item);
-		
-		return path + "customerCheck";
-	}
-	
-	@PostMapping("/{profileSeq}/profileCheck")
-	String profileCheck(@PathVariable int profileSeq, Profile item) {
-		item.setProfileSeq(profileSeq);
-		
-		service.profileCheck(item);
-		
-		return "redirect:../list-all";
-	}
 }
 
