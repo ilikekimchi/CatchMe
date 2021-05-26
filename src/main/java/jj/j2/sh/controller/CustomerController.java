@@ -42,11 +42,13 @@ public class CustomerController {
 	//Model에 list를 담아두면 jsp페이지에 전달할 수 있다.
 	@GetMapping("/list")
 	String list(Model model, HttpSession session) {
-		Customer customer = (Customer) session.getAttribute("customer");
-		
-		List<Customer> list = service.list(customer.getCustomerId());
-		
-		model.addAttribute("list", list);
+		/*
+		 * Customer customer = (Customer) session.getAttribute("customer");
+		 * 
+		 * List<Customer> list = service.list(customer.getCustomerId());
+		 * 
+		 * model.addAttribute("list", list);
+		 */
 	
 		return path + "list";
 		

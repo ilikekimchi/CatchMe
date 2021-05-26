@@ -5,14 +5,15 @@
       const form = document.signupForm0;
       
       if(form.companyId.value == ""){
-         $('#pid-msg').html("필수 입력 사항입니다.");
+         
+         $('#id-msg').css('color', 'red');
          return false;
       }
 
       var chk = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-      if(!chk.test(form.customerId.value)){
-         $('#pid-msg').html("올바르지 않은 형식입니다.");
-         $('#companyId').css('border', '1px solid red');
+      if(!chk.test(form.companyId.value)){
+         $('#id-msg').html("올바르지 않은 형식입니다.");
+         $('#id-msg').css('color', 'red');
          return false;
       }
 
@@ -30,12 +31,12 @@
             // 200(성공): 서버가 요청을 제대로 처리했다는 뜻이다. 
             if(xhr.status == 200) {
                if(xhr.responseText == 'OK') { 
-                  $("#pid-msg").html("");
-                  $('#companyId').css('border', '1px solid green');
+                  $("#id-msg").html("");
+                  
                   form.id_confirm0.value = form.companyId.value;
                } else {
-                  $("#pid-msg").html("사용할 수 없는 이메일입니다.");
-                  $('#companyId').css('border', '1px solid red');
+                  $("#id-msg").html("사용할 수 없는 이메일입니다.");
+                  $('#id-msg').css('color', 'red');
                }
             }
          }   
@@ -113,7 +114,8 @@
          form.passwd_confirm0.focus();
          return;
       }
-      if(form.companyName.value == "") {
+      
+      /*if(form.companyName.value == "") {
          alert('기업명을 입력 해 주세요');
          form.companyName.focus();
          return;
@@ -147,6 +149,7 @@
          alert('한줄소개를 입력 해 주세요');
          form.companyWriting.focus();
          return;
-      }
+      }*/
+      
       form.submit();
    }

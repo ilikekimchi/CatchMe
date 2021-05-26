@@ -24,25 +24,30 @@
 			<h3 id="member">기업회원</h3>
 			<div>
 				<form name="signupForm0" method="post">
-					<input name="companyImg" type="hidden" value="기업" >
+					<div class="name-form">
+						<input name="companyName" type="text" id="name">
+						<label class="name-ph">기업명</label>
+						<span class="name-ph-t placeholder">기업명</span>
+						<span id="" class="msg"></span>
+					</div>
 					<div class="email-form">
+						<input name="companyId" type="text" id="companyId" onblur="confirmId0()">
 						<input name="id_confirm0" type="hidden" value="" >
-						<input name="companyId" type="text" id="companyId"> <!-- <a href="javascript:confirmId0()">중복검사</a> -->
 						<label class="email-ph">이메일</label>
 						<span class="email-ph-t">이메일</span>
 						<span id="id-msg" class="msg"> </span>
 					</div>
 					<div class="pw-form">
-						<label>비밀번호</label>
-						<input name="companyPw" type="password">
+						<input name="companyPw" type="password" id="pwd1">
+						<label class="pwd-ph">비밀번호</label>
+						<span class="pwd-ph-t placeholder">비밀번호</span>
+						<span id="" class="msg"></span>
 					</div>
 					<div class="pw-cf-form">
-						<label>비밀번호 확인</label>
-						<input name="passwd_confirm0" type="password" >
-					</div>
-					<div style="display: none;">
-						<label>기업명</label>
-						<input name="companyName" type="text" >
+						<input name="passwd_confirm0" type="password" id="pwd2">
+						<label class="pwd-cf-ph">비밀번호 확인</label>
+						<span class="pwd-cf-ph-t placeholder">비밀번호 확인</span>
+						<span id="" class="msg"></span>
 					</div>
 					<!-- <div style="display: none;">
 						<label>대표자명</label>

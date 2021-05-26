@@ -521,14 +521,19 @@ body {
   letter-spacing:3px;
   padding-top:50px;
   line-height:50px;
+  
+  width: 1100px;
+  margin: 0 auto;
 }
 
 .myhome > .alarm {
   display:block;
-  width:100%;
+  width:1100px;
   height:200px;
   background-color:rgba(224, 224, 224, 0.3);
-  border:1px solid #e0e0e0;
+  border:1px solid #999595;
+  
+  margin: 0 auto;
 }
 
 .myhome > .alarm ul {
@@ -559,9 +564,12 @@ body {
 }
 
 .biz-card {
-  width:100%;
+  width: 1100px;
+  min-width: 683px;
+  
+  margin: 0 auto;
 
-  margin-top:20px;
+  margin-top: 20px;
 }
 
 .biz-card > .biz-card-title > p {
@@ -574,9 +582,11 @@ body {
 
 .biz-card .biz-card-1 {
   background-color:rgba(224, 224, 224, 0.3);
-  border:1px solid #e0e0e0;
+  
   display:flex;
   flex-wrap:wrap;
+  
+  box-shadow: 2px 2px 6px 0px #4c4c4c;
 }
 
 .biz-card .biz-card-1 .img-box {

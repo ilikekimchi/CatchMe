@@ -1,0 +1,146 @@
+@charset "UTF-8";
+
+input {
+	font-family: "BMJUA";
+	color: #4c4c4c;
+	
+	box-shadow: none;
+	font-size: 1em;
+	border: none;
+}
+
+input:focus {
+	outline: none;
+	color: #4c4c4c;
+}
+
+input::placeholder {
+	font-family: "BMJUA";
+}
+
+.search-box {
+	position: relative;
+	display: flex;
+	width: 672px;
+	margin: 0 auto;
+}
+
+.search-area {
+	background: white;
+	width: 100%;
+	height: 46px;
+	/* border: 1px solid #4876ef; */
+	box-shadow: 1px 1px 6px 0px #4c4c4c;
+}
+
+.search-area>input {
+	position: absolute;
+	float: right;
+	right: 55px;
+	
+	width: 35%;
+	height: 40px;
+	padding: 3px 0px;
+	background: none;
+}
+
+.search-area>input::placeholder {
+	color: #4c4c4c;
+	font-size: 15px;
+}
+
+.search-icon {
+	position: absolute;
+	background-image: url("/image/search.png");
+	background-repeat: no-repeat;
+	width: 24px;
+	height: 24px;
+	top: 12px;
+	left: 620px;
+}
+
+.search-close {
+	
+	position: absolute;
+	top: 17px;
+	left: 625px;
+	
+	background-image: url("/image/search-close.png");
+	
+	width: 18px;
+	height: 12px;
+	
+	cursor: pointer;
+}
+
+.region-search {
+	position: absolute;
+	top: 16.5px;
+	left: 40px;
+	color: #4876ef;
+	
+	cursor: pointer;
+}
+
+.job-search {
+	position: absolute;
+	top: 12.5px;
+	left: 220px;
+	color: #4876ef;
+	
+	cursor: pointer;
+}
+
+.region {
+	position: absolute;
+    width: 670px;
+    height: 350px;
+    background-color: #f1f1f1;
+    display: none;
+    z-index: 1;
+    border: 1px solid #4876ef;
+    border-radius: 24px;
+}
+
+.job {
+	position: absolute;
+    width: 670px;
+    height: 350px;
+    background-color: #f1f1f1;
+    display: none;
+    z-index: 1;
+    border: 1px solid #4876ef;
+    border-radius: 24px;
+}
+
+.line1 {
+	position: absolute;
+    height: 21px;
+    border: 1px solid #bfbfbf;
+    top: 13px;
+    left: 180px;
+}
+
+.line2 {
+	position: absolute;
+    height: 21px;
+    border: 1px solid #bfbfbf;
+    top: 13px;
+    left: 360px;
+}
+
+.radius {
+	position: absolute;
+	
+	top: 25px;
+	
+	border-radius: 25px;
+}
+
+.home-search {
+	top: 250px;
+}
+
+.board-search {
+	top: -47px;
+}

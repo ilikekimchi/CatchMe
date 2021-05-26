@@ -96,7 +96,7 @@ label {
 .container {
 	position: absolute;
     width: 1000px;
-    height: 800px;
+    height: 700px;
     top: 7%;
     left: 50%;
     transform: translateX(-50%);
@@ -138,6 +138,7 @@ label {
 	position: absolute;
     width: 255px;
     height: 39px;
+    top: 80px;
 }
 
 .email-ph {
@@ -171,21 +172,21 @@ label {
 	position: absolute;
     width: 255px;
     height: 39px;
-    top: 80px;
+    top: 160px;
 }
 
 .pw-cf-form {
 	position: absolute;
     width: 255px;
     height: 39px;
-    top: 160px;
+    top: 240px;
 }
 
 .signup-btn {
 	position: absolute;
 
 	width: 300px;
-    top: 530px;
+    top: 350px;
     position: absolute;
     font-size: 24px;
     font-family: "BMJUA";
