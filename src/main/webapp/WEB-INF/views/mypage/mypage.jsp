@@ -8,9 +8,6 @@
 
 <link href="/css/mypage.css" rel="stylesheet" />
 
-</head>
-<body>
-
 	<link
 		href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap"
 		rel="stylesheet">
@@ -19,7 +16,10 @@
 	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
 
-	<!-- 제이쿼리 불러오기 -->
+</head>
+<body>
+
+
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -46,26 +46,6 @@
 
 	</div>
 
-	<div class="add">
-
-		<div class="img-box">
-
-			<a href="#"><img
-				src="https://postfiles.pstatic.net/MjAyMTA0MTRfMTg2/MDAxNjE4Mzg5NTYwNTc1.dGlO6Gxac872YbCXRGAm_Ecw7WIGNBR_oHanmdVq2R4g.xfJEQ-CoXZXpAZgTK9NlWVCdmIRLcwm2k6bhYW06fSMg.JPEG.anvkak3000/%EA%B4%91%EA%B3%A0.jpg?type=w580"
-				alt=""></a>
-
-		</div>
-
-		<div class="go-top">
-
-			<button>위로</button>
-
-		</div>
-
-	</div>
-
-
-
 	<div class="side-bar">
 
 		<div class="logo-box">
@@ -82,7 +62,7 @@
 				<li><a href="/mypage"><i class="fas fa-home"></i>개인회원 홈</a></li>
 
 				<li><a href="/userinfo"><i class="fas fa-user-edit"></i>회원정보</a></li>
-				<li><a href="#"><i class="far fa-address-card"></i>이력서</a></li>
+				<li><a href="/resume"><i class="far fa-address-card"></i>이력서</a></li>
 				<li><a href="#"><i class="far fa-building"></i>기업의 요청</a></li>
 				<li><a href="#"><i class="fas fa-handshake"></i>매칭된 기업</a></li>
 				<li><a href="#"><i class="fas fa-caret-square-down"></i>메뉴4</a></li>
@@ -138,8 +118,8 @@
 
 				<div class="biz-card-button">
 
-					<button class="update">수정하기</button>
-					<button class="status">현재상태</button>
+					<div><a href="/resume">수정하기</a></div>
+					<div><span>현재상태</span></div>
 
 				</div>
 

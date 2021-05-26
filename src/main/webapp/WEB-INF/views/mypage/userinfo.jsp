@@ -8,19 +8,22 @@
 
 <link href="/css/userinfo.css" rel="stylesheet" />
 
-</head>
-<body>
+
 	<link
 		href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap"
 		rel="stylesheet">
 
-	<!-- 폰트어썸 불러오기 -->
 	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
-
-	<!-- 제이쿼리 불러오기 -->
-	<script
+		
+			<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		
+		<script src="/js/userinfo.js" type="text/javascript"></script>
+
+</head>
+<body>
+
 
 
 	<div class="top-bar">
@@ -80,8 +83,8 @@
 			<ul>
 				<li><a href="/mypage"><i class="fas fa-home"></i>개인회원 홈</a></li>
 
-				<li><a href="#"><i class="fas fa-user-edit"></i>회원정보</a></li>
-				<li><a href="#"><i class="far fa-address-card"></i>이력서</a></li>
+				<li><a href="/userinfo"><i class="fas fa-user-edit"></i>회원정보</a></li>
+				<li><a href="/resume"><i class="far fa-address-card"></i>이력서</a></li>
 				<li><a href="#"><i class="far fa-building"></i>기업의 요청</a></li>
 				<li><a href="#"><i class="fas fa-handshake"></i>매칭된 기업</a></li>
 				<li><a href="#"><i class="fas fa-caret-square-down"></i>메뉴4</a></li>
@@ -146,10 +149,13 @@
 
 						<div class="phone-title wid-1">휴대폰</div>
 						<div class="phone-val">010-8602-3263</div>
+						<input type="text" class="input-style tel-update">
 
 						<div class="prove">인증</div>
 
-						<button>수정</button>
+						<button type="button" class="tel-confirm-button confirm">확인</button>	
+						<button type="button" class="tel-update-button update">수정</button>
+						
 
 					</div>
 

@@ -88,6 +88,11 @@ public class RootController {
 				return "mypage/userinfo";
 			}
 			
+			@RequestMapping("/resume") 
+			String resume() {
+				return "mypage/resume";
+			}
+			
 			@PostMapping("/login0")
 			String login0(Company item, HttpSession session, Model model,
 					HttpServletRequest request) {

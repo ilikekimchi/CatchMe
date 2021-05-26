@@ -2,6 +2,8 @@
 
 
 
+
+
 @font-face {
     font-family: 'BMJUA';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
@@ -346,13 +348,17 @@ label[for] {
   text-align:center;
 }
 
+button{
+background: inherit ; border:none; box-shadow:none; border-radius:0; padding:0; overflow:visible; cursor:pointer}
+
 /* 커스텀 */
 
 /* 고정형 .con 시작 */
 
 .con {
-width:1200px;
-margin:0 auto;
+  width:100%;
+max-width:1200px;
+  min-width:1200px;
 }
 
 /* 고정형 .con 끝 */
@@ -509,7 +515,7 @@ body {
 }
 
 .myhome {
-
+  width:100%;
   height:100%;
 }
 
@@ -522,63 +528,12 @@ body {
   line-height:50px;
 }
 
-.myhome > .alarm {
-  display:block;
-  width:100%;
-  height:200px;
-  background-color:rgba(224, 224, 224, 0.3);
-  border:1px solid #e0e0e0;
-}
-
-.myhome > .alarm ul {
-  width:100%;
-  height:100%;
+.myhome .user-info {
+  
   display:flex;
-  justify-content:space-around;
-  align-items:center;
 }
 
-.myhome > .alarm ul li a {
-  width:120px;
-  height:120px;
-  border-radius:50%;
-  background-color:#bfbfbf;
-  display:block;
-  text-align:center;
-  color:white;
-  line-height:120px;
-  font-size:2rem;
-}
-
-.myhome > .alarm span {
-  display:block;
-  text-align:center;
-  margin-top:15px;
-  font-size:1.1rem;
-}
-
-.biz-card {
-  width:100%;
-
-  margin-top:20px;
-}
-
-.biz-card > .biz-card-title > p {
-  color:#373f57;
-  font-size:36px;
-  font-weight:bold;
-  letter-spacing:3px;
-  line-height:50px;
-}
-
-.biz-card .biz-card-1 {
-  background-color:rgba(224, 224, 224, 0.3);
-  border:1px solid #e0e0e0;
-  display:flex;
-  flex-wrap:wrap;
-}
-
-.biz-card .biz-card-1 .img-box {
+.myhome .user-info > .img-box {
   width:120px;
   height:120px;
   border-radius:50%;
@@ -587,103 +542,120 @@ body {
   margin:30px;
 }
 
-.biz-card .biz-card-1 .img-box img {
+.myhome .user-info > .img-box img {
   width:100%;
   height:100%;
   object-fit: cover;
 }
 
-.biz-card .biz-card-small {
+.myhome .user-basic-info {
 
+  margin-left:250px;
   width:60%;
   height:100%;
+  font-size:18px;
 }
 
-.biz-card .biz-card-small div {
-  margin-top:15px;
-  
+.myhome .user-basic-info .gibon > .title {
+  padding:30px 0 30px 0;
+  font-size:20px;
 }
 
-.biz-card .biz-card-small > .name {
-  display:inline-block;
-  font-weight:bold;
-  font-size:25px;
-}
-
-.biz-card .biz-card-small > .birth {
-  display:inline-block;
-}
-
-.biz-card .license {
-
-  width:100%;
-  margin:0 auto;
-}
-
-.biz-card .license ul {
+.hap {
+  text-align:left;
   display:flex;
-  
-}
-
-.biz-card .license ul li {
-  background-color:rgba(72, 118, 239, 0.2);
-  color:#4876ef;
-  padding:10px;
-  margin-left:30px;
-  margin-top:30px;
-  margin-bottom:30px;
-  border-radius:10px;
-}
-
-.add {
-  position:fixed;
-  right:0;
-  top:100px;
-  overflow:hidden;
-}
-
-.add > .img-box {
-
-  width:250px;
-  margin-right:50px;
-  overflow:hidden;
-}
-
-.add > .img-box img {
-  width:100%;
-  object-fit:cover;
-}
-
-.add .go-top button {
-  
-  margin-left:35%;
-}
-
-.biz-card .biz-card-button {
-
-  width:250px;
-}
-
-.biz-card .biz-card-button div:first-child {
-  margin-top:60px;
-}
-
-.biz-card .biz-card-button div {
-	font-family: 'BMJUA';
-  border:1px solid #d7dce5;
-  color: #5c667b;
-  background-color: #fff;
-  display:block;
-  width:160px;
-  padding:10px;
   margin-top:20px;
-  margin:20px auto 0 auto;
-  cursor:pointer;
-  border-radius:5px;
-  font-size:14px;
-  text-align:center;
+  align-items:center;
 }
 
-.biz-card .biz-card-button div:hover {
-	background-color: #dfdfdf;
+.wid-1 {
+  width:130px;
+  color:#8491a7;
+}
+
+ .myhome .user-basic-info .edu-info .mail, .myhome .user-basic-info .edu-info .address {
+  padding-top:15px;
+}
+
+.myhome .user-basic-info .edu-info > .title {
+  padding:60px 0 30px 0;
+  font-size:20px;
+}
+
+.myhome .user-basic-info .edu-info button:hover {
+  background-color: #efefef;
+}
+
+.input-style {
+  padding:0 15px 0 25px;
+  width:350px;
+  height:40px;
+  border:1px solid #bfbfbf;
+  box-sizing:border-box;
+  color:#222;
+  font-size:16px;
+  font-family: 'BMJUA';
+  line-height:46px;
+}
+
+.myhome .user-basic-info .name input {
+  width:700px;
+  
+}
+
+.edu-info .fin-edu {
+  height:80px;
+  border-bottom:1px solid #bfbfbf;
+}
+
+.edu-info .fin-edu button {
+  width:calc(100% / 3);
+  padding:0;
+  height:40px;
+  border:1px solid #bfbfbf;
+  box-sizing:border-box;
+  color:#888;
+  font-size:16px;
+  line-height:40px;
+  background-color:rgba(224, 224, 224, 0.3);
+  font-family: 'BMJUA';
+}
+
+.edu-info .fin-edu button:nth-child(2), .edu-info .fin-edu button:nth-child(3) {
+  margin-left:-5px;
+}
+
+.edu-info .fin-edu .button-click {
+  background-color:#4876ef;
+  border:1px solid #4876ef;
+  color:white;
+}
+
+.edu-info .fin-edu .button-click:hover {
+  color: white !important;
+    background-color:#4876ef !important;
+  border:1px solid #4876ef !important;
+}
+
+select {
+  overflow:hidden;
+  padding:0 29px 1px 25px;
+  width:350px;
+  height:40px;
+  border:1px solid #bfbfbf;
+  font-family: 'BMJUA';
+  font-size:16px;
+  cursor:pointer;
+  -webkit-appearance:none;
+}
+
+option {
+  padding:15px 29px 1px 25px;
+  width:330px;
+  height:40px;
+}
+
+.sel-back {
+ background:url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%;
+
 }
