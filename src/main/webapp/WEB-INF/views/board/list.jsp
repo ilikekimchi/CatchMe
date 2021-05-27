@@ -8,7 +8,10 @@
 <title></title>
 
 <link href="/css/board.css" rel="stylesheet" />
+
 <link href="/css/header.css" rel="stylesheet" />
+<link href="/css/footer.css" rel="stylesheet" />
+
 <link href="/css/biz-card.css" rel="stylesheet" />
 <link href="/css/side-filter.css" rel="stylesheet" />
 
@@ -205,5 +208,23 @@
 			</div>
 		</div>
 	</div>
+	<footer>
+		<div class="copyright">
+			<ul>
+				<li class="logo"></li>
+				<li>[34503] 대전광역시 동구 우암로 352-21  TEL 042-670-0600   FAX 042-670-0519</li>
+			</ul>
+		</div>
+		<div class="policy">
+			<ul>
+				<li>찾아오시는 길</li>
+				<li>전화번호안내</li>
+				<li>개인정보처리방침</li>
+				<li>고객센터</li>
+				<li>이용약관</li>
+				<li>환불정책</li>
+			</ul>
+		</div>
+	</footer>
 </body>
 </html>

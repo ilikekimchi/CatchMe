@@ -38,6 +38,7 @@ input:focus {outline:none;}
 .menu-box-1 > ul > li:hover > a{
   text-decoration:underline;
   text-underline-position:under;
+  
 }
 
 .menu-box-1 ul .search-box {
