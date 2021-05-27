@@ -9,7 +9,6 @@ import jj.j2.sh.model.Career;
 import jj.j2.sh.model.Certificate;
 import jj.j2.sh.model.Profile;
 import jj.j2.sh.model.Skill;
-import jj.j2.sh.util.Pager;
 
 public interface ProfileService {
 
@@ -26,9 +25,11 @@ public interface ProfileService {
 	
 	void delete(String customerId);
 
-	List<Profile> listAll(Pager pager);
+	//List<Profile> listAll(Pager pager);
 
 	void profileCheck(Profile item);
+
+	List<Profile> listAll();
 
 	
 

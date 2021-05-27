@@ -102,7 +102,7 @@ public class Pager {
 			return "search=" + search + "&keyword=" + keyword;
 		
 		else if (page == 0)  {
-			return "redirect:/list";
+			return "board/list";
 		}
 		
 		return "search=" + search + "&keyword=" + keyword;		

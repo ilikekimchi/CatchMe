@@ -61,46 +61,50 @@
 	
 	<!-- 검색 -->
 	<sql id="search">
-		SELECT profile.*, customer.customer_name, customer.customer_nnm, customer.customer_phone, 
-		customer.customer_address, customer.customer_birthday, customer.customer_gender,
-		area.area1, area.area2,
-		career.career_company, career.career_date, career.career_work, career.career_category,
-		certificate.certificate_name, certificate.certificate_date, certificate.certificate_writing,
-		skill.skill_content 
-		FROM profile 
+		<where>
+			<if test="search == 1 and keyword != null">
+				customer.customer_nnm LIKE '%' || #{keyword} || '%'
+			</if>
+			
+			<if test="search == 2 and keyword != null">
+				area.area1 LIKE '%' || #{keyword} || '%'
+			</if>
+			
+			<if test="search == 3 and keyword != null">
+				career.careercareer_category LIKE '%' || #{keyword} || '%'
+			</if>
+			
+			<if test="search == 4 and keyword != null">
+				skill.skill_content LIKE '%' || #{keyword} || '%'
+			</if>
+			
+			<if test="search == 5 and keyword != null">
+				career.career_date LIKE '%' || #{keyword} || '%'
+			</if>
+		</where>	
+	</sql>
+	<!-- 
+	<select id="total" resultType="Integer">
+		SELECT COUNT(*)
+		FROM profile
 		JOIN customer ON profile.customer_id=customer.customer_id
 		JOIN skill ON profile.profile_seq=skill.profile_seq
 		JOIN area ON profile.profile_seq=area.profile_seq		 
 		JOIN career ON profile.profile_seq=career.profile_seq		 
-		JOIN certificate ON profile.profile_seq=certificate.profile_seq
-		ORDER BY profile.profile_seq DESC
-		<where>
-			<if test="search == 1 and keyword != null">
-				customer.customer_nnm LIKE CONCAT('%', CONCAT(#{keyword},'%'))
-			</if>
-			
-			<if test="search == 2 and keyword != null">
-				area.area1 LIKE CONCAT('%', CONCAT(#{keyword},'%'))
-			</if>
-			
-			<if test="search == 3 and keyword != null">
-				career.careercareer_category LIKE CONCAT('%', CONCAT(#{keyword},'%'))
-			</if>
-			
-			<if test="search == 4 and keyword != null">
-				skill.skill_content LIKE CONCAT('%', CONCAT(#{keyword},'%'))
-			</if>
-			
-			<if test="search == 5 and keyword != null">
-				career.career_date LIKE CONCAT('%', CONCAT(#{keyword},'%'))
-			</if>
-		</where>
-	</sql>
-	
-	<select id="total" resultType="Integer">
-		SELECT COUNT(*) FROM
-		(<include refid="search"></include>) sub
-	</select>
+		JOIN certificate ON profile.profile_seq=certificate.profile_seq	
+		<include refid="search"></include>
+		GROUP BY profile.profile_seq, profile.profile_img, profile.profile_money,
+        profile.profile_state, profile.profile_school, profile.profile_school_skill,
+        profile.profile_school_state, profile.profile_army, profile.profile_army_writing,
+        profile.profile_writing, profile.profile_time, profile.profile_check,
+        profile.profile_date, profile.customer_id,
+        customer.customer_name, customer.customer_nnm, customer.customer_phone, 
+		customer.customer_address, customer.customer_birthday, customer.customer_gender,
+		area.area1, area.area2,
+		career.career_company, career.career_date, career.career_work, career.career_category,
+		certificate.certificate_name, certificate.certificate_date, certificate.certificate_writing,
+		skill.skill_content
+	</select>-->
 	<!-- 검색 -->
 		
 	<!-- 이력서(이직자 자신)보기 -->
@@ -128,12 +132,24 @@
 		career.career_company, career.career_date, career.career_work, career.career_category,
 		certificate.certificate_name, certificate.certificate_date, certificate.certificate_writing,
 		skill.skill_content
-		FROM(<include refid="search"></include>) sub
+		FROM profile
 		JOIN customer ON profile.customer_id=customer.customer_id
 		JOIN skill ON profile.profile_seq=skill.profile_seq
 		JOIN area ON profile.profile_seq=area.profile_seq		 
 		JOIN career ON profile.profile_seq=career.profile_seq		 
 		JOIN certificate ON profile.profile_seq=certificate.profile_seq		 
+		<include refid="search"></include>
+		GROUP BY profile.profile_seq, profile.profile_img, profile.profile_money,
+        profile.profile_state, profile.profile_school, profile.profile_school_skill,
+        profile.profile_school_state, profile.profile_army, profile.profile_army_writing,
+        profile.profile_writing, profile.profile_time, profile.profile_check,
+        profile.profile_date, profile.customer_id,
+        customer.customer_name, customer.customer_nnm, customer.customer_phone, 
+		customer.customer_address, customer.customer_birthday, customer.customer_gender,
+		area.area1, area.area2,
+		career.career_company, career.career_date, career.career_work, career.career_category,
+		certificate.certificate_name, certificate.certificate_date, certificate.certificate_writing,
+		skill.skill_content
 		ORDER BY profile.profile_seq DESC
 	</select>
 	

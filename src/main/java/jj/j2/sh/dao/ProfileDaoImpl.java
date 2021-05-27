@@ -39,7 +39,8 @@ public class ProfileDaoImpl implements ProfileDao {
 	public void delete(String customerId) {
 		sql.delete("profile.delete", customerId);
 	}
-
+	
+	/* 서치 부분
 	@Override
 	public List<Profile> listAll(Pager pager) {
 		return sql.selectList("profile.listAll", pager);
@@ -49,11 +50,16 @@ public class ProfileDaoImpl implements ProfileDao {
 	public int total(Pager pager) {
 		return sql.selectOne("profile.total", pager);
 	}
-
+*/
 	
 	@Override
 	public void profileCheck(Profile item) {
 		sql.update("profile.profileCheck", item);
+	}
+
+	@Override
+	public List<Profile> listAll() {
+		return sql.selectList("profile.listAll");
 	}
 
 

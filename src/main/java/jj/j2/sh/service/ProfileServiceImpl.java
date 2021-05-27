@@ -119,7 +119,12 @@ public class ProfileServiceImpl implements ProfileService {
 	public void delete(String customerId) {
 		dao.delete(customerId);
 	}
-
+	@Override
+	public List<Profile> listAll() {
+		return dao.listAll();
+	}
+	
+	/* 서치 부분
 	@Override
 	public List<Profile> listAll(Pager pager) {
 		int total = dao.total(pager);
@@ -128,7 +133,7 @@ public class ProfileServiceImpl implements ProfileService {
 		
 		return dao.listAll(pager);
 	}
-
+*/
 	@Override
 	public void profileCheck(Profile item) {
 		dao.profileCheck(item);

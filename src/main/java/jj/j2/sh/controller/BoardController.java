@@ -43,6 +43,17 @@ public class BoardController {
     //명함 리스트 모두 보기
  	//Model에 list를 담아두면 jsp페이지에 전달할 수 있다.
  	@GetMapping("/list")
+ 	String listAll(Model model) {
+ 		
+ 		List<Profile> listAll = service.listAll();
+ 		
+ 		model.addAttribute("listAll", listAll);
+ 		
+ 		return path + "list";
+ 		
+ 	}
+ 	/* 서치기능 오류..
+ 	@GetMapping("/list")
  	String listAll(Model model, Pager pager) {
  		
  		List<Profile> listAll = service.listAll(pager);
@@ -51,7 +62,7 @@ public class BoardController {
  		
  		return path + "list";
  		
- 	}
+ 	}*/
  	
  	//이력서 검증 여부	
  	@GetMapping("/{profileSeq}/profileCheck")
