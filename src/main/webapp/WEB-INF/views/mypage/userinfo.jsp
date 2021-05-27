@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,66 +9,62 @@
 <title></title>
 
 <link href="/css/userinfo.css" rel="stylesheet" />
+<link href="/css/footer.css" rel="stylesheet" />
+<link href="/css/normal.css" rel="stylesheet" />
+<link href="/css/top-bar.css" rel="stylesheet" />
 
-
-	<link
-		href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap"
-		rel="stylesheet">
-
-	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+<!-- 폰트어썸 불러오기 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		
-			<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		
-		<script src="/js/userinfo.js" type="text/javascript"></script>
+<script src="/js/userinfo.js" type="text/javascript"></script>
 
 </head>
 <body>
 
-
-
-	<div class="top-bar">
-
-		<div class="con">
-
-
-			<nav class="menu-box-1">
-				<ul class="row flex flex-ai-c">
-					<li class="cell"><a href="#">사람정보</a></li>
-					<li class="cell"><a href="#">기업정보</a></li>
-					<li class="cell"><a href="#">라운지</a></li>
-					<li class="cell"><a href="#">마이페이지</a></li>
-				</ul>
-			</nav>
-
-			<a href="#" class="btn-go-submit"><img
-				src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/600px-LinkedIn_logo_initials.png"
-				alt=""></a>
-
-		</div>
-
-	</div>
-
-	<div class="add">
-
-		<div class="img-box">
-
-			<a href="#"><img
-				src="https://postfiles.pstatic.net/MjAyMTA0MTRfMTg2/MDAxNjE4Mzg5NTYwNTc1.dGlO6Gxac872YbCXRGAm_Ecw7WIGNBR_oHanmdVq2R4g.xfJEQ-CoXZXpAZgTK9NlWVCdmIRLcwm2k6bhYW06fSMg.JPEG.anvkak3000/%EA%B4%91%EA%B3%A0.jpg?type=w580"
-				alt=""></a>
-
-		</div>
-
-		<div class="go-top">
-
-			<button>위로</button>
-
-		</div>
-
-	</div>
-
-
+<div class="top-bar">
+  
+    <div class="logo-box">
+    
+    <a href="/"><img src="https://i.postimg.cc/dQ2QWTtK/image.png" alt=""></a>
+    
+  </div>
+  
+  <div class="con">
+    
+    
+    <nav class="menu-box-1">
+      <ul class="row flex flex-ai-c"> 
+<li class="cell my-r"><a href="#">지역별</a></li>
+<li class="cell my-r"><a href="#">직업별</a></li>
+<li class="cell my-r"><a href="#">사람정보</a></li>
+<li class="cell my-r"><a href="#">기업정보</a></li>
+<li class="cell my-r"><a href="#">기업리뷰</a></li>
+<li class="search-box">
+  <div class="search-input">
+    <input type="text" placeholder="검색어를 입력하세요">
+    <button type="submit" class="search-btn">
+      
+    </button>
+  </div>
+</li>
+      </ul>
+    </nav>
+    
+  </div>
+  
+  <div class="member">
+    
+    <a href="#" class="go-mypage">
+      
+      <span class="mypage-img"></span>
+      <span class="name">로그인해주세요</span>
+      
+    </a>
+    
+  </div>
+  
+</div>
 
 	<div class="side-bar">
 
@@ -85,9 +83,8 @@
 
 				<li><a href="/userinfo"><i class="fas fa-user-edit"></i>회원정보</a></li>
 				<li><a href="/resume"><i class="far fa-address-card"></i>이력서</a></li>
-				<li><a href="#"><i class="far fa-building"></i>기업의 요청</a></li>
-				<li><a href="#"><i class="fas fa-handshake"></i>매칭된 기업</a></li>
-				<li><a href="#"><i class="fas fa-caret-square-down"></i>메뉴4</a></li>
+				<li><a href="/requestUser"><i class="far fa-building"></i>기업의 요청</a></li>
+				<li><a href="/matchUser"><i class="fas fa-handshake"></i>매칭된 기업</a></li>
 			</ul>
 
 		</nav>
@@ -128,14 +125,16 @@
 					<div class="year flex font-left border">
 
 						<div class="year-title wid-1">생년월일</div>
-						<div class="year-val">1995년 10월 08일</div>
+						<div class="year-val">
+							<fmt:formatDate value="${sessionScope.customer.customerBirthday}" pattern="yyyy년 MM월 dd일"/>
+						</div>
 
 					</div>
 
 					<div class="sex flex font-left border">
 
 						<div class="sex-title wid-1">성별</div>
-						<div class="sex-val">남성</div>
+						<div class="sex-val">${sessionScope.customer.customerGender}</div>
 
 					</div>
 
@@ -148,10 +147,16 @@
 					<div class="phone flex font-left border">
 
 						<div class="phone-title wid-1">휴대폰</div>
-						<div class="phone-val">010-8602-3263</div>
-						<input type="text" class="input-style tel-update">
 
-						<div class="prove">인증</div>
+						<div class="phone-val">
+							<c:if test="${sessionScope.customer.customerPhone == null}">
+								<div>등록된 휴대폰 번호가 없습니다.</div>
+							</c:if>
+							<c:if test="${sessionScope.customer.customerPhone != null}">
+								<div>${sessionScope.customer.customerPhone}</div>
+								<div class="prove">인증</div>
+							</c:if>
+						</div>
 
 						<button type="button" class="tel-confirm-button confirm">확인</button>	
 						<button type="button" class="tel-update-button update">수정</button>
@@ -165,14 +170,20 @@
 						<div class="mail-val">${sessionScope.customer.customerId}</div>
 
 						<div class="prove">인증</div>
-						<button>수정</button>
 
 					</div>
 
 					<div class="address flex font-left border">
 
 						<div class="address-title wid-1">주소</div>
-						<div class="address-val">대전광역시 동구 우암로 352-21</div>
+						<div class="address-val">
+							<c:if test="${sessionScope.customer.customerAddress == null}">
+								<div>등록된 주소가 없습니다.</div>
+							</c:if>
+							<c:if test="${sessionScope.customer.customerAddress != null}">
+								<div>${sessionScope.customer.customerAddress}</div>
+							</c:if>
+						</div>
 
 						<button>수정</button>
 
@@ -185,6 +196,25 @@
 		</div>
 
 	</div>
+	
+			<footer>
+		<div class="copyright">
+			<ul>
+				<li class="logo"></li>
+				<li>[34503] 대전광역시 동구 우암로 352-21  TEL 042-670-0600   FAX 042-670-0519</li>
+			</ul>
+		</div>
+		<div class="policy">
+			<ul>
+				<li>찾아오시는 길</li>
+				<li>전화번호안내</li>
+				<li>개인정보처리방침</li>
+				<li>고객센터</li>
+				<li>이용약관</li>
+				<li>환불정책</li>
+			</ul>
+		</div>
+	</footer>
 
 
 </body>

@@ -13,6 +13,7 @@ public class Company {
 	private int companyPay; //코인(보유 수)
 	private String companyRole; //찜한유저목록(스크랩)
 	private String companyHomePage; //홈페이지
+	private String companyImg; //기업 아이콘
 	
 	
 	public String getCompanyId() {
@@ -87,8 +88,11 @@ public class Company {
 	public void setCompanyHomePage(String companyHomePage) {
 		this.companyHomePage = companyHomePage;
 	}
+	public String getCompanyImg() {
+		return companyImg;
+	}
+	public void setCompanyImg(String companyImg) {
+		this.companyImg = companyImg;
+	}
 	
-	
-
-		
 }

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="resume">
+<!-- 이력서(이직자)보기 -->
+	<select id="list" resultType="Resume">
+		SELECT * FROM resume 
+		WHERE customer_id=#{customerId}
+		ORDER BY resume_seq DESC
+	</select>
+	
+	<!-- 이력서 파일 추가 -->
+	<!-- resumeFile에 null이 들어가는것을 방지하기 위해 if문을 씀 -->
+	<insert id="add">
+	<if test="resumeFile == null">
+		INSERT INTO resume
+		(resume_seq, customer_id, resume_date)
+		
+		VALUES (resume_seq.NEXTVAL, #{customerId}, SYSDATE)	
+	</if>
+	<if test="resumeFile != null">
+		INSERT INTO resume
+		(resume_seq, customer_id, resume_file, resume_date)
+		
+		VALUES (resume_seq.NEXTVAL, #{customerId}, #{resumeFile}, SYSDATE)	
+	</if>	
+	
+	</insert>
+	
+	
+	<select id="item" resultType="Resume">
+		SELECT * FROM resume
+		WHERE resume_seq=#{resumeSeq}
+	</select>
+		
+	<!-- 이력서 파일 변경 -->
+	<update id="update">
+		UPDATE resume
+		SET resume_date=SYSDATE
+		
+		<!-- resumeFile가 null이 아닐때만 바꿈 -->
+		<if test="resumeFile != null">
+			, resume_file=#{resumeFile}
+		</if>
+				
+		WHERE resume_seq=#{resumeSeq}
+	</update>
+	
+	<!-- 이력서 삭제 -->
+	<delete id="delete">
+		DELETE FROM resume
+		WHERE resume_seq=#{resumeSeq}
+	</delete>
+	
+</mapper>

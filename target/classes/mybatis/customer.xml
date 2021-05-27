@@ -2,42 +2,58 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="customer">
-<!-- 내정보(이직자)보기 -->
+
+	<!-- (이직자)마이페이지 -->
 	<select id="list" resultType="Customer">
 		SELECT * FROM customer 
 		WHERE customer_id=#{customerId}
 	</select>
 	
-	<!-- 이직자 회원가입 -->
+	<!-- 이직자 목록 보기(관리자 전용) -->
+	<select id="listAdmin" resultType="Customer">
+		SELECT * FROM customer
+		ORDER BY customer_id ASC
+	</select>
+	
+	<!-- (이직자)회원가입 -->
 	<insert id="add">
 		INSERT INTO customer
-		(customer_id, customer_pw, customer_nnm)
+		(customer_id, customer_pw, customer_nnm, customer_gender,
+		customer_name, customer_phone, customer_address, 
+		customer_birthday)
 		
-		VALUES (#{customerId}, #{customerPw}, #{customerNnm})		
+		VALUES (#{customerId}, #{customerPw}, #{customerNnm}, #{customerGender},
+		#{customerName}, #{customerPhone}, #{customerAddress}, 
+		#{customerBirthday})		
+		
 		<!-- Role(찜하기_스크랩)은 나중에.. -->
+		
 	</insert>
 	
-	
+	<!-- 이직자에 관한 각각의 정보들 -->
 	<select id="item" resultType="Customer">
 		SELECT * FROM customer
 		WHERE customer_id=#{customerId}
 	</select>
-		
-	<!-- 이직자 회원정보 변경 -->
+	
+	<!-- 이직자 정보 변경 -->
 	<update id="update">
 		UPDATE customer
-		SET customer_nnm=#{customerNnm}
+		SET customer_nnm=#{customerNnm}, customer_gender=#{customerGender},
+		customer_name=#{customerName},
+		customer_phone=#{customerPhone}, customer_address=#{customerAddress}, 
+		customer_birthday=#{customerBirthday}
 		
 		WHERE customer_id=#{customerId}
 	</update>
 	
-	<!-- 이직자 회원탈퇴 -->
+	<!-- 이직자 회원 탈퇴 -->	
 	<delete id="delete">
 		DELETE FROM customer
 		WHERE customer_id=#{customerId}
 	</delete>
 	
-	<!-- 사용자가 입력한 패스워드 랑 암호화된 값과 같다면 같은 패스워드 를 얻어옴. -->
+	<!-- 사용자(이직자)가 입력한 패스워드 랑 암호화된 값과 같다면 같은 패스워드 를 얻어옴. -->
 	<select id="login" resultType="Customer">
 		SELECT * FROM customer
 		WHERE customer_id=#{customerId} AND customer_pw=#{customerPw}

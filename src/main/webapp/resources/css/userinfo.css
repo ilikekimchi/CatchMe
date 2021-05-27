@@ -1,442 +1,5 @@
 @charset "UTF-8";
 
-
-
-@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,700);
-
-
-@font-face {
-    font-family: 'BMJUA';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-
-
-html {
- font-family: 'BMJUA';
-}
-
-/* 노말라이즈 */
-body, ul, li, h1 {
-  margin:0;
-  padding:0;
-  list-style:none;
-}
-
-a {
-  color:inherit;
-  text-decoration:none;
-}
-
-label[for] {
-  cursor:pointer;
-  user-select:none;
-}
-
-/* 라이브러리 */
-.block {
-  display:block;
-}
-
-.inline-block {
-  display:inline-block;
-}
-
-.absolute-left {
-  position:absolute;
-  left:0;
-}
-
-.absolute-right {
-  position:absolute;
-  right:0;
-}
-
-.absolute-bottom {
-  position:absolute;
-  bottom:0;
-}
-
-.absolute-top {
-  position:absolute;
-  top:0;
-}
-
-.absolute-center {
-  position:absolute;
-  left:50%;
-  transform:translateX(-50%);
-}
-
-.absolute-middle {
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-}
-
-.absolute-middle.absolute-center {
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translateX(-50%) translateY(-50%);
-}
-
-.relative {
-  position:relative;
-}
-
-.cell {
-  float:left;
-  box-sizing:border-box;
-}
-
-.cell-right {
-  float:right;
-  box-sizing:border-box;
-}
-
-.row::after {
-  content:"";
-  display:block;
-  clear:both;
-}
-
-.clear-both {
-  clear:both;
-}
-
-.img-box > img {
-  width:100%;
-  display:block;
-}
-
-.con {
-  margin-left:auto;
-  margin-right:auto;
-}
-
-.margin-0-auto {
-  margin-left:auto;
-  margin-right:auto;
-}
-
-.text-align-center {
-  text-align:center;
-}
-
-.text-align-right {
-  text-align:right;
-}
-
-.line-height-0 {
-  line-height:0;
-}
-
-.line-height-0 > * {
-  line-height:normal;
-}
-
-.width-30px {
-  width:30px;
-}
-
-.width-35px {
-  width:35px;
-}
-
-.width-40px {
-  width:35px;
-}
-
-.width-45px {
-  width:35px;
-}
-
-.width-50px {
-  width:50px;
-}
-
-.width-80px {
-  width:80px;
-}
-
-.width-100px {
-  width:100px;
-}
-
-.width-100p {
-  width:100%;
-}
-
-.width-60p {
-  width:60%;
-}
-
-.width-55p {
-  width:55%;
-}
-
-.width-50p {
-  width:50%;
-}
-
-.width-45p {
-  width:45%;
-}
-
-.width-40p {
-  width:40%;
-}
-
-.width-30p {
-  width:30%;
-}
-
-.width-35p {
-  width:35%;
-}
-
-.width-100p-except-30px {
-  width:calc(100% - 30px);
-}
-
-.width-100p-except-35px {
-  width:calc(100% - 35px);
-}
-
-.width-100p-except-40px {
-  width:calc(100% - 40px);
-}
-
-.width-100p-except-50px {
-  width:calc(100% - 50px);
-}
-
-.width-100p-except-80px {
-  width:calc(100% - 80px);
-}
-
-.width-100p-except-100px {
-  width:calc(100% - 100px);
-}
-
-.height-100p {
-  height:100%;
-}
-
-.height-50p {
-  height:50%;
-}
-
-.border-box {
-  box-sizing:border-box;
-}
-
-.font-size-dot-8rem {
-  font-size:.8rem;
-}
-
-.table-row {
-  display:table;
-}
-
-.table-row.row::after {
-  display:inline;
-  clear:non;
-}
-
-.table-row > .cell {
-  float:none;
-  display:table-cell;
-}
-
-.border-red {
-  border:10px solid red;
-}
-
-.border-green {
-  border:10px solid green;
-}
-
-.border-blue {
-  border:10px solid blue;
-}
-
-.border-gold {
-  border:10px solid gold;
-}
-
-.border-pink {
-  border:10px solid pink;
-}
-
-/* 라이브러리 - flex */
-* > .flex {
-  display:flex;
-}
-
-* > .flex-grow-1 {
-  flex-grow:1;
-}
-
-* > .flex-jc-c {
-  justify-content:center;
-}
-
-* > .flex-jc-s {
-  justify-content:flex-start;
-}
-
-* > .flex-jc-e {
-  justify-content:flex-end;
-}
-
-* > .flex-jc-sb {
-  justify-content:space-between;
-}
-
-* > .flex-ai-c {
-  align-items:center;
-}
-
-* > .flex-ai-s {
-  align-items:flex-start;
-}
-
-* > .flex-ai-e {
-  align-items:flex-end;
-}
-
-* > .flex-as-s {
-  align-self:stretch;
-}
-
-* > .flex-as-c {
-  align-self:center;
-}
-
-* > .flex-as-s {
-  align-self:flex-start;
-}
-
-* > .flex-as-e {
-  align-self:flex-end;
-}
-
-* > .flex-column-nowrap {
-  flex-flow:column nowrap;
-}
-
-* > .flex-column-wrap {
-  flex-flow:column wrap;
-}
-
-* > .flex-row-wrap {
-  flex-flow:row wrap;
-}
-
-.flex-ch-basis-0 > * {
-  flex-basis:0;
-}
-
-* > .flex-1-0-0 {
-  flex:1 0 0;
-}
-
-.tac {
-  text-align:center;
-}
-
-/* 커스텀 */
-
-/* 고정형 .con 시작 */
-
-.con {
-width:1200px;
-margin:0 auto;
-}
-
-/* 고정형 .con 끝 */
-
-/* 반응형 타입 1 .con 시작 */
-/*
-.con {
-  max-width:1370px;
-}
-*/
-/* 반응형 타입 1 .con 끝 */
-
-/* 반응형 타입 2(넓을때만 반응형) .con 시작 */
-/*
-.con-min-width {
-  min-width:1370px;
-}
-
-.con {
-  margin-left:50px;
-  margin-right:50px;
-}
-*/
-/* 반응형 타입 2(넓을때만 반응형) .con 끝 */
-
-body {
-  height:1000px;
-}
-
-.top-bar > .con .menu-box-1 {
-  height:60px;
-  width:500px;
-  float:right;
-}
-
-.menu-box-1 > ul > li {
-  width:calc(100% / 4);
-  margin-top:3%;
-}
-
-.menu-box-1 > ul > li > a {
-
-  display:block;
-  text-align:center;
-  padding:5px 0;
-  color:#4876ef;
-}
-
-.menu-box-1 > ul > li:hover > a {
-  color:red;
-  text-decoration:underline;
-}
-
-.top-bar {
-  width:100%;
-  height:60px;
-  position:fixed;
-  background-color:white;
-  z-index:1;
-}
-
-.top-bar > .con > .logo {
-  position:absolute;
-  width:40px;
-  height:40px;
-  top:15%;
-}
-
-.top-bar > .con > .btn-go-submit {
-  position:absolute;
-  width:40px;
-  height:40px;
-  right:3%;
-  top:15%;
-}
-
-.top-bar img {
-  width:100%;
-}
-
 .side-bar {
   z-index:20;
   position:fixed;
@@ -495,13 +58,33 @@ body {
   height:44px;
   border-radius:5px;
   background-color:#656565;
-  transition:opacity 0.5s;
+  transition:opacity 0.2s;
   content:"";
   opacity:0;
 }
 
 .side-bar > .side-menu ul li a:hover:before {
-  opacity:0.5;
+  opacity:0.2;
+}
+
+.side-bar > .side-menu ul li:nth-child(2) a:before {
+  display:block;
+  position:absolute;
+  z-index:1;
+  top:20px;
+  left:0;
+  width:220px;
+  height:44px;
+  border-radius:5px;
+  background-color:#4876ef;
+  transition:opacity 0.5s;
+  content:"";
+  opacity:0.2;
+  
+}
+
+.side-bar > .side-menu ul li:nth-child(2) > a {
+	color:#4876ef;
 }
 
 .side-bar > .side-menu i {
@@ -513,8 +96,12 @@ body {
 }
 
 .myhome {
-
+	
+	transform: translateX(32%);
+	
   height:100%;
+  
+  margin-top:50px;
 }
 
 .myhome > .title {

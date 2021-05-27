@@ -46,6 +46,7 @@ public class CompanyServiceImpl implements CompanyService {
 			
 			item.setCompanyPw(null);
 			item.setCompanyName(company.getCompanyName() );
+			item.setCompanyImg(company.getCompanyImg() );
 			item.setCompanyPay(company.getCompanyPay() );
 			item.setCompanyRole(company.getCompanyRole());
 			

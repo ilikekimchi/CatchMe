@@ -93,6 +93,21 @@ public class RootController {
 				return "mypage/resume";
 			}
 			
+			@RequestMapping("/requestUser") 
+			String requestUser() {
+				return "mypage/requestUser";
+			}
+			
+			@RequestMapping("/matchUser") 
+			String matchUser() {
+				return "mypage/matchUser";
+			}
+			
+			@RequestMapping("/talk") 
+			String talk() {
+				return "mypage/talk";
+			}
+			
 			@PostMapping("/login0")
 			String login0(Company item, HttpSession session, Model model,
 					HttpServletRequest request) {
