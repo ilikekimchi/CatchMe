@@ -23,6 +23,7 @@ input::placeholder {
 	display: flex;
 	width: 672px;
 	margin: 0 auto;
+	
 }
 
 .search-area {
@@ -132,7 +133,7 @@ input::placeholder {
 .radius {
 	position: absolute;
 	
-	top: 25px;
+	top: 255px;
 	
 	border-radius: 25px;
 }
