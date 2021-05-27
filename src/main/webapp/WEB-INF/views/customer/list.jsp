@@ -22,7 +22,7 @@
 						</tr>
 					</thead>
 					<tbody>
-					<c:if test="${list.size() < 1}">
+					<%-- <c:if test="${list.size() < 1}">
 						<tr>
 							<td colspan="7">등록 된 사용자가 없습니다</td>
 						</tr>
@@ -36,7 +36,7 @@
 							<td><a href="${item.customerId}/delete">회원탈퇴</a> 
 							<a href="${item.customerId}/update">변경</a></td>
 						</tr>
-					</c:forEach>
+					</c:forEach> --%>
 					</tbody>
 				</table>
 			</div>

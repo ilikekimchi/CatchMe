@@ -8,15 +8,15 @@
 	<!-- 이직자 기술 보기 -->
 	<select id="list" resultType="Skill">
 	SELECT * FROM skill 
-	WHERE profile_seq=#{profileSeq} OR customer_id=#{customerId}
+	WHERE profile_seq=#{profileSeq} 
 	</select>
 	
 	<!-- #{}은 필드명, mybatis-config 에서 세팅해주면 이것을 자동으로 고쳐줌(자바표기법:낙타 표기법) -->
 	<insert id="add">
 	INSERT INTO skill
-	(profile_seq, customer_id, skill_content)
+	(profile_seq, skill_content)
 	
-	VALUES (#{profileSeq}, #{customerId}, #{skillContent})
+	VALUES (#{profileSeq}, #{skillContent})
 	</insert>  
 	
 	<!-- 이직자 기술 수정 -->
@@ -24,13 +24,13 @@
 		UPDATE skill 
 		SET skill_content=#{skillContent}
 		
-		WHERE profile_seq=#{profileSeq} OR customer_id=#{customerId}
+		WHERE profile_seq=#{profileSeq}
 	</update>
 	
 	<!-- 이직자 기술 삭제 -->
 	<delete id="delete">
 		DELETE FROM skill
-		WHERE profile_seq=#{profileSeq} OR customer_id=#{customerId}
+		WHERE profile_seq=#{profileSeq}
 	</delete>
 			
 </mapper>

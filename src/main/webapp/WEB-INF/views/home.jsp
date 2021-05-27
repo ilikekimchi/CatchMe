@@ -8,6 +8,12 @@
 <title></title>
 
 <link href="/css/home.css" rel="stylesheet" />
+
+<link href="/css/footer.css" rel="stylesheet" />
+
+<link href="/css/login-modal.css" rel="stylesheet" />
+<link href="/css/search-box.css" rel="stylesheet" />
+
 <link href="/css/category.css" rel="stylesheet" />
 
 <script type="text/javascript"
@@ -33,7 +39,7 @@
 				</a>
 			</h1>
 			<div class="search-box">
-				<div class="search-area">
+				<div class="search-area radius">
 					<span class="region-search">근무지역</span> <span class="line1"></span>
 					<span class="job-search">직무 · 직종</span> <span class="line2"></span> <input
 						type="text" placeholder="카테고리를 입력해주세요."> <span
@@ -48,7 +54,7 @@
 			</div>
 			<div class="category">
 				<div class="item">
-					<a href="#" class="plain">
+					<a href="/board/list?category=1" class="plain">
 						<div class="icon icon1"></div>
 						<div>IT·프로그래밍</div>
 					</a>
@@ -182,9 +188,23 @@
 		</c:if>
 		<span id="pointer"></span>
 	</div>
-	<footer style="background: #ebe7e7">
-		<div></div>
-		<div></div>
+	<footer>
+		<div class="copyright">
+			<ul>
+				<li class="logo"></li>
+				<li>[34503] 대전광역시 동구 우암로 352-21  TEL 042-670-0600   FAX 042-670-0519</li>
+			</ul>
+		</div>
+		<div class="policy">
+			<ul>
+				<li>찾아오시는 길</li>
+				<li>전화번호안내</li>
+				<li>개인정보처리방침</li>
+				<li>고객센터</li>
+				<li>이용약관</li>
+				<li>환불정책</li>
+			</ul>
+		</div>
 	</footer>
 </body>
 </html>

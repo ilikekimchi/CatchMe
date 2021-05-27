@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--  namespace 와 id는 Dao에서 쓰임 -->
+<!-- resultType을 쓰는 이유는 mybatis 에서 쓰기 좋게 바꿔주려고 Career 라는 객체를 씀(mybatis에서 Customer라는 객체를 
+	만들어줌 => 데이터베이스에서 얻은 값들을 찾아서 item에 주기위해 -->
+	<mapper namespace="career" >			
+	<!-- 이직자 경력 보기 -->
+	<select id="list" resultType="Career">
+	SELECT * FROM career 
+	WHERE profile_seq=#{profileSeq}
+	</select>
+	
+	<!-- #{}은 필드명, mybatis-config 에서 세팅해주면 이것을 자동으로 고쳐줌(자바표기법:낙타 표기법) -->
+	<insert id="add">
+	INSERT INTO career
+	(profile_seq, career_company, career_date, career_work, career_category)
+	
+	VALUES (#{profileSeq}, #{careerCompany}, #{careerDate}, #{careerWork}, #{careerCategory}) 
+	</insert>  
+	
+	<!-- 이직자 경력 수정 -->
+	<update id="update">
+		UPDATE career 
+		SET career_company=#{careerCompany}, career_date=#{careerDate}, career_work=#{careerWork},
+		career_category=#{careerCategory}
+		
+		WHERE profile_seq=#{profileSeq}
+	</update>
+	
+	<!-- 이직자 경력 삭제 -->
+	<delete id="delete">
+		DELETE FROM career
+		WHERE profile_seq=#{profileSeq}
+	</delete>
+			
+</mapper>
+

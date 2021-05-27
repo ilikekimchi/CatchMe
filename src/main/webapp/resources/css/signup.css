@@ -8,31 +8,71 @@
 }
 
 body {
+	position: absolute;
+	
+	width: 100%;
+	min-width: 1100px;
+	
 	margin: 0;
+	
+	background-color: #eee;
 }
 
 html {
 	font-family: 'BMJUA';
 }
+.signup {
+	position: absolute;
+    top: 40px;
+    left: 450px;
+    font-size: 30px;
+    color: #4c4c4c;
+    font-weight: 100;
+}
 
-.container {
+.signup-info {
+	position: absolute;
+	left: 3%;
+	top: -13px;
+}
+
+
+.first {
 	position: absolute;
 	width: 1000px;
+	height: 665px;
 	
-	top: 100px;
-	left: 49%;
+	top: 96px;
+	left: 50%;
 	transform: translateX(-50%);
+	
+	background-color: white;
+	
+	border: 1px solid #a0a9b3;
 }
 
 .signup-company {
 	position: absolute;
-	width: 500px;
-	height: 600px;
+	width: 320px;
+	height: 370px;
 	border: 3px solid #4c4c4c;
+	
+	left: 111px;
+	top: 168px;
+	
+	z-index: -1;
+	
+	border-radius: 26px;
+	
+	cursor: pointer;
+	
+	background-color: white;
 }
 .company-hover {
 	background-color: rgba(0, 0, 0);
-	height: 600px;
+	height: 370px;
+	
+	border-radius: 23px;
 	
 	opacity: 0;
 	
@@ -41,19 +81,40 @@ html {
 
 .company-hover > span {
 	position: absolute;
-	top: 450px;
+	top: 282px;
 	left: 52%;
 	transform: translateX(-50%);
 	
 	letter-spacing: 10px;
-	font-size: 45px;
+	font-size: 30px;
 	
 	color: white;
 }
 
+.signup-customer {
+	position: absolute;
+	width: 320px;
+	height: 370px;
+	border: 3px solid #4c4c4c;
+	left: 506px;
+	
+	top: 168px;
+	
+	z-index: -1;
+	
+	border-radius: 26px;
+	
+	cursor: pointer;
+	
+	background-color: white;
+}
+
+
 .customer-hover {
 	background-color: rgba(0, 0, 0);
-	height: 600px;
+	height: 370px;
+	
+	border-radius: 23px;
 	
 	opacity: 0;
 	
@@ -62,22 +123,14 @@ html {
 
 .customer-hover > span {
 	position: absolute;
-	top: 450px;
+	top: 282px;
 	left: 52%;
 	transform: translateX(-50%);
 	
 	letter-spacing: 10px;
-	font-size: 45px;
+	font-size: 30px;
 	
 	color: white;
-}
-
-.signup-customer {
-	position: absolute;
-	width: 500px;
-	height: 600px;
-	border: 3px solid #4c4c4c;
-	left: 528px;
 }
 
 .company-icon {
@@ -87,8 +140,8 @@ html {
 	transform: translateX(-50%);
 	
 	background-image: url("/image/signup/company.png");
-	width: 246px;
-	height: 260px;
+	width: 146px;
+	height: 154px;
 	
 	z-index: -1;
 }
@@ -100,8 +153,120 @@ html {
 	transform: translateX(-50%);
 	
 	background-image: url("/image/signup/customer.png");
-	width: 220px;
-	height: 260px;
+	width: 120px;
+	height: 142px;
 	
 	z-index: -1;
+}
+
+/* .home {
+	position: absolute;
+	top: 670px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 150px;
+    height: 46px;
+    text-decoration: none;
+    
+    border: 1px solid #4c4c4c;
+    border-radius: 50px;
+    
+    background-color: white;
+}
+
+.home-tx {
+	position: absolute;
+    left: 29%;
+    top: 10px;
+    
+    font-size: 25px;
+    color: #4c4c4c;
+    
+    letter-spacing: 4px;
+} */
+
+.seq {
+	display: flex;
+    top: -20px;
+    position: relative;
+    margin: 0 auto;
+    justify-content: space-around;
+    width: 851px;
+}
+
+/* .next-1 {
+	position: absolute;
+	
+	background-image: url("/image/signup/arrow-hv.png");
+	
+	width: 30px;
+	height: 30px;
+	
+	top: 35px;
+    left: 354px;
+}
+
+.next-2 {
+	position: absolute;
+	
+	background-image: url("/image/signup/arrow.png");
+	
+	width: 30px;
+	height: 30px;
+	
+	top: 35px;
+    left: 721px;
+} */
+/* --------------------------------------------------------------------------------------------- */
+
+#sign-info {
+	border: 3px solid #4876Ef;
+    background-color: white;
+    width: 140px;
+    height: 40px;
+    border-radius: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -70px;
+    left: 200px;
+}
+
+#sign-info > span {
+	color: #4876ef;
+}
+
+#login-info {
+	border: 3px solid #4c4c4c;
+    background-color: white;
+    width: 140px;
+    height: 40px;
+    border-radius: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -70px;
+    left: 200px;
+}
+
+#login-info > span {
+	color: #4c4c4c;
+}
+
+#profile {
+	border: 3px solid #4c4c4c;
+    background-color: white;
+    width: 140px;
+    height: 40px;
+    border-radius: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -70px;
+    left: 200px;
+}
+
+#sprofile > span {
+	color: #4c4c4c;
 }
