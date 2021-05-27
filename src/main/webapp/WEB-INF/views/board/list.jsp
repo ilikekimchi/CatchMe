@@ -184,6 +184,16 @@
 				<a href="/">메인으로</a>
 			</div>		
 		</div>
+	<c:if test="${sessionScope.customer.customerId == 'admin' }">
+		<div>
+		<div>
+				<button><a href="dummy">더미등록</a></button>
+		
+				<button><a href="init">초기화</a></button>
+								
+			</div>
+			</div>
+	</c:if>
 	</div>
 </body>
 </html>
