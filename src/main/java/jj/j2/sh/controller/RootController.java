@@ -109,5 +109,11 @@ public class RootController {
 				
 				return "logintry";
 			}
-	
+	///////////////////임시(pjh)////////////////////////
+			@RequestMapping("/pjh")
+			String pjh() {
+				
+				return "pjh";
+				
+			}
 }

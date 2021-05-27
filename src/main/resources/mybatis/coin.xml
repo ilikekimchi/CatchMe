@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="coin" >			
+	
+	<!-- 코인 보기 -->
+	<select id="list" resultType="Coin">
+	SELECT * FROM coin
+	ORDER BY coin_pay ASC
+	</select>
+	
+	<!-- 코인 등록 -->
+	<insert id="add">
+	INSERT INTO coin
+	(coin_seq, coin_name, coin_pay)
+	
+	VALUES (coin_seq.nextval, #{coinName}, #{coinPay})
+	
+	<selectKey keyColumn="coinSeq" keyProperty="coinSeq" order="AFTER" resultType="integer">
+		SELECT coin_seq.CURRVAL FROM DUAL
+	</selectKey>
+	
+	</insert>  
+	
+	<!-- 코인 수정 -->
+	<update id="update">
+		UPDATE coin 
+		SET coin_name=#{coinName}, coin_pay=#{coinPay}
+		
+		WHERE coin_seq=#{coinSeq}
+	</update>
+	
+	<!-- 코인 삭제 -->
+	<delete id="delete">
+		DELETE FROM coin
+		WHERE coin_seq=#{coinSeq}
+	</delete>
+	
+	<!-- 코인 관련 각각의 정보들 -->
+	<select id="item" resultType="Coin">
+		SELECT * FROM coin
+		WHERE coin_seq=#{coinSeq}
+	</select>
+			
+</mapper>
+

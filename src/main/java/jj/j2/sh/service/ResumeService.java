@@ -8,7 +8,7 @@ public interface ResumeService {
 
 	List<Resume> list(String customerId);
 
-	void add(int profileSeq, Resume item);
+	void add(String customerId, Resume item);
 
 	Resume item(int resumeSeq);
 

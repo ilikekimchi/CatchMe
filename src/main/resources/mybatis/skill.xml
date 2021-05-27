@@ -14,9 +14,14 @@
 	<!-- #{}은 필드명, mybatis-config 에서 세팅해주면 이것을 자동으로 고쳐줌(자바표기법:낙타 표기법) -->
 	<insert id="add">
 	INSERT INTO skill
-	(profile_seq, skill_content)
+	(skill_seq, profile_seq, skill_content)
 	
-	VALUES (#{profileSeq}, #{skillContent})
+	VALUES (skill_seq.nextval, #{profileSeq}, #{skillContent})
+	
+	<!--  profileSeq를 item 으로 읽어 와서 Profile객체에 설정하는 방법을 사용하는 것 -->
+	<selectKey keyColumn="skillSeq" keyProperty="skillSeq" order="AFTER" resultType="integer">
+		SELECT skill_seq.CURRVAL FROM DUAL
+	</selectKey>
 	</insert>  
 	
 	<!-- 이직자 기술 수정 -->
@@ -30,7 +35,7 @@
 	<!-- 이직자 기술 삭제 -->
 	<delete id="delete">
 		DELETE FROM skill
-		WHERE profile_seq=#{profileSeq}
+		WHERE skill_seq=#{skillSeq}
 	</delete>
 			
 </mapper>

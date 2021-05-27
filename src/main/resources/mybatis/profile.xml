@@ -22,6 +22,7 @@
 		
 	<!-- 외래키 -->
 		<!-- customer이직자 관련 -->
+		<result column="customer_nnm" property="customerNnm" />
 		<result column="customer_name" property="customerName" />
 		<result column="customer_phone" property="customerPhone" />
 		<result column="customer_address" property="customerAddress" />
@@ -30,11 +31,13 @@
 		<!-- customer이직자 관련 -->
 		
 		<!-- area지역 관련 -->
+		<result column="area_seq" property="areaSeq" />
 		<result column="area1" property="area1" />
 		<result column="area2" property="area2" />
 		<!-- area지역 관련 -->
 		
 		<!-- career경력사항 관련 -->
+		<result column="career_seq" property="careerSeq" />
 		<result column="career_company" property="careerCompany" />
 		<result column="career_date" property="careerDate" />
 		<result column="career_work" property="careerWork" />
@@ -42,6 +45,7 @@
 		<!-- career경력사항 관련 -->
 		
 		<!-- certificate자격면허 관련 -->
+		<result column="certificate_seq" property="certificateSeq" />
 		<result column="certificate_name" property="certificateName" />
 		<result column="certificate_date" property="certificateDate" />
 		<result column="certificate_writing" property="certificateWriting" />
@@ -49,10 +53,59 @@
 
 		
 		<!-- skill기술능력 관련 -->
+		<result column="skill_seq" property="skillSeq" />
 		<result column="skill_content" property="skillContent" />
 		<!-- skill기술능력 관련 -->
 	<!-- 외래키 -->
 	</resultMap>
+	
+	<!-- 검색 -->
+	<sql id="search">
+		<where>
+			<if test="search == 1 and keyword != null">
+				customer.customer_nnm LIKE '%' || #{keyword} || '%'
+			</if>
+			
+			<if test="search == 2 and keyword != null">
+				area.area1 LIKE '%' || #{keyword} || '%'
+			</if>
+			
+			<if test="search == 3 and keyword != null">
+				career.careercareer_category LIKE '%' || #{keyword} || '%'
+			</if>
+			
+			<if test="search == 4 and keyword != null">
+				skill.skill_content LIKE '%' || #{keyword} || '%'
+			</if>
+			
+			<if test="search == 5 and keyword != null">
+				career.career_date LIKE '%' || #{keyword} || '%'
+			</if>
+		</where>	
+	</sql>
+	<!-- 
+	<select id="total" resultType="Integer">
+		SELECT COUNT(*)
+		FROM profile
+		JOIN customer ON profile.customer_id=customer.customer_id
+		JOIN skill ON profile.profile_seq=skill.profile_seq
+		JOIN area ON profile.profile_seq=area.profile_seq		 
+		JOIN career ON profile.profile_seq=career.profile_seq		 
+		JOIN certificate ON profile.profile_seq=certificate.profile_seq	
+		<include refid="search"></include>
+		GROUP BY profile.profile_seq, profile.profile_img, profile.profile_money,
+        profile.profile_state, profile.profile_school, profile.profile_school_skill,
+        profile.profile_school_state, profile.profile_army, profile.profile_army_writing,
+        profile.profile_writing, profile.profile_time, profile.profile_check,
+        profile.profile_date, profile.customer_id,
+        customer.customer_name, customer.customer_nnm, customer.customer_phone, 
+		customer.customer_address, customer.customer_birthday, customer.customer_gender,
+		area.area1, area.area2,
+		career.career_company, career.career_date, career.career_work, career.career_category,
+		certificate.certificate_name, certificate.certificate_date, certificate.certificate_writing,
+		skill.skill_content
+	</select>-->
+	<!-- 검색 -->
 		
 	<!-- 이력서(이직자 자신)보기 -->
 	<select id="list" resultType="Profile" resultMap="ProfileMap">
@@ -73,7 +126,7 @@
 	
 	<!-- 이직자 명함 및 프로필 모두 보기 -->
 	<select id="listAll" resultType="Profile" resultMap="ProfileMap">
-		SELECT profile.*, customer.customer_name, customer.customer_phone, 
+		SELECT profile.*, customer.customer_name, customer.customer_nnm, customer.customer_phone, 
 		customer.customer_address, customer.customer_birthday, customer.customer_gender,
 		area.area1, area.area2,
 		career.career_company, career.career_date, career.career_work, career.career_category,
@@ -85,13 +138,25 @@
 		JOIN area ON profile.profile_seq=area.profile_seq		 
 		JOIN career ON profile.profile_seq=career.profile_seq		 
 		JOIN certificate ON profile.profile_seq=certificate.profile_seq		 
+		<include refid="search"></include>
+		GROUP BY profile.profile_seq, profile.profile_img, profile.profile_money,
+        profile.profile_state, profile.profile_school, profile.profile_school_skill,
+        profile.profile_school_state, profile.profile_army, profile.profile_army_writing,
+        profile.profile_writing, profile.profile_time, profile.profile_check,
+        profile.profile_date, profile.customer_id,
+        customer.customer_name, customer.customer_nnm, customer.customer_phone, 
+		customer.customer_address, customer.customer_birthday, customer.customer_gender,
+		area.area1, area.area2,
+		career.career_company, career.career_date, career.career_work, career.career_category,
+		certificate.certificate_name, certificate.certificate_date, certificate.certificate_writing,
+		skill.skill_content
 		ORDER BY profile.profile_seq DESC
 	</select>
 	
 		
 	<!-- 이력서 등록 -->
 	<insert id="add">
-
+	
 	<if test="profileImg == null">
 		INSERT INTO profile
 		(profile_seq, customer_id, profile_money,  profile_state, 
@@ -116,19 +181,19 @@
 		 #{profileSchool}, #{profileSchoolSkill}, #{profileSchoolState}, #{profileArmy}, 
 		 #{profileArmyWriting}, #{profileWriting}, #{profileTime}, 
 		 #{profileCheck}, SYSDATE, #{profileImg})			
-		</if>
-		
-		<!--  profileSeq를 item 으로 읽어 와서 Profile객체에 설정하는 방법을 사용하는 것 -->
-		<selectKey keyColumn="profileSeq" keyProperty="profileSeq" order="AFTER" resultType="Integer">
-			SELECT profile_seq.nextval FROM DUAL
-		</selectKey>
-		
+		</if>		
+	
+	<!--  profileSeq를 item 으로 읽어 와서 Profile객체에 설정하는 방법을 사용하는 것 -->
+	<selectKey keyColumn="profileSeq" keyProperty="profileSeq" order="AFTER" resultType="integer">
+		SELECT profile_seq.CURRVAL FROM DUAL
+	</selectKey>
+	
 		<!-- Role(찜하기_스크랩)은 나중에.. -->
 	</insert>
 	
 	<!-- 이력서 각각의 값(데이터베이스에서 얻은 값들을 찾아서 item에 주기위해) -->
 	<select id="item" resultType="Profile" resultMap="ProfileMap"> 
-		SELECT profile.*, customer.customer_name, customer.customer_phone, 
+		SELECT profile.*, customer.customer_name, customer.customer_nnm, customer.customer_phone, 
 		customer.customer_address, customer.customer_birthday, customer.customer_gender,
 		area.area1, area.area2,
 		career.career_company, career.career_date, career.career_work, career.career_category,

@@ -1,19 +1,24 @@
 package jj.j2.sh.model;
 
+import java.util.Date;
+
 public class Company {
 	private String companyId; //기업 아이디(이메일) 기본키
 	private String companyPw; //기업 비밀번호
 	private String companyName; //기업명
 	private String companyRa; //대표자명
-	private int companyMoney; //연매출
-	private int companyScale; //규모(명)
+	private int companyScale; //사원수(규모)
 	private String companyLocation; //위치(주소)
-	private String companyTel; //연락처
-	private String companyWriting; //소개
+	private String companyTel; //인사담당자 연락처
+	private String companyWriting; //기업개요 및 비전소개
 	private int companyPay; //코인(보유 수)
 	private String companyRole; //찜한유저목록(스크랩)
 	private String companyHomePage; //홈페이지
 	private String companyImg; //기업 아이콘
+	private Date companyDate; //설립일
+	private String companyCategory; //기업형태(중,소 구분)
+	private String companyJob; //업종
+	
 	
 	
 	public String getCompanyId() {
@@ -39,12 +44,6 @@ public class Company {
 	}
 	public void setCompanyRa(String companyRa) {
 		this.companyRa = companyRa;
-	}
-	public int getCompanyMoney() {
-		return companyMoney;
-	}
-	public void setCompanyMoney(int companyMoney) {
-		this.companyMoney = companyMoney;
 	}
 	public int getCompanyScale() {
 		return companyScale;
@@ -94,5 +93,24 @@ public class Company {
 	public void setCompanyImg(String companyImg) {
 		this.companyImg = companyImg;
 	}
+	public Date getCompanyDate() {
+		return companyDate;
+	}
+	public void setCompanyDate(Date companyDate) {
+		this.companyDate = companyDate;
+	}
+	public String getCompanyCategory() {
+		return companyCategory;
+	}
+	public void setCompanyCategory(String companyCategory) {
+		this.companyCategory = companyCategory;
+	}
+	public String getCompanyJob() {
+		return companyJob;
+	}
+	public void setCompanyJob(String companyJob) {
+		this.companyJob = companyJob;
+	}
+	
 	
 }

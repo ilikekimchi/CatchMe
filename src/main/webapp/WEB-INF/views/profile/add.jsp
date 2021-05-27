@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,67 +7,144 @@
 </head>
 <body>
 	<div>
-		<c:if test="${sessionScope.customer == null}">
+		<div><h3>이력서 등록</h3></div>
 		<div>
-			<a href="signup">회원가입</a> <a href="login">로그인</a>
-		</div>
-		</c:if>
-		<c:if test="${sessionScope.customer != null}">
-			<div>
-				${sessionScope.customer.customerNnm}님 <a href="logout">로그아웃</a>
-		</div>
-		</c:if>
-		<div><h3>명함 등록</h3></div>
-		<div>
-			<form method="post" action="" >
+			<form method="post" action="" enctype="multipart/form-data">
 				<div>
-					<label>닉네임:</label>
-					${sessionScope.customer.customerNnm}
+					<label>얼굴 이미지:</label>
+					<input name="uploadFile" type="file" id="file">
+					<p>파일 크기는 최대 50MB 까지 가능합니다.</p>
+				</div>
+				<div>
+					<label>아이디:</label>
+					${sessionScope.customer.customerId}
+				</div>
+					
+				<div>
+					<label>이름:</label>
+					${sessionScope.customer.customerName}
+				</div>
+				<div>
+					<label>전화번호:</label>
+					${sessionScope.customer.customerPhone}
+				</div>
+				<div>
+					<label>주소:</label>
+					${sessionScope.customer.customerAddress}
 				</div>
 				<div>
 					<label>생년월일:</label>
-					<input name="profileBirthday" type="date" placeholder="1997-12-05">
+					${sessionScope.customer.customerBirthday}
 				</div>
 				<div>
-					<label>성별:</label>
-					<input name="profileGender" type="text" placeholder="여성">
-				</div>
-				<div>
-					<label>분야:</label>
-					<input name="profileCategory" type="text">
-				</div>
-				<div>
-					<label>희망근무지:</label>
-					<input name="profileArea" type="text">
-				</div>
-				<div>
-					<label>기술능력:</label>
-					<input name="skillContent" type="text">
-				</div>
-				<div>
-					<label>희망연봉:</label>
-					<input name="profileMoney" type="text">
-				</div>
-				<div>
-					<label>한줄소개:</label>
-					<input name="profileWriting" type="text">
-				</div>
-				<div>
-					<label>현재상태:</label>
-					<input name="profileState" type="number">
-				</div>
-				<div>
-					<label>연락가능시간:</label>
-					<input name="profileTime" type="text">
-				</div>
-				
+                	<label>성별:</label>
+                	${sessionScope.customer.customerGender}
+            	</div>
+            	<div>
+            		<h3>학력</h3>
+            	</div>
+            	<div>
+                	<label>학교명:</label>
+                	<input name=profileSchool type="text">
+            	</div>
+            	<div>
+                	<label>학과 및 전공:</label>
+                	<input name=profileSchoolSkill type="text">
+            	</div>
+            	<div>
+                	<label>학력구분:</label>
+                	<input name=profileSchoolState type="text">
+            	</div>
+            	<div>
+            		<h3>병역사항:</h3>
+            	</div>
+            	<div>
+                	<label>병역구분:</label>
+                	<input name=profileArmy type="text">
+            	</div>
+            	<div>
+                	<label>면제사유:</label>
+                	<input name=profileArmyWriting type="text">
+            	</div>
+            	<div>
+            		<h3>경력사항</h3>
+            	</div>
+            	<div>
+                	<label>회사명:</label>
+                	<input name=careerCompany type="text">
+            	</div>
+            	<div>
+                	<label>담당업무:</label>
+                	<input name=careerWork type="text">
+            	</div>
+            	<div>
+                	<label>직급/직책 분류:</label>
+                	<input name=careerCategory type="text">
+            	</div>
+            	<div>
+                	<label>경력:</label>
+                	<input name=careerDate type="text">
+            	</div>
+            	<div>
+            		<h3>자격/면허</h3>
+            	</div>
+            	<div>
+                	<label>자격증명:</label>
+                	<input name=certificateName type="text">
+            	</div>
+            	<div>
+                	<label>취득일:</label>
+                	<input name=certificateDate type="date" >
+            	</div>
+            	<div>
+                	<label>발행처:</label>
+                	<input name=certificateWriting type="text" >
+            	</div>
+            	<div>
+            		<h3>기술능력</h3>
+            	</div>
+            	<div>
+                	<label>내용:</label>
+                	<input name=skillContent type="text" >
+            	</div>
+            	<div>
+            		<h3>희망사항</h3>
+            	</div>
+            	<div>
+                	<label>희망지역:</label>
+                	<input name=area1 type="text">
+            	</div>
+            	<div>
+                	<label>희망지역(시/군/구):</label>
+                	<input name=area2 type="text">
+            	</div>
+            	<div>
+                	<label>희망연봉:</label>
+                	<input name=profileMoney  type="number" >
+            	</div>
+            	<div>
+                	<label>상태:</label>
+                	<input name=profileState  type="number" >
+            	</div>
+            	<div>
+            		<h3>기타사항</h3>
+            	</div>
+            	<div>
+                	<label>한줄소개:</label>
+                	<input name=profileWriting type="text" >
+            	</div>
+            	<div>
+                	<label>연락가능 시간:</label>
+                	<input name=profileTime type="text" >
+            	</div>
+            	
 				<div>
 					<input type="submit" value="등록">
 				</div>
 			</form>
 		</div>
 		<div>
-			<a href="/profile/list">취소</a>
+			<a href="list">이력서 목록</a>
 		</div>
 	</div>
 </body>

@@ -1,3 +1,4 @@
+
   // 1 == '1' => value(값)이 같으면 true, |  1 === '1' => type과 value 가 같아야 하므로 false
    // confirmId 에서 사용한 코드들 = 에이젝, 즉 에이젝을 사용함
    function confirmId0(){
@@ -153,3 +154,4 @@
       
       form.submit();
    }
+
