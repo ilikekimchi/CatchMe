@@ -7,10 +7,10 @@
 <meta charset="UTF-8">
 <title></title>
 
-<link href="/css/home.css" rel="stylesheet" />
+
 
 <link href="/css/footer.css" rel="stylesheet" />
-
+<link href="/css/home.css" rel="stylesheet" />
 <link href="/css/login-modal.css" rel="stylesheet" />
 <link href="/css/search-box.css" rel="stylesheet" />
 

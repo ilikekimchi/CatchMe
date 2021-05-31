@@ -44,6 +44,7 @@ public class Profile {
 
 	
 	
+	
 	public String getCustomerNnm() {
 		return customerNnm;
 	}

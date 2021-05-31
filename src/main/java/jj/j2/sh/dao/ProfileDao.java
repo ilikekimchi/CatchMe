@@ -17,13 +17,12 @@ public interface ProfileDao {
 
 	void delete(String customerId);
 
-	//List<Profile> listAll(Pager pager);
+	List<Profile> listAll(Pager pager);
 
 	void profileCheck(Profile item);
 
-	//int total(Pager pager);
+	int total(Pager pager);
 
-	List<Profile> listAll();
+	void delete2(int profileSeq);
 
-	
 }

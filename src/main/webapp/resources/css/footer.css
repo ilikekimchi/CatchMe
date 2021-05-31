@@ -8,38 +8,29 @@
 
 footer {
 	background: #ebe7e7;
-	
     width: 100%;
     min-width: 1180px;
-    
-    position: absolute;
-    bottom: 0;
+    bottom:0;
     height: 80px;
+    position:absolute;
+    z-index:20;
 }
 
 .logo {
 	width: 75px;
     height: 22px;
     margin-bottom: 1px;
-	
 	background-image: url("/image/logo.png");
-}
-
-.copyright {
-	
 }
 
 .copyright > ul {
 	list-style: none;
     font-family: 'Noto Sans KR';
-    
     color: #777777;
-    
     padding: 0;
     margin: 0 auto;
     margin-top: 8px;
     font-size: 14px;
-    
     display: flex;
     justify-content: space-around;
     width: 600px;
@@ -51,7 +42,7 @@ footer {
     bottom: 0;
     position: absolute;
     width: 100%;
-    border: 1px solid rgba(0,0,0,0.2);
+    border-top: 1px solid rgba(0,0,0,0.2);
 }
 
 .policy > ul {
@@ -64,7 +55,5 @@ footer {
     margin: 0 auto;
     margin-top: 11px;
     font-size: 14px;
-    
     font-family: 'Noto Sans KR';
 }
-

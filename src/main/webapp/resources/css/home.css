@@ -18,6 +18,7 @@ html {
 html, body {
 	margin: 0;
 	padding: 0;
+	
 }
 
 .container {
@@ -51,4 +52,8 @@ html, body {
 
 .catchme>a>span {
 	color: transparent;
+}
+
+.fixed {
+	position: absolute;
 }

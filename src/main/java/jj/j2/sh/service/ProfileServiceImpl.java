@@ -15,6 +15,7 @@ import jj.j2.sh.dao.SkillDao;
 import jj.j2.sh.model.Area;
 import jj.j2.sh.model.Career;
 import jj.j2.sh.model.Certificate;
+import jj.j2.sh.model.Customer;
 import jj.j2.sh.model.Profile;
 import jj.j2.sh.model.Skill;
 import jj.j2.sh.util.Pager;
@@ -119,12 +120,7 @@ public class ProfileServiceImpl implements ProfileService {
 	public void delete(String customerId) {
 		dao.delete(customerId);
 	}
-	@Override
-	public List<Profile> listAll() {
-		return dao.listAll();
-	}
 	
-	/* 서치 부분
 	@Override
 	public List<Profile> listAll(Pager pager) {
 		int total = dao.total(pager);
@@ -133,10 +129,80 @@ public class ProfileServiceImpl implements ProfileService {
 		
 		return dao.listAll(pager);
 	}
-*/
+	
 	@Override
 	public void profileCheck(Profile item) {
 		dao.profileCheck(item);
 	}
 
+	@Override
+	@Transactional
+	public void dummy(Customer customer,Skill skill, Area area, Career career, Certificate certificate, Profile item) {
+		for(int index=1; index < 100; index++) {
+			item.setCustomerId(customer.getCustomerId());
+			item.setProfileImg("이미지" + index);
+			item.setProfileMoney(index);
+			item.setProfileState(1);
+			item.setProfileSchool("학교" + index);
+			item.setProfileSchoolSkill("전공" + index);
+			item.setProfileSchoolState("학력" + index);
+			item.setProfileArmy("군필" + index);
+			item.setProfileArmyWriting("면제사유" + index);
+			item.setProfileWriting("한줄소개" + index);
+			item.setProfileTime("연락가능시간" + index);
+			item.setProfileCheck(0);
+			item.setProfileDate(null);
+			
+			dao.add(item);
+			
+			//기술 추가
+			skill.setProfileSeq(item.getProfileSeq());
+			skill.setSkillContent("기술/능력" + index);
+			
+			daoSkill.add(skill);
+			
+			//지역 추가
+			area.setProfileSeq(item.getProfileSeq());
+			area.setArea1("희망지역" + index);
+			area.setArea2("희망시군구" + index);
+			
+			daoArea.add(area);
+			
+			//경력 추가
+			career.setProfileSeq(item.getProfileSeq());
+			career.setCareerCompany("회사명" + index);
+			career.setCareerDate("경력" + index);
+			career.setCareerWork("담당업무" + index);
+			career.setCareerCategory("직급/직책" + index);
+			
+			daoCareer.add(career);
+			
+			//자격/면허 추가
+			certificate.setProfileSeq(item.getProfileSeq());
+			certificate.setCertificateName("자격증" + index);
+			certificate.setCertificateDate(null);
+			certificate.setCertificateWriting("시행처" + index);
+			
+			daoCertificate.add(certificate);
+		}
+	}
+
+	@Override
+	public void init() {
+		Pager pager = new Pager();
+		pager.setPage(1);
+		
+		while(dao.total(pager) > 0) {
+			List<Profile> list = dao.listAll(pager);
+			
+			for(Profile item : list)
+				dao.delete2(item.getProfileSeq());
+	}
+
+}
+
+	@Override
+	public void delete2(int profileSeq) {
+		dao.delete2(profileSeq);
+	}
 }

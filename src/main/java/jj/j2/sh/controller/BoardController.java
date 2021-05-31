@@ -13,11 +13,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jj.j2.sh.model.Area;
+import jj.j2.sh.model.Career;
+import jj.j2.sh.model.Certificate;
+import jj.j2.sh.model.Customer;
 import jj.j2.sh.model.Profile;
+import jj.j2.sh.model.Skill;
 import jj.j2.sh.service.ProfileService;
 import jj.j2.sh.util.Pager;
 
@@ -39,20 +45,7 @@ public class BoardController {
  		
  		binder.registerCustomEditor(Date.class, editor);
  	}
- 	
-    //명함 리스트 모두 보기
- 	//Model에 list를 담아두면 jsp페이지에 전달할 수 있다.
- 	@GetMapping("/list")
- 	String listAll(Model model) {
- 		
- 		List<Profile> listAll = service.listAll();
- 		
- 		model.addAttribute("listAll", listAll);
- 		
- 		return path + "list";
- 		
- 	}
- 	/* 서치기능 오류..
+ 
  	@GetMapping("/list")
  	String listAll(Model model, Pager pager) {
  		
@@ -62,7 +55,7 @@ public class BoardController {
  		
  		return path + "list";
  		
- 	}*/
+ 	}
  	
  	//이력서 검증 여부	
  	@GetMapping("/{profileSeq}/profileCheck")
@@ -86,4 +79,28 @@ public class BoardController {
 		return "redirect:../list";
 		
 	}	
+	//////페이지네이션 test를 위한 더미 생성
+	@GetMapping("/dummy")
+	String dummy( Profile item, @ModelAttribute Skill skill, Customer customer, Area area, Career career, Certificate certificate,
+			HttpSession session) {
+		customer = (Customer) session.getAttribute("customer");
+		
+		service.dummy(customer, skill, area, career, certificate, item);
+		
+		return "redirect:list";
+	}
+	
+	@GetMapping("/init")
+	String init() {
+		service.init();
+		return "redirect:list";
+	}
+	
+	@GetMapping("/{profileSeq}/delete")
+	String delete(@PathVariable int profileSeq) {
+		service.delete2(profileSeq);
+		
+		return "redirect:../list";
+		}
+		
 }
