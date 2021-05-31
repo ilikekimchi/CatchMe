@@ -1,0 +1,444 @@
+@charset "UTF-8";
+
+h1, h2, h3, h4 {
+	margin: 0;
+}
+
+input {
+	font-family: "BMJUA";
+	color: #4c4c4c;
+	
+	box-shadow: none;
+	font-size: 1em;
+	border: none;
+}
+
+input:focus {
+	outline: none;
+	color: #4c4c4c;
+}
+
+input::placeholder {
+	font-family: "BMJUA";
+}
+
+button {
+	background: inherit;
+	border: none;
+	box-shadow: none;
+	border-radius: 0;
+	padding: 0;
+	overflow: visible;
+	cursor: pointer;
+	outline: none;
+}
+
+.login {
+	position: absolute;
+	top: 20px; right : 50px; width : 38px;
+	height: 38px;
+	background: #a3c1ff;
+	border-radius: 20px;
+	cursor: pointer;
+	width: 38px;
+	right: 84px;
+}
+
+.login-icon {
+	background-image: url("/image/profile.png");
+	background-repeat: no-repeat;
+	position: absolute;
+	width: 20px;
+	height: 28px;
+	margin: 7px 9px 1px 9px;
+}
+
+.login-modal {
+	position: absolute;
+	top: 71px;
+	right: 61px;
+	width: 289px;
+	height: 356px;
+	background: white;
+	box-shadow: 0px 1px 4px 0px black;
+	border-radius: 10px;
+	display: none;
+}
+
+.social {
+	position: absolute;
+	top: 284px;
+	left: 19px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 250px;
+	margin: 0 auto;
+}
+
+.naver {
+	background-image: url("/image/social-login/naver.png");
+	width: 47px;
+	height: 46px;
+	border-radius: 30px;
+	cursor: pointer;
+}
+
+.kakao {
+	background-image: url("/image/social-login/kakao.png");
+	width: 48px;
+	height: 48px;
+	border-radius: 30px;
+	cursor: pointer;
+}
+
+.google {
+	background-image: url("/image/social-login/google.png");
+	background-color: white;
+	width: 48px;
+	height: 48px;
+	border-radius: 30px;
+	cursor: pointer;
+}
+
+.active {
+	display: block;
+}
+
+.login-info {
+	position: relative;
+	top: 9px;
+	
+	width: 250px;
+	margin: 0 auto;
+}
+
+.login-info .customer-form {
+	top: 30px;
+    position: relative;
+}
+
+.login-info .company-form {
+	top: 30px;
+    position: relative;
+    display: none;
+}
+
+.login-info .id > input {
+	width: 90%;
+	padding: 7px 12px 7px;
+	font-size: 13px;
+}
+
+.login-info .pwd > input {
+	width: 90%;
+	padding: 7px 12px 7px;
+	font-size: 13px;
+}
+
+.login-info > h4 {
+	position: absolute;
+	font-size: 18px;
+	top: -40px;
+	left: 95px;
+}
+
+.id {
+	height: 30px;
+	margin: 10px 0;
+	
+	border: 1px solid #bfbfbf;
+}
+
+.pwd {
+	height: 30px;
+	margin: 10px 0;
+	
+	border: 1px solid #bfbfbf;
+}
+
+.login-ch {
+	position: relative;
+	
+	font-family: "BMJUA";
+	
+	width: 250px;
+	height: 37.44px;
+	margin: 0;
+	
+	border: 1px solid #bfbfbf;
+	
+	text-align: center;
+    background: #bfbfbf;
+    color: #f6f3f3;
+    letter-spacing: 2px;
+    font-size: 15px;
+    
+    cursor: pointer;
+}
+
+.ready {
+	background: #4876ef;
+}
+
+.signup-form {
+	justify-content: space-around;
+	
+	position: relative;
+    display: flex;
+    width: 210px;
+    top: 72px;
+    
+    margin: 0 auto;
+}
+
+.signup-form > a {
+	padding: 0 21px;
+	color: #545353;
+    text-decoration: none;
+    float: right;
+    font-size: 13px;
+}
+
+.info-remember {	
+	position: relative;
+	top: 50px;
+	left: 19.5px;
+	float: left;
+	width: 131px;
+}
+
+.info-remember > input {
+	width: 14px;
+	height: 14px;
+}
+
+.remember {
+	position: absolute;
+	top: 3px;
+	margin-left: 8px;
+	font-size: 13px;
+}
+
+.member {
+	
+	list-style: none;
+	
+    display: flex;
+    padding: 0;
+	
+}
+
+.member > li {
+	position: absolute;
+	cursor: pointer;
+	box-sizing: border-box;
+	
+	font-size: 14px;
+}
+
+.customer {
+	padding: 10px 33.5px 5px;
+	
+}
+
+.customer-form {
+	top: 44px;
+    position: absolute;
+}
+
+.company {
+	padding: 10px 33.5px 5px;
+	left: 134px;
+	
+}
+
+.click {
+	
+	color: #4876ef;
+	
+	border-radius: 8px 8px 0px 0px;
+	border: 1px solid #4876ef;
+	border-bottom: none;
+}
+
+.out {
+	
+	color: #2d2d2d;
+	
+}
+
+#pointer {
+	position: absolute;
+	
+	top: -12px;
+	right: 130px;
+	
+	background-image: url("/image/pointer.png");
+	width: 23px;
+	height: 13px;
+	
+}
+
+.in {
+	position: absolute;
+    width: 230px;
+    height: 45px;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 45px;
+    border: 1px solid #4876ef;
+    border-radius: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    color: #4c4c4c;
+    text-decoration: none;
+    
+}
+
+.notice {
+	position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 86px;
+    top: 9px;
+    left: 16px;
+}
+
+.my-notice {
+	font-size: 16px;
+    font-weight: 200;
+    
+    color: black;
+    text-decoration: none;
+    
+}
+
+.notice-nm {
+	width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+}
+
+.notice-nm > span {
+	color: white;
+}
+
+.mypage {
+    top: 173px;
+}
+
+.mypage:hover {
+	background-color: #4876ef;
+	color: white;
+}
+
+.career {
+    top: 228px;
+}
+
+.career:hover {
+	background-color: #4876ef;
+	color: white;
+}
+
+.logout {
+    top: 283px;
+}
+
+.logout:hover {
+	background-color: #4876ef;
+	color: white;
+}
+
+.mypage-icon {
+	position: absolute;
+    width: 20px;
+    height: 22px;
+    top: 11px;
+    left: 28px;
+	
+	background-image: url("/image/icon/mypage.png");
+}
+
+.career-icon {
+	position: absolute;
+    width: 32px;
+    height: 22px;
+    top: 11px;
+    left: 24px;
+	
+	background-image: url("/image/icon/career.png");
+}
+
+.logout-icon {
+	position: absolute;
+    width: 20px;
+    height: 22px;
+    top: 11px;
+    left: 28px;
+	
+	background-image: url("/image/icon/logout.png");
+}
+
+#name {
+	position: absolute;
+    right: 16px;
+    top: 11px;
+    font-size: 16px;
+    font-weight: 200;
+}
+
+#email {
+	position: absolute;
+    font-weight: 100;
+    color: #7c7c7c;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 147px;
+}
+
+.frame {
+	    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50px;
+    top: 39px;
+}
+
+.profile {
+	background-image: url("/image/warning.png");
+	
+	width: 100px;
+    height: 100px;
+    background-color: #4c4c4c;
+}
+
+.new {
+	position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 23px;
+    left: 24px;
+}
+
+.new > span {
+	color: white;
+    font-size: 13px;
+}
+ 

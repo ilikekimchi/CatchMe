@@ -133,3 +133,7 @@
 	  text-decoration:underline;
   text-underline-position:under;
 }
+
+.customer-name::after {
+	content:" 님";
+}

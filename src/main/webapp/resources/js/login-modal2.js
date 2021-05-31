@@ -27,7 +27,7 @@ $(function() {
           });
 		
 		
-		$('.login').click(function() {
+		$('.go-mypage').click(function() {
 
 			$('.login-modal').toggleClass('active');
 

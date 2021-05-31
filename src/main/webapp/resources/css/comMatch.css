@@ -4,6 +4,8 @@ body {
 	position:relative;
 }
 
+
+
 .side-bar {
   z-index:20;
   position:fixed;
@@ -37,6 +39,10 @@ body {
   font-size:1.2rem;
   color:#656565;
   letter-spacing:1px;
+}
+
+.side-bar > .side-menu ul li:nth-child(1) {
+	margin-top:100px;
 }
 
 .side-bar > .side-menu ul li {
@@ -100,11 +106,9 @@ body {
 }
 
 .myhome {
-	
-	transform: translateX(32%);
-	
-  height:1500px;
-  margin-top:50px;
+
+  height:1200px;
+  margin-left:400px;
 }
 
 .myhome > .title {
@@ -112,116 +116,61 @@ body {
   font-size:36px;
   font-weight:bold;
   letter-spacing:3px;
-  padding-top:50px;
+  padding-top:150px;
   line-height:50px;
-  
-  width: 1100px;
-  margin: 0 auto;
 }
 
-.req {
+.match {
   width:100%;
   height:80px;
   border-bottom:1px solid #bfbfbf;
    
 }
 
-.req > .req-text {
+.match > .match-text {
   font-size:25px;
   line-height:80px;
 }
 
-.req-list ul li {
-	background-image: url("/image/req.png");
-	background-repeat:no-repeat;
-	background-size:cover;
+.match-list li {
 }
 
-.req-list > ul li .req-list-li {
+.match-list .match-list-li {
+  border-bottom:1px solid #bfbfbf;
+}
 
-  padding-top:100px;
+.match-list .match-list-li ul {
   display:flex;
-  height:300px;
-    
-    border-bottom:1px solid #dfdfdf;
-    
-} 
-
-.req-list > ul li .req-list-li >.req-date {
-
-  width:80px;
+  align-items:center;
+  height:50px;
+  font-size:18px;
 }
 
-.req-list .req-com-name {
-
-  width:350px;
-  font-size:25px;
-  transform:translateY(-3px);
-  color:#333;
-}
-
-.req-list .req-com-name .com-name {
-	color:#4876ef;
-}
-
-.req-list .com-detail {
-
+.match-list .match-list-li .com-name {
   width:200px;
+  border-right:1px solid #bfbfbf;
 }
 
-.com-detail span {
-  display:block;
+.match-list .match-list-li .last-msg {
+  width:700px;
+    margin-left:10px;
+  border-right:1px solid #bfbfbf;
 }
 
-.com-detail span i {
-  width:25px;
+.match-list .match-list-li .last-msg-time {
+  width:150px;
+    margin-left:10px;
+  border-right:1px solid #bfbfbf;
 }
 
-.com-info {
-  width:540px;
-  height:110px;
-  transform:translateY(-20px);
-  padding:20px;
-  background-color:#f4f6fa;
-  border-radius:10px;
+.match-list .match-list-li .goto-chat {
+  width:90px;
 }
 
-.com-info:hover {
-  background-color:#eff5ff;
+.match-list .match-list-li .goto-chat a {
+  margin-left:45px;
+  font-size:20px;
+  padding:10px;
+  background-color:white;
 }
 
-.com-info .com-info-text {
-  margin:0;
-  padding:0;
-  margin-bottom:20px;
-}
-
-.com-info .com-occ {
-  font-size:25px;
-
-}
-
-.req-list .img-box {
-  border:1px solid blue;
-    width:200px;
-  height:200px;
-  overflow:hidden;
-}
-
-.req-list .img-box img {
-  width:100%;
-  height:100%;
-  object-fit: cover;
-}
-
-.req-list .com-name {
-  color:black;
-}
-
-.req-list .req-com-name div:nth-child(2) {
-  margin-top:5px;
-}
-
-.req-list .req-com-name div {
-  margin-bottom:5px;
-}
