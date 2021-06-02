@@ -43,11 +43,9 @@ public class CompanyServiceImpl implements CompanyService {
 	public boolean login0(Company item) {
 		Company company = dao.login0(item);
 		if(company != null) {
-			
 			item.setCompanyPw(null);
 			item.setCompanyName(company.getCompanyName() );
 			item.setCompanyImg(company.getCompanyImg() );
-			item.setCompanyPay(company.getCompanyPay() );
 			item.setCompanyRole(company.getCompanyRole());
 			
 			return true;

@@ -14,9 +14,9 @@
 	<!-- #{}은 필드명, mybatis-config 에서 세팅해주면 이것을 자동으로 고쳐줌(자바표기법:낙타 표기법) -->
 	<insert id="add">
 	INSERT INTO career
-	(career_seq,profile_seq, career_company, career_date, career_work, career_category)
+	(career_seq, profile_seq, career_company, career_date, career_work)
 	
-	VALUES (career_seq.nextval, #{profileSeq}, #{careerCompany}, #{careerDate}, #{careerWork}, #{careerCategory})
+	VALUES (career_seq.nextval, #{profileSeq}, #{careerCompany}, #{careerDate}, #{careerWork})
 	
 	<!--  profileSeq를 item 으로 읽어 와서 Profile객체에 설정하는 방법을 사용하는 것 -->
 	<selectKey keyColumn="careerSeq" keyProperty="careerSeq" order="AFTER" resultType="integer">
@@ -29,7 +29,6 @@
 	<update id="update">
 		UPDATE career 
 		SET career_company=#{careerCompany}, career_date=#{careerDate}, career_work=#{careerWork},
-		career_category=#{careerCategory}
 		
 		WHERE profile_seq=#{profileSeq}
 	</update>

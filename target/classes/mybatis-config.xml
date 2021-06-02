@@ -21,6 +21,7 @@
 		<typeAlias type="jj.j2.sh.model.Profile" alias="Profile" />
 		<typeAlias type="jj.j2.sh.model.Coin" alias="Coin" />
 		<typeAlias type="jj.j2.sh.model.Pay" alias="Pay" />
+		<typeAlias type="jj.j2.sh.model.Job" alias="Job" />
 	</typeAliases>
 	
 	<mappers>
@@ -34,5 +35,6 @@
 		<mapper resource="mybatis/profile.xml" />
 		<mapper resource="mybatis/coin.xml" />
 		<mapper resource="mybatis/pay.xml" />
+		<mapper resource="mybatis/job.xml" />
 	</mappers>
 </configuration>

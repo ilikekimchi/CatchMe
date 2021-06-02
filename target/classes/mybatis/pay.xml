@@ -8,6 +8,7 @@
 		<result column="company_id" property="companyId" />
 		<result column="coin_seq" property="coinSeq" />
 		<result column="pay_saleprice" property="paySaleprice" />		
+		<result column="pay_coin" property="payCoin" />		
 		<result column="pay_date" property="payDate" />
 		
 		<result column="coin_name" property="coinName" />
@@ -28,9 +29,9 @@
 	<!-- 결제하기 -->
 	<insert id="add">
 	INSERT INTO pay
-	(pay_seq, company_id, coin_seq, pay_saleprice, pay_date)
+	(pay_seq, company_id, coin_seq, pay_saleprice, pay_date, pay_coin)
 	
-	VALUES (pay_seq.nextval, #{companyId}, #{coinSeq}, #{paySaleprice}, SYSDATE)
+	VALUES (pay_seq.nextval, #{companyId}, #{coinSeq}, #{paySaleprice}, SYSDATE, #{payCoin})
 	
 	<selectKey keyColumn="paySeq" keyProperty="paySeq" order="AFTER" resultType="integer">
 		SELECT pay_seq.CURRVAL FROM DUAL

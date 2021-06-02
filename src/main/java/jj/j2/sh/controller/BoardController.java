@@ -22,6 +22,7 @@ import jj.j2.sh.model.Area;
 import jj.j2.sh.model.Career;
 import jj.j2.sh.model.Certificate;
 import jj.j2.sh.model.Customer;
+import jj.j2.sh.model.Job;
 import jj.j2.sh.model.Profile;
 import jj.j2.sh.model.Skill;
 import jj.j2.sh.service.ProfileService;
@@ -82,10 +83,10 @@ public class BoardController {
 	//////페이지네이션 test를 위한 더미 생성
 	@GetMapping("/dummy")
 	String dummy( Profile item, @ModelAttribute Skill skill, Customer customer, Area area, Career career, Certificate certificate,
-			HttpSession session) {
+			Job job,HttpSession session) {
 		customer = (Customer) session.getAttribute("customer");
 		
-		service.dummy(customer, skill, area, career, certificate, item);
+		service.dummy(customer, skill, area, career, certificate, job, item);
 		
 		return "redirect:list";
 	}

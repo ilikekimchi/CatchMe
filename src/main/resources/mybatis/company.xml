@@ -23,7 +23,6 @@
 		#{companyDate}, #{companyCategory}, #{companyJob})		
 		
 		<!-- Role(찜하기_스크랩)은 나중에.. -->
-		<!-- Pay(코인)은 나중에.. -->
 		
 	</insert>
 	

@@ -38,8 +38,17 @@
 						<td><fmt:formatDate value="${item.payDate}" pattern="yyyy-MM-dd"/></td>
 						<td><a href="${item.paySeq}/delete">삭제</a></td>
 					</tr>
+					<tr>
+						<c:set var="sum" value="${sum + item.payCoin}" scope="session"/>
+					</tr>
 				</c:forEach>
 			</tbody>
+			<c:if test="${sum != null}" >
+				<tr>
+					<th>합계</th>
+					<td><c:out value="${sum}" />코인</td>
+				</tr>
+			</c:if>
 		</table>
 	</div>
 	<div>

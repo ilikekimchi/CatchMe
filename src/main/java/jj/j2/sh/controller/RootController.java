@@ -1,6 +1,5 @@
 package jj.j2.sh.controller;
 
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import jj.j2.sh.model.Customer;
 import jj.j2.sh.service.CustomerService;
@@ -88,51 +86,6 @@ public class RootController {
 				return "mypage/userinfo";
 			}
 			
-			@RequestMapping("/resume") 
-			String resume() {
-				return "mypage/resume";
-			}
-			
-			@RequestMapping("/requestUser") 
-			String requestUser() {
-				return "mypage/requestUser";
-			}
-			
-			@RequestMapping("/matchUser") 
-			String matchUser() {
-				return "mypage/matchUser";
-			}
-			
-			@RequestMapping("/talk") 
-			String talk() {
-				return "mypage/talk";
-			}
-			
-			@RequestMapping("/comHome") 
-			String comHome() {
-				return "company/comHome";
-			}
-			
-			@RequestMapping("/comInfo") 
-			String comInfo() {
-				return "company/comInfo";
-			}
-			
-			@RequestMapping("/comReq") 
-			String comReq() {
-				return "company/comReq";
-			}
-			
-			@RequestMapping("/comMatch") 
-			String comMatch() {
-				return "company/comMatch";
-			}
-			
-			@RequestMapping("/comCoin") 
-			String comCoin() {
-				return "company/comCoin";
-			}
-			
 			@PostMapping("/login0")
 			String login0(Company item, HttpSession session, Model model,
 					HttpServletRequest request) {
@@ -154,6 +107,7 @@ public class RootController {
 				
 				return "logintry";
 			}
+			
 	///////////////////임시(pjh)////////////////////////
 			@RequestMapping("/pjh")
 			String pjh() {
@@ -161,4 +115,49 @@ public class RootController {
 				return "pjh";
 				
 			}
+	         
+	         @RequestMapping("/resume") 
+	         String resume() {
+	            return "mypage/resume";
+	         }
+	         
+	         @RequestMapping("/requestUser") 
+	         String requestUser() {
+	            return "mypage/requestUser";
+	         }
+	         
+	         @RequestMapping("/matchUser") 
+	         String matchUser() {
+	            return "mypage/matchUser";
+	         }
+	         
+	         @RequestMapping("/talk") 
+	         String talk() {
+	            return "mypage/talk";
+	         }
+	         
+	         @RequestMapping("/comHome") 
+	         String comHome() {
+	            return "company/comHome";
+	         }
+	         
+	         @RequestMapping("/comInfo") 
+	         String comInfo() {
+	            return "company/comInfo";
+	         }
+	         
+	         @RequestMapping("/comReq") 
+	         String comReq() {
+	            return "company/comReq";
+	         }
+	         
+	         @RequestMapping("/comMatch") 
+	         String comMatch() {
+	            return "company/comMatch";
+	         }
+	         
+	         @RequestMapping("/comCoin") 
+	         String comCoin() {
+	            return "company/comCoin";
+	         }
 }

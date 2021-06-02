@@ -526,7 +526,7 @@ input:focus {
 }
 
 .kakao-pay .kakao-msg .pay-btn button {
-    font-weight:bold;
+  font-weight:bold;
   font-size:20px;
   color:#999;
   line-height:65px;
@@ -582,16 +582,20 @@ input:focus {
   border-radius:50%;
 }
 
-.kakao-pay .kakao-send .pay-btn button {
+.kakao-pay .kakao-send .pay-btn a {
   font-weight:bold;
   font-size:20px;
   color:#999;
   line-height:65px;
-  width:100%;
+  width:90%;
   background-color:#F7E600;
   border-radius:4px;
   margin-top:120px;
   color:#333;
+  
+  position: absolute;
+  
+  text-align: center;
 }
 
 .cancle-btn {
@@ -656,7 +660,7 @@ input:focus {
   font-weight:bold;
 }
 
-.pay-err .text button {
+.pay-err .text .err-btn {
   width:90%;
   height:50px;
   background-color:#4876ef;
@@ -666,4 +670,10 @@ input:focus {
   margin-top:25px;
   color:white;
   font-family: 'BMJUA';
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  cursor: pointer;
 }

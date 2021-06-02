@@ -56,6 +56,8 @@ public class PayController {
 		List<Pay> list = service.list(company.getCompanyId());
 		
 		model.addAttribute("list", list);
+		
+		session.removeAttribute("sum");
 	
 		return path + "list";
 		
@@ -119,8 +121,12 @@ public class PayController {
 		return path + "cart";
 	}
 	@GetMapping("/{paySeq}/delete")
-	String delete(@PathVariable int paySeq) {
+	String delete(@PathVariable int paySeq, HttpSession session) {
 		service.delete(paySeq);
+		
+		session.removeAttribute("sum");
+		
+		//session.setAttribute("profile", item);
 		
 		return "redirect:../list";
 		
@@ -132,7 +138,7 @@ public class PayController {
 				
 		session.removeAttribute("cart");
 				
-		return "redirect:/";
+		return "redirect:..";
 	}
 	
 }

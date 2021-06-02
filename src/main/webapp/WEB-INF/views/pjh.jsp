@@ -68,6 +68,16 @@
 			<div>
 				${sessionScope.company.companyImg} | ${sessionScope.company.companyName} <a href="logout">로그아웃</a> | <a href="/company/list">마이페이지</a>
 			</div>
+		<c:if test="${sessionScope.sum != null}">	
+			<div>
+				현재코인: ${sessionScope.sum}코인
+			</div>
+		</c:if>
+		<c:if test="${sessionScope.sum == null}">	
+			<div>
+				현재코인: 0코인
+			</div>
+		</c:if>
 		</c:if>
 		
 		<div>

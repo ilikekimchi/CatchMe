@@ -116,7 +116,7 @@
 				<a href="naverLogin"><div class="naver"></div></a>
 			</div>
 		</c:if>
-		<c:if test="${sessionScope.sessionId != null || sessionScope.customer != null}">
+		<c:if test="${sessionScope.customer != null && sessionScope.company == null}">
 			<h2 style="text-align: center" id="name">${sessionScope.customer.customerNnm} 님</h2>
 			<h4 style="text-align: center" id="email">${sessionScope.customer.customerId}</h4>
 			<div class="notice">
@@ -136,32 +136,38 @@
 				<span class="career-icon"></span>
 				<div>내 이력서</div>
 			</a>
-			<a href="logout" class="logout in">
+			<a href="/logout" class="logout in">
 				<span class="logout-icon"></span>
 				<div>로그아웃</div>
 			</a>
 		</c:if>
-		<c:if test="${sessionScope.sessionId != null || sessionScope.company != null}">
+		<c:if test="${sessionScope.customer == null && sessionScope.company != null}">
 			<h2 style="text-align: center" id="name">${sessionScope.company.companyName} 님</h2>
 			<h4 style="text-align: center" id="email">${sessionScope.company.companyId}</h4>
 			<div class="notice">
-				<a href="/mypage" class="my-notice">나의 알림</a>
-				<div class="notice-nm">
-					<span>1</span>
-				</div>
+				<c:if test="${sessionScope.sum != null}">	
+					<div>
+						현재코인: ${sessionScope.sum}코인
+					</div>
+				</c:if>
+				<c:if test="${sessionScope.sum == null}">	
+					<div>
+						현재코인: 0코인
+					</div>
+				</c:if>
 			</div>
 			<div class="frame">
 				<div class="profile"></div>
 			</div>
-			<a href="/mypage" class="mypage in">
+			<a href="/company/list" class="mypage in">
 				<span class="mypage-icon"></span>
 				<div>마이페이지</div>
 			</a>
-			<a href="" class="career in">
+			<a href="/pay/cart" class="career in">
 				<span class="career-icon"></span>
-				<div>내 이력서</div>
+				<div>코인충전소</div>
 			</a>
-			<a href="logout" class="logout in">
+			<a href="/logout" class="logout in">
 				<span class="logout-icon"></span>
 				<div>로그아웃</div>
 			</a>

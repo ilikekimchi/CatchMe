@@ -8,17 +8,16 @@
 	<!-- 이직자 희망지역 보기 -->
 	<select id="list" resultType="Area">
 	SELECT * FROM area 
-	WHERE profile_seq=#{profileSeq}
+	ORDER BY area_code ASC
 	</select>
 	
 	<!-- #{}은 필드명, mybatis-config 에서 세팅해주면 이것을 자동으로 고쳐줌(자바표기법:낙타 표기법) -->
 	<insert id="add">
 	INSERT INTO area
-	(area_seq, profile_seq, area1, area2)
+	(area_seq, area_code, area1, area2)
 	
-	VALUES (area_seq.nextval, #{profileSeq}, #{area1}, #{area2})
+	VALUES (area_seq.nextval, #{areaCode}, #{area1}, #{area2})
 	
-	<!--  profileSeq를 item 으로 읽어 와서 Profile객체에 설정하는 방법을 사용하는 것 -->
 	<selectKey keyColumn="areaSeq" keyProperty="areaSeq" order="AFTER" resultType="integer">
 		SELECT area_seq.CURRVAL FROM DUAL
 	</selectKey>
@@ -27,9 +26,9 @@
 	<!-- 이직자 희망지역 수정 -->
 	<update id="update">
 		UPDATE area 
-		SET area1=#{area1}, area2=#{area2}
+		SET area_code=#{areaCode}, area1=#{area1}, area2=#{area2}
 		
-		WHERE profile_seq=#{profileSeq}
+		WHERE area_seq=#{areaSeq}
 	</update>
 	
 	<!-- 이직자 희망지역 삭제 -->

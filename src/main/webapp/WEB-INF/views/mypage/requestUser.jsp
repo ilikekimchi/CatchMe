@@ -32,9 +32,9 @@
 		<nav class="side-menu">
 
 			<ul>
-				<li><a href="/mypage"><i class="fas fa-home"></i>개인회원 홈</a></li>
+				<li><a href="/profile/list"><i class="fas fa-home"></i>개인회원 홈</a></li>
 
-				<li><a href="/userinfo"><i class="fas fa-user-edit"></i>회원정보</a></li>
+				<li><a href="/customer/list"><i class="fas fa-user-edit"></i>회원정보</a></li>
 				<li><a href="/resume"><i class="far fa-address-card"></i>이력서</a></li>
 				<li><a href="/requestUser"><i class="far fa-building"></i>기업의 요청</a></li>
 				<li><a href="/matchUser"><i class="fas fa-handshake"></i>매칭된 기업</a></li>

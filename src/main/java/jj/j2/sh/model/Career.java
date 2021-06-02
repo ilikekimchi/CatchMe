@@ -6,8 +6,6 @@ public class Career {
 	private String careerCompany; //회사명
 	private String careerDate; //경력
 	private String careerWork; //담당업무
-	private String careerCategory; //직급/직책 분류
-	
 	
 	
 	public int getCareerSeq() {
@@ -39,11 +37,5 @@ public class Career {
 	}
 	public void setCareerWork(String careerWork) {
 		this.careerWork = careerWork;
-	}
-	public String getCareerCategory() {
-		return careerCategory;
-	}
-	public void setCareerCategory(String careerCategory) {
-		this.careerCategory = careerCategory;
 	}
 }

@@ -167,19 +167,38 @@
 				<a href="naverLogin"><div class="naver"></div></a>
 			</div>
 		</c:if>
-		<c:if test="${sessionScope.sessionId != null || sessionScope.customer != null || sessionScope.company != null}">
+		<c:if test="${sessionScope.customer != null && sessionScope.company == null}">
 			<h2 style="text-align: center" id="name">${sessionScope.customer.customerNnm} 님</h2>
 			<h4 style="text-align: center" id="email">${sessionScope.customer.customerId}</h4>
 			<div class="frame">
 				<div class="profile"></div>
 			</div>
-			<a href="/mypage" class="mypage in">
+			<a href="/profile/list" class="mypage in">
 				<span class="mypage-icon"></span>
 				<div>마이페이지</div>
 			</a>
-			<a href="/profile/list" class="career in">
+			<a href="/resume" class="career in">
 				<span class="career-icon"></span>
 				<div>내 이력서</div>
+			</a>
+			<a href="logout" class="logout in">
+				<span class="logout-icon"></span>
+				<div>로그아웃</div>
+			</a>
+		</c:if>
+		<c:if test="${sessionScope.customer == null && sessionScope.company != null}">
+			<h2 style="text-align: center" id="name">${sessionScope.customer.customerNnm} 님</h2>
+			<h4 style="text-align: center" id="email">${sessionScope.customer.customerId}</h4>
+			<div class="frame">
+				<div class="profile"></div>
+			</div>
+			<a href="/company/list" class="mypage in">
+				<span class="mypage-icon"></span>
+				<div>마이페이지</div>
+			</a>
+			<a href="/pay/cart" class="career in">
+				<span class="career-icon"></span>
+				<div>코인충전소</div>
 			</a>
 			<a href="logout" class="logout in">
 				<span class="logout-icon"></span>

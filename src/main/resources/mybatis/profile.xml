@@ -3,227 +3,232 @@
 
 <mapper namespace="profile">
 <!--  Map, join -->
-    <resultMap type="Profile" id="ProfileMap"> 
-      <id column="profile_seq" property="profileSeq" />
-      <result column="customer_id" property="customerId" />
-      <result column="profile_img" property="profileImg" />      
-      <result column="profile_money" property="profileMoney" />
-      <result column="profile_state" property="profileState" />
-      <result column="profile_school" property="profileSchool" />
-      <result column="profile_school_skill" property="profileSchoolSkill" />
-      <result column="profile_school_state" property="profileSchoolState" />
-      <result column="profile_army" property="profileArmy" />
-      <result column="profile_army_writing" property="profileArmyWriting" />
-      <result column="profile_writing" property="profileWriting" />
-      <result column="profile_time" property="profileTime" />
-      <result column="profile_date" property="profileDate" />
-      <result column="profile_check" property="profileCheck" />
-       
-      
-   <!-- 외래키 -->
-      <!-- customer이직자 관련 -->
-      <result column="customer_nnm" property="customerNnm" />
-      <result column="customer_name" property="customerName" />
-      <result column="customer_phone" property="customerPhone" />
-      <result column="customer_address" property="customerAddress" />
-      <result column="customer_birthday" property="customerBirthday" />
-      <result column="customer_gender" property="customerGender" />
-      <!-- customer이직자 관련 -->
-      
-      <!-- area지역 관련 -->
-      <result column="area_seq" property="areaSeq" />
-      <result column="area1" property="area1" />
-      <result column="area2" property="area2" />
-      <!-- area지역 관련 -->
-      
-      <!-- career경력사항 관련 -->
-      <result column="career_seq" property="careerSeq" />
-      <result column="career_company" property="careerCompany" />
-      <result column="career_date" property="careerDate" />
-      <result column="career_work" property="careerWork" />
-      <result column="career_category" property="careerCategory" />
-      <!-- career경력사항 관련 -->
-      
-      <!-- certificate자격면허 관련 -->
-      <result column="certificate_seq" property="certificateSeq" />
-      <result column="certificate_name" property="certificateName" />
-      <result column="certificate_date" property="certificateDate" />
-      <result column="certificate_writing" property="certificateWriting" />
-      <!-- certificate자격면허 관련 -->
+	 <resultMap type="Profile" id="ProfileMap"> 
+		<id column="profile_seq" property="profileSeq" />
+		<result column="customer_id" property="customerId" />
+		<result column="area_seq" property="areaSeq" />
+		<result column="job_seq" property="jobSeq" />
+		<result column="profile_img" property="profileImg" />		
+		<result column="profile_money" property="profileMoney" />
+		<result column="profile_state" property="profileState" />
+		<result column="profile_school" property="profileSchool" />
+		<result column="profile_school_skill" property="profileSchoolSkill" />
+		<result column="profile_school_state" property="profileSchoolState" />
+		<result column="profile_army" property="profileArmy" />
+		<result column="profile_army_writing" property="profileArmyWriting" />
+		<result column="profile_writing" property="profileWriting" />
+		<result column="profile_time" property="profileTime" />
+		<result column="profile_date" property="profileDate" />
+		<result column="profile_check" property="profileCheck" />
+		 
+		
+	<!-- 외래키 -->
+		<!-- customer이직자 관련 -->
+		<result column="customer_nnm" property="customerNnm" />
+		<result column="customer_name" property="customerName" />
+		<result column="customer_phone" property="customerPhone" />
+		<result column="customer_address" property="customerAddress" />
+		<result column="customer_birthday" property="customerBirthday" />
+		<result column="customer_gender" property="customerGender" />
+		<!-- customer이직자 관련 -->
+		
+		<!-- area지역 관련 -->
+		<result column="area_code" property="areaCode" />
+		<result column="area1" property="area1" />
+		<result column="area2" property="area2" />
+		<!-- area지역 관련 -->
+		
+		<!-- career경력사항 관련 -->
+		<result column="career_seq" property="careerSeq" />
+		<result column="career_company" property="careerCompany" />
+		<result column="career_date" property="careerDate" />
+		<result column="career_work" property="careerWork" />
+		<!-- career경력사항 관련 -->
+		
+		<!-- certificate자격면허 관련 -->
+		<result column="certificate_seq" property="certificateSeq" />
+		<result column="certificate_name" property="certificateName" />
+		<result column="certificate_date" property="certificateDate" />
+		<result column="certificate_writing" property="certificateWriting" />
+		<!-- certificate자격면허 관련 -->
 
-      
-      <!-- skill기술능력 관련 -->
-      <result column="skill_seq" property="skillSeq" />
-      <result column="skill_content" property="skillContent" />
-      <!-- skill기술능력 관련 -->
-   <!-- 외래키 -->
-   </resultMap>
-   
-   <!-- 검색 -->
-   <sql id="search">
-   SELECT profile.*, customer.customer_name, customer.customer_nnm, customer.customer_phone, 
-      customer.customer_address, customer.customer_birthday, customer.customer_gender,
-      area.area1, area.area2,
-      career.career_company, career.career_date, career.career_work, career.career_category,
-      certificate.certificate_name, certificate.certificate_date, certificate.certificate_writing,
-      skill.skill_content
-      FROM profile
-      JOIN customer ON profile.customer_id=customer.customer_id
-      JOIN skill ON profile.profile_seq=skill.profile_seq
-      JOIN area ON profile.profile_seq=area.profile_seq       
-      JOIN career ON profile.profile_seq=career.profile_seq       
-      JOIN certificate ON profile.profile_seq=certificate.profile_seq
-      <where>
-      	<if test="search == 0 and keyword != null">
-             career.career_work LIKE '%' || #{keyword} || '%'
-         </if>
-      
-         <if test="search == 1 and keyword != null">
-            customer.customer_nnm LIKE '%' || #{keyword} || '%'
-         </if>
-         
-         <if test="search == 2 and keyword != null">
-            area.area1 LIKE '%' || #{keyword} || '%'
-         </if>
-         
-         <if test="search == 3 and keyword != null">
-            career.career_category LIKE '%' || #{keyword} || '%'
-         </if>
-         
-         <if test="search == 4 and keyword != null">
-            skill.skill_content LIKE '%' || #{keyword} || '%'
-         </if>
-         
-         <if test="search == 5 and keyword != null">
-            career.career_date LIKE '%' || #{keyword} || '%'
-         </if>
-      </where>   
-   </sql>
-   <!-- 검색 -->
-   
-   <!-- 페이지네이션 -->
-   <select id="total" resultType="Integer">
-      SELECT COUNT(*)
-      FROM (<include refid="search"></include>
-      )
-   </select>
-   
-      
-   <!-- 이력서(이직자 자신)보기 -->
-   <select id="list" resultType="Profile" resultMap="ProfileMap">
-      SELECT profile.*, customer.customer_name, customer.customer_phone, 
-      customer.customer_address, customer.customer_birthday, customer.customer_gender,
-      area.area1, area.area2,
-      career.career_company, career.career_date, career.career_work, career.career_category,
-      certificate.certificate_name, certificate.certificate_date, certificate.certificate_writing, 
-      skill.skill_content
-      FROM profile
-      JOIN customer ON profile.customer_id=customer.customer_id
-      JOIN skill ON profile.profile_seq=skill.profile_seq
-      JOIN area ON profile.profile_seq=area.profile_seq       
-      JOIN career ON profile.profile_seq=career.profile_seq       
-      JOIN certificate ON profile.profile_seq=certificate.profile_seq              
-      WHERE customer.customer_id=#{customerId}
-   </select>
-   
-   <!-- 이직자 명함 및 프로필 모두 보기 -->
-   <select id="listAll" resultType="Profile" resultMap="ProfileMap">
-      SELECT * FROM
-      (SELECT ROWNUM rnum, sub.* FROM
-      (<include refid="search"></include>) sub)
-      <![CDATA[   
+		
+		<!-- skill기술능력 관련 -->
+		<result column="skill_seq" property="skillSeq" />
+		<result column="skill_content" property="skillContent" />
+		<!-- skill기술능력 관련 -->
+		
+		<!-- job 직업 관련 -->
+		<result column="job_code" property="jobCode" />
+		<result column="job_large" property="jobLarge" />
+		<result column="job_small" property="jobSmall" />
+		<!-- job 직업 관련 -->
+	<!-- 외래키 -->
+	</resultMap>
+	
+	<!-- 검색 -->
+	<sql id="search">
+	SELECT profile.*, customer.customer_name, customer.customer_nnm, customer.customer_phone, 
+		customer.customer_address, customer.customer_birthday, customer.customer_gender,
+		area.area_code, area.area1, area.area2, job.job_code, job.job_large, job.job_small,
+		career.career_company, career.career_date, career.career_work,
+		certificate.certificate_name, certificate.certificate_date, certificate.certificate_writing,
+		skill.skill_content
+		FROM profile
+		JOIN customer ON profile.customer_id=customer.customer_id
+		JOIN skill ON profile.profile_seq=skill.profile_seq
+		JOIN career ON profile.profile_seq=career.profile_seq		 
+		JOIN certificate ON profile.profile_seq=certificate.profile_seq
+		JOIN area ON profile.area_seq=area.area_seq
+		JOIN job ON profile.job_seq=job.job_seq
+		<where>
+			<if test="search == 1 and keyword != null">
+				customer.customer_nnm LIKE '%' || #{keyword} || '%'
+			</if>
+			
+			<if test="search == 2 and keyword != null">
+				area.area1 LIKE '%' || #{keyword} || '%'
+			</if>
+			
+			<if test="search == 3 and keyword != null">
+				career.career_category LIKE '%' || #{keyword} || '%'
+			</if>
+			
+			<if test="search == 4 and keyword != null">
+				skill.skill_content LIKE '%' || #{keyword} || '%'
+			</if>
+			
+			<if test="search == 5 and keyword != null">
+				career.career_date LIKE '%' || #{keyword} || '%'
+			</if>
+		</where>	
+	</sql>
+	<!-- 검색 -->
+	
+	<!-- 페이지네이션 -->
+	<select id="total" resultType="Integer">
+		SELECT COUNT(*)
+		FROM (<include refid="search"></include>
+		)
+	</select>
+	
+		
+	<!-- 이력서(이직자 자신)보기 -->
+	<select id="list" resultType="Profile" resultMap="ProfileMap">
+		SELECT profile.*, customer.customer_name, customer.customer_nnm, customer.customer_phone, 
+		customer.customer_address, customer.customer_birthday, customer.customer_gender,
+		area.area_code, area.area1, area.area2, job.job_code, job.job_large, job.job_small,
+		career.career_company, career.career_date, career.career_work,
+		certificate.certificate_name, certificate.certificate_date, certificate.certificate_writing,
+		skill.skill_content
+		FROM profile
+		JOIN customer ON profile.customer_id=customer.customer_id
+		JOIN skill ON profile.profile_seq=skill.profile_seq
+		JOIN career ON profile.profile_seq=career.profile_seq
+		JOIN certificate ON profile.profile_seq=certificate.profile_seq
+		JOIN area ON profile.area_seq=area.area_seq
+		JOIN job ON profile.job_seq=job.job_seq
+	</select>
+	
+	<!-- 이직자 명함 및 프로필 모두 보기 -->
+	<select id="listAll" resultType="Profile" resultMap="ProfileMap">
+		SELECT * FROM
+		(SELECT ROWNUM rnum, sub.* FROM
+		(<include refid="search"></include>) sub)
+		<![CDATA[
          WHERE rnum >= ((#{page} - 1 ) * #{perPage} + 1 ) and rnum <= ( #{page} * #{perPage})
-         ]]>
-      ORDER BY profile_seq DESC
-   </select>
-   
-      
-   <!-- 이력서 등록 -->
-   <insert id="add">
-   
-   <if test="profileImg == null">
-      INSERT INTO profile
-      (profile_seq, customer_id, profile_money,  profile_state, 
-      profile_school, profile_school_skill, profile_school_state, profile_army, 
-      profile_army_writing, profile_writing, profile_time,
-      profile_check, profile_date)
-      
-      VALUES (profile_seq.nextval, #{customerId}, #{profileMoney}, #{profileState},  
-       #{profileSchool}, #{profileSchoolSkill}, #{profileSchoolState}, #{profileArmy}, 
-       #{profileArmyWriting}, #{profileWriting}, #{profileTime}, 
-       #{profileCheck}, SYSDATE)   
-      </if>   
-      
-      <if test="profileImg != null">
-      INSERT INTO profile
-      (profile_seq, customer_id, profile_money,  profile_state, 
-      profile_school, profile_school_skill, profile_school_state, profile_army, 
-      profile_army_writing, profile_writing, profile_time,
-      profile_check, profile_date, profile_img)
-      
-      VALUES (profile_seq.nextval, #{customerId}, #{profileMoney}, #{profileState},  
-       #{profileSchool}, #{profileSchoolSkill}, #{profileSchoolState}, #{profileArmy}, 
-       #{profileArmyWriting}, #{profileWriting}, #{profileTime}, 
-       #{profileCheck}, SYSDATE, #{profileImg})         
-      </if>      
-   
-   <!--  profileSeq를 item 으로 읽어 와서 Profile객체에 설정하는 방법을 사용하는 것 -->
-   <selectKey keyColumn="profileSeq" keyProperty="profileSeq" order="AFTER" resultType="integer">
-      SELECT profile_seq.CURRVAL FROM DUAL
-   </selectKey>
-   
-      <!-- Role(찜하기_스크랩)은 나중에.. -->
-   </insert>
-   
-   <!-- 이력서 각각의 값(데이터베이스에서 얻은 값들을 찾아서 item에 주기위해) -->
-   <select id="item" resultType="Profile" resultMap="ProfileMap"> 
-      SELECT profile.*, customer.customer_name, customer.customer_nnm, customer.customer_phone, 
-      customer.customer_address, customer.customer_birthday, customer.customer_gender,
-      area.area1, area.area2,
-      career.career_company, career.career_date, career.career_work, career.career_category,
-      certificate.certificate_name, certificate.certificate_date, certificate.certificate_writing, 
-      skill.skill_content
-      FROM profile
-      JOIN customer ON profile.customer_id=customer.customer_id
-      JOIN skill ON profile.profile_seq=skill.profile_seq
-      JOIN area ON profile.profile_seq=area.profile_seq       
-      JOIN career ON profile.profile_seq=career.profile_seq       
-      JOIN certificate ON profile.profile_seq=certificate.profile_seq              
-      WHERE profile.profile_seq=#{profileSeq} OR customer.customer_id=#{customerId} 
-   </select>
-               
-   <!-- 이력서 수정 -->
-   <update id="update">
-      UPDATE profile
-      SET profile_money=#{profileMoney}, profile_state=#{profileState}, profile_school=#{profileSchool}, 
-      profile_school_skill=#{profileSchoolSkill}, profile_school_state=#{profileSchoolState}, 
-      profile_army=#{profileArmy}, profile_army_writing=#{profileArmyWriting}, 
-      profile_writing=#{profileWriting}, profile_date=SYSDATE
-      
-      <!-- profileImg가 null이 아닐때만 바꿔라 -->
-      <if test="profileImg != null">
-         , profile_img=#{profileImg}
-      </if>
-      
-      WHERE profile_seq=#{profileSeq}
-   </update>
-   
-   <!-- 이력서 검증여부(관리자용) -->
-   <update id="profileCheck">
-      UPDATE profile
-      SET profile_check=#{profileCheck}
-      WHERE profile_seq=#{profileSeq}
-   </update>
-      
-   <!-- 이력서 삭제 -->
-   <delete id="delete">
-      DELETE FROM profile
-      WHERE profile_seq=#{profileSeq} OR customer_id=#{customerId}
-   </delete>
-   
-   <!-- 이력서 삭제2 -->
-   <delete id="delete2">
-      DELETE FROM profile
-      WHERE profile_seq=#{profileSeq}
-   </delete>
+      	]]>
+		ORDER BY profile_seq DESC
+	</select>
+	
+		
+	<!-- 이력서 등록 -->
+	<insert id="add">
+	
+	<if test="profileImg == null">
+		INSERT INTO profile
+		(profile_seq, customer_id, profile_money,  profile_state, 
+		profile_school, profile_school_skill, profile_school_state, profile_army, 
+		profile_army_writing, profile_writing, profile_time,
+		profile_check, profile_date, area_seq, job_seq)
+		
+		VALUES (profile_seq.nextval, #{customerId}, #{profileMoney}, #{profileState},
+		 #{profileSchool}, #{profileSchoolSkill}, #{profileSchoolState}, #{profileArmy}, 
+		 #{profileArmyWriting}, #{profileWriting}, #{profileTime}, 
+		 #{profileCheck}, SYSDATE, #{areaSeq}, #{jobSeq})	
+		</if>	
+		
+		<if test="profileImg != null">
+		INSERT INTO profile
+		(profile_seq, customer_id, profile_money,  profile_state, 
+		profile_school, profile_school_skill, profile_school_state, profile_army, 
+		profile_army_writing, profile_writing, profile_time,
+		profile_check, profile_date, area_seq, job_seq, profile_img)
+		
+		VALUES (profile_seq.nextval, #{customerId}, #{profileMoney}, #{profileState},  
+		 #{profileSchool}, #{profileSchoolSkill}, #{profileSchoolState}, #{profileArmy}, 
+		 #{profileArmyWriting}, #{profileWriting}, #{profileTime}, 
+		 #{profileCheck}, SYSDATE, #{areaSeq}, #{jobSeq}, #{profileImg})			
+		</if>		
+	
+	<!--  profileSeq를 item 으로 읽어 와서 Profile객체에 설정하는 방법을 사용하는 것 -->
+	<selectKey keyColumn="profileSeq" keyProperty="profileSeq" order="AFTER" resultType="integer">
+		SELECT profile_seq.CURRVAL FROM DUAL
+	</selectKey>
+	
+		<!-- Role(찜하기_스크랩)은 나중에.. -->
+	</insert>
+	
+	<!-- 이력서 각각의 값(데이터베이스에서 얻은 값들을 찾아서 item에 주기위해) -->
+	<select id="item" resultType="Profile" resultMap="ProfileMap"> 
+		SELECT profile.*, customer.customer_name, customer.customer_nnm, customer.customer_phone, 
+		customer.customer_address, customer.customer_birthday, customer.customer_gender,
+		area.area_code, area.area1, area.area2, job.job_code, job.job_large, job.job_small,
+		career.career_company, career.career_date, career.career_work,
+		certificate.certificate_name, certificate.certificate_date, certificate.certificate_writing,
+		skill.skill_content
+		FROM profile
+		JOIN customer ON profile.customer_id=customer.customer_id
+		JOIN skill ON profile.profile_seq=skill.profile_seq
+		JOIN career ON profile.profile_seq=career.profile_seq
+		JOIN certificate ON profile.profile_seq=certificate.profile_seq
+		JOIN area ON profile.area_seq=area.area_seq
+		JOIN job ON profile.job_seq=job.job_seq
+		WHERE profile.profile_seq=#{profileSeq} OR customer.customer_id=#{customerId}
+	</select>
+					
+	<!-- 이력서 수정 -->
+	<update id="update">
+		UPDATE profile
+		SET profile_money=#{profileMoney}, profile_state=#{profileState}, profile_school=#{profileSchool}, 
+		profile_school_skill=#{profileSchoolSkill}, profile_school_state=#{profileSchoolState}, 
+		profile_army=#{profileArmy}, profile_army_writing=#{profileArmyWriting}, 
+		profile_writing=#{profileWriting}, profile_date=SYSDATE
+		
+		<!-- profileImg가 null이 아닐때만 바꿔라 -->
+		<if test="profileImg != null">
+			, profile_img=#{profileImg}
+		</if>
+		
+		WHERE profile_seq=#{profileSeq}
+	</update>
+	
+	<!-- 이력서 검증여부(관리자용) -->
+	<update id="profileCheck">
+		UPDATE profile
+		SET profile_check=#{profileCheck}
+		WHERE profile_seq=#{profileSeq}
+	</update>
+		
+	<!-- 이력서 삭제 -->
+	<delete id="delete">
+		DELETE FROM profile
+		WHERE profile_seq=#{profileSeq} OR customer_id=#{customerId}
+	</delete>
+	
+	<!-- 이력서 삭제2 -->
+	<delete id="delete2">
+		DELETE FROM profile
+		WHERE profile_seq=#{profileSeq}
+	</delete>
 </mapper>

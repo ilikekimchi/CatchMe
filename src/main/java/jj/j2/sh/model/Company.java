@@ -11,14 +11,12 @@ public class Company {
 	private String companyLocation; //위치(주소)
 	private String companyTel; //인사담당자 연락처
 	private String companyWriting; //기업개요 및 비전소개
-	private int companyPay; //코인(보유 수)
 	private String companyRole; //찜한유저목록(스크랩)
 	private String companyHomePage; //홈페이지
 	private String companyImg; //기업 아이콘
 	private Date companyDate; //설립일
 	private String companyCategory; //기업형태(중,소 구분)
 	private String companyJob; //업종
-	
 	
 	
 	public String getCompanyId() {
@@ -69,12 +67,6 @@ public class Company {
 	public void setCompanyWriting(String companyWriting) {
 		this.companyWriting = companyWriting;
 	}
-	public int getCompanyPay() {
-		return companyPay;
-	}
-	public void setCompanyPay(int companyPay) {
-		this.companyPay = companyPay;
-	}
 	public String getCompanyRole() {
 		return companyRole;
 	}
@@ -110,7 +102,6 @@ public class Company {
 	}
 	public void setCompanyJob(String companyJob) {
 		this.companyJob = companyJob;
-	}
-	
+	}	
 	
 }

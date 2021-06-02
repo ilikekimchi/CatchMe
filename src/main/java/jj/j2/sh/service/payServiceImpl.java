@@ -39,15 +39,20 @@ public class payServiceImpl implements PayService {
 		item.setCompanyId(companyId);
 		
 		int paySaleprice = 0;
+		int payCoin = item.getPayCoin();
+		
 		for(int coinSeq : cart.keySet()) {
 			Coin coin = cart.get(coinSeq);
 			
 			item.setCoinSeq(coin.getCoinSeq());
 			
 			paySaleprice = coin.getCoinPay();
+			payCoin = coin.getCoinName();
 			
 		}
+		
 		item.setPaySaleprice(paySaleprice);
+		item.setPayCoin(payCoin);
 		
 		dao.add(item);
 	}

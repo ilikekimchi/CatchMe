@@ -1,155 +1,123 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="/css/profile-img.css" rel="stylesheet" />
+<title></title>
+
+<link href="/css/mypage.css" rel="stylesheet" />
+<link href="/css/normal.css" rel="stylesheet" />
+
+<!-- 폰트어썸 불러오기 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<jsp:include page="../footer.jsp" />
+<jsp:include page="../topbar.jsp" />
+
 </head>
 <body>
-	<div>
-		<div>
-			<div><h3>이력서(myPage)</h3></div>
-			<div>
-				<table border="1">
-					<thead>
-						<tr>
-						<!-- 기본정보 -->
-							<th>아이디</th>
-							<th>이력서 번호</th>
-							<th>얼굴 이미지</th>
-							<th>성별</th>
-							<th>이름</th>
-							<th>연락처</th>
-							<th>주소</th>
-							<th>생년월일</th>
-						<!-- 기본정보 -->
-						
-						<!-- 학력 -->
-							<th>학교명</th>
-							<th>학과 및 전공</th>
-							<th>학력구분</th>
-						<!-- 학력 -->
-						
-						<!-- 병역사항 -->
-							<th>병역구분</th>
-							<th>면제사유</th>
-						<!-- 병역사항 -->
-						
-						<!-- 경력사항 -->
-							<th>회사명</th>
-							<th>담당업무</th>
-							<th>직급/직책</th>
-							<th>경력</th>
-						<!-- 경력사항 -->
-						
-						<!-- 자격/면허 -->
-							<th>자격증명</th>
-							<th>취득일</th>
-							<th>발행처</th>
-						<!-- 자격/면허 -->
-						
-						<!-- 기술능력 -->
-							<th>얼굴 이미지</th>
-						<!-- 기술능력 -->
-						
-						<!-- 희망사항 -->
-							<th>희망지역</th>
-							<th>희망지역(시/군/구)</th>
-							<th>희망연봉</th>
-							<th>상태</th>
-						<!-- 희망사항 -->
-						
-						<!-- 기타 -->
-							<th>한줄소개</th>
-							<th>연락가능 시간</th>
-							<th>이력서검증 여부</th>
-						<!-- 기타 -->
-												
-							<th>최종수정일</th>
-							<th>관리</th>
-						</tr>
-					</thead>
-					<tbody>
-					<c:if test="${list.size() < 1}">
-						<tr>
-							<td colspan="31">등록 된 이력서가 없습니다</td>
-						</tr>
-							<td><a href="add">이력서 등록</a></td>
-					</c:if>
-					<c:forEach var="item" items="${list}">
-						<tr>
-						<!-- 기본정보 -->
-							<td>${item.customerId}</td>
-							<td>${item.profileSeq}</td>
-							<td><img src="/CatchMeUpload/${item.profileImg}" class="profile-img" alt="프로필이미지"></td>
-							<td>${item.customerGender}</td>
-							<td>${item.customerName}</td>
-							<td>${item.customerPhone}</td>
-							<td>${item.customerAddress}</td>
-							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${item.customerBirthday}" /></td>
-						<!-- 기본정보 -->
-						
-						<!-- 학력 -->
-							<td>${item.profileSchool}</td>
-							<td>${item.profileSchoolSkill}</td>
-							<td>${item.profileSchoolState}</td>
-						<!-- 학력 -->
-						
-						<!-- 병역사항 -->
-							<td>${item.profileArmy}</td>
-							<td>${item.profileArmyWriting}</td>
-						<!-- 병역사항 -->
-						
-						<!-- 경력사항 -->
-							<td>${item.careerCompany}</td>
-							<td>${item.careerWork}</td>
-							<td>${item.careerCategory}</td>
-							<td>${item.careerDate}</td>
-						<!-- 경력사항 -->
-						
-						<!-- 자격/면허 -->
-							<td>${item.certificateName}</td>
-							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${item.certificateDate}" /></td>
-							<td>${item.certificateWriting}</td>
-						<!-- 자격/면허 -->
-						
-						<!-- 기술능력 -->
-							<td>${item.skillContent}</td>
-						<!-- 기술능력 -->
-						
-						<!-- 희망사항 -->
-							<td>${item.area1}</td>
-							<td>${item.area2}</td>
-							<td>${item.profileMoney}</td>
-							<td>${item.profileState}</td>
-						<!-- 희망사항 -->
-						
-						<!-- 기타 -->
-							<td>${item.profileWriting}</td>
-							<td>${item.profileTime}</td>
-							<td>${item.profileCheck}</td>
-						<!-- 기타 -->	
-						
-						<!-- 최종 수정일 -->
-						<td><fmt:formatDate pattern="yyyy-MM-dd" value="${item.profileDate}" /></td>
-						<!-- 최종 수정일 -->
-						
-						<!-- 관리 -->
-							<td><a href="${item.profileSeq}/update">이력서 변경</a> | 
-							<a href="${item.customerId}/delete">이력서 삭제</a></td>	
-						<!-- 관리 -->						
-						</tr>
-					</c:forEach>
-					</tbody>
-				</table>
-			</div>
-			<div>
-				<a href="/">메인으로</a>
-			</div>		
+
+	<div class="side-bar">
+
+		<div class="logo-box">
+
+			<a href="/"><img
+				src="https://pds.saramin.co.kr/company/logo/202008/21/qfedx5_ny73-1meg1kx_logo.png"
+				alt=""></a>
+
 		</div>
+
+		<nav class="side-menu">
+
+			<ul>
+				<li><a href="/profile/list"><i class="fas fa-home"></i>개인회원 홈</a></li>
+
+				<li><a href="/customer/list"><i class="fas fa-user-edit"></i>회원정보</a></li>
+				<li><a href="/resume"><i class="far fa-address-card"></i>이력서</a></li>
+				<li><a href="/requestUser"><i class="far fa-building"></i>기업의 요청</a></li>
+				<li><a href="/matchUser"><i class="fas fa-handshake"></i>매칭된 기업</a></li>
+			</ul>
+
+		</nav>
+
 	</div>
+
+	<div class="myhome con">
+
+		<div class="title">
+
+			<p>열정! 열정! 열정! ${sessionScope.customer.customerNnm}님</p>
+
+		</div>
+
+		<div class="alarm">
+			<ul>
+				<li><a href="#">1</a><span>나의 알림</span></li>
+				<li><a href="#">2</a><span>기업의 요청</span></li>
+				<li><a href="#">3</a><span>수락한 요청</span></li>
+				<li><a href="#">4</a><span>관심 기업</span></li>
+			</ul>
+		</div>
+
+		<div class="biz-card">
+
+			<div class="biz-card-title">
+				<p>노출되는 이력카드</p>
+			</div>
+
+			<div class="biz-card-1">
+
+				<div class="img-box">
+
+					<a href="#"><img
+						src="https://i.pinimg.com/564x/60/ee/69/60ee6916e93413b06e8b319a21521fc3.jpg"
+						alt=""></a>
+
+				</div>
+
+				<div class="biz-card-small">
+
+					<div class="name">${sessionScope.customer.customerNnm}</div>
+					<div class="birth">(1995)</div>
+					<div class="rank">직급 ex) 대리</div>
+					<div class="career">경력 ex) 1~2년차</div>
+					<div class="education">학력 ex) 최종학력까지만 대학 4년제 졸업</div>
+					<div class="short-intro">한줄소개 최대50자</div>
+
+				</div>
+
+				<div class="biz-card-button">
+
+					<div><a href="/resume">수정하기</a></div>
+					<div><span>현재상태</span></div>
+
+				</div>
+
+				<div class="license">
+
+					<ul>
+						<li>Spring</li>
+						<li>JavaScript</li>
+						<li>JQuery</li>
+						<li>React</li>
+						<li>Vue</li>
+						<li>Java</li>
+					</ul>
+
+				</div>
+
+			</div>
+
+
+
+		</div>
+
+	</div>
+	
+
+
+
 </body>
 </html>
