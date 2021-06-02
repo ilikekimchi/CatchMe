@@ -8,111 +8,60 @@
 <title></title>
 
 
-<link href="/css/home.css" rel="stylesheet" />
-<link href="/css/login-modal.css" rel="stylesheet" />
-<link href="/css/search-box.css" rel="stylesheet" />
+<link href="/css/top-bar.css" rel="stylesheet" />
+<link href="/css/login-modal2.css" rel="stylesheet" />
+<script src="/js/login-modal2.js" type="text/javascript"></script>
 
-<link href="/css/category.css" rel="stylesheet" />
-
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script src="/js/login-modal.js" type="text/javascript"></script>
-<script src="/js/search.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-	$(document).ready(function() {
-		var name = ${result}.response.name;
-		var email = ${result}.response.email;
-		$("#name").html("환영합니다. "+name+"님");
-		$("#email").html(email);
-	  });
-</script>
-
-<jsp:include page="footer.jsp" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 </head>
 <body>
-	<div class="container">
-		<div class="main">
-			<h1 class="catchme">
-				<a href="/"> <span>Catch ME IF YOU CAN!</span>
-				</a>
-			</h1>
-			<div class="search-box">
-				<div class="search-area radius">
-					<span class="region-search">근무지역</span> <span class="line1"></span>
-					<span class="job-search">직무 · 직종</span> <span class="line2"></span> <input
-						type="text" placeholder="카테고리를 입력해주세요."> <span
-						class="search-icon"></span>
-				</div>
-				<div class="region">
-					<span class="search-close"></span>
-				</div>
-				<div class="job">
-					<span class="search-close"></span>
-				</div>
-			</div>
-			<div class="category">
-				<div class="item">
-					<a href="/board/list?category=1" class="plain">
-						<div class="icon icon1"></div>
-						<div>IT·프로그래밍</div>
-					</a>
-				</div>
-				<div class="item">
-					<a href="#" class="plain">
-						<div class="icon icon2"></div>
-						<div>음악·영상</div>
-					</a>
-				</div>
-				<div class="item">
-					<a href="#" class="plain">
-						<div class="icon icon3"></div>
-						<div>전문기술</div>
-					</a>
-				</div>
-				<div class="item">
-					<a href="#" class="plain">
-						<div class="icon icon4"></div>
-						<div>서비스</div>
-					</a>
-				</div>
-				<div class="item">
-					<a href="#" class="plain">
-						<div class="icon icon5"></div>
-						<div>마케팅</div>
-					</a>
-				</div>
-				<div class="item">
-					<a href="#" class="plain">
-						<div class="icon icon6"></div>
-						<div>레슨·교육</div>
-					</a>
-				</div>
-				<div class="item">
-					<a href="#" class="plain">
-						<div class="icon icon7"></div>
-						<div>문서·글쓰기</div>
-					</a>
-				</div>
-				<div class="item">
-					<a href="#" class="plain">
-						<div class="icon icon8"></div>
-						<div>번역·통역</div>
-					</a>
-				</div>
-				<div class="item">
-					<a href="#" class="plain">
-						<div class="icon icon9"></div>
-						<div>패션·디자인</div>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="login">
-		<span class="login-icon"></span>
-	</div>
+	
+<div class="top-bar">
+  
+    <div class="logo-box">
+    
+    <a href="/"><img src="https://i.postimg.cc/dQ2QWTtK/image.png" alt=""></a>
+    
+  </div>
+  
+  <div class="con">
+    
+    
+    <nav class="menu-box-1">
+      <ul class="row flex flex-ai-c"> 
+<li class="cell my-r"><a href="#">지역별</a></li>
+<li class="cell my-r"><a href="#">직업별</a></li>
+<li class="cell my-r"><a href="#">사람정보</a></li>
+<li class="cell my-r"><a href="#">기업정보</a></li>
+<li class="cell my-r"><a href="#">기업리뷰</a></li>
+<li class="search-box">
+  <div class="search-input">
+    <input type="text" placeholder="검색어를 입력하세요">
+    <button type="submit" class="search-btn">
+      
+    </button>
+  </div>
+</li>
+      </ul>
+    </nav>
+    
+  </div>
+  
+  <div class="member">
+    
+    <a class="go-mypage">
+      
+      <span class="mypage-img"></span>
+      <c:if test="${sessionScope.customer == null}"><span class="name">로그인해주세요</span></c:if>
+      <c:if test="${sessionScope.customer != null}"><span class="name customer-name">${sessionScope.customer.customerNnm}</span></c:if>
+   
+    </a>
+    
+  </div>
+  
+</div>
+
 	<div class="login-modal">
 		<c:if test="${sessionScope.sessionId == null && sessionScope.customer == null && sessionScope.company == null}">
 			<div class="login-info">
@@ -167,9 +116,15 @@
 				<a href="naverLogin"><div class="naver"></div></a>
 			</div>
 		</c:if>
-		<c:if test="${sessionScope.sessionId != null || sessionScope.customer != null || sessionScope.company != null}">
+		<c:if test="${sessionScope.sessionId != null || sessionScope.customer != null}">
 			<h2 style="text-align: center" id="name">${sessionScope.customer.customerNnm} 님</h2>
 			<h4 style="text-align: center" id="email">${sessionScope.customer.customerId}</h4>
+			<div class="notice">
+				<a href="/mypage" class="my-notice">나의 알림</a>
+				<div class="notice-nm">
+					<span>1</span>
+				</div>
+			</div>
 			<div class="frame">
 				<div class="profile"></div>
 			</div>
@@ -177,7 +132,32 @@
 				<span class="mypage-icon"></span>
 				<div>마이페이지</div>
 			</a>
-			<a href="/profile/list" class="career in">
+			<a href="" class="career in">
+				<span class="career-icon"></span>
+				<div>내 이력서</div>
+			</a>
+			<a href="logout" class="logout in">
+				<span class="logout-icon"></span>
+				<div>로그아웃</div>
+			</a>
+		</c:if>
+		<c:if test="${sessionScope.sessionId != null || sessionScope.company != null}">
+			<h2 style="text-align: center" id="name">${sessionScope.company.companyName} 님</h2>
+			<h4 style="text-align: center" id="email">${sessionScope.company.companyId}</h4>
+			<div class="notice">
+				<a href="/mypage" class="my-notice">나의 알림</a>
+				<div class="notice-nm">
+					<span>1</span>
+				</div>
+			</div>
+			<div class="frame">
+				<div class="profile"></div>
+			</div>
+			<a href="/mypage" class="mypage in">
+				<span class="mypage-icon"></span>
+				<div>마이페이지</div>
+			</a>
+			<a href="" class="career in">
 				<span class="career-icon"></span>
 				<div>내 이력서</div>
 			</a>
@@ -188,5 +168,6 @@
 		</c:if>
 		<span id="pointer"></span>
 	</div>
+
 </body>
 </html>

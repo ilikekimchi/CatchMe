@@ -12,8 +12,9 @@ footer {
     min-width: 1180px;
     bottom:0;
     height: 80px;
+    
     position:absolute;
-    z-index:20;
+    z-index:50;
 }
 
 .logo {

@@ -88,6 +88,51 @@ public class RootController {
 				return "mypage/userinfo";
 			}
 			
+			@RequestMapping("/resume") 
+			String resume() {
+				return "mypage/resume";
+			}
+			
+			@RequestMapping("/requestUser") 
+			String requestUser() {
+				return "mypage/requestUser";
+			}
+			
+			@RequestMapping("/matchUser") 
+			String matchUser() {
+				return "mypage/matchUser";
+			}
+			
+			@RequestMapping("/talk") 
+			String talk() {
+				return "mypage/talk";
+			}
+			
+			@RequestMapping("/comHome") 
+			String comHome() {
+				return "company/comHome";
+			}
+			
+			@RequestMapping("/comInfo") 
+			String comInfo() {
+				return "company/comInfo";
+			}
+			
+			@RequestMapping("/comReq") 
+			String comReq() {
+				return "company/comReq";
+			}
+			
+			@RequestMapping("/comMatch") 
+			String comMatch() {
+				return "company/comMatch";
+			}
+			
+			@RequestMapping("/comCoin") 
+			String comCoin() {
+				return "company/comCoin";
+			}
+			
 			@PostMapping("/login0")
 			String login0(Company item, HttpSession session, Model model,
 					HttpServletRequest request) {

@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-
-
 @font-face {
     font-family: 'BMJUA';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
@@ -17,6 +15,8 @@ html {
 
 body {
 	position: relative;
+	
+	min-height: 969px;
 }
 
 /* 노말라이즈 */
@@ -351,7 +351,6 @@ label[for] {
 
 .con {
 width:1200px;
-margin:0 auto;
 }
 
 /* 고정형 .con 끝 */
@@ -490,13 +489,33 @@ body {
   height:44px;
   border-radius:5px;
   background-color:#656565;
-  transition:opacity 0.5s;
+  transition:opacity 0.2s;
   content:"";
   opacity:0;
 }
 
 .side-bar > .side-menu ul li a:hover:before {
-  opacity:0.5;
+  opacity:0.2;
+}
+
+.side-bar > .side-menu ul li:nth-child(1) a:before {
+  display:block;
+  position:absolute;
+  z-index:1;
+  top:20px;
+  left:0;
+  width:220px;
+  height:44px;
+  border-radius:5px;
+  background-color:#4876ef;
+  transition:opacity 0.5s;
+  content:"";
+  opacity:0.2;
+  
+}
+
+.side-bar > .side-menu ul li:nth-child(1) > a {
+	color:#4876ef;
 }
 
 .side-bar > .side-menu i {
@@ -508,10 +527,13 @@ body {
 }
 
 .myhome {
+	position: relative;
+    top: 100px;
+    
+    transform: translateX(32%);
 	
-	transform: translateX(32%);
-	
-  height:100%;
+	height:100%;
+	margin-top:50px;
 }
 
 .myhome > .title {
@@ -675,14 +697,30 @@ body {
   width:250px;
 }
 
-.biz-card .biz-card-button button:first-child {
+.biz-card .biz-card-button div:first-child {
   margin-top:60px;
+  background-color:#ea6560;
 }
 
-.biz-card .biz-card-button button {
+.biz-card .biz-card-button div:last-child {
+  background-color:#42495b;
+}
+
+.biz-card .biz-card-button div {
   display:block;
   width:160px;
   padding:10px;
   margin-top:20px;
   margin:20px auto 0 auto;
+  border:1px solid #bfbfbf;
+  border-radius:5px;
+  cursor:pointer;
+  color:#fff;
+  text-align:center;
+}
+
+.biz-card .biz-card-button div a {
+	display:block;
+	width:100%;
+	height:100%;
 }

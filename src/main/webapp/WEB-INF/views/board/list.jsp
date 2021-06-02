@@ -31,51 +31,12 @@
 
 <script src="/js/board.js" type="text/javascript"></script>
 
+<jsp:include page="../footer.jsp" />
+<jsp:include page="../topbar.jsp" />
+
 </head>
 <body>
-	<header class="top-bar">
-
-		<div class="logo-box">
-
-			<a href="/"><img src="https://i.postimg.cc/dQ2QWTtK/image.png"
-				alt=""></a>
-
-		</div>
-
-		<div class="con">
-
-
-			<nav class="menu-box-1">
-				<ul>
-					<li class="cell my-r"><a href="#">지역별</a></li>
-					<li class="cell my-r"><a href="#">직업별</a></li>
-					<li class="cell my-r"><a href="#">사람정보</a></li>
-					<li class="cell my-r"><a href="#">기업정보</a></li>
-					<li class="cell my-r"><a href="#">기업리뷰</a></li>
-					<li class="search-box">
-						<form method="get" action="">
-							<div class="search-input">
-								<input type="text" value="${pager.keyword}" name="keyword" ${pager.search == 0 ? 'selected' : ''} placeholder="검색어를 입력하세요">
-								<input type="submit" value="검색" class="button search-btn">
-								<!-- <button type="submit" class="search-btn"></button> -->
-							</div>
-						</form>
-					</li>
-				</ul>
-			</nav>
-
-		</div>
-
-		<div class="member">
-
-			<a href="#" class="go-mypage"> <span class="mypage-img"></span> <span
-				class="name">로그인해주세요</span>
-
-			</a>
-
-		</div>
-
-	</header>
+	
 	<div id="filter">
 		<div class="scroll"></div>
 		<aside class="filter-menu">
@@ -110,7 +71,7 @@
 						<li><a>남자</a></li>
 						<li><a>여자</a></li>
 					</ul></li>
-				<li class="career sort"><a class="career-info"> <strong>경력</strong>
+				<li class="career1 sort"><a class="career-info"> <strong>경력</strong>
 						<span id="career-btn" class="btn down"></span>
 				</a>
 					<ul class="career-list">
@@ -238,24 +199,5 @@
 				</div>
 			</div>
 		</div>
-	<footer>
-		<div class="copyright">
-			<ul>
-				<li class="logo"></li>
-				<li>[34503] 대전광역시 동구 우암로 352-21 TEL 042-670-0600 FAX
-					042-670-0519</li>
-			</ul>
-		</div>
-		<div class="policy">
-			<ul>
-				<li>찾아오시는 길</li>
-				<li>전화번호안내</li>
-				<li>개인정보처리방침</li>
-				<li>고객센터</li>
-				<li>이용약관</li>
-				<li>환불정책</li>
-			</ul>
-		</div>
-	</footer>
 </body>
 </html>

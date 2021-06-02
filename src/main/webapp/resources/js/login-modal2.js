@@ -27,15 +27,16 @@ $(function() {
           });
 		
 		
-		$('.login').click(function() {
+		$('.go-mypage').click(function() {
 
 			$('.login-modal').toggleClass('active');
 
 		})
 		
-		$('.container').click(function() {
+		/*$('').click(function() {
 			$('.login-modal').removeClass('active');
 		})
+		*/
 		
 		$('.customer').click(function() {
 		
@@ -62,6 +63,10 @@ $(function() {
 			$('.company-form').css('display', 'block');
 		})
 		
-		
-
-	})
+		/*$('html').click(function(e) { 
+		if(!$(e.target).hasClass("login-modal") && !$(e.target).hasClass("member")) {
+			 
+			 $('.login-modal').removeClass('active');
+			
+		}*/
+});

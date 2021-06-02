@@ -7,64 +7,17 @@
 <title></title>
 
 <link href="/css/mypage.css" rel="stylesheet" />
+<link href="/css/normal.css" rel="stylesheet" />
+
+<!-- 폰트어썸 불러오기 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<jsp:include page="../footer.jsp" />
+<jsp:include page="../topbar.jsp" />
 
 </head>
 <body>
-
-	<link
-		href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap"
-		rel="stylesheet">
-
-	<!-- 폰트어썸 불러오기 -->
-	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
-
-	<!-- 제이쿼리 불러오기 -->
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-
-	<div class="top-bar">
-
-		<div class="con">
-
-
-			<nav class="menu-box-1">
-				<ul class="row flex flex-ai-c">
-					<li class="cell"><a href="#">사람정보</a></li>
-					<li class="cell"><a href="#">기업정보</a></li>
-					<li class="cell"><a href="#">라운지</a></li>
-					<li class="cell"><a href="#">마이페이지</a></li>
-				</ul>
-			</nav>
-
-			<a href="#" class="btn-go-submit"><img
-				src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/600px-LinkedIn_logo_initials.png"
-				alt=""></a>
-
-		</div>
-
-	</div>
-
-	<div class="add">
-
-		<div class="img-box">
-
-			<a href="#"><img
-				src="https://postfiles.pstatic.net/MjAyMTA0MTRfMTg2/MDAxNjE4Mzg5NTYwNTc1.dGlO6Gxac872YbCXRGAm_Ecw7WIGNBR_oHanmdVq2R4g.xfJEQ-CoXZXpAZgTK9NlWVCdmIRLcwm2k6bhYW06fSMg.JPEG.anvkak3000/%EA%B4%91%EA%B3%A0.jpg?type=w580"
-				alt=""></a>
-
-		</div>
-
-		<div class="go-top">
-
-			<button>위로</button>
-
-		</div>
-
-	</div>
-
-
 
 	<div class="side-bar">
 
@@ -82,10 +35,9 @@
 				<li><a href="/mypage"><i class="fas fa-home"></i>개인회원 홈</a></li>
 
 				<li><a href="/userinfo"><i class="fas fa-user-edit"></i>회원정보</a></li>
-				<li><a href="#"><i class="far fa-address-card"></i>이력서</a></li>
-				<li><a href="#"><i class="far fa-building"></i>기업의 요청</a></li>
-				<li><a href="#"><i class="fas fa-handshake"></i>매칭된 기업</a></li>
-				<li><a href="#"><i class="fas fa-caret-square-down"></i>메뉴4</a></li>
+				<li><a href="/resume"><i class="far fa-address-card"></i>이력서</a></li>
+				<li><a href="/requestUser"><i class="far fa-building"></i>기업의 요청</a></li>
+				<li><a href="/matchUser"><i class="fas fa-handshake"></i>매칭된 기업</a></li>
 			</ul>
 
 		</nav>
@@ -138,8 +90,8 @@
 
 				<div class="biz-card-button">
 
-					<button class="update">수정하기</button>
-					<button class="status">현재상태</button>
+					<div><a href="/resume">수정하기</a></div>
+					<div><span>현재상태</span></div>
 
 				</div>
 
@@ -163,6 +115,8 @@
 		</div>
 
 	</div>
+	
+
 
 
 </body>

@@ -1,30 +1,19 @@
 @charset "UTF-8";
 
-input:focus {outline:none;}
-
-.con {
-	width: 60%;
-	
-}
-
 .top-bar > .con .menu-box-1 {
   height:60px;
   width:800px;
   float:right;
-  transform:translateX(60px);
-}
-
-.menu-box-1 > ul {
-	display:flex;
+  transform:translateX(210px);
 }
 
 .menu-box-1 > ul > li {
   width:100%;
-  margin-top:12px;
+  margin-top:10px;
 }
 
 .menu-box-1 .my-r {
-  margin-top:19px;
+  margin-top:15px;
 }
 
 .menu-box-1 > ul > li > a {
@@ -38,7 +27,6 @@ input:focus {outline:none;}
 .menu-box-1 > ul > li:hover > a{
   text-decoration:underline;
   text-underline-position:under;
-  
 }
 
 .menu-box-1 ul .search-box {
@@ -66,7 +54,7 @@ input:focus {outline:none;}
     color: #444;
     font-size: 13px;
     font-weight: bold;
-    letter-spacing: 1px;
+    letter-spacing: -1px;
     background: none;
     
 }
@@ -112,13 +100,17 @@ input:focus {outline:none;}
 }
 
 .top-bar > .logo-box img {
-  width: 90%;
+  width:90%;
   object-fit:cover;
 }
 
 .top-bar .member {
   width:200px;
-  transform:translateX(-50px);
+  transform:translateX(300px);
+}
+
+.go-mypage {
+	cursor: pointer;
 }
 
 .top-bar .member .go-mypage .mypage-img {
@@ -139,4 +131,13 @@ input:focus {outline:none;}
     font-size: 14px;
     letter-spacing: -1px;
     line-height: 60px;
+}
+
+.top-bar .member .go-mypage:hover .name {
+	  text-decoration:underline;
+  text-underline-position:under;
+}
+
+.customer-name::after {
+	content:" 님";
 }

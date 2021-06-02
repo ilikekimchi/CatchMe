@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+body {
+	position:relative;
+}
+
+
+
 .side-bar {
   z-index:20;
   position:fixed;
@@ -35,6 +41,10 @@
   letter-spacing:1px;
 }
 
+.side-bar > .side-menu ul li:nth-child(1) {
+	margin-top:100px;
+}
+
 .side-bar > .side-menu ul li {
   margin-top:8px;
   
@@ -67,7 +77,7 @@
   opacity:0.2;
 }
 
-.side-bar > .side-menu ul li:nth-child(2) a:before {
+.side-bar > .side-menu ul li:nth-child(3) a:before {
   display:block;
   position:absolute;
   z-index:1;
@@ -83,7 +93,7 @@
   
 }
 
-.side-bar > .side-menu ul li:nth-child(2) > a {
+.side-bar > .side-menu ul li:nth-child(3) > a {
 	color:#4876ef;
 }
 
@@ -96,14 +106,9 @@
 }
 
 .myhome {
-	
-  height:100%;
-  
-  margin-top:50px;
-  margin: 0 auto;
-  
-  position: relative;
-    top: 100px;
+
+  height:1200px;
+  margin-left:400px;
 }
 
 .myhome > .title {
@@ -111,16 +116,28 @@
   font-size:36px;
   font-weight:bold;
   letter-spacing:3px;
-  padding-top:50px;
+  padding-top:150px;
   line-height:50px;
 }
 
-.myhome .user-info {
-  
-  display:flex;
+.req {
+  width:100%;
+  height:80px;
 }
 
-.myhome .user-info > .img-box {
+.req > .req-text {
+  font-size:25px;
+  line-height:80px;
+}
+
+.req-list .biz-card-1 {
+  background-color:rgba(224, 224, 224, 0.3);
+  border:1px solid #e0e0e0;
+  display:flex;
+  flex-wrap:wrap;
+}
+
+.req-list .biz-card-1 .img-box {
   width:120px;
   height:120px;
   border-radius:50%;
@@ -129,92 +146,51 @@
   margin:30px;
 }
 
-.myhome .user-info > .img-box img {
+.req-list .biz-card-1 .img-box img {
   width:100%;
   height:100%;
   object-fit: cover;
 }
 
-.myhome .user-basic-info {
+.req-list .biz-card-small {
 
-  margin-left:50px;
   width:60%;
   height:100%;
-  font-size:18px;
 }
 
-.myhome .user-basic-info .gibon > .title {
-  padding:30px 0 30px 0;
-  font-size:20px;
+.req-list .biz-card-small div {
+  margin-top:15px;
+  
 }
 
-.font-left {
-  text-align:left;
+.req-list .biz-card-small > .name {
+  display:inline-block;
+  font-weight:bold;
+  font-size:25px;
 }
 
-.wid-1 {
-  width:130px;
-  color:#8491a7;
+.req-list .biz-card-small > .birth {
+  display:inline-block;
 }
 
-.border {
-  padding-bottom:15px;
-  border-bottom:1px solid #bfbfbf;
-  align-items:center;
+.req-list .license {
+
+  width:100%;
+  margin:0 auto;
 }
 
-.myhome .user-basic-info .gibon .year, .myhome .user-basic-info .gibon .sex, .myhome .user-basic-info .gibon .year, .myhome .user-basic-info .tel-info .mail, .myhome .user-basic-info .tel-info .address {
-  padding-top:15px;
+.req-list .license ul {
+  display:flex;
+  
 }
 
-.myhome .user-basic-info .tel-info > .title {
-  padding:60px 0 30px 0;
-  font-size:20px;
-}
-
-.myhome .user-basic-info .prove {
-  margin-left:30px;
+.req-list .license ul li {
   background-color:rgba(72, 118, 239, 0.2);
   color:#4876ef;
-  font-size:13px;
-  line-height:20px;
-  width:35px;
-  text-align:center;
+  padding:10px;
+  margin-left:30px;
+  margin-top:30px;
+  margin-bottom:30px;
+  border-radius:10px;
 }
 
-.myhome .user-basic-info .tel-info button {
-  
-  margin-left:auto;
-  border:1px solid #d7dce5;
-  color: #5c667b;
-  background-color: #fff;
-  padding: 5px 10px 5px 10px;
-  font-size: 13px;
-  cursor:pointer;
-  border-radius:5px;
-   font-family: 'BMJUA';
-}
-
-.myhome .user-basic-info .tel-info button:hover {
-  background-color: #efefef;
-}
-
-.input-style {
-  padding:0 15px 0 25px;
-  width:350px;
-  height:40px;
-  border:1px solid #bfbfbf;
-  box-sizing:border-box;
-  color:#222;
-  font-size:16px;
-  font-family: 'BMJUA';
-  line-height:46px;
-}
-
-.tel-info .tel-update {
-	display:none;
-}
-
-.tel-info .tel-confirm-button {
-	display:none;
-}
