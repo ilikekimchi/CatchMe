@@ -27,6 +27,7 @@ import jj.j2.sh.model.Area;
 import jj.j2.sh.model.Career;
 import jj.j2.sh.model.Certificate;
 import jj.j2.sh.model.Customer;
+import jj.j2.sh.model.Job;
 import jj.j2.sh.model.Profile;
 import jj.j2.sh.model.Skill;
 import jj.j2.sh.service.ProfileService;
@@ -75,11 +76,13 @@ public class ProfileController {
 	스프링이 값을 넣지 못하므로 400에러 가 뜸
 	add.jsp에있는 name == uploadFile을 가져옴 */
 	@PostMapping("/add")
-	String add(Profile item, @RequestParam String skillContent, @RequestParam String area1,
-			@RequestParam String area2, @RequestParam String careerCompany, 
-			@RequestParam String careerDate, @RequestParam String careerWork, 
-			@RequestParam String careerCategory, @RequestParam String certificateName,
-			@RequestParam Date certificateDate, @RequestParam String certificateWriting,
+	String add(Profile item, @RequestParam String skillContent, @RequestParam int areaCode,
+			@RequestParam String area1,@RequestParam String area2, 
+			@RequestParam String careerCompany, @RequestParam String careerDate, 
+			@RequestParam String careerWork, 
+			@RequestParam String certificateName, @RequestParam Date certificateDate, 
+			@RequestParam String certificateWriting,
+			@RequestParam int jobCode, @RequestParam String jobLarge, @RequestParam String jobSmall,
 			HttpSession session) {
 		
 			/* profile/list에서 세션으로 가져왔으므로, session으로 형변환을 시켜서 내가 갖고오고싶은 것들(customerId와 customerName 등)에 
@@ -103,8 +106,9 @@ public class ProfileController {
 			
 		service.add(customer.getCustomerId(), customer.getCustomerName(), customer.getCustomerAddress(),
 				customer.getCustomerGender(),customer.getCustomerPhone(), customer.getCustomerBirthday(),
-				skillContent, area1, area2, careerCompany, careerDate, careerWork, 
-		careerCategory, certificateName, certificateDate, certificateWriting, item);
+				skillContent, areaCode, area1, area2, careerCompany, careerDate, careerWork, 
+				certificateName, certificateDate, certificateWriting, 
+				jobCode, jobLarge, jobSmall, item);
 		
 		} catch (IllegalStateException e) {
 			
@@ -133,7 +137,7 @@ public class ProfileController {
 	@PostMapping("/{profileSeq}/update")
 	String update(@PathVariable int profileSeq, Profile item, 
 			@ModelAttribute Skill skill, Area area, Career career, Certificate certificate,
-			HttpSession session) {
+			Job job, HttpSession session) {
 			
 		MultipartFile file = item.getUploadFile(); //MultipartFile을 item으로 읽어옴
 		
@@ -154,7 +158,7 @@ public class ProfileController {
 			
 		item.setProfileSeq(profileSeq);
 		
-		service.update(skill, area, career, certificate, item);
+		service.update(skill, area, career, certificate, job, item);
 				
 		
 		} catch (IllegalStateException e) {

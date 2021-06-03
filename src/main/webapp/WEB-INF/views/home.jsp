@@ -163,7 +163,19 @@
 		</c:if>
 		<c:if test="${sessionScope.sessionId != null || sessionScope.customer != null || sessionScope.company != null}">
 			<h2 style="text-align: center" id="name">${sessionScope.customer.customerNnm} 님</h2>
+			<h2 style="text-align: center" id="name">${sessionScope.company.companyName} 님</h2>
 			<h4 style="text-align: center" id="email">${sessionScope.customer.customerId}</h4>
+			<h4 style="text-align: center" id="email">${sessionScope.company.companyId}</h4>
+		<c:if test="${sessionScope.sumCoin != null}">	
+			<div>
+			현재코인: ${sessionScope.sumCoin}코인
+			</div>
+		</c:if>
+		<c:if test="${sessionScope.sumCoin == null}">	
+			<div>
+				현재코인: 0코인
+			</div>
+		</c:if>
 			<div class="frame">
 				<div class="profile"></div>
 			</div>
@@ -171,9 +183,9 @@
 				<span class="mypage-icon"></span>
 				<div>마이페이지</div>
 			</a>
-			<a href="/profile/list" class="career in">
+			<a href="/pay/cart" class="career in">
 				<span class="career-icon"></span>
-				<div>내 이력서</div>
+				<div>코인 충전소</div>
 			</a>
 			<a href="logout" class="logout in">
 				<span class="logout-icon"></span>

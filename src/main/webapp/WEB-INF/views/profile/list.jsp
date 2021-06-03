@@ -41,7 +41,7 @@
 						<!-- 경력사항 -->
 							<th>회사명</th>
 							<th>담당업무</th>
-							<th>직급/직책</th>
+							<th>직종/직업</th>
 							<th>경력</th>
 						<!-- 경력사항 -->
 						
@@ -75,7 +75,7 @@
 					<tbody>
 					<c:if test="${list.size() < 1}">
 						<tr>
-							<td colspan="31">등록 된 이력서가 없습니다</td>
+							<td colspan="33">등록 된 이력서가 없습니다</td>
 						</tr>
 							<td><a href="add">이력서 등록</a></td>
 					</c:if>
@@ -106,7 +106,7 @@
 						<!-- 경력사항 -->
 							<td>${item.careerCompany}</td>
 							<td>${item.careerWork}</td>
-							<td>${item.careerCategory}</td>
+							<td>${item.jobLarge} / ${item.jobSmall}</td>
 							<td>${item.careerDate}</td>
 						<!-- 경력사항 -->
 						

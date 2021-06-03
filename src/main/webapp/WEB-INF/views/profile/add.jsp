@@ -78,8 +78,16 @@
                 	<input name=careerWork type="text">
             	</div>
             	<div>
-                	<label>직급/직책 분류:</label>
-                	<input name=careerCategory type="text">
+                	<label>job 코드:</label>
+                	<input name=jobCode type="number">
+            	</div>
+            	<div>
+                	<label>직종 분류:</label>
+                	<input name=jobLarge type="text">
+            	</div>
+            	<div>
+                	<label>직업 분류:</label>
+                	<input name=jobSmall type="text">
             	</div>
             	<div>
                 	<label>경력:</label>
@@ -109,6 +117,10 @@
             	</div>
             	<div>
             		<h3>희망사항</h3>
+            	</div>
+            	<div>
+                	<label>area 코드:</label>
+                	<input name=areaCode type="number">
             	</div>
             	<div>
                 	<label>희망지역:</label>

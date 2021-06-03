@@ -1,8 +1,8 @@
 package jj.j2.sh.model;
 
 public class Area {
-	private int areaSeq; //희망지역 번호(기본키)*자동증가
-	private int profileSeq; //이력서 번호(외래키)
+	private int areaSeq; //희망지역번호(기본키)
+	private int areaCode; //희망지역 대분류 코드
 	private String area1; //희망지역  
 	private String area2; //희망지역(시/군/구)  
 	
@@ -14,11 +14,11 @@ public class Area {
 	public void setAreaSeq(int areaSeq) {
 		this.areaSeq = areaSeq;
 	}
-	public int getProfileSeq() {
-		return profileSeq;
+	public int getAreaCode() {
+		return areaCode;
 	}
-	public void setProfileSeq(int profileSeq) {
-		this.profileSeq = profileSeq;
+	public void setAreaCode(int areaCode) {
+		this.areaCode = areaCode;
 	}
 	public String getArea1() {
 		return area1;

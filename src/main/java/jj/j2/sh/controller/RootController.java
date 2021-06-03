@@ -1,6 +1,5 @@
 package jj.j2.sh.controller;
 
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,10 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import jj.j2.sh.model.Customer;
 import jj.j2.sh.service.CustomerService;
+import jj.j2.sh.service.PayService;
 import jj.j2.sh.model.Company;
 import jj.j2.sh.service.CompanyService;
 
@@ -24,6 +23,10 @@ public class RootController {
 	
 	@Autowired
 	CompanyService CompanySevice;
+	
+	@Autowired
+	PayService PaySevice;
+	
 	
 	@RequestMapping("/")
 	String home() {
@@ -100,6 +103,9 @@ public class RootController {
 					model.addAttribute("loginmsg", item.getCompanyName()+"님 환영합니다.");
 					model.addAttribute("url", referer);
 					
+					int sumCoin = PaySevice.sum(item.getCompanyId());
+					session.setAttribute("sumCoin", sumCoin);
+					
 					return "logintry";
 				}
 				
@@ -109,6 +115,7 @@ public class RootController {
 				
 				return "logintry";
 			}
+			
 	///////////////////임시(pjh)////////////////////////
 			@RequestMapping("/pjh")
 			String pjh() {

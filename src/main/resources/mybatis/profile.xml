@@ -6,6 +6,8 @@
 	 <resultMap type="Profile" id="ProfileMap"> 
 		<id column="profile_seq" property="profileSeq" />
 		<result column="customer_id" property="customerId" />
+		<result column="area_seq" property="areaSeq" />
+		<result column="job_seq" property="jobSeq" />
 		<result column="profile_img" property="profileImg" />		
 		<result column="profile_money" property="profileMoney" />
 		<result column="profile_state" property="profileState" />
@@ -31,7 +33,7 @@
 		<!-- customer이직자 관련 -->
 		
 		<!-- area지역 관련 -->
-		<result column="area_seq" property="areaSeq" />
+		<result column="area_code" property="areaCode" />
 		<result column="area1" property="area1" />
 		<result column="area2" property="area2" />
 		<!-- area지역 관련 -->
@@ -41,7 +43,6 @@
 		<result column="career_company" property="careerCompany" />
 		<result column="career_date" property="careerDate" />
 		<result column="career_work" property="careerWork" />
-		<result column="career_category" property="careerCategory" />
 		<!-- career경력사항 관련 -->
 		
 		<!-- certificate자격면허 관련 -->
@@ -56,6 +57,12 @@
 		<result column="skill_seq" property="skillSeq" />
 		<result column="skill_content" property="skillContent" />
 		<!-- skill기술능력 관련 -->
+		
+		<!-- job 직업 관련 -->
+		<result column="job_code" property="jobCode" />
+		<result column="job_large" property="jobLarge" />
+		<result column="job_small" property="jobSmall" />
+		<!-- job 직업 관련 -->
 	<!-- 외래키 -->
 	</resultMap>
 	
@@ -63,16 +70,17 @@
 	<sql id="search">
 	SELECT profile.*, customer.customer_name, customer.customer_nnm, customer.customer_phone, 
 		customer.customer_address, customer.customer_birthday, customer.customer_gender,
-		area.area1, area.area2,
-		career.career_company, career.career_date, career.career_work, career.career_category,
+		area.area_code, area.area1, area.area2, job.job_code, job.job_large, job.job_small,
+		career.career_company, career.career_date, career.career_work,
 		certificate.certificate_name, certificate.certificate_date, certificate.certificate_writing,
 		skill.skill_content
 		FROM profile
 		JOIN customer ON profile.customer_id=customer.customer_id
 		JOIN skill ON profile.profile_seq=skill.profile_seq
-		JOIN area ON profile.profile_seq=area.profile_seq		 
 		JOIN career ON profile.profile_seq=career.profile_seq		 
 		JOIN certificate ON profile.profile_seq=certificate.profile_seq
+		JOIN area ON profile.area_seq=area.area_seq
+		JOIN job ON profile.job_seq=job.job_seq
 		<where>
 			<if test="search == 1 and keyword != null">
 				customer.customer_nnm LIKE '%' || #{keyword} || '%'
@@ -107,19 +115,19 @@
 		
 	<!-- 이력서(이직자 자신)보기 -->
 	<select id="list" resultType="Profile" resultMap="ProfileMap">
-		SELECT profile.*, customer.customer_name, customer.customer_phone, 
+		SELECT profile.*, customer.customer_name, customer.customer_nnm, customer.customer_phone, 
 		customer.customer_address, customer.customer_birthday, customer.customer_gender,
-		area.area1, area.area2,
-		career.career_company, career.career_date, career.career_work, career.career_category,
-		certificate.certificate_name, certificate.certificate_date, certificate.certificate_writing, 
+		area.area_code, area.area1, area.area2, job.job_code, job.job_large, job.job_small,
+		career.career_company, career.career_date, career.career_work,
+		certificate.certificate_name, certificate.certificate_date, certificate.certificate_writing,
 		skill.skill_content
 		FROM profile
 		JOIN customer ON profile.customer_id=customer.customer_id
 		JOIN skill ON profile.profile_seq=skill.profile_seq
-		JOIN area ON profile.profile_seq=area.profile_seq		 
-		JOIN career ON profile.profile_seq=career.profile_seq		 
-		JOIN certificate ON profile.profile_seq=certificate.profile_seq		 		 
-		WHERE customer.customer_id=#{customerId}
+		JOIN career ON profile.profile_seq=career.profile_seq
+		JOIN certificate ON profile.profile_seq=certificate.profile_seq
+		JOIN area ON profile.area_seq=area.area_seq
+		JOIN job ON profile.job_seq=job.job_seq
 	</select>
 	
 	<!-- 이직자 명함 및 프로필 모두 보기 -->
@@ -127,7 +135,7 @@
 		SELECT * FROM
 		(SELECT ROWNUM rnum, sub.* FROM
 		(<include refid="search"></include>) sub)
-		<![CDATA[   
+		<![CDATA[
          WHERE rnum >= ((#{page} - 1 ) * #{perPage} + 1 ) and rnum <= ( #{page} * #{perPage})
       	]]>
 		ORDER BY profile_seq DESC
@@ -142,12 +150,12 @@
 		(profile_seq, customer_id, profile_money,  profile_state, 
 		profile_school, profile_school_skill, profile_school_state, profile_army, 
 		profile_army_writing, profile_writing, profile_time,
-		profile_check, profile_date)
+		profile_check, profile_date, area_seq, job_seq)
 		
-		VALUES (profile_seq.nextval, #{customerId}, #{profileMoney}, #{profileState},  
+		VALUES (profile_seq.nextval, #{customerId}, #{profileMoney}, #{profileState},
 		 #{profileSchool}, #{profileSchoolSkill}, #{profileSchoolState}, #{profileArmy}, 
 		 #{profileArmyWriting}, #{profileWriting}, #{profileTime}, 
-		 #{profileCheck}, SYSDATE)	
+		 #{profileCheck}, SYSDATE, #{areaSeq}, #{jobSeq})	
 		</if>	
 		
 		<if test="profileImg != null">
@@ -155,12 +163,12 @@
 		(profile_seq, customer_id, profile_money,  profile_state, 
 		profile_school, profile_school_skill, profile_school_state, profile_army, 
 		profile_army_writing, profile_writing, profile_time,
-		profile_check, profile_date, profile_img)
+		profile_check, profile_date, area_seq, job_seq, profile_img)
 		
 		VALUES (profile_seq.nextval, #{customerId}, #{profileMoney}, #{profileState},  
 		 #{profileSchool}, #{profileSchoolSkill}, #{profileSchoolState}, #{profileArmy}, 
 		 #{profileArmyWriting}, #{profileWriting}, #{profileTime}, 
-		 #{profileCheck}, SYSDATE, #{profileImg})			
+		 #{profileCheck}, SYSDATE, #{areaSeq}, #{jobSeq}, #{profileImg})			
 		</if>		
 	
 	<!--  profileSeq를 item 으로 읽어 와서 Profile객체에 설정하는 방법을 사용하는 것 -->
@@ -175,17 +183,18 @@
 	<select id="item" resultType="Profile" resultMap="ProfileMap"> 
 		SELECT profile.*, customer.customer_name, customer.customer_nnm, customer.customer_phone, 
 		customer.customer_address, customer.customer_birthday, customer.customer_gender,
-		area.area1, area.area2,
-		career.career_company, career.career_date, career.career_work, career.career_category,
-		certificate.certificate_name, certificate.certificate_date, certificate.certificate_writing, 
+		area.area_code, area.area1, area.area2, job.job_code, job.job_large, job.job_small,
+		career.career_company, career.career_date, career.career_work,
+		certificate.certificate_name, certificate.certificate_date, certificate.certificate_writing,
 		skill.skill_content
 		FROM profile
 		JOIN customer ON profile.customer_id=customer.customer_id
 		JOIN skill ON profile.profile_seq=skill.profile_seq
-		JOIN area ON profile.profile_seq=area.profile_seq		 
-		JOIN career ON profile.profile_seq=career.profile_seq		 
-		JOIN certificate ON profile.profile_seq=certificate.profile_seq		 		 
-		WHERE profile.profile_seq=#{profileSeq} OR customer.customer_id=#{customerId} 
+		JOIN career ON profile.profile_seq=career.profile_seq
+		JOIN certificate ON profile.profile_seq=certificate.profile_seq
+		JOIN area ON profile.area_seq=area.area_seq
+		JOIN job ON profile.job_seq=job.job_seq
+		WHERE profile.profile_seq=#{profileSeq} OR customer.customer_id=#{customerId}
 	</select>
 					
 	<!-- 이력서 수정 -->

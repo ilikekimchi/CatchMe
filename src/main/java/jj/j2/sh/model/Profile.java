@@ -1,12 +1,13 @@
 package jj.j2.sh.model;
 
 import java.util.Date;
-
 import org.springframework.web.multipart.MultipartFile;
 
 public class Profile {	
 	private int profileSeq; //이력서 번호(기본키)*자동증가
 	private String customerId; //이직자 회원 아이디(외래키)
+	private int areaSeq; //지역코드(외래키)
+	private int jobSeq; //직업코드(외래키)
 	private String profileImg; //이력서 프사
 	private int profileMoney; //희망연봉
 	private int profileState; //상태(0이면 안뜸, 1이면 당장 이직, 2이면 좋은 제안 이직)
@@ -21,17 +22,22 @@ public class Profile {
 	private Date profileDate; //최종수정일
 	
 	
+	private int areaCode; //희망지역번호*join
 	private String area1; //희망지역*join
 	private String area2; //희망지역(시.군.구)*join
 	private String careerCompany; //회사명*join
 	private String careerDate; //경력*join
 	private String careerWork; //담당업무*join
-	private String careerCategory; //직급/직책 구분*join
 	private String certificateName; //자격증명 *join
 	private Date certificateDate; //취득일*join
 	private String certificateWriting; //발행처*join
 	private String skillContent; //기술/능력*join
+	private int jobCode; //기술/능력*join
+	private String jobLarge; //직업 대분류*join
+	private String jobSmall; //직업 소분류*join
 
+	
+	
 	//Controller에서 쓰일 customer 정보들 
 	private String customerNnm; //이직자 닉네임
 	private String customerName; //이직자 회원 이름
@@ -43,7 +49,54 @@ public class Profile {
 	MultipartFile uploadFile;
 
 	
+	public int getAreaSeq() {
+		return areaSeq;
+	}
+
+	public void setAreaSeq(int areaSeq) {
+		this.areaSeq = areaSeq;
+	}
+
+	public int getJobSeq() {
+		return jobSeq;
+	}
+
+	public void setJobSeq(int jobSeq) {
+		this.jobSeq = jobSeq;
+	}
+
+	public int getAreaCode() {
+		return areaCode;
+	}
+
+	public void setAreaCode(int areaCode) {
+		this.areaCode = areaCode;
+	}
 	
+	public int getJobCode() {
+		return jobCode;
+	}
+
+	public void setJobCode(int jobCode) {
+		this.jobCode = jobCode;
+	}
+
+	public String getJobLarge() {
+		return jobLarge;
+	}
+
+	public void setJobLarge(String jobLarge) {
+		this.jobLarge = jobLarge;
+	}
+
+	public String getJobSmall() {
+		return jobSmall;
+	}
+
+	public void setJobSmall(String jobSmall) {
+		this.jobSmall = jobSmall;
+	}
+
 	public String getCustomerNnm() {
 		return customerNnm;
 	}
@@ -243,15 +296,6 @@ public class Profile {
 	public void setCareerWork(String careerWork) {
 		this.careerWork = careerWork;
 	}
-
-	public String getCareerCategory() {
-		return careerCategory;
-	}
-
-	public void setCareerCategory(String careerCategory) {
-		this.careerCategory = careerCategory;
-	}
-
 	public String getCertificateName() {
 		return certificateName;
 	}

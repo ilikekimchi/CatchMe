@@ -37,19 +37,30 @@ public class payServiceImpl implements PayService {
 	public void order(String companyId, Map<Integer, Coin> cart) {
 		Pay item = new Pay();
 		item.setCompanyId(companyId);
-		
+
 		int paySaleprice = 0;
+		int payCoin = item.getPayCoin();
+		
 		for(int coinSeq : cart.keySet()) {
 			Coin coin = cart.get(coinSeq);
 			
 			item.setCoinSeq(coin.getCoinSeq());
 			
 			paySaleprice = coin.getCoinPay();
+			payCoin = coin.getCoinName();
 			
 		}
+		
 		item.setPaySaleprice(paySaleprice);
+		item.setPayCoin(payCoin);
 		
 		dao.add(item);
+		
+	}
+
+	@Override
+	public int sum(String companyId) {
+		return dao.sum(companyId);
 	}
 
 }

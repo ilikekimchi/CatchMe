@@ -7,12 +7,19 @@ public class Pay {
 	private String companyId; //기업아이디(외래키)
 	private int coinSeq; //코인 번호(외래키)
 	private int paySaleprice; //결제 가격
+	private int payCoin; //코인 보유수
 	private Date payDate; //결제날짜
-	
-	
+		
 	private int coinName; //코인 이름(수량)
 	private int coinPay; //코인 가격
 	
+	
+	public int getPayCoin() {
+		return payCoin;
+	}
+	public void setPayCoin(int payCoin) {
+		this.payCoin = payCoin;
+	}
 	public int getPaySeq() {
 		return paySeq;
 	}

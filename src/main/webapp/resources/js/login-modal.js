@@ -61,5 +61,7 @@ $(function() {
 			$('.customer-form').css('display', 'none');
 			$('.company-form').css('display', 'block');
 		})
+		
+		
 
 	})

@@ -13,5 +13,7 @@ public interface PayDao {
 	void add(Pay item);
 
 	void delete(int paySeq);
-	
+
+	int sum(String companyId);
+
 }

@@ -37,6 +37,9 @@ public class PayController {
 	
 	@Autowired
 	CoinService serviceCoin;
+	
+	@Autowired
+	PayService PaySevice;
 		
 	//Date 형식을 스프링에게 어떤값으로 변환될지 알려줌
 	@InitBinder
@@ -56,7 +59,7 @@ public class PayController {
 		List<Pay> list = service.list(company.getCompanyId());
 		
 		model.addAttribute("list", list);
-	
+		
 		return path + "list";
 		
 	}
@@ -69,14 +72,17 @@ public class PayController {
 		@SuppressWarnings("unchecked")
 		Map<Integer, Coin> cart = (Map<Integer, Coin>) session.getAttribute("cart");
 		if(cart == null || cart.isEmpty()) {
-			return "redirect:list";
+			return "redirect:cart";
 		}
 		
 		service.order(company.getCompanyId(), cart);
 		
 		session.removeAttribute("cart");
 		
-		return "redirect:list";
+		int sumCoin = PaySevice.sum(company.getCompanyId());
+		session.setAttribute("sumCoin", sumCoin);
+		
+		return "redirect:cart";
 	}
 	
 	//결제 페이지
@@ -85,10 +91,17 @@ public class PayController {
 	Map은 inteferface로서 key, value 조합을 사용하는 데이터형의 껍데기
 	HashMap은 Hash key 기반의 map을 이미 구현한 클래스 */
 	@GetMapping("/cart")
-	String cart(@RequestParam(defaultValue = "0") int coinSeq, Model model, HttpSession session) {
+	String cart(@RequestParam(defaultValue = "0") int coinSeq,
+			Model model, HttpSession session) {
 		List<Coin> coinList = serviceCoin.list();
 		
 		model.addAttribute("coinList", coinList);
+		
+		Company company = (Company) session.getAttribute("company");
+		
+		List<Pay> list = service.list(company.getCompanyId());
+		
+		model.addAttribute("list", list);
 		
 		if(coinSeq != 0) {
 			Coin item = serviceCoin.item(coinSeq);
@@ -118,11 +131,16 @@ public class PayController {
 		
 		return path + "cart";
 	}
+	
 	@GetMapping("/{paySeq}/delete")
-	String delete(@PathVariable int paySeq) {
+	String delete(@PathVariable int paySeq, HttpSession session) {
 		service.delete(paySeq);
+		Company company = (Company) session.getAttribute("company");
 		
-		return "redirect:../list";
+		int sumCoin = PaySevice.sum(company.getCompanyId());
+		session.setAttribute("sumCoin", sumCoin);
+		
+		return "redirect:../cart";
 		
 	}
 	

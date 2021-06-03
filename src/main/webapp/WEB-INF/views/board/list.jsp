@@ -63,7 +63,7 @@
 						<!-- 경력사항 -->
 							<th>회사명</th>
 							<th>담당업무</th>
-							<th>직급/직책</th>
+							<th>직종/직업</th>
 							<th>경력</th>
 						<!-- 경력사항 -->
 						
@@ -88,7 +88,8 @@
 							<th>한줄소개</th>
 							<th>연락가능 시간</th>
 							<th>이력서검증 여부</th>
-						<!-- 기타 -->						
+						<!-- 기타 -->
+												
 							<th>최종수정일</th>
 							<th>관리</th>
 						</tr>
@@ -96,7 +97,7 @@
 					<tbody>
 					<c:if test="${listAll.size() < 1}">
 						<tr>
-							<td colspan="31">등록 된 명함 없습니다</td>
+							<td colspan="33">등록 된 명함 없습니다</td>
 						</tr>
 					</c:if>
 					<c:forEach var="item" items="${listAll}">
@@ -126,7 +127,7 @@
 						<!-- 경력사항 -->
 							<td>${item.careerCompany}</td>
 							<td>${item.careerWork}</td>
-							<td>${item.careerCategory}</td>
+							<td>${item.jobLarge} / ${item.jobSmall}</td>
 							<td>${item.careerDate}</td>
 						<!-- 경력사항 -->
 						
@@ -153,9 +154,14 @@
 							<td>${item.profileCheck}</td>
 						<!-- 기타 -->	
 						
+						<!-- 최종 수정일 -->
 						<td><fmt:formatDate pattern="yyyy-MM-dd" value="${item.profileDate}" /></td>
-							
-							<td><a href="${item.profileSeq}/profileCheck">검증(관리자전용)</a></td>
+						<!-- 최종 수정일 -->
+						
+						<!-- 관리 -->
+							<td><a href="${item.profileSeq}/update">이력서 변경</a> | 
+							<a href="${item.customerId}/delete">이력서 삭제</a></td>	
+						<!-- 관리 -->						
 						</tr>
 					</c:forEach>
 					</tbody>

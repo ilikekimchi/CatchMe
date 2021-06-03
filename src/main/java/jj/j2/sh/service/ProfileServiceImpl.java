@@ -10,12 +10,14 @@ import org.springframework.transaction.annotation.Transactional;
 import jj.j2.sh.dao.AreaDao;
 import jj.j2.sh.dao.CareerDao;
 import jj.j2.sh.dao.CertificateDao;
+import jj.j2.sh.dao.JobDao;
 import jj.j2.sh.dao.ProfileDao;
 import jj.j2.sh.dao.SkillDao;
 import jj.j2.sh.model.Area;
 import jj.j2.sh.model.Career;
 import jj.j2.sh.model.Certificate;
 import jj.j2.sh.model.Customer;
+import jj.j2.sh.model.Job;
 import jj.j2.sh.model.Profile;
 import jj.j2.sh.model.Skill;
 import jj.j2.sh.util.Pager;
@@ -38,6 +40,9 @@ public class ProfileServiceImpl implements ProfileService {
 	@Autowired
 	CertificateDao daoCertificate;
 	
+	@Autowired
+	JobDao daoJob;
+	
 	@Override
 	public List<Profile> list(String customerId) {
 		return dao.list(customerId);
@@ -46,11 +51,32 @@ public class ProfileServiceImpl implements ProfileService {
 	@Override
 	@Transactional
 	public void add(String customerId, String customerName, String customerAddress, String customerGender,
-			String customerPhone, Date customerBirthday, String skillContent, String area1, String area2,
-			String careerCompany, String careerDate, String careerWork, String careerCategory, String certificateName,
-			Date certificateDate, String certificateWriting, Profile item) {
+			String customerPhone, Date customerBirthday, String skillContent, int areaCode, String area1, String area2,
+			String careerCompany, String careerDate, String careerWork, String certificateName, Date certificateDate,
+			String certificateWriting, int jobCode, String jobLarge, String jobSmall, Profile item) {
 		
-		item.setCustomerId(customerId);	
+		//직업 추가
+		Job job = new Job();
+				
+		job.setJobCode(jobCode);
+		job.setJobLarge(jobLarge);
+		job.setJobSmall(jobSmall);
+				
+		daoJob.add(job);
+		
+		//지역 추가
+		Area area = new Area();
+				
+		area.setAreaCode(areaCode);
+		area.setArea1(area1);
+		area.setArea2(area2);
+				
+		daoArea.add(area);
+		
+		//이력서 추가
+		item.setCustomerId(customerId);
+		item.setJobSeq(job.getJobSeq());
+		item.setAreaSeq(area.getAreaSeq());
 		
 		dao.add(item);
 		
@@ -62,15 +88,6 @@ public class ProfileServiceImpl implements ProfileService {
 		
 		daoSkill.add(skill);
 		
-		//지역 추가
-		Area area = new Area();
-		
-		area.setProfileSeq(item.getProfileSeq());
-		area.setArea1(area1);
-		area.setArea2(area2);
-		
-		daoArea.add(area);
-		
 		//경력 추가
 		Career career = new Career();
 		
@@ -78,7 +95,6 @@ public class ProfileServiceImpl implements ProfileService {
 		career.setCareerCompany(careerCompany);
 		career.setCareerDate(careerDate);
 		career.setCareerWork(careerWork);
-		career.setCareerCategory(careerCategory);
 		
 		daoCareer.add(career);
 		
@@ -91,6 +107,8 @@ public class ProfileServiceImpl implements ProfileService {
 		certificate.setCertificateWriting(certificateWriting);
 		
 		daoCertificate.add(certificate);
+		
+		
 	}
 	
 	@Override
@@ -100,7 +118,8 @@ public class ProfileServiceImpl implements ProfileService {
 	
 	@Override
 	@Transactional
-	public void update(Skill skill, Area area, Career career, Certificate certificate, Profile item) {
+	public void update(Skill skill, Area area, Career career, Certificate certificate, 
+			Job job, Profile item) {
 		dao.update(item);
 		
 		//기술 수정
@@ -114,6 +133,9 @@ public class ProfileServiceImpl implements ProfileService {
 		
 		//자격/면허 수정
 		daoCertificate.update(certificate);
+		
+		//직업 수정
+		daoJob.update(job);
 	}
 
 	@Override
@@ -137,9 +159,27 @@ public class ProfileServiceImpl implements ProfileService {
 
 	@Override
 	@Transactional
-	public void dummy(Customer customer,Skill skill, Area area, Career career, Certificate certificate, Profile item) {
+	public void dummy(Customer customer,Skill skill, Area area, Career career, Certificate certificate, 
+			Job job, Profile item) {
 		for(int index=1; index < 100; index++) {
+			//직업 추가
+			job.setJobCode(index + 100000);
+			job.setJobLarge("대직업" + index);
+			job.setJobSmall("소직업" + index);
+			
+			daoJob.add(job);
+			
+			//지역 추가
+			area.setAreaCode(index + 100000);
+			area.setArea1("희망지역" + index);
+			area.setArea2("희망시군구" + index);
+			
+			daoArea.add(area);
+			
+			//이력서 추가
 			item.setCustomerId(customer.getCustomerId());
+			item.setJobSeq(job.getJobSeq());
+			item.setAreaSeq(area.getAreaSeq());
 			item.setProfileImg("이미지" + index);
 			item.setProfileMoney(index);
 			item.setProfileState(1);
@@ -161,19 +201,11 @@ public class ProfileServiceImpl implements ProfileService {
 			
 			daoSkill.add(skill);
 			
-			//지역 추가
-			area.setProfileSeq(item.getProfileSeq());
-			area.setArea1("희망지역" + index);
-			area.setArea2("희망시군구" + index);
-			
-			daoArea.add(area);
-			
 			//경력 추가
 			career.setProfileSeq(item.getProfileSeq());
 			career.setCareerCompany("회사명" + index);
 			career.setCareerDate("경력" + index);
 			career.setCareerWork("담당업무" + index);
-			career.setCareerCategory("직급/직책" + index);
 			
 			daoCareer.add(career);
 			
@@ -184,6 +216,7 @@ public class ProfileServiceImpl implements ProfileService {
 			certificate.setCertificateWriting("시행처" + index);
 			
 			daoCertificate.add(certificate);
+			
 		}
 	}
 
@@ -205,4 +238,5 @@ public class ProfileServiceImpl implements ProfileService {
 	public void delete2(int profileSeq) {
 		dao.delete2(profileSeq);
 	}
+
 }
