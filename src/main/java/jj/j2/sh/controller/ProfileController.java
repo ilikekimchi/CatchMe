@@ -178,7 +178,7 @@ public class ProfileController {
 		if("admin".equals(customer.getCustomerId())){
 			service.delete(customerId);
 			
-			return "redirect:../list-all";
+			return "redirect:../board/list";
 		} else {
 			service.delete(customerId);
 			

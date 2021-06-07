@@ -1,5 +1,7 @@
 package jj.j2.sh.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -20,6 +22,17 @@ public class AreaDaoImpl implements AreaDao {
 	@Override
 	public void update(Area area) {
 		sql.update("area.update", area);
+	}
+
+	@Override
+	public List<Area> list() {
+		return sql.selectList("area.list");
+	}
+
+	@Override
+	public List<Area> area2List(int areaCode) {
+		
+		return sql.selectList("area.area2List", areaCode);
 	}
 
 }

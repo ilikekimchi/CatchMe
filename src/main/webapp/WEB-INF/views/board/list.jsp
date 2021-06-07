@@ -13,16 +13,12 @@
 		<div>
 			<div><h3>전체 명함</h3></div>
 			<div>
-			<form method="get" action="">
+			<!--<form method="get" action="">
 			<div class="search">
 				<span>
 					<select name="search">
 						<option value="0">선택</option>
-						<option value="1" ${pager.search == 1 ? 'selected' : ''}>닉네임</option>
-						<option value="2" ${pager.search == 2 ? 'selected' : ''}>지역</option>
-						<option value="3" ${pager.search == 3 ? 'selected' : ''}>직종/직급</option>
-						<option value="4" ${pager.search == 4 ? 'selected' : ''}>기술/능력</option>
-						<option value="5" ${pager.search == 5 ? 'selected' : ''}>경력</option>
+						<option value="1" ${pager.search == 1 ? 'selected' : ''}>Test</option>
 					</select>
 				</span>
 				<span>
@@ -32,7 +28,7 @@
 					<input type="submit" value="검색" class="button">
 				</span>
 				</div>
-			</form>
+			</form>-->
 		</div>		
 			<div>
 				<table border="1">

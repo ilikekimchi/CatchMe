@@ -11,6 +11,7 @@ public class Pager {
    int perGroup = 5; //보여질 페이지 그룹 수
    int search = 0;   //검색 분류(명, 번호, 가격)
    String keyword; //검색내용 저장
+   String area; //검색내용 저장
 
    
    public int getPerPage() {
@@ -35,6 +36,14 @@ public class Pager {
 
    public void setKeyword(String keyword) {
       this.keyword = keyword;
+   } 
+
+   public String getArea() {
+      return area;
+   }
+   
+   public void setArea(String area) {
+      this.area = area;
    }
 
    public float getTotal() {
@@ -94,8 +103,8 @@ public class Pager {
    // list에는 1씩 5번이 저장된 상태 이므로 1을 추가하지 않고 반환
 
    public String getQuery() { //검색 결과
-      if (search > 0 && search <= 4) {
-         return "search = " + search + "& keyword = " + keyword; 
+      if (area != null) {
+         return "area = " + area + "& keyword = " + keyword; 
       }
       return "";
    }

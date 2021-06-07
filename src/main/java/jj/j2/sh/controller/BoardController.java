@@ -49,7 +49,6 @@ public class BoardController {
  
  	@GetMapping("/list")
  	String listAll(Model model, Pager pager) {
- 		
  		List<Profile> listAll = service.listAll(pager);
  		
  		model.addAttribute("listAll", listAll);
