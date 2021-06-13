@@ -44,6 +44,7 @@ $(function() {
       $('.search-area').css('height', '406px');
       $('.region-search').css('color', '#4876ef');
       $('.job-search').css('color', '#4c4c4c');
+      $('#region-value').css('color', '#4876ef');
       
       $('.area-list').css('display','block');
       $('.job-list').css('display','none');
@@ -129,9 +130,7 @@ $(function() {
    
       var area2 = $(this).text();
       
-      $('.region-search').css('top','11.5px');
-      
-      $('.region-search').append(' · ');
+      $('.region-search').css('top','16px');
       
       $('#region-value').val(area2);
    })
@@ -142,6 +141,7 @@ $(function() {
       $('.search-area').css('height', '406px');
       $('.region-search').css('color', '#4c4c4c');
       $('.job-search').css('color', '#4876ef');
+      $('#region-value').css('color', '#4c4c4c');
       
       $('.job-list').css('display','block');
       $('.area-list').css('display','none');
@@ -217,10 +217,7 @@ $(function() {
    })
    
    $(document).on("click", ".job-search-menu", function() {
-   
-      var job = $(this).text();
-      
-      $('.job-search').text(job);
+
       
    })
    
@@ -228,11 +225,10 @@ $(function() {
    
       var jobSmall = $(this).text();
       
-      $('.job-search').css({'top' : '11.5px','left' : '207px'});
+      $('.job-search').css({'top' : '15.5px','left' : '207px'});
       
-      $('.job-search').append(' · ');
-      $('.job-search').append(jobSmall);
-      
+      $('.job-search').text(jobSmall);
+      $('#job-value').val(jobSmall);
    })
    
    $('html').click(function(e) { 
@@ -244,6 +240,7 @@ $(function() {
          $('.search-area').css('height', '46px');
          $('.region-search').css('color', '#4c4c4c');
          $('.job-search').css('color', '#4c4c4c');
+         $('#region-value').css('color', '#4c4c4c');
          
          $('.area-list').css('display','none');
          $('.area2-list').css('display','none');

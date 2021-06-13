@@ -81,6 +81,7 @@
 				<li><a href="/pay/cart">코인 충전</a></li>
 				<li><a href="/pay/list">결제내역(기업 전용)</a></li>
 				<li><a href="/customer/list-admin">이직자 목록(관리자전용)</a></li>
+				<li><a href="/coin/list">코인 관리(관리자전용)</a></li>
 			</ul>
 		</div>
 	</div>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +35,7 @@
 				</div>
 				<div>
 					<label>생년월일:</label>
-					${sessionScope.customer.customerBirthday}
+					<fmt:formatDate pattern="yyyy-MM-dd" value="${sessionScope.customer.customerBirthday}" />
 				</div>
 				<div>
                 	<label>성별:</label>
@@ -78,6 +79,10 @@
                 	<input name=careerWork type="text">
             	</div>
             	<div>
+                	<label>job Seq:</label>
+                	<input name=jobSeq type="number">
+            	</div>
+            	<div>
                 	<label>job 코드:</label>
                 	<input name=jobCode type="number">
             	</div>
@@ -117,6 +122,10 @@
             	</div>
             	<div>
             		<h3>희망사항</h3>
+            	</div>
+            	<div>
+                	<label>area Seq:</label>
+                	<input name=areaSeq type="number">
             	</div>
             	<div>
                 	<label>area 코드:</label>

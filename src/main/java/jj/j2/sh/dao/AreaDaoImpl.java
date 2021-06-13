@@ -15,11 +15,6 @@ public class AreaDaoImpl implements AreaDao {
 	SqlSession sql;
 	
 	@Override
-	public void add(Area area) {
-		sql.insert("area.add", area);
-	}
-
-	@Override
 	public void update(Area area) {
 		sql.update("area.update", area);
 	}
@@ -33,6 +28,11 @@ public class AreaDaoImpl implements AreaDao {
 	public List<Area> area2List(int areaCode) {
 		
 		return sql.selectList("area.area2List", areaCode);
+	}
+
+	@Override
+	public void add(Area area) {
+		sql.insert("area.add", area);
 	}
 
 }

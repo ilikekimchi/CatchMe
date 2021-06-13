@@ -82,7 +82,7 @@ public class ProfileController {
 			@RequestParam String careerWork, 
 			@RequestParam String certificateName, @RequestParam Date certificateDate, 
 			@RequestParam String certificateWriting,
-			@RequestParam int jobCode, @RequestParam String jobLarge, @RequestParam String jobSmall,
+			Job job, Area area,
 			HttpSession session) {
 		
 			/* profile/list에서 세션으로 가져왔으므로, session으로 형변환을 시켜서 내가 갖고오고싶은 것들(customerId와 customerName 등)에 
@@ -106,9 +106,9 @@ public class ProfileController {
 			
 		service.add(customer.getCustomerId(), customer.getCustomerName(), customer.getCustomerAddress(),
 				customer.getCustomerGender(),customer.getCustomerPhone(), customer.getCustomerBirthday(),
-				skillContent, areaCode, area1, area2, careerCompany, careerDate, careerWork, 
+				skillContent, careerCompany, careerDate, careerWork, 
 				certificateName, certificateDate, certificateWriting, 
-				jobCode, jobLarge, jobSmall, item);
+				job, area, item);
 		
 		} catch (IllegalStateException e) {
 			
@@ -174,11 +174,10 @@ public class ProfileController {
 	String delete(@PathVariable String customerId, HttpSession session) {
 		Customer customer = (Customer) session.getAttribute("customer");
 		
-		
 		if("admin".equals(customer.getCustomerId())){
 			service.delete(customerId);
 			
-			return "redirect:../board/list";
+			return "redirect:/board/list";
 		} else {
 			service.delete(customerId);
 			

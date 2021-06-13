@@ -7,11 +7,13 @@
 <meta charset="UTF-8">
 <title></title>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
 
 <link href="/css/home.css" rel="stylesheet" />
 <link href="/css/login-modal.css" rel="stylesheet" />
 <link href="/css/search-box.css" rel="stylesheet" />
 
+<link href="/css/chat.css" rel="stylesheet" />
 <link href="/css/category.css" rel="stylesheet" />
 
 <script type="text/javascript"
@@ -21,10 +23,60 @@
 
 <script type="text/javascript">
    $(document).ready(function() {
-      var name = ${result}.response.name;
+      /* var name = ${result}.response.name;
       var email = ${result}.response.email;
       $("#name").html("환영합니다. "+name+"님");
-      $("#email").html(email);
+      $("#email").html(email); */
+      
+      $('.chat-btn').click(function() {
+
+         $('.chat-container').animate({
+            opacity : '1',
+            right : '50px',
+            width : '360px',
+            height : '620px',
+            top : '242px'
+         }, 500);
+         
+         $('.chat-icon').animate({
+            opacity : '0',
+            width : '0px'
+         }, 300);
+         
+         $('.chat-header').css('display','block');
+         $('.chat-list').css('display','block');
+
+      })
+      
+      $('.chat-close').click(function() {
+
+         $('.chat-container').animate({
+            opacity : '0',
+            right : '50px',
+            width : '0px',
+            height : '0px',
+            top : '800px'
+         }, 300);
+         
+         $('.chat-icon').animate({
+            opacity : '1',
+            width : '62px'
+         }, 500);
+         
+         $('.chat-header').css('display','none');
+         $('.chat-list').css('display','none');
+         $('.chat-room').css('display','none');
+         
+      })
+      
+      $('.chat-list').dblclick(function() {
+         
+         $('.chat-room').css('display','block');
+      })
+      
+      $('.chat-room-prev').click(function() {
+         $('.chat-room').css('display','none');
+      })
      });
 </script>
 
@@ -46,7 +98,11 @@
                      <input id="region-value" name="area" value="${pager.area}" >
                      <span class="line1"></span>
                   </div>
-                  <span class="job-search">직무 · 직종</span> <span class="line2"></span>
+                  <div>
+                     <span class="job-search">직무 · 직종</span> 
+                     <input id="job-value" name="job" value="${pager.job}"  type="hidden">
+                     <span class="line2"></span>
+                  </div>
                   <input type="text" name="keyword" value="${pager.keyword}" placeholder="카테고리를 입력해주세요."  class="search-input">
                   <button type="submit"><span class="search-icon"></span></button>
                   <div class="search-list">
@@ -198,11 +254,11 @@
          <div class="frame">
             <div class="profile"></div>
          </div>
-         <a href="/profile/list" class="mypage in"> <span
+         <a href="/mypage" class="mypage in"> <span
             class="mypage-icon"></span>
             <div>마이페이지</div>
          </a>
-         <a href="/resume" class="career in"> <span class="career-icon"></span>
+         <a href="/profile/list" class="career in"> <span class="career-icon"></span>
             <div>내 이력서</div>
          </a>
          <a href="logout" class="logout in"> <span class="logout-icon"></span>
@@ -238,5 +294,33 @@
       </c:if>
       <span id="pointer"></span>
    </div>
+   <c:if test="${sessionScope.sessionId == null && sessionScope.customer == null && sessionScope.company == null}">
+   <div id="chat-service">
+      <div class="chat-container">
+         <div class="chat-header">
+            <h2 class="chat-title">채팅</h2>
+            <span class="chat-option"><i class="fas fa-cog"></i></span>
+            <span class="chat-close"><i class="fas fa-times"></i></span>
+         </div>
+         <ul class="chat-list">
+            <li class="chat-room-list">
+               <div class="chat-profile"></div>
+               <span class="chat-nnm">CatchMe 관리자</span>
+               <span class="chat-time">오후 2:35</span>
+            </li>
+         </ul>
+      </div>
+      <div class="chat-btn">
+         <img class="chat-icon" src="/image/chat-btn.png">
+      </div>
+      <div class="chat-room">
+         <div class="chat-room-header">
+            <span class="chat-room-prev"><i class="fas fa-chevron-left"></i></span>
+            <h2 class="chat-peer">CatchMe 관리자</h2>
+            <span class="chat-close"><i class="fas fa-times"></i></span>
+         </div>
+      </div>
+   </div>
+   </c:if>
 </body>
 </html>

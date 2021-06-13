@@ -18,8 +18,8 @@ public class CustomerInterceptor extends HandlerInterceptorAdapter {
 		
 		if(customer != null) {
 			return true;
-		}
-		response.sendRedirect("/login2");
+		} 
+		response.sendRedirect("/");
 		return false;
 	}
 

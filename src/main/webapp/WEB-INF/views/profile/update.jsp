@@ -81,6 +81,10 @@
                 	<input name=careerWork type="text" value="${item.careerWork}">
             	</div>
             	<div>
+                	<label>job Seq:</label>
+                	<input name=jobSeq type="number" value="${item.jobSeq}">
+            	</div>
+            	<div>
                 	<label>job 코드:</label>
                 	<input name=jobCode type="number" value="${item.jobCode}">
             	</div>
@@ -131,6 +135,10 @@
             <!-- 희망사항 -->	
             	<div>
             		<h3>희망사항</h3>
+            	</div>
+            	<div>
+                	<label>area Seq:</label>
+                	<input name=areaSeq type="number" value="${item.areaSeq}">
             	</div>
             	<div>
                 	<label>area 코드:</label>

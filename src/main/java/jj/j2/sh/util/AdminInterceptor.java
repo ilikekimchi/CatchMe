@@ -14,13 +14,13 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		HttpSession session = request.getSession();
 		
-		Customer customer = (Customer) session.getAttribute("admin");
+		Customer customer = (Customer) session.getAttribute("customer");
 		
-		if(customer == null)
-			response.sendRedirect("/login");
-		else if(!"admin".equals(customer.getCustomerId())) //관리자(admin)가 아니면(!) login으로 되돌아감
-			response.sendRedirect("/login");
-		else
+		if(customer == null) {
+			response.sendRedirect("/");
+		} else if(!"admin".equals(customer.getCustomerId())) { //관리자(admin)가 아니면(!) login으로 되돌아감
+			response.sendRedirect("/");
+		} else
 			return true;
 		
 		return false;

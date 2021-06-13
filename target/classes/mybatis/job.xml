@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="job" >			
-	
-	<!-- 직업 보기 -->
-	<select id="list" resultType="Job">
-	SELECT * FROM job
-	ORDER BY job_code ASC
-	</select>
-	
-	<!-- 직업 등록 -->
+<mapper namespace="job" >         
+   
+   <!-- 직업 보기 -->
+   <select id="list" resultType="Job">
+   SELECT DISTINCT job_large, job_code FROM job
+   ORDER BY job_code ASC
+   </select>
+   
+   <select id="smallList" resultType="Job">
+   SELECT job_seq, job_small FROM job
+   WHERE job_code = #{jobCode}
+   ORDER BY job_small ASC
+   </select>
+  
 	<insert id="add">
-	INSERT INTO job
-	(job_seq, job_code, job_large, job_small)
-	
-	VALUES (job_seq.nextval, #{jobCode}, #{jobLarge}, #{jobSmall})
-	
-	<selectKey keyColumn="jobSeq" keyProperty="jobSeq" order="AFTER" resultType="integer">
-		SELECT job_seq.CURRVAL FROM DUAL
-	</selectKey>
-	</insert>  
-	
-	<!-- 직업 수정 -->
-	<update id="update">
-		UPDATE job 
-		SET job_code=#{jobCode}, job_large=#{jobLarge}, job_small=#{jobSmall}
+		INSERT INTO job
+		(job_seq, job_code, job_large, job_small)
 		
-		WHERE job_seq=#{jobSeq}
-	</update>
-	
-	<!-- 직업 삭제 -->
-	<delete id="delete">
-		DELETE FROM job
-		WHERE job_seq=#{jobSeq}
-	</delete>
-	
-	<!-- 직업 관련 각각의 정보들 -->
-	<select id="item" resultType="Job">
-		SELECT * FROM job
-		WHERE job_seq=#{jobSeq}
-	</select>
-			
+		VALUES (#{jobSeq}, #{jobCode}, #{jobLarge}, #{jobSmall})		
+	</insert>
+  
+   <!-- 직업 수정 -->
+   <update id="update">
+      UPDATE job 
+      SET job_code=#{jobCode}, job_large=#{jobLarge}, job_small=#{jobSmall}
+      
+      WHERE job_seq=#{jobSeq}
+   </update>
+   
+   <!-- 직업 삭제 -->
+   <delete id="delete">
+      DELETE FROM job
+      WHERE job_seq=#{jobSeq}
+   </delete>
+   
+   <!-- 직업 관련 각각의 정보들 -->
+   <select id="item" resultType="Job">
+      SELECT * FROM job
+      WHERE job_seq=#{jobSeq}
+   </select>
+         
 </mapper>
-

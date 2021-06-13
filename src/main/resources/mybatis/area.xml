@@ -17,17 +17,12 @@
 	ORDER BY area_seq ASC
 	</select>
 	
-	<!-- #{}은 필드명, mybatis-config 에서 세팅해주면 이것을 자동으로 고쳐줌(자바표기법:낙타 표기법) -->
 	<insert id="add">
 	INSERT INTO area
 	(area_seq, area_code, area1, area2)
-	
-	VALUES (area_seq.nextval, #{areaCode}, #{area1}, #{area2})
-	
-	<selectKey keyColumn="areaSeq" keyProperty="areaSeq" order="AFTER" resultType="integer">
-		SELECT area_seq.CURRVAL FROM DUAL
-	</selectKey>
-	</insert>  
+		
+	VALUES (#{areaSeq}, #{areaCode}, #{area1}, #{area2})		
+	</insert>
 	
 	<!-- 이직자 희망지역 수정 -->
 	<update id="update">

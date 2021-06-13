@@ -1,7 +1,6 @@
 package jj.j2.sh.controller;
 
 import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,33 +39,34 @@ public class CoinController {
 	
 	@GetMapping("/add")
 	String add() {
-		return path + "add";
+			return path + "add";
 	}
 	
 	@PostMapping("/add")
 	String add(Coin item) {
 		service.add(item);
-		
 		return "redirect:list";
 	}
 	
 	@GetMapping("/{coinSeq}/update")
-	String update(@PathVariable int coinSeq, Model model) {
-		Coin item = service.item(coinSeq);
+	String update(@PathVariable int coinSeq, String customerId, Model model) {
 		
-		model.addAttribute("item", item);
-		
-		return path + "update";
+			Coin item = service.item(coinSeq);
+			
+			model.addAttribute("item", item);
+			
+			return path + "update";
+
 	}
 	
 	@PostMapping("/{coinSeq}/update")
 	String update(@PathVariable int coinSeq, Coin item, HttpSession session) {		
 		item.setCoinSeq(coinSeq);	
-		
+			
 		service.update(item);
-		
+			
 		session.setAttribute("coin", item);
-		
+			
 		return "redirect:../list";
 	}
 	

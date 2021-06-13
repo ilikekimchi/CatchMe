@@ -13,23 +13,8 @@
 		<div>
 			<div><h3>전체 명함</h3></div>
 			<div>
-			<!--<form method="get" action="">
-			<div class="search">
-				<span>
-					<select name="search">
-						<option value="0">선택</option>
-						<option value="1" ${pager.search == 1 ? 'selected' : ''}>Test</option>
-					</select>
-				</span>
-				<span>
-					<input type="text" name="keyword" placeholder="검색어를 입력해 주세요" value="${pager.keyword}">
-				</span>
-				<span>
-					<input type="submit" value="검색" class="button">
-				</span>
-				</div>
-			</form>-->
-		</div>		
+		</div>	
+		  </div>	
 			<div>
 				<table border="1">
 					<thead>

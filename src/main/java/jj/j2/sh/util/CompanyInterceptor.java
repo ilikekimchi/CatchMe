@@ -19,7 +19,7 @@ public class CompanyInterceptor extends HandlerInterceptorAdapter {
 		if(company != null) {
 			return true;
 		}
-		response.sendRedirect("/login0");
+		response.sendRedirect("/");
 		return false;
 	}
 

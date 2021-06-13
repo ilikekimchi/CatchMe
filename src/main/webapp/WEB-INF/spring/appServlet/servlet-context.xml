@@ -42,4 +42,40 @@
 <beans:bean id="naverLoginBO" class="jj.j2.sh.controller.NaverLoginBO"/>
 
 
+
+<!-- customer 와 company 와 admin 권한 -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/customer/list"/>
+			<mapping path="/customer/{customerId}/update"/>
+			<mapping path="/profile/**"/>
+			<mapping path="/resume/**"/>
+			<mapping path="/mypage/**"/>
+			<beans:bean class="jj.j2.sh.util.CustomerInterceptor"></beans:bean>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/pay/**"/>
+			<mapping path="/company/**"/>
+			<beans:bean class="jj.j2.sh.util.CompanyInterceptor"></beans:bean>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/customer/list-admin"/>
+			<mapping path="/customer/add"/>
+			<mapping path="/coin/add"/>
+			<mapping path="/coin/{coinSeq}/update"/>
+			
+			
+	<!-- Interceptor에서 특정 URL 패턴을 갖는 경우에 제외하고자 할 경우 -->
+			
+			<exclude-mapping path="/board/list"/>
+			
+	<!-- Interceptor에서 특정 URL 패턴을 갖는 경우에 제외하고자 할 경우 -->
+			
+			<beans:bean class="jj.j2.sh.util.AdminInterceptor"></beans:bean>
+		</interceptor>
+		
+	</interceptors>
+
 </beans:beans>
