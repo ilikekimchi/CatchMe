@@ -67,5 +67,24 @@ $(function() {
 				$('#filter').css('width', '220px');
 			}
 		})
+		
+		$('.biz-card-1').mouseenter(function() {
+			
+			$(this).addClass("biz-card-hover");
+			$(this).find('div.request-resume').css('visibility','visible');
+			$(this).find('div.request-resume').css('background','rgba(72,118,239,1)');
+
+		
+		})
+		
+		$('.biz-card-1').mouseleave(function() {
+			
+			$(this).removeClass("biz-card-hover");
+			$(this).find('div.request-resume').css('visibility','hidden');
+			$(this).find('div.request-resume').css('background','rgba(72,118,239,0)');
+
+		})
+		
+		
 
 	})

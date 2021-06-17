@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="google-signin-client_id"
+	content="[660007156102-t19t89n6ibpurkj8rrt13je3tko75tnb.apps.googleusercontent.com](http://660007156102-t19t89n6ibpurkj8rrt13je3tko75tnb.apps.googleusercontent.com/)">
+<title>구글 로그인</title>
+<script
+	src="[https://code.jquery.com/jquery-3.6.0.min.js](https://code.jquery.com/jquery-3.6.0.min.js)"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	crossorigin="anonymous"></script>
+<script>
+	$(function() {
+		$("#profile").css("display", "none");
+	});
+</script>
+</head>
+<body>
+	<div>
+
+		<div id="login">
+			<a href="javascript:void(0)"><img
+				src="images/btn_google_signin_dark_normal_web.png"></a>
+		</div>
+		<div id="profile">
+			<span><img src="" class="photo"></span> <span><h1
+					class="name"></h1></span>
+		</div>
+		<a href="/">처음으로</a>
+	</div>
+	<script>
+		//처음 실행하는 함수
+		function init() {
+			gapi
+					.load(
+							'auth2',
+							function() {
+								gapi.auth2.init();
+
+								options = new gapi.auth2.SigninOptionsBuilder();
+								options.setPrompt('select_account');
+
+								// 추가는 Oauth 승인 권한 추가 후 띄어쓰기 기준으로 추가
+								options
+										.setScope('email profile openid <https://www.googleapis.com/auth/user.birthday.read>');
+
+								// 인스턴스의 함수 호출 - element에 로그인 기능 추가
+								// GgCustomLogin은 li태그안에 있는 ID, 위에 설정한 options와 아래 성공,실패시 실행하는 함수들
+								gapi.auth2.getAuthInstance()
+										.attachClickHandler('login', options,
+												onSignIn, onSignInFailure);
+							})
+
+		}
+
+		function onSignIn(googleUser) {
+			let access_token = googleUser.getAuthResponse().access_token;
+
+			// key에 자신의 API 키를 넣습니다.
+			let api_key = 'AIzaSyCxqnFou9CBMMX9PrOngSiYmXle6qMC3Vo';
+
+			$.ajax({
+				// people api를 이용하여 프로필 및 생년월일에 대한 선택동의후 가져온다.
+				url : '<https://people.googleapis.com/v1/people/me>',
+				data : {
+					personFields : 'birthdays',
+					key : api_key,
+					'access_token' : access_token
+				},
+				method : 'GET'
+			}).done(function(e) {
+				//프로필을 가져온다.
+				let profile = googleUser.getBasicProfile();
+
+				alert(`[구글] ${profile.Ue} 님 환영합니다~`);
+
+				console.log(profile);
+
+				$("#login").css("display", "none");
+
+				$("#profile .name").text(profile.Ue);
+				$("#profile .photo").attr("src", profile.vK);
+
+				$("#profile").css("display", "block");
+			}).fail(function(e) {
+				alert("[구글] 사용자의 프로필 정보를 확인 할 수 없습니다");
+				console.log(e);
+			});
+
+		}
+
+		/*
+		 Ue: "김성현"
+		 pu: "[gimseonghyun5052@gmail.com](mailto:gimseonghyun5052@gmail.com)"
+		 sT: "김"
+		 xV: "성현"
+		 */
+
+		function onSignInFailure(t) {
+			alert("[구글] 로그인에 실패 하였습니다");
+
+			console.log(t);
+
+		}
+	</script>
+	<script
+		src="[https://apis.google.com/js/platform.js?onload=init](https://apis.google.com/js/platform.js?onload=init)"
+		async defer></script>
+</body>
+</html>

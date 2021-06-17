@@ -7,8 +7,14 @@
 	<mapper namespace="area" >			
 	<!-- 이직자 희망지역 보기 -->
 	<select id="list" resultType="Area">
-	SELECT * FROM area 
+	SELECT DISTINCT area1, area_code FROM area
 	ORDER BY area_code ASC
+	</select>
+	
+	<select id="area2List" resultType="Area">
+	SELECT area2, area_seq FROM area
+	WHERE area_code = #{areaCode}
+	ORDER BY area_seq ASC
 	</select>
 	
 	<!-- #{}은 필드명, mybatis-config 에서 세팅해주면 이것을 자동으로 고쳐줌(자바표기법:낙타 표기법) -->

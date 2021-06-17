@@ -107,7 +107,7 @@ button {
 
 .login-info {
 	position: relative;
-	top: 9px;
+	top: 20px;
 	
 	width: 250px;
 	margin: 0 auto;
@@ -187,7 +187,7 @@ button {
 	position: relative;
     display: flex;
     width: 210px;
-    top: 72px;
+    top: 81px;
     
     margin: 0 auto;
 }
@@ -202,7 +202,7 @@ button {
 
 .info-remember {	
 	position: relative;
-	top: 50px;
+	top: 60px;
 	left: 19.5px;
 	float: left;
 	width: 131px;
@@ -253,7 +253,7 @@ button {
 	
 }
 
-.click {
+.click1 {
 	
 	color: #4876ef;
 	
@@ -302,7 +302,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 86px;
+    width: 136px;
     top: 9px;
     left: 16px;
 }

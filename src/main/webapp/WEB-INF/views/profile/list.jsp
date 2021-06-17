@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title></title>
-
-<link href="/css/mypage.css" rel="stylesheet" />
 <link href="/css/normal.css" rel="stylesheet" />
+<link href="/css/list.css" rel="stylesheet" />
 
 <!-- 폰트어썸 불러오기 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
@@ -19,105 +19,116 @@
 </head>
 <body>
 
-	<div class="side-bar">
+   <div class="side-bar">
 
-		<div class="logo-box">
+      <div class="logo-box">
 
-			<a href="/"><img
-				src="https://pds.saramin.co.kr/company/logo/202008/21/qfedx5_ny73-1meg1kx_logo.png"
-				alt=""></a>
+         <a href="/"><img src="https://pds.saramin.co.kr/company/logo/202008/21/qfedx5_ny73-1meg1kx_logo.png" alt=""></a>
 
-		</div>
+      </div>
 
-		<nav class="side-menu">
+      <nav class="side-menu">
 
-			<ul>
-				<li><a href="/profile/list"><i class="fas fa-home"></i>개인회원 홈</a></li>
+         <ul>
+            <li><a href="/mypage"><i class="fas fa-home"></i>개인회원 홈</a></li>
+            <li><a href="/userinfo"><i class="fas fa-user-edit"></i>회원정보</a></li>
+            <li><a href="/profile/list"><i class="far fa-address-card"></i>이력서</a></li>
+            <li><a href="/requestUser"><i class="far fa-building"></i>기업의 요청</a></li>
+            <li><a href="/matchUser"><i class="fas fa-handshake"></i>매칭된 기업</a></li>
+         </ul>
 
-				<li><a href="/customer/list"><i class="fas fa-user-edit"></i>회원정보</a></li>
-				<li><a href="/resume"><i class="far fa-address-card"></i>이력서</a></li>
-				<li><a href="/requestUser"><i class="far fa-building"></i>기업의 요청</a></li>
-				<li><a href="/matchUser"><i class="fas fa-handshake"></i>매칭된 기업</a></li>
-			</ul>
+      </nav>
 
-		</nav>
+   </div>
+   
+   
+      <div class="myhome con">
 
-	</div>
+      <div class="title">
 
-	<div class="myhome con">
+         <p>${sessionScope.customer.customerNnm}의 이력서</p>
 
-		<div class="title">
+      </div>
+   
+   
+   <div>
+      <div>
+         <div>
+               <c:if test="${list.size() < 1}">
+               
+               <div class="empty-list">
 
-			<p>열정! 열정! 열정! ${sessionScope.customer.customerNnm}님</p>
+                  <div class="img-box">
 
-		</div>
+                     <img src="/image/empty-img.png" alt="">
 
-		<div class="alarm">
-			<ul>
-				<li><a href="#">1</a><span>나의 알림</span></li>
-				<li><a href="#">2</a><span>기업의 요청</span></li>
-				<li><a href="#">3</a><span>수락한 요청</span></li>
-				<li><a href="#">4</a><span>관심 기업</span></li>
-			</ul>
-		</div>
+                  </div>
+                  
+                  <div class="list-add">
 
-		<div class="biz-card">
+                     <p>등록된 이력서가 없어요 ㅠㅠ</p>
+                     <a href="add">이력서 등록하러 가기 ></a>
+                  </div>
 
-			<div class="biz-card-title">
-				<p>노출되는 이력카드</p>
-			</div>
+               </div>
 
-			<div class="biz-card-1">
+               </c:if>
+               <c:forEach var="item" items="${list}">
 
-				<div class="img-box">
+                  <div class="biz-card-1">
+					
+	                     <div class="img-box">
+	               
+	                         <c:if test="${item.profileImg != null}">
+	                           <a href="" class="img-change-click"><img src="/CatchMeUpload/${item.profileImg}" alt=""></a>
+	                           </c:if>
+	                           <c:if test="${item.profileImg == null && sessionScope.customer.customerGender eq 'm'}">
+	                         <a href="" class="img-change-click"><img src="/image/men.PNG" alt=""></a>
+	                           </c:if>
+	                           <c:if test="${item.profileImg == null && sessionScope.customer.customerGender eq 'f'}">
+	                         <a href="" class="img-change-click"><img src="/image/woman.PNG" alt=""></a>
+	                           </c:if>
+	         
+	                     </div>
+	         
+	                     <div class="biz-card-small">
+	         
+	                        <div class="name">${item.customerName}</div>
+	                        <div class="birth">(<fmt:formatDate pattern="yyyy" value="${item.customerBirthday}" />)</div>
+	                        <div class="job">직종 : ${item.jobLarge} / ${item.jobSmall}</div>
+	                        <c:if test="${item.careerDate == null}"><div class="career-info">경력 : 신입이에요</div></c:if>
+	                        <c:if test="${item.careerDate != null}"><div class="career-info">경력 : ${item.careerDate}</div></c:if>
+	                        <div class="education">학력 : ${item.profileSchoolState}</div>
+	                        <div class="short-intro">한줄소개 : ${item.profileWriting}</div>
+	         
+	                     </div>
+	         
+	                     <div class="biz-card-button">
+	         
+	                        <div><a href="${item.profileSeq}/update">수정하기</a></div>
+	                        <c:if test="${item.profileState == 1}"><div><span>이력서 비공개중</span></div></c:if>
+	                        <c:if test="${item.profileState == 2}"><div><span>적극적인 이직중</span></div></c:if>
+	                        <c:if test="${item.profileState == 3}"><div><span>유연한 이직중</span></div></c:if>
+	                        <div><a href="${item.customerId}/delete">초기화</a></div>
+	         
+	                     </div>
+	         
+	                     <div class="license">
+	         
+	                        <ul>
+	                           <li>${item.skillContent}</li>
+	                        </ul>
+	         
+	                     </div>
+                     </div>
 
-					<a href="#"><img
-						src="https://i.pinimg.com/564x/60/ee/69/60ee6916e93413b06e8b319a21521fc3.jpg"
-						alt=""></a>
+               </c:forEach>
 
-				</div>
-
-				<div class="biz-card-small">
-
-					<div class="name">${sessionScope.customer.customerNnm}</div>
-					<div class="birth">(1995)</div>
-					<div class="rank">직급 ex) 대리</div>
-					<div class="career">경력 ex) 1~2년차</div>
-					<div class="education">학력 ex) 최종학력까지만 대학 4년제 졸업</div>
-					<div class="short-intro">한줄소개 최대50자</div>
-
-				</div>
-
-				<div class="biz-card-button">
-
-					<div><a href="/resume">수정하기</a></div>
-					<div><span>현재상태</span></div>
-
-				</div>
-
-				<div class="license">
-
-					<ul>
-						<li>Spring</li>
-						<li>JavaScript</li>
-						<li>JQuery</li>
-						<li>React</li>
-						<li>Vue</li>
-						<li>Java</li>
-					</ul>
-
-				</div>
-
-			</div>
-
-
-
-		</div>
-
-	</div>
-	
-
-
-
+         </div>
+         <div>
+         </div>      
+      </div>
+   </div>
+   </div>
 </body>
 </html>

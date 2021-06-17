@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="/js/signup.js" type="text/javascript"></script>
+<script src="/js/signup2.js" type="text/javascript"></script>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 	

@@ -34,6 +34,41 @@
 <jsp:include page="../footer.jsp" />
 <jsp:include page="../topbar.jsp" />
 
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.request-resume').click(function() {
+			
+			let customerId = $(this).children('.customer-info').val();
+			let companyId = '${sessionScope.company.companyId}';
+			
+			let data = {
+			
+				customerId: customerId,
+				companyId: companyId
+			
+			}
+			
+			console.log(data);
+			
+			$.ajax({
+				type: "POST",
+				url: "/board/chatRoom",
+				contentType: "application/json",
+				data: JSON.stringify(data),
+				success: function(result) {
+							
+					console.log(result);
+					
+				},
+				error: function() {
+							
+				}
+			});
+			
+		})
+	})
+</script>
+
 </head>
 <body>
 	
@@ -45,25 +80,11 @@
 						<span id="location-btn" class="btn down"></span>
 				</a>
 					<ul class="location-list">
-						<li><a>서울</a></li>
-						<li><a>경기</a></li>
-						<li><a>인천</a></li>
-						<li><a>부산</a></li>
-						<li><a>대구</a></li>
-						<li><a>광주</a></li>
-						<li><a>대전</a></li>
-						<li><a>울산</a></li>
-						<li><a>세종</a></li>
-						<li><a>강원</a></li>
-						<li><a>경남</a></li>
-						<li><a>경북</a></li>
-						<li><a>전남</a></li>
-						<li><a>전북</a></li>
-						<li><a>충남</a></li>
-						<li><a>충북</a></li>
-						<li><a>제주</a></li>
-						<li><a>전국</a></li>
-					</ul></li>
+						<c:forEach var="areaList" items="${areaList}">
+							<li><a>${areaList.area1}</a></li>
+						</c:forEach>
+					</ul>
+				</li>
 				<li class="gender sort"><a class="gender-info"> <strong>성별</strong>
 						<span id="gender-btn" class="btn down"></span>
 				</a>
@@ -82,10 +103,10 @@
 						<li><a>~5년</a></li>
 						<li><a>이상</a></li>
 					</ul></li>
-				<li class="sort"><a class="cp-info">기업정보 <span
+				<li class="sort"><a href="/companyNews" class="cp-info">기업정보 <span
 						class="cp-btn"></span>
 				</a></li>
-				<li class="sort"><a class="ct-info">이직정보 <span
+				<li class="sort"><a href="/customerNews" class="ct-info">이직정보 <span
 						class="ct-btn"></span>
 				</a></li>
 			</ul>
@@ -130,18 +151,16 @@
 						<div class="biz-card">
 							<c:if test="${listAll.size() < 1}">
 								<div>
-									<div colspan="31">등록 된 명함 없습니다</div>
+									<div>등록 된 명함 없습니다</div>
 								</div>
 							</c:if>
 							<c:forEach var="item" items="${listAll}">
 								<div class="biz-card-1">
 									<div class="img-box">
-										<a href="#"><img
-											src="https://i.pinimg.com/564x/60/ee/69/60ee6916e93413b06e8b319a21521fc3.jpg"
-											alt=""></a>
+										<a ><img src="/CatchMeUpload/${item.profileImg}" alt=""></a>
 									</div>
 									<div class="biz-card-small">
-										<div class="name">${item.customerId}</div>
+										<div class="name">${item.customerNnm}</div>
 										<div class="birth">
 											<fmt:formatDate pattern="yyyy-MM-dd"
 												value="${item.customerBirthday}" />
@@ -167,6 +186,12 @@
 											<a href="${item.profileSeq}/profileCheck">검증(관리자전용)</a>
 										</div>
 									</c:if>
+									<c:if test="${sessionScope.company != null }">
+										<div class="request-resume">
+											<input class="customer-info" type="hidden" value="${item.customerId}">
+                     						<a>요청하기</a>
+                     					</div>
+                     				</c:if>
 								</div>
 							</c:forEach>
 						</div>

@@ -52,6 +52,15 @@
 		JOIN company ON pay.company_id=company.company_id
 		JOIN coin ON pay.coin_seq=coin.coin_seq		 
 		WHERE company.company_id=#{companyId}
-	</select>			
+	</select>
+	
+	
+	<!-- 개인합계 -->
+	<select id="sum" resultType="Integer">
+		SELECT SUM(PAY_COIN)
+		FROM pay
+		WHERE company_id=#{companyId}
+		GROUP BY company_id
+	</select>
+				
 </mapper>
-

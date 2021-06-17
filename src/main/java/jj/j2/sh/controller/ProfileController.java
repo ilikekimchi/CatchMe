@@ -7,9 +7,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMessage.RecipientType;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Service;
+
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -82,7 +89,7 @@ public class ProfileController {
 			@RequestParam String careerWork, 
 			@RequestParam String certificateName, @RequestParam Date certificateDate, 
 			@RequestParam String certificateWriting,
-			@RequestParam int jobCode, @RequestParam String jobLarge, @RequestParam String jobSmall,
+			Job job, Area area,
 			HttpSession session) {
 		
 			/* profile/list에서 세션으로 가져왔으므로, session으로 형변환을 시켜서 내가 갖고오고싶은 것들(customerId와 customerName 등)에 
@@ -106,9 +113,9 @@ public class ProfileController {
 			
 		service.add(customer.getCustomerId(), customer.getCustomerName(), customer.getCustomerAddress(),
 				customer.getCustomerGender(),customer.getCustomerPhone(), customer.getCustomerBirthday(),
-				skillContent, areaCode, area1, area2, careerCompany, careerDate, careerWork, 
+				skillContent, careerCompany, careerDate, careerWork, 
 				certificateName, certificateDate, certificateWriting, 
-				jobCode, jobLarge, jobSmall, item);
+				job, area, item);
 		
 		} catch (IllegalStateException e) {
 			
@@ -178,13 +185,68 @@ public class ProfileController {
 		if("admin".equals(customer.getCustomerId())){
 			service.delete(customerId);
 			
-			return "redirect:../list-all";
+			return "redirect:/board/list";
 		} else {
 			service.delete(customerId);
 			
 			return "redirect:../list";
 		}
 		
+	}
+	
+	@Inject
+	JavaMailSender mailSender;
+
+	@PostMapping("sendMail")
+	public void sendMail(String id, HttpSession session) {
+
+		int result = (int) (Math.random() * 899999 + 100000);
+		String authNo = Integer.toString(result);
+
+		try {
+			MimeMessage msg = mailSender.createMimeMessage();
+			// 이메일 객체
+
+			msg.addRecipient(RecipientType.TO, new InternetAddress(id));
+			// 받는 사람을 설정 (수신자, 받는사람의 이메일 주소 객체를 생성해서 수신자 이메일주소를 담음)
+
+			msg.addFrom(new InternetAddress[] { new InternetAddress("gimseonghyun5052@gmail.com", "CATCHME") });
+			// 이메일 발신자
+
+			msg.setSubject("[CATCHME]에서 발송한 인증번호입니다.", "utf-8");
+			// 이메일 제목
+
+			msg.setText("[" + authNo + "]", "utf-8");
+			// 이메일 본문
+
+			mailSender.send(msg);
+			// 이메일 보내기
+
+			session.setAttribute("authNo", authNo);
+			session.setAttribute("id", id);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	@PostMapping("confirm")
+	String confirm(String authNo2, HttpSession session) {
+		String authNo1 = (String) session.getAttribute("authNo");
+
+		if(authNo1 != authNo2) {
+			return "FAIL";
+		}
+		return "SUCCESS";
+	}
+
+	@PostMapping("/{pwd}/reset_pw")
+	String reset_pw(String pwd, HttpSession session) {
+		String id = session.getId();
+		service.rsPw(id, pwd);
+
+		return "home";
 	}
 	
 }

@@ -49,6 +49,7 @@ public class Profile {
 	MultipartFile uploadFile;
 
 	
+	
 	public int getAreaSeq() {
 		return areaSeq;
 	}

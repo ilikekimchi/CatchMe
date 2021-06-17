@@ -30,7 +30,11 @@
   
   width: 45%;
   margin: 0px 26px 40px 26px;
+  position:relative;
+  
 }
+
+
 
 .biz-card .biz-card-1 .img-box {
   width:120px;

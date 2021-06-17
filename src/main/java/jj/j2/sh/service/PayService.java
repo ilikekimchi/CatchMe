@@ -16,4 +16,6 @@ public interface PayService {
 
 	void order(String companyId, Map<Integer, Coin> cart);
 
+	int sum(String companyId);
+
 }

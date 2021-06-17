@@ -82,26 +82,90 @@
 		JOIN area ON profile.area_seq=area.area_seq
 		JOIN job ON profile.job_seq=job.job_seq
 		<where>
-			<if test="search == 1 and keyword != null">
-				customer.customer_nnm LIKE '%' || #{keyword} || '%'
-			</if>
+		<if test="area == '' and job == '' and keyword != null">
+           job.job_small LIKE '%' || #{keyword} || '%'
+           OR
+           area.area2 LIKE '%' || #{keyword} || '%'
+           OR
+           customer.customer_nnm LIKE '%' || #{keyword} || '%'
+           OR
+           career.career_work LIKE '%' || #{keyword} || '%'
+           OR
+           career.career_date LIKE '%' || #{keyword} || '%'
+           OR
+           profile.profile_school_state LIKE '%' || #{keyword} || '%'
+           OR
+           profile.profile_writing LIKE '%' || #{keyword} || '%'
+        </if>
+		<if test="area != '' and job == '' and keyword != null">
+           area.area2=#{area}
+           AND(
+           job.job_small LIKE '%' || #{keyword} || '%'
+           OR
+           customer.customer_nnm LIKE '%' || #{keyword} || '%'
+           OR
+           career.career_work LIKE '%' || #{keyword} || '%'
+           OR
+           career.career_date LIKE '%' || #{keyword} || '%'
+           OR
+           profile.profile_school_state LIKE '%' || #{keyword} || '%'
+           OR
+           profile.profile_writing LIKE '%' || #{keyword} || '%'
+           )
+        </if>
+		<if test="area == '' and job != '' and keyword != null">
+           job.job_small=#{job}
+           AND(
+           area.area2 LIKE '%' || #{keyword} || '%'
+           OR
+           customer.customer_nnm LIKE '%' || #{keyword} || '%'
+           OR
+           career.career_work LIKE '%' || #{keyword} || '%'
+           OR
+           career.career_date LIKE '%' || #{keyword} || '%'
+           OR
+           profile.profile_school_state LIKE '%' || #{keyword} || '%'
+           OR
+           profile.profile_writing LIKE '%' || #{keyword} || '%'
+           )
+        </if>
+                
+        <!-- keyword == null -->
+        <if test="job != '' and area != '' and keyword == null">
+           area.area2=#{area}
+           AND
+           job.job_small=#{job}
+        </if>
+        <if test="job == '' and area != '' and keyword == null">
+           area.area2=#{area}
+        </if>
+        <if test="job != '' and area == '' and keyword == null">
+           job.job_small=#{job}
+        </if>
+        <!-- keyword == null -->
+        
+        <!-- AND ALL -->
+        <if test="area != '' and job != '' and keyword != null">
+           area.area2=#{area}
+           AND
+           job.job_small=#{job}
+           AND(
+           customer.customer_nnm LIKE '%' || #{keyword} || '%'
+           OR
+           career.career_work LIKE '%' || #{keyword} || '%'
+           OR
+           career.career_date LIKE '%' || #{keyword} || '%'
+           OR
+           profile.profile_school_state LIKE '%' || #{keyword} || '%'
+           OR
+           profile.profile_writing LIKE '%' || #{keyword} || '%'
+           )
+        </if>
+        <!-- AND ALL -->
+        
+        
+       </where>
 			
-			<if test="search == 2 and keyword != null">
-				area.area1 LIKE '%' || #{keyword} || '%'
-			</if>
-			
-			<if test="search == 3 and keyword != null">
-				career.career_category LIKE '%' || #{keyword} || '%'
-			</if>
-			
-			<if test="search == 4 and keyword != null">
-				skill.skill_content LIKE '%' || #{keyword} || '%'
-			</if>
-			
-			<if test="search == 5 and keyword != null">
-				career.career_date LIKE '%' || #{keyword} || '%'
-			</if>
-		</where>	
 	</sql>
 	<!-- 검색 -->
 	
@@ -128,19 +192,19 @@
 		JOIN certificate ON profile.profile_seq=certificate.profile_seq
 		JOIN area ON profile.area_seq=area.area_seq
 		JOIN job ON profile.job_seq=job.job_seq
+		WHERE customer.customer_id=#{customerId}
 	</select>
 	
 	<!-- 이직자 명함 및 프로필 모두 보기 -->
-	<select id="listAll" resultType="Profile" resultMap="ProfileMap">
+	<select id="listAll"  resultType="Profile" resultMap="ProfileMap">
 		SELECT * FROM
 		(SELECT ROWNUM rnum, sub.* FROM
 		(<include refid="search"></include>) sub)
 		<![CDATA[
-         WHERE rnum >= ((#{page} - 1 ) * #{perPage} + 1 ) and rnum <= ( #{page} * #{perPage})
+         WHERE rnum >= ((#{page} - 1 ) * #{perPage} + 1 ) AND rnum <= ( #{page} * #{perPage})
       	]]>
-		ORDER BY profile_seq DESC
+      	ORDER BY profile_seq DESC
 	</select>
-	
 		
 	<!-- 이력서 등록 -->
 	<insert id="add">
@@ -194,7 +258,7 @@
 		JOIN certificate ON profile.profile_seq=certificate.profile_seq
 		JOIN area ON profile.area_seq=area.area_seq
 		JOIN job ON profile.job_seq=job.job_seq
-		WHERE profile.profile_seq=#{profileSeq} OR customer.customer_id=#{customerId}
+		WHERE profile.profile_seq=#{profileSeq}
 	</select>
 					
 	<!-- 이력서 수정 -->
@@ -223,7 +287,7 @@
 	<!-- 이력서 삭제 -->
 	<delete id="delete">
 		DELETE FROM profile
-		WHERE profile_seq=#{profileSeq} OR customer_id=#{customerId}
+		WHERE customer_id=#{customerId}
 	</delete>
 	
 	<!-- 이력서 삭제2 -->
@@ -231,4 +295,10 @@
 		DELETE FROM profile
 		WHERE profile_seq=#{profileSeq}
 	</delete>
+	
+	<update id="resetPw">
+      UPDATE CUSTOMER
+      SET customer_pw = #{user.pwd}
+      WHERE customer_id = #{user.id}
+   </update>
 </mapper>

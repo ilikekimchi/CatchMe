@@ -18,9 +18,9 @@ public interface ProfileService {
 	List<Profile> list(String customerId);
 	
 	void add(String customerId, String customerName, String customerAddress, String customerGender,
-			String customerPhone, Date customerBirthday, String skillContent, int areaCode, String area1, String area2,
-			String careerCompany, String careerDate, String careerWork, String certificateName, Date certificateDate,
-			String certificateWriting, int jobCode, String jobLarge, String jobSmall, Profile item);
+			String customerPhone, Date customerBirthday, String skillContent, String careerCompany, String careerDate,
+			String careerWork, String certificateName, Date certificateDate, String certificateWriting, Job job,
+			Area area, Profile item);
 
 	Profile item(int profileSeq);
 
@@ -38,6 +38,10 @@ public interface ProfileService {
 
 	void dummy(Customer customer, Skill skill, Area area, Career career, Certificate certificate, Job job,
 			Profile item);
+
+	void rsPw(String id, String pwd);
+
+	
 
 	
 }

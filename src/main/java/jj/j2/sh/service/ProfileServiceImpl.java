@@ -20,6 +20,7 @@ import jj.j2.sh.model.Customer;
 import jj.j2.sh.model.Job;
 import jj.j2.sh.model.Profile;
 import jj.j2.sh.model.Skill;
+import jj.j2.sh.model.User;
 import jj.j2.sh.util.Pager;
 
 @Service
@@ -51,27 +52,9 @@ public class ProfileServiceImpl implements ProfileService {
 	@Override
 	@Transactional
 	public void add(String customerId, String customerName, String customerAddress, String customerGender,
-			String customerPhone, Date customerBirthday, String skillContent, int areaCode, String area1, String area2,
-			String careerCompany, String careerDate, String careerWork, String certificateName, Date certificateDate,
-			String certificateWriting, int jobCode, String jobLarge, String jobSmall, Profile item) {
-		
-		//직업 추가
-		Job job = new Job();
-				
-		job.setJobCode(jobCode);
-		job.setJobLarge(jobLarge);
-		job.setJobSmall(jobSmall);
-				
-		daoJob.add(job);
-		
-		//지역 추가
-		Area area = new Area();
-				
-		area.setAreaCode(areaCode);
-		area.setArea1(area1);
-		area.setArea2(area2);
-				
-		daoArea.add(area);
+			String customerPhone, Date customerBirthday, String skillContent, String careerCompany, String careerDate,
+			String careerWork, String certificateName, Date certificateDate, String certificateWriting, Job job,
+			Area area, Profile item) {
 		
 		//이력서 추가
 		item.setCustomerId(customerId);
@@ -85,7 +68,7 @@ public class ProfileServiceImpl implements ProfileService {
 		
 		skill.setProfileSeq(item.getProfileSeq());
 		skill.setSkillContent(skillContent);
-		
+						
 		daoSkill.add(skill);
 		
 		//경력 추가
@@ -120,13 +103,17 @@ public class ProfileServiceImpl implements ProfileService {
 	@Transactional
 	public void update(Skill skill, Area area, Career career, Certificate certificate, 
 			Job job, Profile item) {
+		//지역 수정		
+		daoArea.update(area);
+		
+		//직업 수정
+		daoJob.update(job);
+		
+		//이력서 수정
 		dao.update(item);
 		
 		//기술 수정
 		daoSkill.update(skill);
-		
-		//지역 수정		
-		daoArea.update(area);
 		
 		//경력 수정
 		daoCareer.update(career);
@@ -134,8 +121,6 @@ public class ProfileServiceImpl implements ProfileService {
 		//자격/면허 수정
 		daoCertificate.update(certificate);
 		
-		//직업 수정
-		daoJob.update(job);
 	}
 
 	@Override
@@ -163,6 +148,7 @@ public class ProfileServiceImpl implements ProfileService {
 			Job job, Profile item) {
 		for(int index=1; index < 100; index++) {
 			//직업 추가
+			job.setJobSeq(index + 100000);
 			job.setJobCode(index + 100000);
 			job.setJobLarge("대직업" + index);
 			job.setJobSmall("소직업" + index);
@@ -170,6 +156,7 @@ public class ProfileServiceImpl implements ProfileService {
 			daoJob.add(job);
 			
 			//지역 추가
+			area.setAreaSeq(index + 100000);
 			area.setAreaCode(index + 100000);
 			area.setArea1("희망지역" + index);
 			area.setArea2("희망시군구" + index);
@@ -237,6 +224,19 @@ public class ProfileServiceImpl implements ProfileService {
 	@Override
 	public void delete2(int profileSeq) {
 		dao.delete2(profileSeq);
+	}
+
+	@Override
+	public void rsPw(String id, String pwd) {
+		User user = new User();
+		user.setId(id);
+		user.setPwd(pwd);
+		if(id != null) {
+	
+			}else{
+	
+			}
+
 	}
 
 }

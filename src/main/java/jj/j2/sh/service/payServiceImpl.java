@@ -37,7 +37,7 @@ public class payServiceImpl implements PayService {
 	public void order(String companyId, Map<Integer, Coin> cart) {
 		Pay item = new Pay();
 		item.setCompanyId(companyId);
-		
+
 		int paySaleprice = 0;
 		int payCoin = item.getPayCoin();
 		
@@ -55,6 +55,12 @@ public class payServiceImpl implements PayService {
 		item.setPayCoin(payCoin);
 		
 		dao.add(item);
+		
+	}
+
+	@Override
+	public int sum(String companyId) {
+		return dao.sum(companyId);
 	}
 
 }

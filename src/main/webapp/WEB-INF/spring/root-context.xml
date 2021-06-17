@@ -1,39 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
-	
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<!-- hikariCp를 이용하기위해 설정함(hikariCp는 기존과 달리 따로 설정해주어야댐) -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:XE"></property>
+		<property name="driverClassName"
+			value="oracle.jdbc.driver.OracleDriver"></property>
+		<property name="jdbcUrl"
+			value="jdbc:oracle:thin:@localhost:1521:XE"></property>
 		<property name="username" value="catchme"></property>
 		<property name="password" value="1234"></property>
 	</bean>
-	
-	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
-    	<constructor-arg ref="hikariConfig"></constructor-arg>
-	</bean>	
-	
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"></property>
-		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
+		destroy-method="close">
+		<constructor-arg ref="hikariConfig"></constructor-arg>
 	</bean>
-	
+
+	<bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation"
+			value="classpath:mybatis-config.xml"></property>
+	</bean>
+
 	<!-- index="0" ref="sqlSession" ==> 첫번째 파라매터(index=0)에 sqlSession을 넣음 -->
-	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+	<bean id="sqlSessionTemplate"
+		class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSession"></constructor-arg>
 	</bean>
-	
-		<!-- @Transactional 을 쓰기위해 설정 -->
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+
+	<!-- @Transactional 을 쓰기위해 설정 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
-	
+
 	<!-- maximum file size in bytes 50MB -->
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-			<property name="maxUploadSize" value="52428800"></property>	
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="52428800"></property>
 	</bean>
-	
+
+	<bean id="chatServer" class="jj.j2.sh.controller.ChatServer"></bean>
+
+	<websocket:handlers>
+		<websocket:mapping handler="chatServer"
+			path="/chatserver" />
+		<websocket:handshake-interceptors>
+			<bean class="jj.j2.sh.controller.ChatInterceptor"></bean>
+		</websocket:handshake-interceptors>
+	</websocket:handlers>
+
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host"
+			value="[smtp.gmail.com](http://smtp.gmail.com/)" /> <!-- gmail을 사용 -->
+		<property name="port" value="587" />
+		<property name="username" value="[gimseonghyun5052@gmail.com](mailto:value=%22gimseonghyun5052@gmail.com)" />
+		<property name="password" value="9375052a" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.debug">true</prop>
+			</props>
+		</property>
+	</bean>
+
 </beans>

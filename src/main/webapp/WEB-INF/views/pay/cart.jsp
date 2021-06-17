@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +24,7 @@
 
 </head>
 <body>
-
+	
 	<div class="side-bar">
 
 		<nav class="side-menu">
@@ -68,18 +69,30 @@
 
 					<thead>
 						<tr>
-							<th class="nth-1">날짜</th>
-							<th class="nth-1">포인트</th>
-							<th>상세</th>
+							<th class="nth-1">결제날짜</th>
+							<th class="nth-1">결제금액</th>
+							<th>상세내역</th>
+							<th>관리</th>
 						</tr>
 					</thead>
 
 					<tbody>
-						<tr>
-							<td class="nth-1">날짜데이터</td>
-							<td class="nth-1">포인트개수</td>
-							<td>[카카오페이] 결제완료</td>
-						</tr>
+						<c:if test="${list.size() < 1}">
+							<tr>
+								<td colspan="4">코인 결제내역이 없습니다.</td>
+							</tr>
+						</c:if>
+						<c:forEach var="item" items="${list}">
+							<tr>
+								<td class="nth-1"><fmt:formatDate value="${item.payDate}"
+										pattern="yyyy-MM-dd" /></td>
+								<td class="nth-1"><fmt:formatNumber pattern="#,###"
+										value="${item.paySaleprice}" />원</td>
+								<td>${item.coinName}코인 | [카카오페이] 결제완료</td>
+								<td><a href="${item.paySeq}/delete">삭제</a></td>
+							</tr>
+							<c:set var="sum" value="${sum + item.payCoin}" scope="session"/>
+						</c:forEach>
 					</tbody>
 
 				</table>
@@ -139,8 +152,9 @@
 							<tr>
 								<td class="nth-1"><a
 									href="cart?coinSeq=${coinList.coinSeq}" class="btn-1"></a></td>
-								<td class="nth-1">${coinList.coinPay}원</td>
-								<td>${coinList.coinName}개코인</td>
+								<td class="nth-1"><fmt:formatNumber pattern="#,###"
+										value="${coinList.coinPay}" />원</td>
+								<td>${coinList.coinName}코인</td>
 							</tr>
 						</c:forEach>
 					</tbody>

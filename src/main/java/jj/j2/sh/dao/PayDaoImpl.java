@@ -34,4 +34,8 @@ public class PayDaoImpl implements PayDao {
 		sql.delete("pay.delete", paySeq);
 	}
 
+	@Override
+	public int sum(String companyId) {
+		return sql.selectOne("pay.sum", companyId);
+	}
 }

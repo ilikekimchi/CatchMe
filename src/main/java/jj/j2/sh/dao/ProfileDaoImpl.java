@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import jj.j2.sh.model.Profile;
+import jj.j2.sh.model.User;
 import jj.j2.sh.util.Pager;
 
 @Repository
@@ -60,6 +61,18 @@ public class ProfileDaoImpl implements ProfileDao {
 	@Override
 	public void delete2(int profileSeq) {
 		sql.delete("profile.delete2", profileSeq);
+	}
+
+	@Override
+	public List<Profile> listA() {
+		
+		return sql.selectList("profile.listA");
+	}
+	
+	@Override
+	public void rsPw(User user) {
+		sql.update("profile.resetPw", user);
+
 	}
 
 }

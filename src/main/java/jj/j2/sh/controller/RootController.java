@@ -1,34 +1,64 @@
 package jj.j2.sh.controller;
 
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jj.j2.sh.model.Customer;
 import jj.j2.sh.service.CustomerService;
+import jj.j2.sh.model.Chat;
 import jj.j2.sh.model.Company;
+import jj.j2.sh.service.ChatService;
 import jj.j2.sh.service.CompanyService;
+import jj.j2.sh.service.PayService;
 
 @Controller
 public class RootController {
+	
 	@Autowired
 	CustomerService service;
 	
 	@Autowired
 	CompanyService CompanySevice;
 	
+	@Autowired
+	PayService PayService;
+	
+	@Autowired
+	ChatService chatService;
+	
 	@RequestMapping("/")
-	String home() {
+	String home(HttpSession session) {
 		
 		return "home";
 		
 	}
+	
+	/*
+	 * @PutMapping("/chatLog") Chat chatLog(@RequestBody Chat item) {
+	 * 
+	 * chatService.add(item);
+	 * 
+	 * return item; }
+	 */
 	
 	@RequestMapping("/signup")
 	String signup() {
@@ -98,6 +128,9 @@ public class RootController {
 					model.addAttribute("loginmsg", item.getCompanyName()+"님 환영합니다.");
 					model.addAttribute("url", referer);
 					
+					int sumCoin = PayService.sum(item.getCompanyId());
+					session.setAttribute("sumCoin", sumCoin);
+					
 					return "logintry";
 				}
 				
@@ -159,5 +192,135 @@ public class RootController {
 	         @RequestMapping("/comCoin") 
 	         String comCoin() {
 	            return "company/comCoin";
+	         }
+	         
+	         @GetMapping("/companyNews")
+	         public String startCrawl(Model model) throws IOException {
+	            
+	            SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd", Locale.KOREA); 
+	            Date currentTime = new Date();
+	            
+	            String dTime = formatter.format(currentTime);
+	            String e_date = dTime;
+	            
+	            
+	            
+//	            currentTime.setDate(currentTime.getDate() - 1);
+	            String s_date = formatter.format(currentTime);
+	            
+	            String query = "기업";
+	            String s_from = s_date.replace(".", "");
+	            String e_to = e_date.replace(".", "");
+	            int page = 1;
+	            
+	            ArrayList<String> al1 = new ArrayList<String>();
+	            ArrayList<String> al2 = new ArrayList<String>();
+	            ArrayList<String> al3 = new ArrayList<String>();
+	            
+	            while (page < 30) {
+	               
+	               String address = "https://search.naver.com/search.naver?where=news&query=" + query + "&sort=1&ds=" + s_date + 
+	                     "&de=" + e_date + "&nso=so%3Ar%2Cp%3Afrom" + s_from + "to" + e_to + "%2Ca%3A&start=" + Integer.toString(page);
+	               
+	               Document rawData = Jsoup.connect(address).timeout(5000).get();
+	               System.out.println(address);
+	               
+	               Elements group_news = rawData.select("ul li");
+	               
+	               
+	               String realURL = "";
+	               String realTITLE = "";
+	               String imgSrc = "";
+
+	               
+	               for (Element option : group_news) {
+	                  
+	                  realURL = option.select("a.news_tit").attr("href");
+	                  realTITLE = option.select("a.news_tit").attr("title");
+	                  imgSrc = option.select("img.api_get").attr("src");
+
+	                  
+	                  al1.add(realURL);
+	                  al2.add(realTITLE);
+	                  al3.add(imgSrc);
+
+	                  
+	               }
+	               
+	               page += 10;
+	            }
+	            
+	            model.addAttribute("urls", al1);
+	            model.addAttribute("titles", al2);
+	            model.addAttribute("srcs", al3);
+
+	            
+	            return "companyNews";
+	            
+	         }
+	         
+	         @GetMapping("/customerNews")
+	         public String startCrawl2(Model model) throws IOException {
+	            
+	            SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd", Locale.KOREA); 
+	            Date currentTime = new Date();
+	            
+	            String dTime = formatter.format(currentTime);
+	            String e_date = dTime;
+	            
+	            
+	            
+//	            currentTime.setDate(currentTime.getDate() - 1);
+	            String s_date = formatter.format(currentTime);
+	            
+	            String query = "이직";
+	            String s_from = s_date.replace(".", "");
+	            String e_to = e_date.replace(".", "");
+	            int page = 1;
+	            
+	            ArrayList<String> al1 = new ArrayList<String>();
+	            ArrayList<String> al2 = new ArrayList<String>();
+	            ArrayList<String> al3 = new ArrayList<String>();
+	            
+	            while (page < 30) {
+	               
+	               String address = "https://search.naver.com/search.naver?where=news&query=" + query + "&sort=1&ds=" + s_date + 
+	                     "&de=" + e_date + "&nso=so%3Ar%2Cp%3Afrom" + s_from + "to" + e_to + "%2Ca%3A&start=" + Integer.toString(page);
+	               
+	               Document rawData = Jsoup.connect(address).timeout(5000).get();
+	               System.out.println(address);
+	               
+	               Elements group_news = rawData.select("ul li");
+	               
+	               
+	               String realURL = "";
+	               String realTITLE = "";
+	               String imgSrc = "";
+
+	               
+	               for (Element option : group_news) {
+	                  
+	                  realURL = option.select("a.news_tit").attr("href");
+	                  realTITLE = option.select("a.news_tit").attr("title");
+	                  imgSrc = option.select("img.api_get").attr("src");
+
+	                  
+	                  al1.add(realURL);
+	                  al2.add(realTITLE);
+	                  al3.add(imgSrc);
+
+	                  
+	               }
+	               
+	               page += 10;
+	            }
+	            
+	            model.addAttribute("urls", al1);
+	            model.addAttribute("titles", al2);
+	            model.addAttribute("srcs", al3);
+
+	            
+	            return "customerNews";
+	            
 	         }
 }

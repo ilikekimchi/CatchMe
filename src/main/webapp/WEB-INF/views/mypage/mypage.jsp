@@ -1,0 +1,120 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+
+<link href="/css/mypage.css" rel="stylesheet" />
+<link href="/css/normal.css" rel="stylesheet" />
+
+<!-- 폰트어썸 불러오기 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<jsp:include page="../footer.jsp" />
+<jsp:include page="../topbar.jsp" />
+
+</head>
+<body>
+
+   <div class="side-bar">
+
+      <div class="logo-box">
+
+         <a href="/"><img
+            src="https://pds.saramin.co.kr/company/logo/202008/21/qfedx5_ny73-1meg1kx_logo.png"
+            alt=""></a>
+
+      </div>
+
+      <nav class="side-menu">
+
+         <ul>
+            <li><a href="/mypage"><i class="fas fa-home"></i>개인회원 홈</a></li>
+            <li><a href="/userinfo"><i class="fas fa-user-edit"></i>회원정보</a></li>
+            <li><a href="/profile/list"><i class="far fa-address-card"></i>이력서</a></li>
+            <li><a href="/requestUser"><i class="far fa-building"></i>기업의 요청</a></li>
+            <li><a href="/matchUser"><i class="fas fa-handshake"></i>매칭된 기업</a></li>
+         </ul>
+
+      </nav>
+
+   </div>
+
+   <div class="myhome con">
+
+      <div class="title">
+
+         <p>열정! 열정! 열정! 이직러님</p>
+
+      </div>
+
+      <div class="alarm">
+         <ul>
+            <li><a href="#">1</a><span>나의 알림</span></li>
+            <li><a href="#">2</a><span>기업의 요청</span></li>
+            <li><a href="#">3</a><span>수락한 요청</span></li>
+            <li><a href="#">4</a><span>관심 기업</span></li>
+         </ul>
+      </div>
+
+      <div class="biz-card">
+
+         <div class="biz-card-title">
+            <p>노출되는 이력카드</p>
+         </div>
+
+         <div class="biz-card-1">
+
+            <div class="img-box">
+
+               <a href="#"><img src="/image/men.PNG" alt=""></a>
+
+            </div>
+
+            <div class="biz-card-small">
+
+               <div class="name">박종준</div>
+               <div class="birth">(1993)</div>
+               <div class="rank">직종 : 정보통신 연구 및 공학 / 시스템소프트웨어개발자</div>
+               <div class="career-info">경력 : 1~2년차</div>
+               <div class="education">학력 : 대학교 2~3년제 졸업</div>
+               <div class="short-intro">한줄소개 : Java / Spring 개발자입니다.</div>
+
+            </div>
+
+            <div class="biz-card-button">
+
+               <div><a href="/resume">수정하기</a></div>
+               <div><span>적극적인 이직중</span></div>
+               <div><a href="${item.profileSeq}/delete">초기화</a></div>
+
+            </div>
+
+            <div class="license">
+
+               <ul>
+                  <li>Spring</li>
+                  <li>JavaScript</li>
+                  <li>JQuery</li>
+                  <li>React</li>
+                  <li>Vue</li>
+                  <li>Java</li>
+               </ul>
+
+            </div>
+
+         </div>
+
+
+
+      </div>
+
+   </div>
+   
+
+
+
+</body>
+</html>

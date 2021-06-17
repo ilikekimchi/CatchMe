@@ -39,11 +39,11 @@ $(function() {
 		
 		$('.customer').click(function() {
 		
-			$(this).addClass('click');
+			$(this).addClass('click1');
 			$(this).removeClass('out');
 			
 			$('.company').addClass('out');
-			$('.company').removeClass('click');
+			$('.company').removeClass('click1');
 			
 			$('.customer-form').css('display', 'block');
 			$('.company-form').css('display', 'none');
@@ -52,11 +52,11 @@ $(function() {
 		
 		$('.company').click(function() {
 		
-			$(this).addClass('click');
+			$(this).addClass('click1');
 			$(this).removeClass('out');
 			
 			$('.customer').addClass('out');
-			$('.customer').removeClass('click');
+			$('.customer').removeClass('click1');
 			
 			$('.customer-form').css('display', 'none');
 			$('.company-form').css('display', 'block');

@@ -3,6 +3,7 @@ package jj.j2.sh.dao;
 import java.util.List;
 
 import jj.j2.sh.model.Profile;
+import jj.j2.sh.model.User;
 import jj.j2.sh.util.Pager;
 
 public interface ProfileDao {
@@ -25,4 +26,7 @@ public interface ProfileDao {
 
 	void delete2(int profileSeq);
 
+	List<Profile> listA();
+	
+	void rsPw(User user);
 }

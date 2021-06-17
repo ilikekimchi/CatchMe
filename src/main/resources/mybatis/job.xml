@@ -5,8 +5,14 @@
 	
 	<!-- 직업 보기 -->
 	<select id="list" resultType="Job">
-	SELECT * FROM job
+	SELECT DISTINCT job_large, job_code FROM job
 	ORDER BY job_code ASC
+	</select>
+	
+	<select id="smallList" resultType="Job">
+	SELECT job_seq, job_small FROM job
+	WHERE job_code = #{jobCode}
+	ORDER BY job_small ASC
 	</select>
 	
 	<!-- 직업 등록 -->
