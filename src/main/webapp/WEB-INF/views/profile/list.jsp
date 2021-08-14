@@ -1,86 +1,137 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<style>
-.avatar {
-    max-width: 150px;
-    max-height: 170px;
-   }
-</style>
+<title>CatchMe - 이력서</title>
+
+<link rel="icon" type="image/png" href="/image/favicon/favicon-32x32.png">
+
+<link href="/css/normal.css" rel="stylesheet" />
+<link href="/css/list.css" rel="stylesheet" />
+
+<!-- 폰트어썸 불러오기 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<jsp:include page="../footer.jsp" />
+<jsp:include page="../topbar.jsp" />
 
 </head>
 <body>
-	<div>
-		<c:if test="${sessionScope.customer == null}">
-		<div>
-			<a href="signup">회원가입</a> <a href="login">로그인</a>
-		</div>
-		</c:if>
-		<c:if test="${sessionScope.customer != null}">
-			<div>
-				${sessionScope.customer.customerNnm}님 <a href="../logout">로그아웃</a>
-			</div>
-		</c:if>
-		<div>
-			<div><h3>명함 관리</h3></div>
-			<div>
-				<table border="1">
-					<thead>
-						<tr>
-							<th>닉네임</th>  
-							<th>성별</th>							 
-							<th>생년월일</th>
-							<th>분야</th>
-							<th>희망근무지</th>
-							<th>기술능력</th>
-							<th>희망연봉</th>
-							<th>한줄소개</th>
-							<th>현재상태</th>
-							<th>연락가능시간</th>				
-							<th>최종 수정일</th>
-							<th>이력서 검증여부</th>
-							<th>관리</th>
-						</tr>
-					</thead>
-					<tbody>
-					<c:if test="${list.size() < 1}">
-						<tr>
-							<td colspan="13">등록 된 명함이 없습니다.</td>
-						</tr>
-						<tr>
-							<td colspan="2"><a href="add">명함 등록</a></td>
-						</tr>
-					</c:if>
-					<c:forEach var="item" items="${list}">
-						<tr>
-							<td>${item.customerNnm}</td>
-							<td>${item.profileGender}</td>
-							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${item.profileBirthday}" /></td>
-							<td>${item.profileCategory}</td> 
-							<td>${item.profileArea}</td>		
-							<td>${item.skillContent}</td>
-							<td>${item.profileMoney}</td> 
-							<td>${item.profileWriting}</td>
-							<td>${item.profileState}</td> 
-							<td>${item.profileTime}</td> 
-							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${item.profileDate}" /></td>
-							<td>${item.profileCheck}</td>
-							<td><a href="${item.profileSeq}/delete">삭제</a> 
-							<a href="${item.customerId}/update">수정</a></td>
-						</tr>	
-					</c:forEach>
-					</tbody>
-				</table>
-			</div>
-			<div>
-				<a href="/">메인으로</a>
-			</div>		
-		</div>
-	</div>
+
+   <div class="side-bar">
+
+      <div class="logo-box">
+
+         <a href="/"><img src="https://pds.saramin.co.kr/company/logo/202008/21/qfedx5_ny73-1meg1kx_logo.png" alt=""></a>
+
+      </div>
+
+      <nav class="side-menu">
+
+         <ul>
+            <li><a href="/profile/mypage"><i class="fas fa-home"></i>개인회원 홈</a></li>
+            <li><a href="/customer/list"><i class="fas fa-user-edit"></i>회원정보</a></li>
+            <li><a href="/profile/list"><i class="far fa-address-card"></i>이력서</a></li>
+            <li><a href="/requestUser"><i class="far fa-building"></i>기업의 요청</a></li>
+            <li><a href="/matchUser"><i class="fas fa-handshake"></i>매칭된 기업</a></li>
+         </ul>
+
+      </nav>
+
+   </div>
+   
+   
+      <div class="myhome con">
+
+      <div class="title">
+
+         <p>${sessionScope.customer.customerNnm}의 이력서</p>
+
+      </div>
+   
+   
+   <div>
+      <div>
+         <div>
+               <c:if test="${list.size() < 1}">
+               
+               <div class="empty-list">
+
+                  <div class="img-box">
+
+                     <img src="/image/empty-img.png" alt="">
+
+                  </div>
+                  
+                  <div class="list-add">
+
+                     <p>등록된 이력서가 없어요 ㅠㅠ</p>
+                     <a href="add">이력서 등록하러 가기 ></a>
+                  </div>
+
+               </div>
+
+               </c:if>
+               <c:forEach var="item" items="${list}">
+
+                  <div class="biz-card-1">
+					
+	                     <div class="img-box">
+	               
+	                         <c:if test="${item.profileImg != null}">
+	                           <a href="" class="img-change-click"><img src="/CatchMeUpload/${item.profileImg}" alt=""></a>
+	                           </c:if>
+	                           <c:if test="${item.profileImg == null && sessionScope.customer.customerGender eq 'm'}">
+	                         <a href="" class="img-change-click"><img src="/image/men.PNG" alt=""></a>
+	                           </c:if>
+	                           <c:if test="${item.profileImg == null && sessionScope.customer.customerGender eq 'f'}">
+	                         <a href="" class="img-change-click"><img src="/image/woman.PNG" alt=""></a>
+	                           </c:if>
+	         
+	                     </div>
+	         
+	                     <div class="biz-card-small">
+	         
+	                        <div class="name">${item.customerNnm}</div>
+	                        <div class="birth">(<fmt:formatDate pattern="yyyy" value="${item.customerBirthday}" />)</div>
+	                        <div class="job">직종 : ${item.jobLarge} / ${item.jobSmall}</div>
+	                        <c:if test="${item.careerDate == null}"><div class="career-info">경력 : 신입이에요</div></c:if>
+	                        <c:if test="${item.careerDate != null}"><div class="career-info">경력 : ${item.careerDate}</div></c:if>
+	                        <div class="education">학력 : ${item.profileSchoolState}</div>
+	                        <div class="short-intro">한줄소개 : ${item.profileWriting}</div>
+	         
+	                     </div>
+	         
+	                     <div class="biz-card-button">
+	         
+	                        <div><a href="${item.profileSeq}/update">수정하기</a></div>
+	                        <c:if test="${item.profileState == 1}"><div><span>이력서 비공개중</span></div></c:if>
+	                        <c:if test="${item.profileState == 2}"><div><span>적극적인 이직중</span></div></c:if>
+	                        <c:if test="${item.profileState == 3}"><div><span>유연한 이직중</span></div></c:if>
+	                        <div><a href="${item.customerId}/delete">초기화</a></div>
+	         
+	                     </div>
+	         
+	                     <div class="license">
+	         
+	                        <ul>
+	                           <li>${item.skillContent}</li>
+	                        </ul>
+	         
+	                     </div>
+                     </div>
+
+               </c:forEach>
+
+         </div>
+         <div>
+         </div>      
+      </div>
+   </div>
+   </div>
 </body>
 </html>

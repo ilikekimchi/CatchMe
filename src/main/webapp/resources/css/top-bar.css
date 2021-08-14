@@ -1,0 +1,143 @@
+@charset "UTF-8";
+
+.top-bar > .con .menu-box-1 {
+  height:60px;
+  width:800px;
+  float:right;
+  transform:translateX(210px);
+}
+
+.menu-box-1 > ul > li {
+  width:100%;
+  margin-top:10px;
+}
+
+.menu-box-1 .my-r {
+  margin-top:15px;
+}
+
+.menu-box-1 > ul > li > a {
+
+  display:block;
+  text-align:center;
+  padding:5px 0;
+  color:white;
+}
+
+.menu-box-1 > ul > li:hover > a{
+  text-decoration:underline;
+  text-underline-position:under;
+}
+
+.menu-box-1 ul .search-box {
+  position:relative;
+}
+
+.menu-box-1 ul .search-box .search-input {
+      display: inline-block;
+    height: 36px;
+    border-radius: 36px;
+    box-sizing: border-box;
+    vertical-align: top;
+    background-color: #fff;
+  margin-right:50px;
+}
+
+.menu-box-1 ul .search-box .search-input input {
+      display: block;
+    padding: 8px 37px 8px 14px;
+    width: 232px;
+    height: 36px;
+    border: 0;
+    border-radius: 36px;
+    box-sizing: border-box;
+    color: #444;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    background: none;
+    
+}
+
+.menu-box-1 ul .search-box .search-input .search-btn {
+      display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 55px;
+    padding: 18px;
+    width: 17px;
+    height: 17px;
+    border: 0;
+    text-indent: -9999px;
+    background: url(//www.saraminimage.co.kr/sri/common/btn/btn_search_new.png) 50% 50% no-repeat;
+  cursor:pointer;
+}
+
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 21;
+    width: 100%;
+    min-width: 1260px;
+    height: 60px;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    box-sizing: border-box;
+    background: #5d87f6;
+    display:flex;
+}
+
+.top-bar > .logo-box {
+  width:150px;
+  overflow:hidden;
+  margin-left:30px;
+  box-sizing:border-box;
+  padding:5px;
+  display:flex;
+  align-items:center;
+  padding-top:10px;
+}
+
+.top-bar > .logo-box img {
+  width:90%;
+  object-fit:cover;
+}
+
+.top-bar .member {
+  width:200px;
+  transform:translateX(300px);
+}
+
+.go-mypage {
+	cursor: pointer;
+}
+
+.top-bar .member .go-mypage .mypage-img {
+      display: inline-block;
+    overflow: hidden;
+    margin-top: 12px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    vertical-align: top;
+    background: url(//www.saraminimage.co.kr/sri/common/bg/bg_person_photo_s_new.png) no-repeat 50%;
+}
+
+.top-bar .member .go-mypage .name {
+  display: inline-block;
+    padding-left: 15px;
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: -1px;
+    line-height: 60px;
+}
+
+.top-bar .member .go-mypage:hover .name {
+	  text-decoration:underline;
+  text-underline-position:under;
+}
+
+.customer-name::after {
+	content:" 님";
+}

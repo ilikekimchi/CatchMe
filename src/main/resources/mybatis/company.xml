@@ -13,15 +13,16 @@
 	<insert id="add">
 		INSERT INTO company
 		(company_id, company_pw, company_name, company_ra, 
-		company_money, company_scale, company_location, company_tel,
-		company_writing, company_home_page)
+		company_scale, company_location, company_tel,
+		company_writing, company_home_page, company_img,
+		company_date, company_category, company_job)
 		
 		VALUES (#{companyId}, #{companyPw}, #{companyName}, #{companyRa},
-		#{companyMoney}, #{companyScale}, #{companyLocation}, #{companyTel},
-		#{companyWriting}, #{companyHomePage})		
+		#{companyScale}, #{companyLocation}, #{companyTel},
+		#{companyWriting}, #{companyHomePage}, #{companyImg},
+		#{companyDate}, #{companyCategory}, #{companyJob})		
 		
 		<!-- Role(찜하기_스크랩)은 나중에.. -->
-		<!-- Pay(코인)은 나중에.. -->
 		
 	</insert>
 	
@@ -35,9 +36,11 @@
 	<update id="update">
 		UPDATE company
 		SET company_name=#{companyName}, company_ra=#{companyRa}, 
-		company_money=#{companyMoney}, company_scale=#{companyScale}, 
+		company_scale=#{companyScale}, 
 		company_location=#{companyLocation}, company_tel=#{companyTel}, 
-		company_writing=#{companyWriting}, company_home_page=#{companyHomePage}
+		company_writing=#{companyWriting}, company_home_page=#{companyHomePage},
+		company_date=#{companyDate}, company_category=#{companyCategory},
+		company_job=#{companyJob}
 	
 		WHERE company_id=#{companyId}
 	</update>

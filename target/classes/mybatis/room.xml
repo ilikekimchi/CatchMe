@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="room">
+<!--  Map, join -->
+	<resultMap type="Room" id="RoomMap"> 
+		<id column="room_id" property="roomId" />
+		<result column="customer_id" property="customerId" />
+		<result column="company_id" property="companyId" />
+		<result column="room_role" property="roomRole" />
+		
+		<!-- join해서 보여줄 것들 -->
+		<result column="customer_nnm" property="customerNnm" />
+		<result column="customer_gender" property="customerGender" />
+		<result column="company_name" property="companyName" />
+		<result column="company_img" property="companyImg" />
+		<!-- join해서 보여줄 것들 -->
+		
+	</resultMap>
+			
+	<!--
+		select * from room
+		where customer_id = #{customerId}
+		or company_id = #{companyId}
+	 -->
+	
+ <!-- 채팅방 리스트보기 	-->
+	<select id="list" resultType="Room" resultMap="RoomMap">
+		SELECT room.*, customer.customer_nnm, customer.customer_gender, 
+		company.company_name, company.company_img
+		FROM room
+		JOIN customer ON room.customer_id = customer.customer_id
+		JOIN company ON room.company_id = company.company_id
+		ORDER BY room_id DESC
+ 	</select>
+	
+	<!-- 채팅방 수락 -->
+	<insert id="add">
+		INSERT INTO room
+		(room_id, customer_id, company_id)
+		VALUES (room_id.nextval, #{customerId}, #{companyId})
+  		
+		<selectKey keyColumn="roomId" keyProperty="roomId" order="AFTER" resultType="integer">
+			SELECT room_id.CURRVAL FROM DUAL
+		</selectKey>
+	</insert>
+	
+	<!-- 요청 수락 -->
+	<update id="update">
+		UPDATE room
+		SET room_role=#{roomRole}
+		WHERE customer_id=#{customerId} OR company_id=#{companyId}
+	</update>	
+	
+	<!-- 채팅방 거절/삭제 -->
+	<delete id="delete">
+		DELETE FROM room
+		WHERE room_id=#{roomId}
+	</delete>
+</mapper>

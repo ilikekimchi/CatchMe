@@ -1,0 +1,214 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'BMJUA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+	font-family: "BMJUA";
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	
+	background-color: #eee;
+}
+
+html, body {
+	
+	margin: 0;
+	padding: 0;
+}
+
+button {
+	background: inherit;
+	border: none;
+	box-shadow: none;
+	border-radius: 0;
+	padding: 0;
+	overflow: visible;
+	cursor: pointer;
+	outline: none;
+}
+
+input {
+	font-family: "BMJUA";
+
+    box-shadow: none;
+    font-size: 1em;
+    
+    border-radius: 4px;
+    border: 1px solid;
+    
+    width: 270px;
+    height: 29px;
+    top: 0px;
+    
+    padding-top: 14px;
+    padding-left: 17px;
+    
+    position: absolute;
+    
+    background-color: rgba(0,0,0,0);
+}
+
+input:focus {
+	border: 2px solid #4876ef;	
+	outline: none;
+}
+
+label {
+	position: absolute;
+	
+	width: 120px;
+	
+	left: 18px;
+    top: 17px;
+	
+	letter-spacing: 5px;
+	font-size: 14px;
+	
+	color: #4c4c4c;
+	
+	z-index: -1;
+	
+	transition: 0.3s;
+}
+
+.placeholder {
+	position: absolute;
+    opacity: 0;
+    color: #4876ef;
+    top: 4px;
+    left: 15px;
+    letter-spacing: 5px;
+    font-size: 12px;
+	
+	width: 100px;
+	
+	transition: 0.3s;
+}
+
+.container {
+	position: absolute;
+    width: 1000px;
+    height: 700px;
+    top: 7%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: white;
+    box-shadow: 1px 2px 2px 2px #a6a1a1;
+}
+
+.signup-container {
+	position: absolute;
+    left: 36%;
+    top: 183px;
+}
+
+.logo {
+	position: absolute;
+    top: 26px;
+    
+    width: 232px;
+    height: 74px;
+    
+    background-image: url("/image/logo-su.png");
+}
+
+.logo>a {
+	text-decoration: none;
+	-webkit-tap-highlight-color: transparent;
+	font-size: 62px;
+}
+
+.logo > a > span {
+	color: transparent;
+}
+
+.email-form {
+	position: absolute;
+    width: 255px;
+    height: 39px;
+    top: 80px;
+}
+
+.email-ph {
+	left: 18px;
+	top: 17px;
+}
+
+.email-ph-t {
+	position: absolute;
+    opacity: 0;
+    color: #4876ef;
+    top: 4px;
+    left: 15px;
+    letter-spacing: 5px;
+    font-size: 12px;
+}
+
+.msg {
+	position: absolute;
+	top: 55px;
+	left: 6px;
+	
+	font-size: 14px;
+	
+	width: 350px;
+	
+	color:	#a4a3a3;
+}
+
+.pw-form {
+	position: absolute;
+    width: 255px;
+    height: 39px;
+    top: 160px;
+}
+
+.pw-cf-form {
+	position: absolute;
+    width: 255px;
+    height: 39px;
+    top: 240px;
+}
+
+.signup-btn {
+	position: absolute;
+
+	width: 300px;
+    top: 350px;
+    position: absolute;
+    font-size: 24px;
+    font-family: "BMJUA";
+    
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+    border: 1px solid;
+    border-radius: 25px;
+	
+}
+
+.signup-btn:hover {
+	background-color: #4876ef;
+    color: white;
+}
+
+#member {
+	position: absolute;
+    width: 90px;
+    top: -83px;
+    left: 202px;
+    font-weight: 100;
+    font-size: 23px;
+}

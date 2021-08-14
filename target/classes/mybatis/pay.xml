@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pay" >		
+	<!--  Map, join -->
+	 <resultMap type="Pay" id="PayMap"> 
+		<id column="pay_seq" property="paySeq" />
+		<result column="company_id" property="companyId" />
+		<result column="coin_seq" property="coinSeq" />
+		<result column="pay_saleprice" property="paySaleprice" />		
+		<result column="pay_coin" property="payCoin" />		
+		<result column="pay_date" property="payDate" />
+		
+		<result column="coin_name" property="coinName" />
+		<result column="coin_pay" property="coinPay" />
+	 </resultMap>
+	<!-- Map, join -->	
+	
+	<!-- 결제 내역보기(자신) -->
+	<select id="list" resultType="Pay" resultMap="PayMap">
+		SELECT pay.*, coin.coin_name, coin.coin_pay
+		FROM pay
+		JOIN company ON pay.company_id=company.company_id
+		JOIN coin ON pay.coin_seq=coin.coin_seq		 
+		WHERE company.company_id=#{companyId}		 
+		ORDER BY pay_seq DESC
+	</select>
+	
+	<!-- 결제하기 -->
+	<insert id="add">
+	INSERT INTO pay
+	(pay_seq, company_id, coin_seq, pay_saleprice, pay_date, pay_coin)
+	
+	VALUES (pay_seq.nextval, #{companyId}, #{coinSeq}, #{paySaleprice}, SYSDATE, #{payCoin})
+	
+	<selectKey keyColumn="paySeq" keyProperty="paySeq" order="AFTER" resultType="integer">
+		SELECT pay_seq.CURRVAL FROM DUAL
+	</selectKey>
+	
+	</insert>  
+		
+	<!-- 결제내역 삭제 -->
+	<delete id="delete">
+		DELETE FROM pay
+		WHERE pay_seq=#{paySeq}
+	</delete>
+	
+	<!-- 결제내역(자신) -->
+	<select id="item" resultType="Pay" resultMap="PayMap"> 
+		SELECT pay.*, coin.coin_name, coin.coin_pay
+		FROM pay
+		JOIN company ON pay.company_id=company.company_id
+		JOIN coin ON pay.coin_seq=coin.coin_seq		 
+		WHERE company.company_id=#{companyId}
+	</select>
+	
+	
+	<!-- 개인합계 -->
+	<select id="sum" resultType="Integer">
+		SELECT SUM(PAY_COIN)
+		FROM pay
+		WHERE company_id=#{companyId}
+		GROUP BY company_id
+	</select>
+				
+</mapper>

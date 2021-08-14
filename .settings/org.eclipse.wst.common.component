@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
     	
-    <wb-module deploy-name="CatchMe">
+    <wb-module deploy-name="sh-1.0.0-BUILD-SNAPSHOT">
                 
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         		

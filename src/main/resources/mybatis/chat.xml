@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="chat">
+	<select id="list" resultType="Chat">
+		SELECT name, message, message_date FROM chat
+		WHERE room_id = #{roomId}
+		ORDER BY message_date ASC
+	</select>
+	
+	<insert id="add">
+		INSERT INTO chat
+		(room_id, name, message, message_date)
+		VALUES (#{roomId}, #{name}, #{message}, SYSDATE)
+	</insert>
+	
+	<select id="item" resultType="Chat">
+		SELECT * FROM chat
+		WHERE room_id=#{roomId}
+	</select>
+	
+</mapper>

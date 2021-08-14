@@ -1,23 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
-<!--UnderscoreCase(오라클)의 문자열을 CamelCase(자바)로 바꿔주는 역할을 하는 설정값이다 -->
 <configuration>
 	<settings>
+	<!--UnderscoreCase(오라클)의 문자열을 CamelCase(자바)로 바꿔주는 역할을 하는 설정값이다 -->
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
+		
+	<!--insert하거나 update할때 값을 입력하지 않으면 오라클 값을 null값으로 넣기 -->
+		<setting value="VARCHAR" name="jdbcTypeForNull" />
 	</settings>
 	
 	<typeAliases>
 		<typeAlias type="jj.j2.sh.model.Customer" alias="Customer" />
-		<typeAlias type="jj.j2.sh.model.Profile" alias="Profile" />
 		<typeAlias type="jj.j2.sh.model.Skill" alias="Skill" />
+		<typeAlias type="jj.j2.sh.model.Area" alias="Area" />
 		<typeAlias type="jj.j2.sh.model.Company" alias="Company" />
+		<typeAlias type="jj.j2.sh.model.Resume" alias="Resume" />
+		<typeAlias type="jj.j2.sh.model.Career" alias="Career" />
+		<typeAlias type="jj.j2.sh.model.Certificate" alias="Certificate" />
+		<typeAlias type="jj.j2.sh.model.Profile" alias="Profile" />
+		<typeAlias type="jj.j2.sh.model.Coin" alias="Coin" />
+		<typeAlias type="jj.j2.sh.model.Pay" alias="Pay" />
+		<typeAlias type="jj.j2.sh.model.Job" alias="Job" />
+		<typeAlias type="jj.j2.sh.model.Room" alias="Room" />
+		<typeAlias type="jj.j2.sh.model.Chat" alias="Chat" />
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="mybatis/customer.xml" />
-		<mapper resource="mybatis/profile.xml" />
 		<mapper resource="mybatis/skill.xml" />
+		<mapper resource="mybatis/area.xml" />
 		<mapper resource="mybatis/company.xml" />
+		<mapper resource="mybatis/resume.xml" />
+		<mapper resource="mybatis/career.xml" />
+		<mapper resource="mybatis/certificate.xml" />
+		<mapper resource="mybatis/profile.xml" />
+		<mapper resource="mybatis/coin.xml" />
+		<mapper resource="mybatis/pay.xml" />
+		<mapper resource="mybatis/job.xml" />
+		<mapper resource="mybatis/room.xml" />
+		<mapper resource="mybatis/chat.xml" />
 	</mappers>
 </configuration>

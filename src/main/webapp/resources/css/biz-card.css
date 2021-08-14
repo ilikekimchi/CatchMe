@@ -1,0 +1,158 @@
+@charset "UTF-8";
+
+@font-face {
+ font-family: 'NanumBarunGothic';
+ font-style: normal;
+ font-weight: 300;
+ src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot');
+ src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.ttf') format('truetype');
+}
+
+.nanumbarungothic * {
+ font-family: 'NanumBarunGothic', sans-serif;
+}
+
+.biz-card {
+  width: 100%;
+  min-width: 683px;
+  
+  margin: 0 auto;
+
+  margin-top: 20px;
+  
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.biz-card > .biz-card-title > p {
+  color:#373f57;
+  font-size:36px;
+  font-weight:bold;
+  letter-spacing:3px;
+  line-height:50px;
+}
+
+.biz-card .biz-card-1 {
+  background-color:rgba(224, 224, 224, 0.3);
+  
+  display:flex;
+  flex-wrap:wrap;
+  
+  box-shadow: 2px 2px 6px 0px #4c4c4c;
+  
+  width: 45%;
+  margin: 0px 26px 40px 26px;
+  position:relative;
+  
+  font-family: 'NanumBarunGothic', sans-serif;
+  
+}
+
+
+
+.biz-card .biz-card-1 .img-box {
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  overflow:hidden;
+  display:inline-block;
+  margin:30px;
+}
+
+.biz-card .biz-card-1 .img-box img {
+  width:100%;
+  height:100%;
+  object-fit: cover;
+}
+
+.biz-card .biz-card-small {
+
+  width:60%;
+  height: auto;
+}
+
+.biz-card .biz-card-small div {
+  margin-top:15px;
+  
+}
+
+.biz-card .biz-card-small > .name {
+  display:inline-block;
+  font-weight:bold;
+  font-size:25px;
+}
+
+.biz-card .biz-card-small > .birth {
+  display:inline-block;
+}
+
+.biz-card .license {
+
+  width:100%;
+  margin:0 auto;
+}
+
+.biz-card .license ul {
+  display:flex;
+  flex-wrap: wrap;
+}
+
+.biz-card .license ul li {
+  background-color:rgba(72, 118, 239, 0.2);
+  color:#4876ef;
+  padding:10px;
+  margin-left:30px;
+  margin-top:16px;
+  margin-bottom:7px;
+  border-radius:10px;
+}
+
+.add {
+  position:fixed;
+  right:0;
+  top:100px;
+  overflow:hidden;
+}
+
+.add > .img-box {
+
+  width:250px;
+  margin-right:50px;
+  overflow:hidden;
+}
+
+.add > .img-box img {
+  width:100%;
+  object-fit:cover;
+}
+
+.add .go-top button {
+  
+  margin-left:35%;
+}
+
+.biz-card .biz-card-button {
+
+  width:250px;
+}
+
+.biz-card .biz-card-button button:first-child {
+  margin-top:60px;
+}
+
+.biz-card .biz-card-button button {
+  display:block;
+  width:160px;
+  padding:10px;
+  margin-top:20px;
+  margin:20px auto 0 auto;
+}
+
+@media all and (max-width: 1500px) {
+	.biz-card .biz-card-1 {
+		width: 100%;
+		
+		margin-left: 0;
+		margin-right: 0;
+	}
+}

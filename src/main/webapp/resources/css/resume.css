@@ -1,0 +1,471 @@
+@charset "UTF-8";
+
+body {
+   position:relative;
+}
+
+.side-bar {
+  z-index:20;
+  position:fixed;
+  background-color:#fff;
+  top:0;
+  left:0;
+  bottom:0;
+  width:271px;
+  border-right:1px solid #bfbfbf;
+
+}
+
+.side-bar > .logo-box {
+  width:55%;
+  overflow:hidden;
+  padding:10%;
+  margin-left:20px;
+}
+
+.side-bar > .logo-box img {
+  width:100%;
+}
+
+.side-bar > .side-menu {
+
+  width: 80%;
+  height:100%;
+  padding:0 10% 10% 10%;
+}
+
+.side-bar > .side-menu ul {
+  font-size:1.2rem;
+  color:#656565;
+  letter-spacing:1px;
+}
+
+.side-bar > .side-menu ul li {
+  margin-top:8px;
+  
+}
+
+.side-bar > .side-menu ul li a {
+  display:block;
+  position:relative;
+  padding:30px 0 30px 15px;
+  height:44px;
+  box-sizing:border-box;
+}
+
+.side-bar > .side-menu ul li a:before {
+  display:block;
+  position:absolute;
+  z-index:1;
+  top:20px;
+  left:0;
+  width:220px;
+  height:44px;
+  border-radius:5px;
+  background-color:#656565;
+  transition:opacity 0.2s;
+  content:"";
+  opacity:0;
+}
+
+.side-bar > .side-menu ul li a:hover:before {
+  opacity:0.2;
+}
+
+.side-bar > .side-menu ul li:nth-child(3) a:before {
+  display:block;
+  position:absolute;
+  z-index:1;
+  top:20px;
+  left:0;
+  width:220px;
+  height:44px;
+  border-radius:5px;
+  background-color:#4876ef;
+  transition:opacity 0.5s;
+  content:"";
+  opacity:0.2;
+  
+}
+
+.side-bar > .side-menu ul li:nth-child(3) > a {
+   color:#4876ef;
+}
+
+.side-bar > .side-menu i {
+  margin-right:15px;
+}
+
+.side-bar li  i {
+  width:30px;
+}
+
+.myhome {
+  width:100%;
+  height:3500px;
+  margin-top:50px;
+  margin-left:380px;
+}
+
+.myhome > .home-title {
+  color:#373f57;
+  font-size:36px;
+  font-weight:bold;
+  letter-spacing:3px;
+  padding-top:50px;
+  line-height:50px;
+}
+
+.myhome .user-info {
+  
+  display:flex;
+  margin-top:50px;
+}
+
+#add {
+   width:100%;
+   height:100%;
+}
+
+#add .img-box {
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  overflow:hidden;
+  display:inline-block;
+  margin:30px;
+}
+
+#add .img-box img {
+  width:100%;
+  height:100%;
+  object-fit: cover;
+}
+
+.display-none {
+   display:none;
+}
+
+.myhome .user-basic-info {
+
+  margin-left:70px;
+  width:60%;
+  height:100%;
+  font-size:18px;
+
+}
+
+.myhome .user-basic-info .gibon > .title {
+  padding:30px 0 30px 0;
+  font-size:20px;
+}
+
+.hap {
+  text-align:left;
+  display:flex;
+  margin-top:20px;
+  align-items:center;
+}
+
+.wid-1 {
+  width:130px;
+  color:#8491a7;
+}
+
+ .myhome .user-basic-info .edu-info .mail, .myhome .user-basic-info .edu-info .address {
+  padding-top:15px;
+}
+
+.sub-title {
+  padding:60px 0 30px 0;
+  font-size:20px;
+}
+
+.myhome .user-basic-info .edu-info button:hover {
+  background-color: #efefef;
+}
+
+.input-style {
+  padding:0 15px 0 25px;
+  width:350px;
+  height:40px;
+  border:1px solid #bfbfbf;
+  box-sizing:border-box;
+  color:#222;
+  font-size:16px;
+  font-family: 'BMJUA';
+  line-height:46px;
+}
+
+.myhome .user-basic-info .name input {
+  width:700px;
+  
+}
+
+.edu-info .fin-edu {
+  height:80px;
+  border-bottom:1px solid #bfbfbf;
+}
+
+.edu-info .fin-edu button {
+  width:calc(100% / 3);
+  padding:0;
+  height:40px;
+  border:1px solid #bfbfbf;
+  box-sizing:border-box;
+  color:#888;
+  font-size:16px;
+  line-height:40px;
+  background-color:rgba(224, 224, 224, 0.3);
+  font-family: 'BMJUA';
+}
+
+.edu-info .fin-edu button:nth-child(2), .edu-info .fin-edu button:nth-child(3) {
+  margin-left:-5px;
+}
+
+.edu-info .fin-edu .button-click {
+  background-color:#4876ef;
+  border:1px solid #4876ef;
+  color:white;
+}
+
+.edu-info .fin-edu .button-click:hover {
+  color: white !important;
+    background-color:#4876ef !important;
+  border:1px solid #4876ef !important;
+}
+
+
+.sc-fin, .army-name, .hope-name, .pofol-name, .job-fin {
+  align-items:flex-start;
+  height:100px;
+}
+
+.sc-fin .fin, .army-name .title, .hope-name .title, .pofol-name .title, .job-fin .fin {
+  margin-top:10px;
+}
+
+.select-ul li {
+  display: none;
+  cursor: pointer;
+  border:1px solid #bfbfbf;
+  padding:0 15px 0 25px;
+  transform:translateY(-2px);
+}
+
+.select-ul li:first-child {
+  display: block;
+  border-top: 0px;
+}
+
+.select-ul {
+  padding:0 15px 0 25px;
+  width:350px;
+  height:40px;
+  border: 1px solid #bfbfbf;
+  display: inline-block;
+  padding: 0;
+  position: relative;
+  box-sizing:border-box;
+  line-height:40px;
+}
+
+.select-ul li:hover {
+  background-color: #bfbfbf;
+}
+
+.select-ul li:first-child:hover {
+  background-color: transparent;
+}
+
+.select-ul.open li {
+  display: block;
+
+}
+
+.visible {
+   visibility:hidden;
+}
+
+.job-info .select-view, .area-info .select-view {
+   display:flex;
+    
+}
+
+.job-info .select-view p, .area-info .select-view p {
+   width:300px;
+   height:30px;
+   line-height:30px;
+   border: 1px solid #bfbfbf;
+   display: inline-block;
+   position: relative;
+   box-sizing:border-box;
+   padding-left:27px;
+   cursor:pointer;
+   font-size:14px;
+}
+
+.job-list , .job-small-list, .area-list, .area2-list {
+   width:300px;
+   height:30px;
+   line-height:30px;
+   visibility: hidden;
+}
+
+.job-info .select-box, .area-info .select-box {
+
+   height:200px;
+   overflow:auto;
+   display:flex;
+   margin-left:130px;
+}
+
+.job-info .select-box::-webkit-scrollbar, .area-info .select-box::-webkit-scrollbar {
+    display: none; 
+}
+
+.job-list li, .job-small-list li, .area-list li, .area2-list li {
+   font-size:14px;
+   
+}
+
+.job-info .job-fin, .area-info .area-fin {
+   flex-wrap:wrap;
+}
+
+.select-ul .fa-angle-down {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+
+.select-ul .fa-angle-up {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  display:none;
+}
+
+.button-style {
+  font-size:16px;
+  font-family: 'BMJUA';
+  color:#fff;
+  padding:10px 20px 10px 20px;
+  background:#717171;
+  transform:translateX(500px);
+}
+
+.just-line {
+  width:60%;
+  border:1px solid #bfbfbf;
+  margin-top:45px;
+  margin-bottom:5px;
+}
+
+.licen-info .sub-title, .army-info .sub-title, .skill-info .sub-title, .pofol-info .sub-title, .job-info .sub-title {
+  margin-top:80px;
+}
+
+.hope-info .sub-title {
+  margin-top:60px;
+}
+
+.skill .has-skill+input {
+  width:50%;
+}
+
+.skill .skill-add {
+  color:#fff;
+  background:#717171;
+  font-size:16px;
+  padding:10.8px;
+  margin:5px;
+  
+}
+
+.skill .skill-list {
+  width:50%;
+  margin:0 auto;
+  transform:translateX(-160px);
+  height:100%;
+}
+
+.skill .skill-list ul {
+  display:flex;
+  flex-wrap:wrap;
+  height:100%;
+  align-items:center;
+}
+
+.skill .skill-list ul .skill-li p {
+  background-color:rgba(72, 118, 239, 0.2);
+  color:#4876ef;
+  padding:10px;
+  margin:10px 10px 10px 10px;
+  border-radius:10px;
+}
+
+.skill .skill-list ul .skill-li {
+   display:flex;
+   align-items:center;
+}
+
+.skill .skill-list ul .skill-li .skill-remove {
+  width:15px;
+  height:15px;
+  background-image:url("https://e7.pngegg.com/pngimages/829/88/png-clipart-x-button-others-angle-text.png");
+  background-size:cover;
+  background-repeat:no-repeat;
+}
+
+.pofol-info {
+   margin-bottom:200px;
+}
+
+.career-2, .career-3, .licen-2, .licen-3, .licen-4, .licen-5 {
+  display:none;
+}
+
+.nav-bar {
+  
+  position:fixed;
+  top:200px;
+  right:150px;
+  width:250px;
+}
+
+.nav-bar p {
+    font-size:20px;
+  width:100%;
+  border-bottom:1px solid #bfbfbf;
+  padding-bottom:10px;
+}
+
+.nav-bar button {
+  display:block;
+  margin:0 auto;
+  font-size:16px;
+  font-family: 'BMJUA';
+  color:inherit;
+  border:1px solid #bfbfbf;
+  width:150px;
+  height:40px;
+  margin-top:10px;
+
+}
+
+.nav-bar button:hover {
+  background-color:#dfdfdf;
+}
+
+.nav-bar .submit-button {
+  background-color:#4876ef;
+  border:1px solid #4876ef;
+  color:#fff;
+}
+
+.nav-bar .submit-button:hover {
+  background-color:#4876ef;
+    color:#fff;
+}

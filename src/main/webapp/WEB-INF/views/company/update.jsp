@@ -11,6 +11,7 @@
 		<div>
 			<form method="post">
 				<div>
+				<input name="companyImg" type="hidden" value="기업" >
 				<div>
 					<label>아이디:</label>
 					${item.companyId}
@@ -24,15 +25,23 @@
 					<input name="companyRa" type="text"  value="${item.companyRa}">
 				</div>
 				<div>
-					<label>홈페이지 주소(url):</label>
-					<input name="companyHomePage" type="text"  value="${item.companyHomePage}">
+					<label>설립일:</label>
+					<input name="companyDate" type="date"  value="${item.companyDate}">
 				</div>
 				<div>
-					<label>연락처:</label>
-					<input name="companyTel" type="number"  value="${item.companyTel}">
+					<label>기업형태:</label>
+					<input name="companyCategory" type="text"  value="${item.companyCategory}">
 				</div>
 				<div>
-					<label>규모(명):</label>
+					<label>업종:</label>
+					<input name="companyJob" type="text"  value="${item.companyJob}">
+				</div>
+				<div>
+					<label>인사담당자 연락처:</label>
+					<input name="companyTel" type="text"  value="${item.companyTel}">
+				</div>
+				<div>
+					<label>규모(사원 수):</label>
 					<input name="companyScale" type="number"  value="${item.companyScale}">명
 				</div>
 				<div>
@@ -40,12 +49,12 @@
 					<input name="companyLocation" type="text"  value="${item.companyLocation}">
 				</div>
 				<div>
-					<label>연매출:</label>
-					<input name="companyMoney" type="number"  value="${item.companyMoney}">원
+					<label>홈페이지 주소(url):</label>
+					<input name="companyHomePage" type="text"  value="${item.companyHomePage}">
 				</div>
 				<div>
-					<label>한줄소개:</label>
-					<input name="companyWriting" type="text"  value="${item.companyWriting}">
+					<label>기업개요 및 비전소개:</label>
+					<textarea name="companyWriting" cols="40" rows="8" >${item.companyWriting}</textarea> 
 				</div>		
 				</div>
 				

@@ -9,7 +9,7 @@
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
-		<java-version>1.6</java-version>
+		<java-version>1.8</java-version>
 		<org.springframework-version>4.3.5.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
@@ -159,12 +159,12 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.12.2</version>
 		</dependency>
-		
+
 		<!-- 파일업로드 -->
 		<dependency>
-		    <groupId>commons-fileupload</groupId>
-		    <artifactId>commons-fileupload</artifactId>
-		    <version>1.4</version>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.4</version>
 		</dependency>
 
 		<!-- naver -->
@@ -181,7 +181,49 @@
 			<version>1.1.1</version>
 		</dependency>
 
-
+		<!-- 롬복 -->
+	      <dependency>
+	         <groupId>org.projectlombok</groupId>
+	         <artifactId>lombok</artifactId>
+	         <version>1.18.20</version>
+	      </dependency>
+	      
+	      <!-- https://mvnrepository.com/artifact/org.springframework/spring-websocket -->
+	      <dependency>
+	          <groupId>org.springframework</groupId>
+	          <artifactId>spring-websocket</artifactId>
+	          <version>${org.springframework-version}</version>
+	      </dependency>
+	      
+	    <dependency>
+         	<groupId>org.jsoup</groupId>
+         	<artifactId>jsoup</artifactId>
+         	<version>1.13.1</version>      
+     	</dependency>
+     	
+     	<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+		
+		<dependency>
+	        <groupId>org.apache.commons</groupId>
+	        <artifactId>commons-email</artifactId>
+	    	<version>1.2</version>
+	   </dependency>
+	   
+	   <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
 
 	</dependencies>
 	<build>
@@ -205,8 +247,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.5.1</version>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>1.8</source>
+					<target>1.8</target>
 					<compilerArgument>-Xlint:all</compilerArgument>
 					<showWarnings>true</showWarnings>
 					<showDeprecation>true</showDeprecation>

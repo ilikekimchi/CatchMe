@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--  namespace 와 id는 Dao에서 쓰임 -->
+<!-- resultType을 쓰는 이유는 mybatis 에서 쓰기 좋게 바꿔주려고 Skill 라는 객체를 씀(mybatis에서 Profile라는 객체를 
+	만들어줌 => 데이터베이스에서 얻은 값들을 찾아서 item에 주기위해 -->
+	<mapper namespace="area" >			
+	<!-- 이직자 희망지역 보기 -->
+	<select id="list" resultType="Area">
+	SELECT DISTINCT area1, area_code FROM area
+	ORDER BY area_code ASC
+	</select>
+	
+	<select id="area2List" resultType="Area">
+	SELECT area2, area_seq FROM area
+	WHERE area_code = #{areaCode}
+	ORDER BY area_seq ASC
+	</select>
+	
+	<!-- #{}은 필드명, mybatis-config 에서 세팅해주면 이것을 자동으로 고쳐줌(자바표기법:낙타 표기법) -->
+	<insert id="add">
+	INSERT INTO area
+	(area_seq, area_code, area1, area2)
+	
+	VALUES (area_seq.nextval, #{areaCode}, #{area1}, #{area2})
+	
+	<selectKey keyColumn="areaSeq" keyProperty="areaSeq" order="AFTER" resultType="integer">
+		SELECT area_seq.CURRVAL FROM DUAL
+	</selectKey>
+	</insert>  
+	
+	<!-- 이직자 희망지역 수정 -->
+	<update id="update">
+		UPDATE area 
+		SET area_code=#{areaCode}, area1=#{area1}, area2=#{area2}
+		
+		WHERE area_seq=#{areaSeq}
+	</update>
+	
+	<!-- 이직자 희망지역 삭제 -->
+	<delete id="delete">
+		DELETE FROM area
+		WHERE area_seq=#{areaSeq}
+	</delete>
+			
+</mapper>
+
